@@ -23,10 +23,23 @@ public class ArraysStrings {
             }
         }
 
-        System.out.println(isUnique);
-
         return isUnique;
     }
 
-    ;
+
+    /**
+     * Check if str2 is permutation of str1
+     */
+    public boolean checkPermutation(String str1, String str2){
+        char[] strc1 = str1.toCharArray();
+        char[] strc2 = str2.toCharArray();
+
+        Arrays.sort(strc1);
+        Arrays.sort(strc2);
+
+        return Arrays.equals(strc1,strc2);
+    }
+
+
+
 }

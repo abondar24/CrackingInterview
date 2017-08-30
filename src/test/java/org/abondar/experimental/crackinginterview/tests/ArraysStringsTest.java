@@ -18,4 +18,20 @@ public class ArraysStringsTest {
         Assert.assertTrue(res2);
 
     }
+
+
+    @Test
+    public void checkPermutation(){
+        boolean res1 = as.checkPermutation("debug","buged");
+        Assert.assertTrue(res1);
+
+        boolean res2 = as.checkPermutation("debug","cat");
+        Assert.assertFalse(res2);
+
+        boolean res3 = as.checkPermutation("debug","bug");
+        Assert.assertFalse(res3);
+
+
+
+    }
 }
