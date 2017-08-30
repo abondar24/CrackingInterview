@@ -38,4 +38,22 @@ public class ArraysStringsTest {
         String expectedRes = "Mr%20John%20Smith";
         Assert.assertEquals(expectedRes,url);
     }
+
+
+    @Test
+    public void palindromePermutationTest(){
+        boolean res = as.palindromePermutation("Tact Coa");
+        Assert.assertTrue(res);
+
+        boolean res1 = as.palindromePermutation("Tact Coat");
+        Assert.assertFalse(res1);
+
+        boolean res2 = as.palindromePermutation("aabcb");
+        Assert.assertTrue(res2);
+
+        boolean res3 = as.palindromePermutation("civil");
+        Assert.assertFalse(res3);
+
+
+    }
 }

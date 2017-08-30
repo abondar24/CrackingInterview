@@ -52,16 +52,16 @@ public class ArraysStrings {
     public String urlify(String str, int pureLen) {
 
         char[] strc = str.toCharArray();
-        char [] urlc = new char[strc.length];
-        char [] symbols = {'%','2','0'};
+        char[] urlc = new char[strc.length];
+        char[] symbols = {'%', '2', '0'};
 
         int nextChar = 0;
         for (int i = 0; i < pureLen; i++) {
             if (strc[i] == ' ') {
-              for (int k=0; k<symbols.length;k++){
-                  urlc[nextChar]=symbols[k];
-                  nextChar++;
-              }
+                for (int k = 0; k < symbols.length; k++) {
+                    urlc[nextChar] = symbols[k];
+                    nextChar++;
+                }
 
             } else {
                 urlc[nextChar] = strc[i];
@@ -71,6 +71,40 @@ public class ArraysStrings {
 
 
         return String.valueOf(urlc);
+    }
+
+
+    /**
+     * Checks if any of words permutations can be a palindrome
+     */
+    public boolean palindromePermutation(String str) {
+        boolean isPalindromePermutation;
+
+        str = str.toLowerCase();
+
+        char[] strc = str.toCharArray();
+
+        if (str.length() % 2 == 0) {
+            int numberOfPairs = 0;
+            for (char c : strc) {
+                if (str.indexOf(c) != str.lastIndexOf(c)) {
+                    numberOfPairs++;
+                }
+            }
+            isPalindromePermutation = numberOfPairs % 2 == 0;
+
+        } else {
+            int numberOfUnique = 0;
+            for (char c : strc) {
+                if (str.indexOf(c) == str.lastIndexOf(c)) {
+                    numberOfUnique++;
+                }
+            }
+            isPalindromePermutation = numberOfUnique == 1;
+
+        }
+
+        return isPalindromePermutation;
     }
 
 }
