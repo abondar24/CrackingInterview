@@ -30,8 +30,12 @@ public class ArraysStringsTest {
 
         boolean res3 = as.checkPermutation("debug","bug");
         Assert.assertFalse(res3);
+    }
 
-
-
+    @Test
+    public void urllifyTest(){
+        String url = as.urlify("Mr John Smith    ",13);
+        String expectedRes = "Mr%20John%20Smith";
+        Assert.assertEquals(expectedRes,url);
     }
 }
