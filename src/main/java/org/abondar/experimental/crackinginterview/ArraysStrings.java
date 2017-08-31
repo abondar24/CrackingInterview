@@ -1,9 +1,8 @@
 package org.abondar.experimental.crackinginterview;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
 
 
 public class ArraysStrings {
@@ -133,7 +132,7 @@ public class ArraysStrings {
                 }
 
             } else {
-                oneEdit = iterateOverMinStr(str1c,str2);
+                oneEdit = iterateOverMinStr(str1c, str2);
             }
         }
 
@@ -144,14 +143,39 @@ public class ArraysStrings {
     private boolean iterateOverMinStr(char[] shortStr, String longStr) {
 
 
-        int numberOfDiffs =0;
-        for (int i=0;i<shortStr.length;i++){
-            if (longStr.indexOf(shortStr[i])==-1){
+        int numberOfDiffs = 0;
+        for (int i = 0; i < shortStr.length; i++) {
+            if (longStr.indexOf(shortStr[i]) == -1) {
                 numberOfDiffs++;
             }
 
         }
 
         return numberOfDiffs <= 1;
+    }
+
+    /**
+     * Compress repeated chars in string;
+     * e.g: aabcccccaaa -> a2b1c5a3
+     */
+    public String stringCompressor(String str) {
+        StringBuilder compression = new StringBuilder();
+        char[] strc = str.toCharArray();
+
+        int numRepeats = 0;
+        for (int i = 0; i < strc.length; i++) {
+            numRepeats++;
+
+            if (i+1>=strc.length || strc[i]!=strc[i+1]){
+                compression.append(strc[i]);
+                compression.append(numRepeats);
+
+                numRepeats=0;
+            }
+
+        }
+
+
+        return compression.toString();
     }
 }

@@ -11,25 +11,25 @@ public class ArraysStringsTest {
     @Test
     public void inUniqueTest(){
 
-        boolean res1 = as.isUniqque("hello world");
-        Assert.assertFalse(res1);
+        boolean res = as.isUniqque("hello world");
+        Assert.assertFalse(res);
 
-        boolean res2 = as.isUniqque("formula");
-        Assert.assertTrue(res2);
+        res = as.isUniqque("formula");
+        Assert.assertTrue(res);
 
     }
 
 
     @Test
     public void checkPermutation(){
-        boolean res1 = as.checkPermutation("debug","buged");
-        Assert.assertTrue(res1);
+        boolean res = as.checkPermutation("debug","buged");
+        Assert.assertTrue(res);
 
-        boolean res2 = as.checkPermutation("debug","cat");
-        Assert.assertFalse(res2);
+        res = as.checkPermutation("debug","cat");
+        Assert.assertFalse(res);
 
-        boolean res3 = as.checkPermutation("debug","bug");
-        Assert.assertFalse(res3);
+        res = as.checkPermutation("debug","bug");
+        Assert.assertFalse(res);
     }
 
     @Test
@@ -45,38 +45,52 @@ public class ArraysStringsTest {
         boolean res = as.palindromePermutation("Tact Coa");
         Assert.assertTrue(res);
 
-        boolean res1 = as.palindromePermutation("Tact Coat");
-        Assert.assertFalse(res1);
+        res = as.palindromePermutation("Tact Coat");
+        Assert.assertFalse(res);
 
-        boolean res2 = as.palindromePermutation("aabcb");
-        Assert.assertTrue(res2);
+        res = as.palindromePermutation("aabcb");
+        Assert.assertTrue(res);
 
-        boolean res3 = as.palindromePermutation("civil");
-        Assert.assertFalse(res3);
+        res = as.palindromePermutation("civil");
+        Assert.assertFalse(res);
     }
 
 
     @Test
     public void oneAwayTest(){
-        boolean res1 = as.oneAway("pale","ple");
-        Assert.assertTrue(res1);
+        boolean res = as.oneAway("pale","ple");
+        Assert.assertTrue(res);
 
-        boolean res2 = as.oneAway("pales","pale");
-        Assert.assertTrue(res2);
+        res = as.oneAway("pales","pale");
+        Assert.assertTrue(res);
 
-        boolean res3 = as.oneAway("pale","bale");
-        Assert.assertTrue(res3);
+        res = as.oneAway("pale","bale");
+        Assert.assertTrue(res);
 
-        boolean res4 = as.oneAway("pale","bake");
-        Assert.assertFalse(res4);
+        res = as.oneAway("pale","bake");
+        Assert.assertFalse(res);
 
-        boolean res5 = as.oneAway("pale","pale");
-        Assert.assertTrue(res5);
+        res = as.oneAway("pale","pale");
+        Assert.assertTrue(res);
 
-        boolean res6 = as.oneAway("paalee","pale");
-        Assert.assertFalse(res6);
+        res = as.oneAway("paalee","pale");
+        Assert.assertFalse(res);
 
-        boolean res7 = as.oneAway("pale","pkb");
-        Assert.assertFalse(res7);
+        res = as.oneAway("pale","pkb");
+        Assert.assertFalse(res);
+    }
+
+
+    @Test
+    public void  stringCompressionTest(){
+        String actual = as.stringCompressor("aabcccccaaa");
+        String expected = "a2b1c5a3";
+        Assert.assertEquals(expected,actual);
+
+        actual = as.stringCompressor("abfcccgh");
+        expected = "a1b1f1c3g1h1";
+        Assert.assertEquals(expected,actual);
+
+
     }
 }
