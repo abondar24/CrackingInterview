@@ -107,4 +107,51 @@ public class ArraysStrings {
         return isPalindromePermutation;
     }
 
+
+    /**
+     * Check of oneString can be got from another by just one edit
+     */
+    public boolean oneAway(String str1, String str2) {
+        boolean oneEdit;
+
+        char[] str1c = str1.toCharArray();
+        char[] str2c = str2.toCharArray();
+
+        Arrays.sort(str1c);
+        Arrays.sort(str2c);
+
+
+        if (Math.abs(str1c.length - str2c.length) > 1) {
+            oneEdit = false;
+        } else {
+            if (str1c.length != str2c.length) {
+                int minLen = Math.min(str1c.length, str1c.length);
+                if (str1c.length == minLen) {
+                    oneEdit = iterateOverMinStr(str1c, str2);
+                } else {
+                    oneEdit = iterateOverMinStr(str2c, str1);
+                }
+
+            } else {
+                oneEdit = iterateOverMinStr(str1c,str2);
+            }
+        }
+
+
+        return oneEdit;
+    }
+
+    private boolean iterateOverMinStr(char[] shortStr, String longStr) {
+
+
+        int numberOfDiffs =0;
+        for (int i=0;i<shortStr.length;i++){
+            if (longStr.indexOf(shortStr[i])==-1){
+                numberOfDiffs++;
+            }
+
+        }
+
+        return numberOfDiffs <= 1;
+    }
 }
