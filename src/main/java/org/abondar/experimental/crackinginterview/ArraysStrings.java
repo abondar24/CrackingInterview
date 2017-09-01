@@ -2,6 +2,7 @@ package org.abondar.experimental.crackinginterview;
 
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 
 public class ArraysStrings {
@@ -191,7 +192,7 @@ public class ArraysStrings {
                 matrix[i][j] = matrix[matrix.length - 1 - j][i];
 
                 // bottom to left
-                matrix[matrix.length - 1 - j][i]= matrix[matrix.length - 1 - i][matrix.length - 1 - j];
+                matrix[matrix.length - 1 - j][i] = matrix[matrix.length - 1 - i][matrix.length - 1 - j];
 
                 //right to bottom
                 matrix[matrix.length - 1 - i][matrix.length - 1 - j] = matrix[j][matrix.length - 1 - i];
@@ -208,6 +209,42 @@ public class ArraysStrings {
     }
 
 
+    /**
+     * If element [i][j] of matrix is zero - entire row and column must be zero
+     */
+    public int[][] zeroMatrix(int[][] matrix) {
+        printMatrix(matrix);
+
+        HashMap<Integer,Integer> zeroPos = new HashMap<>();
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if (matrix[i][j] == 0) {
+                    zeroPos.put(i,j);
+                }
+            }
+        }
+
+        for (int row:zeroPos.keySet()){
+            matrix = fillZero(matrix,row,zeroPos.get(row));
+        }
+        printMatrix(matrix);
+        return matrix;
+    }
+
+    private int[][] fillZero(int[][] matrix, int row, int col) {
+        for (int i = 0; i < matrix.length; i++) {
+
+            for (int j = 0; j < matrix.length; j++) {
+
+                matrix[row][j] = 0;
+                matrix[i][col] = 0;
+            }
+        }
+
+        return matrix;
+    }
+
+
     private void printMatrix(int[][] matrix) {
         for (int[] row : matrix) {
             for (int col : row) {
@@ -215,5 +252,8 @@ public class ArraysStrings {
             }
             System.out.println();
         }
+        System.out.println();
     }
+
+
 }

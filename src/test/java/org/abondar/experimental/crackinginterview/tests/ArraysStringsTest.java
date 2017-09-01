@@ -169,4 +169,66 @@ public class ArraysStringsTest {
         Assert.assertArrayEquals(expectedMatrix,actualMatrix);
 
     }
+
+
+
+    @Test
+    public void zeroMatrixTest() {
+        int[][] matrix = new int[3][3];
+        matrix[0][0] = 1;
+        matrix[0][1] = 2;
+        matrix[0][2] = 3;
+        matrix[1][0] = 0;
+        matrix[1][1] = 5;
+        matrix[1][2] = 6;
+        matrix[2][0] = 7;
+        matrix[2][1] = 8;
+        matrix[2][2] = 9;
+
+        int[][] expectedMatrix = new int[3][3];
+        expectedMatrix[0][0] = 0;
+        expectedMatrix[0][1] = 2;
+        expectedMatrix[0][2] = 3;
+        expectedMatrix[1][0] = 0;
+        expectedMatrix[1][1] = 0;
+        expectedMatrix[1][2] = 0;
+        expectedMatrix[2][0] = 0;
+        expectedMatrix[2][1] = 8;
+        expectedMatrix[2][2] = 9;
+
+        int [][] actualMatrix = as.zeroMatrix(matrix);
+        Assert.assertArrayEquals(expectedMatrix,actualMatrix);
+
+    }
+
+
+
+    @Test
+    public void zeroMatrixTestDoubleZero() {
+        int[][] matrix = new int[3][3];
+        matrix[0][0] = 1;
+        matrix[0][1] = 2;
+        matrix[0][2] = 3;
+        matrix[1][0] = 0;
+        matrix[1][1] = 5;
+        matrix[1][2] = 6;
+        matrix[2][0] = 7;
+        matrix[2][1] = 0;
+        matrix[2][2] = 9;
+
+        int[][] expectedMatrix = new int[3][3];
+        expectedMatrix[0][0] = 0;
+        expectedMatrix[0][1] = 0;
+        expectedMatrix[0][2] = 3;
+        expectedMatrix[1][0] = 0;
+        expectedMatrix[1][1] = 0;
+        expectedMatrix[1][2] = 0;
+        expectedMatrix[2][0] = 0;
+        expectedMatrix[2][1] = 0;
+        expectedMatrix[2][2] = 0;
+
+        int [][] actualMatrix = as.zeroMatrix(matrix);
+        Assert.assertArrayEquals(expectedMatrix,actualMatrix);
+
+    }
 }
