@@ -2,7 +2,7 @@ package org.abondar.experimental.crackinginterview;
 
 public class Node {
 
-    private Node next;
+    private Node next=null;
     private int data;
 
 
@@ -34,5 +34,13 @@ public class Node {
 
     public void setData(int data) {
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "next=" + next +
+                ", data=" + data +
+                '}';
     }
 }
