@@ -4,7 +4,6 @@ package org.abondar.experimental.crackinginterview;
 import java.util.Arrays;
 
 
-
 public class ArraysStrings {
 
     /**
@@ -166,16 +165,55 @@ public class ArraysStrings {
         for (int i = 0; i < strc.length; i++) {
             numRepeats++;
 
-            if (i+1>=strc.length || strc[i]!=strc[i+1]){
+            if (i + 1 >= strc.length || strc[i] != strc[i + 1]) {
                 compression.append(strc[i]);
                 compression.append(numRepeats);
 
-                numRepeats=0;
+                numRepeats = 0;
             }
 
         }
 
-
         return compression.toString();
+    }
+
+    /**
+     * Rotate matrix by 90 degrees clockwise
+     */
+    public int[][] rotateMatrix(int[][] matrix) {
+        printMatrix(matrix);
+        for (int i = 0; i < matrix.length / 2; i++) {
+            for (int j = i; j < matrix.length - i - 1; j++) {
+                //top to tmp
+                int tmp = matrix[i][j];
+
+                //left to top
+                matrix[i][j] = matrix[matrix.length - 1 - j][i];
+
+                // bottom to left
+                matrix[matrix.length - 1 - j][i]= matrix[matrix.length - 1 - i][matrix.length - 1 - j];
+
+                //right to bottom
+                matrix[matrix.length - 1 - i][matrix.length - 1 - j] = matrix[j][matrix.length - 1 - i];
+
+
+                //temp to right
+                matrix[j][matrix.length - 1 - i] = tmp;
+            }
+        }
+
+        System.out.println(" ");
+        printMatrix(matrix);
+        return matrix;
+    }
+
+
+    private void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int col : row) {
+                System.out.print(col + " ");
+            }
+            System.out.println();
+        }
     }
 }
