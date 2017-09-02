@@ -5,11 +5,11 @@ public class Lists {
     /**
      * Remove duplicates from list without using any tmp buffer
      */
-    public Node removeDups(Node head) {
+    public IntNode removeDups(IntNode head) {
 
-        Node cur = head;
+        IntNode cur = head;
         while (cur != null) {
-            Node runner = cur;
+            IntNode runner = cur;
             while (runner.getNext() != null) {
                 if (runner.getNext().getData() == cur.getData()) {
                     runner.setNext(runner.getNext().getNext());
@@ -29,10 +29,10 @@ public class Lists {
      * I count positions from 0
      * if list is 1,2,3 and k=1 or 0 -> return 3; k=2 -> return 2,3
      */
-    public Node kToLast(Node head, int k) {
-        Node kToLast = null;
+    public IntNode kToLast(IntNode head, int k) {
+        IntNode kToLast = null;
 
-        Node cur = head;
+        IntNode cur = head;
         int size = 0;
 
         while (cur != null) {
@@ -41,13 +41,13 @@ public class Lists {
         }
 
         // if we count from 1 posToRet = size -k +1; curPos =1
-        int posToRet =  size-k;
+        int posToRet = size - k;
         int curPos = 0;
 
         cur = head;
         while (cur != null) {
 
-            if (curPos==posToRet){
+            if (curPos == posToRet) {
                 kToLast = cur;
             }
             cur = cur.getNext();
@@ -56,4 +56,24 @@ public class Lists {
 
         return kToLast;
     }
+
+
+    /**
+     * Delete any node but not first or last
+     * we don't have access to the first so we don't check for first
+     */
+    public StrNode deleteMiddleNode(StrNode nodeToDel) {
+
+        if (nodeToDel.getNext() != null) {
+
+            StrNode next = nodeToDel.getNext();
+            next.setData(nodeToDel.getData());
+            next.setNext(nodeToDel.getNext());
+
+            nodeToDel = next;
+        }
+
+        return nodeToDel;
+    }
+
 }

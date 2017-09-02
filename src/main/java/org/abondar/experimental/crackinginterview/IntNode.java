@@ -1,18 +1,18 @@
 package org.abondar.experimental.crackinginterview;
 
-public class Node {
+public class IntNode {
 
-    private Node next=null;
+    private IntNode next=null;
     private int data;
 
 
-    public Node(int data) {
+    public IntNode(int data) {
         this.data = data;
     }
 
     public void appendToTail(int data){
-        Node end = new Node(data);
-        Node n = this;
+        IntNode end = new IntNode(data);
+        IntNode n = this;
         while (n.next!=null){
             n = n.next;
         }
@@ -20,11 +20,11 @@ public class Node {
         n.setNext(end);
     }
 
-    public Node getNext() {
+    public IntNode getNext() {
         return next;
     }
 
-    public void setNext(Node next) {
+    public void setNext(IntNode next) {
         this.next = next;
     }
 
@@ -38,7 +38,7 @@ public class Node {
 
     @Override
     public String toString() {
-        return "Node{" +
+        return "IntNode{" +
                 "next=" + next +
                 ", data=" + data +
                 '}';
