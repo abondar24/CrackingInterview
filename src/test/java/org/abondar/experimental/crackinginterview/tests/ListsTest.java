@@ -200,4 +200,56 @@ public class ListsTest {
         Node actualSum = ll.sumListsStaight(n1,n2);
         Assert.assertEquals(sum.toString(),actualSum.toString());
     }
+
+
+    @Test
+    public void checkPalindromeTestInt(){
+        Node<Integer> head = new Node<>(0);
+        Node<Integer> next = new Node<>(1);
+        Node<Integer> next1 = new Node<>(2);
+        Node<Integer> next2 = new Node<>(1);
+        Node<Integer> next3 = new Node<>(0);
+
+        head.setNext(next);
+        next.setNext(next1);
+        next1.setNext(next2);
+        next2.setNext(next3);
+
+        boolean isPalindrome = ll.checkPalindrome(head);
+        Assert.assertTrue(isPalindrome);
+    }
+
+    @Test
+    public void checkPalindromeTestStr(){
+        Node<String> head = new Node<>("a");
+        Node<String> next = new Node<>("b");
+        Node<String> next1 = new Node<>("b");
+        Node<String> next2 = new Node<>("a");
+
+        head.setNext(next);
+        next.setNext(next1);
+        next1.setNext(next2);
+
+        boolean isPalindrome = ll.checkPalindrome(head);
+        Assert.assertTrue(isPalindrome);
+    }
+
+    @Test
+    public void checkPalindromeTestNotPalindrome(){
+        Node<Integer> head = new Node<>(0);
+        Node<Integer> next = new Node<>(1);
+        Node<Integer> next1 = new Node<>(2);
+        Node<Integer> next2 = new Node<>(1);
+        Node<Integer> next3 = new Node<>(2);
+
+        head.setNext(next);
+        next.setNext(next1);
+        next1.setNext(next2);
+        next2.setNext(next3);
+
+        boolean isPalindrome = ll.checkPalindrome(head);
+        Assert.assertFalse(isPalindrome);
+    }
+
+
 }

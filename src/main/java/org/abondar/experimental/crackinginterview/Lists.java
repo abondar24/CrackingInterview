@@ -156,4 +156,37 @@ public class Lists {
         return sumNodes[0];
     }
 
+    /**
+     * Check if list is a palindrome
+     * */
+    public boolean checkPalindrome(Node head){
+
+      Node reverseHead = null;
+
+      Node cur = head;
+      while (cur!=null){
+
+          Node n = new Node<>(cur.getData());
+          n.setNext(reverseHead);
+          reverseHead = n;
+          cur = cur.getNext();
+      }
+      return isEqual(head,reverseHead);
+    }
+
+    private boolean isEqual(Node h1, Node h2){
+
+        while (h1!=null&& h2!=null){
+
+            if (!h1.getData().equals(h2.getData())){
+                return false;
+            }
+
+            h1 = h1.getNext();
+            h2 = h2.getNext();
+        }
+
+
+        return h1 == null && h2 == null;
+    }
 }
