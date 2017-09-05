@@ -290,4 +290,62 @@ public class ListsTest {
     }
 
 
+    @Test
+    public void checkIntersection(){
+        Node<Integer> head1 = new Node<>(3);
+        Node<Integer> next = new Node<>(1);
+        Node<Integer> next1 = new Node<>(5);
+        Node<Integer> next2 = new Node<>(6);
+        Node<Integer> next3 = new Node<>(7);
+
+        head1.setNext(next);
+        next.setNext(next1);
+        next1.setNext(next2);
+        next2.setNext(next3);
+
+        Node<Integer> head2 = new Node<>(4);
+        Node<Integer> next4 = new Node<>(6);
+        Node<Integer> next5 =  next3;
+        Node<Integer> next6 = new Node<>(2);
+        Node<Integer> next7 = new Node<>(1);
+
+        head2.setNext(next4);
+        next4.setNext(next5);
+        next5.setNext(next6);
+        next6.setNext(next7);
+
+
+        boolean hasIntersection = ll.hasIntersection(head1,head2);
+        Assert.assertTrue(hasIntersection);
+    }
+
+    @Test
+    public void checkIntersectionNoInter(){
+        Node<Integer> head1 = new Node<>(3);
+        Node<Integer> next = new Node<>(1);
+        Node<Integer> next1 = new Node<>(5);
+        Node<Integer> next2 = new Node<>(6);
+        Node<Integer> next3 = new Node<>(7);
+
+        head1.setNext(next);
+        next.setNext(next1);
+        next1.setNext(next2);
+        next2.setNext(next3);
+
+        Node<Integer> head2 = new Node<>(4);
+        Node<Integer> next4 = new Node<>(6);
+        Node<Integer> next5 =  new Node<>(7);
+        Node<Integer> next6 = new Node<>(2);
+        Node<Integer> next7 = new Node<>(1);
+
+        head2.setNext(next4);
+        next4.setNext(next5);
+        next5.setNext(next6);
+        next6.setNext(next7);
+
+
+        boolean hasIntersection = ll.hasIntersection(head1,head2);
+        Assert.assertFalse(hasIntersection);
+    }
+
 }

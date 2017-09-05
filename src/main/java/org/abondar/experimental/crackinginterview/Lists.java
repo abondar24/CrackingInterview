@@ -193,6 +193,31 @@ public class Lists {
         return h1 == null && h2 == null;
     }
 
+
+    /**
+     * Check if two list have an intersection.
+     * Intersection is by ref, not by val which means one node in two lists
+     * */
+    public boolean hasIntersection(Node h1,Node h2){
+        HashMap<Node,Boolean> checkedNodes= new HashMap<>();
+
+        while (h1!=null){
+
+            checkedNodes.put(h1,false);
+            h1 = h1.getNext();
+        }
+
+        while (h2!=null){
+            if (checkedNodes.containsKey(h2)){
+                checkedNodes.put(h2,true);
+                break;
+            }
+            h2 = h2.getNext();
+        }
+
+        return checkedNodes.containsValue(true);
+    }
+
     /**
      * Check if list has loops and return it
      * */
