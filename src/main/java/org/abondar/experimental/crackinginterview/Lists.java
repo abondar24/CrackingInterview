@@ -77,5 +77,83 @@ public class Lists {
     }
 
 
+    /**
+     * Each param is a number in reverse : list 7-1-6 is number 617
+     * We need to return a list which represents sum of values
+     */
+    public Node sumListsReverse(Node num1, Node num2){
+       StringBuilder num1Str = new StringBuilder();
+       StringBuilder num2Str = new StringBuilder();
+
+       Node cur = num1;
+       while (cur!=null){
+           num1Str.append(cur.getData());
+           cur = cur.getNext();
+       }
+
+       cur = num2;
+        while (cur!=null){
+            num2Str.append(cur.getData());
+            cur = cur.getNext();
+        }
+
+        Integer n1 = Integer.valueOf(num1Str.reverse().toString());
+        Integer n2 = Integer.valueOf(num2Str.reverse().toString());
+
+        Integer sum = n1+n2;
+
+        String reverseSum = new StringBuilder(Integer.toString(sum)).reverse().toString();
+
+        Node[] sumNodes = new Node[reverseSum.length()];
+        for (int i=0;i<reverseSum.length();i++){
+            sumNodes[i] = new Node<>(Integer.valueOf(reverseSum.substring(i,i+1)));
+        }
+
+        for (int i=0;i<sumNodes.length-1;i++){
+            sumNodes[i].setNext(sumNodes[i+1]);
+        }
+
+        return sumNodes[0];
+    }
+
+
+    /**
+     * Each param is a number  : list 7-1-6 is number 716
+     * We need to return a list which represents sum of values
+     */
+    public Node sumListsStaight(Node num1, Node num2){
+        StringBuilder num1Str = new StringBuilder();
+        StringBuilder num2Str = new StringBuilder();
+
+        Node cur = num1;
+        while (cur!=null){
+            num1Str.append(cur.getData());
+            cur = cur.getNext();
+        }
+
+        cur = num2;
+        while (cur!=null){
+            num2Str.append(cur.getData());
+            cur = cur.getNext();
+        }
+
+        Integer n1 = Integer.valueOf(num1Str.toString());
+        Integer n2 = Integer.valueOf(num2Str.toString());
+
+        Integer sum = n1+n2;
+
+        String strSum = Integer.toString(sum);
+
+        Node[] sumNodes = new Node[strSum.length()];
+        for (int i=0;i<strSum.length();i++){
+            sumNodes[i] = new Node<>(Integer.valueOf(strSum.substring(i,i+1)));
+        }
+
+        for (int i=0;i<sumNodes.length-1;i++){
+            sumNodes[i].setNext(sumNodes[i+1]);
+        }
+
+        return sumNodes[0];
+    }
 
 }

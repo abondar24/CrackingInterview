@@ -145,4 +145,59 @@ public class ListsTest {
 
     }
 
+    @Test
+    public void  sumListsReverseTest(){
+        //it represents 617
+        Node<Integer> n1 = new Node<>(7);
+        Node<Integer> n1Next = new Node<>(1);
+        Node<Integer> n1Next1 = new Node<>(6);
+        n1.setNext(n1Next);
+        n1Next.setNext(n1Next1);
+
+        //it represents 295
+        Node<Integer> n2 = new Node<>(5);
+        Node<Integer> n2Next = new Node<>(9);
+        Node<Integer> n2Next1 = new Node<>(2);
+        n2.setNext(n2Next);
+        n2Next.setNext(n2Next1);
+
+        //ExpectedSum
+        Node<Integer> sum = new Node<>(2);
+        Node<Integer> sumNext = new Node<>(1);
+        Node<Integer> sumNext1 = new Node<>(9);
+        sum.setNext(sumNext);
+        sumNext.setNext(sumNext1);
+
+
+        Node actualSum = ll.sumListsReverse(n1,n2);
+        Assert.assertEquals(sum.toString(),actualSum.toString());
+    }
+
+    @Test
+    public void  sumListsStraightTest(){
+        //it represents 617
+        Node<Integer> n1 = new Node<>(6);
+        Node<Integer> n1Next = new Node<>(1);
+        Node<Integer> n1Next1 = new Node<>(7);
+        n1.setNext(n1Next);
+        n1Next.setNext(n1Next1);
+
+        //it represents 295
+        Node<Integer> n2 = new Node<>(2);
+        Node<Integer> n2Next = new Node<>(9);
+        Node<Integer> n2Next1 = new Node<>(5);
+        n2.setNext(n2Next);
+        n2Next.setNext(n2Next1);
+
+        //ExpectedSum
+        Node<Integer> sum = new Node<>(9);
+        Node<Integer> sumNext = new Node<>(1);
+        Node<Integer> sumNext1 = new Node<>(2);
+        sum.setNext(sumNext);
+        sumNext.setNext(sumNext1);
+
+
+        Node actualSum = ll.sumListsStaight(n1,n2);
+        Assert.assertEquals(sum.toString(),actualSum.toString());
+    }
 }

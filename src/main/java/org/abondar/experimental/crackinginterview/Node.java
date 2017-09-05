@@ -10,7 +10,6 @@ public class Node<T> {
         this.data = data;
     }
 
-
     public void appendToTail(int data){
         Node end = new Node<>(data);
         Node n = this;
