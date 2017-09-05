@@ -1,5 +1,8 @@
 package org.abondar.experimental.crackinginterview;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Lists {
 
     /**
@@ -188,5 +191,34 @@ public class Lists {
 
 
         return h1 == null && h2 == null;
+    }
+
+    /**
+     * Check if list has loops and return it
+     * */
+    public Node detectLoop(Node head){
+
+        Node loop = null;
+
+        HashMap<Node,Boolean> checkedNodes= new HashMap<>();
+        while (head!=null){
+
+            if (!checkedNodes.containsKey(head)){
+                checkedNodes.put(head,false);
+            } else {
+                checkedNodes.put(head,true);
+                break;
+            }
+
+            head = head.getNext();
+        }
+
+        for (Map.Entry<Node,Boolean> ent:checkedNodes.entrySet()){
+            if (ent.getValue()){
+                loop = ent.getKey();
+            }
+        }
+
+        return loop;
     }
 }

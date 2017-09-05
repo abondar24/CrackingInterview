@@ -252,4 +252,42 @@ public class ListsTest {
     }
 
 
+    @Test
+    public void detectLoopTest(){
+        Node<String> head = new Node<>("a");
+        Node<String> next = new Node<>("b");
+        Node<String> next1 = new Node<>("c");
+        Node<String> next2 = new Node<>("d");
+        Node<String> next3 = new Node<>("e");
+
+        head.setNext(next);
+        next.setNext(next1);
+        next1.setNext(next2);
+        next1.setNext(next3);
+        next3.setNext(next1);
+
+        Node loop = ll.detectLoop(head);
+        Assert.assertEquals(next1,loop);
+
+    }
+
+    @Test
+    public void detectLoopTestNoLoop(){
+        Node<String> head = new Node<>("a");
+        Node<String> next = new Node<>("b");
+        Node<String> next1 = new Node<>("c");
+        Node<String> next2 = new Node<>("d");
+        Node<String> next3 = new Node<>("e");
+
+        head.setNext(next);
+        next.setNext(next1);
+        next1.setNext(next2);
+        next1.setNext(next3);
+
+        Node loop = ll.detectLoop(head);
+        Assert.assertEquals(null,loop);
+
+    }
+
+
 }
