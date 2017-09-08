@@ -1,4 +1,4 @@
-package org.abondar.experimental.crackinginterview;
+package org.abondar.experimental.crackinginterview.ArraysStrings;
 
 
 import java.util.Arrays;

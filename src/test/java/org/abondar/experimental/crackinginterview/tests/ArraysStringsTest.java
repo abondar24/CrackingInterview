@@ -1,6 +1,6 @@
 package org.abondar.experimental.crackinginterview.tests;
 
-import org.abondar.experimental.crackinginterview.ArraysStrings;
+import org.abondar.experimental.crackinginterview.ArraysStrings.ArraysStrings;
 import org.junit.Assert;
 import org.junit.Test;
 

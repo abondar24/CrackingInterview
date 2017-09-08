@@ -1,7 +1,7 @@
 package org.abondar.experimental.crackinginterview.tests;
 
-import org.abondar.experimental.crackinginterview.Node;
-import org.abondar.experimental.crackinginterview.Lists;
+import org.abondar.experimental.crackinginterview.List.Node;
+import org.abondar.experimental.crackinginterview.List.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 

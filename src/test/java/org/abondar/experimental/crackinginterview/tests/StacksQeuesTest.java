@@ -1,6 +1,6 @@
 package org.abondar.experimental.crackinginterview.tests;
 
-import org.abondar.experimental.crackinginterview.StacksQeues;
+import org.abondar.experimental.crackinginterview.StacksQueues.StacksQeues;
 
 public class StacksQeuesTest {
 

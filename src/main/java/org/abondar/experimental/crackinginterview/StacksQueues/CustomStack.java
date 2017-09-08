@@ -1,4 +1,4 @@
-package org.abondar.experimental.crackinginterview;
+package org.abondar.experimental.crackinginterview.StacksQueues;
 
 import java.util.EmptyStackException;
 
