@@ -3,6 +3,7 @@ package org.abondar.experimental.crackinginterview.tests;
 import org.abondar.experimental.crackinginterview.StacksQueues.CustomStack;
 import org.abondar.experimental.crackinginterview.StacksQueues.MultiStack;
 
+import org.abondar.experimental.crackinginterview.StacksQueues.StackMin;
 import org.junit.Test;
 
 import java.util.List;
@@ -51,5 +52,18 @@ public class StacksQueuesTest {
         assertEquals(2,stackList.size());
         assertEquals(10,stackList.get(0).peek());
         assertEquals(5,stackList.get(1).peek());
+    }
+
+    @Test
+    public void stackMinTest(){
+        StackMin stack = new StackMin();
+
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        assertEquals( (Object) 1,stack.min());
+
     }
 }
