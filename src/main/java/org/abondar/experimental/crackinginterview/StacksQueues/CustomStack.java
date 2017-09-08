@@ -10,6 +10,14 @@ public class CustomStack<T> {
         public StackNode(T data) {
             this.data = data;
         }
+
+        @Override
+        public String toString() {
+            return "StackNode{" +
+                    "data=" + data +
+                    ", next=" + next +
+                    '}';
+        }
     }
 
     private StackNode<T> top;
@@ -36,4 +44,10 @@ public class CustomStack<T> {
         return top==null;
     }
 
+    @Override
+    public String toString() {
+        return "CustomStack{" +
+                "top=" + top +
+                '}';
+    }
 }
