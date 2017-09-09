@@ -2,6 +2,10 @@ package org.abondar.experimental.crackinginterview.tests;
 
 import org.abondar.experimental.crackinginterview.StacksQueues.*;
 
+import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.Animal;
+import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.AnimalQueue;
+import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.Cat;
+import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.Dog;
 import org.junit.Test;
 
 import java.util.List;
@@ -31,16 +35,16 @@ public class StacksQueuesTest {
 
 
     @Test
-    public void customQueueTest(){
+    public void customQueueTest() {
         CustomQueue<Integer> cq = new CustomQueue<>();
         assertTrue(cq.isEmpty());
 
         cq.add(1);
         cq.add(2);
         cq.add(3);
-        assertEquals((Object)1,cq.peek());
-        assertEquals((Object)1,cq.remove());
-        assertEquals((Object)2,cq.peek());
+        assertEquals((Object) 1, cq.peek());
+        assertEquals((Object) 1, cq.remove());
+        assertEquals((Object) 2, cq.peek());
 
 
     }
@@ -98,7 +102,7 @@ public class StacksQueuesTest {
         Map<CustomStack, Integer> stackSet = ss.getStackSet();
 
 
-        assertEquals(2,stackSet.size());
+        assertEquals(2, stackSet.size());
         assertEquals((Object) 5, ss.pop());
 
     }
@@ -117,32 +121,32 @@ public class StacksQueuesTest {
 
         Map<CustomStack, Integer> stackSet = ss.getStackSet();
 
-        assertEquals(3,stackSet.size());
+        assertEquals(3, stackSet.size());
 
     }
 
 
     @Test
-    public void twoStackQueueTest(){
+    public void twoStackQueueTest() {
         TwoStackQueue<Integer> tsq = new TwoStackQueue<>();
         tsq.add(1);
 
-        assertEquals((Object)1,tsq.peek());
+        assertEquals((Object) 1, tsq.peek());
 
 
         tsq.add(2);
         tsq.add(3);
 
-        assertEquals((Object) 1,tsq.remove());
+        assertEquals((Object) 1, tsq.remove());
 
         tsq.add(4);
         tsq.add(5);
-        assertEquals((Object)2,tsq.peek());
+        assertEquals((Object) 2, tsq.peek());
     }
 
 
     @Test
-    public void sortStackTest(){
+    public void sortStackTest() {
         CustomStack<Integer> stack = new CustomStack<>();
 
         stack.push(1);
@@ -153,6 +157,61 @@ public class StacksQueuesTest {
         CustomStack<Integer> sorted = StackUtil.sortStack(stack);
 
         System.out.println(sorted);
-        assertEquals((Object)12,sorted.peek());
+        assertEquals((Object) 12, sorted.peek());
     }
+
+
+    @Test
+    public void sortStackTest1() {
+        CustomStack<Integer> stack = new CustomStack<>();
+
+        stack.push(5);
+        stack.push(10);
+        stack.push(7);
+        stack.push(14);
+
+
+        CustomStack<Integer> sorted = StackUtil.sortStack(stack);
+
+        System.out.println(sorted);
+        assertEquals((Object) 14, sorted.peek());
+    }
+
+    @Test
+    public void animalShelterTest() {
+        Dog dog = new Dog("abdi");
+        Cat cat = new Cat("saloman");
+
+        AnimalQueue aq = new AnimalQueue();
+        aq.enqueue(dog);
+        aq.enqueue(cat);
+
+        List<Dog> dogs = aq.getDogList();
+        List<Cat> cats = aq.getCatList();
+
+        assertEquals(1, dogs.size());
+        assertEquals(1, cats.size());
+
+        Dog dog1 = new Dog("salo");
+        Cat cat1 = new Cat("chuckha");
+
+
+        aq.enqueue(dog1);
+        aq.enqueue(cat1);
+
+        assertEquals(dog, aq.dequeueDog());
+        assertEquals(cat, aq.dequeueCat());
+
+        aq.enqueue(dog);
+        aq.enqueue(cat);
+        assertEquals(dog1, aq.dequeueAny());
+
+    }
+
+    @Test
+    public void animalShelterTestEmpty() {
+        AnimalQueue aq = new AnimalQueue();
+        assertEquals(null,aq.dequeueAny());
+    }
+
 }

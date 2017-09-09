@@ -12,9 +12,7 @@ public class StackUtil {
             Integer max = stack.pop();
 
             while (!sorted.isEmpty() && sorted.peek() > max) {
-
                 stack.push(sorted.pop());
-
             }
 
             sorted.push(max);
