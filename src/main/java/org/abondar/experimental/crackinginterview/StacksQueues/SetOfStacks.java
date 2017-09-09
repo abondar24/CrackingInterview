@@ -5,7 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-
+/**
+ * Creates a set of stacks.
+ * Each stack has a max capacity and when we run over it we add a new stack.
+ * Methods push,pop and peek work as in simple stack
+ * */
 public class SetOfStacks {
 
     private Integer maxCapacityPerStack;
