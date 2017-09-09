@@ -71,7 +71,7 @@ public class StacksQueuesTest {
 
     @Test
     public void stackMinTest() {
-        StackMin stack = new StackMin();
+        MinStack stack = new MinStack();
 
 
         stack.push(1);
@@ -141,4 +141,18 @@ public class StacksQueuesTest {
     }
 
 
+    @Test
+    public void sortStackTest(){
+        CustomStack<Integer> stack = new CustomStack<>();
+
+        stack.push(1);
+        stack.push(12);
+        stack.push(8);
+        stack.push(3);
+
+        CustomStack<Integer> sorted = StackUtil.sortStack(stack);
+
+        System.out.println(sorted);
+        assertEquals((Object)12,sorted.peek());
+    }
 }

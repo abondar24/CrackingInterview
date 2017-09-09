@@ -5,11 +5,11 @@ import java.util.Objects;
 /**
  * Stack which also counts min elem
  */
-public class StackMin extends CustomStack<Integer> {
+public class MinStack extends CustomStack<Integer> {
 
     private CustomStack<Integer> stack;
 
-    public StackMin() {
+    public MinStack() {
         stack = new CustomStack<>();
     }
 
