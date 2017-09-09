@@ -1,10 +1,7 @@
 package org.abondar.experimental.crackinginterview.tests;
 
-import org.abondar.experimental.crackinginterview.StacksQueues.CustomStack;
-import org.abondar.experimental.crackinginterview.StacksQueues.MultiStack;
+import org.abondar.experimental.crackinginterview.StacksQueues.*;
 
-import org.abondar.experimental.crackinginterview.StacksQueues.SetOfStacks;
-import org.abondar.experimental.crackinginterview.StacksQueues.StackMin;
 import org.junit.Test;
 
 import java.util.List;
@@ -30,6 +27,22 @@ public class StacksQueuesTest {
 
         cs.pop();
         assertEquals((Object) 2, cs.peek());
+    }
+
+
+    @Test
+    public void customQueueTest(){
+        CustomQueue<Integer> cq = new CustomQueue<>();
+        assertTrue(cq.isEmpty());
+
+        cq.add(1);
+        cq.add(2);
+        cq.add(3);
+        assertEquals((Object)1,cq.peek());
+        assertEquals((Object)1,cq.remove());
+        assertEquals((Object)2,cq.peek());
+
+
     }
 
     @Test
