@@ -2,7 +2,6 @@ package org.abondar.experimental.crackinginterview.tests;
 
 import org.abondar.experimental.crackinginterview.StacksQueues.*;
 
-import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.Animal;
 import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.AnimalQueue;
 import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.Cat;
 import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.Dog;

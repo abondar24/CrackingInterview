@@ -39,7 +39,7 @@ public class Node<T> {
 
     @Override
     public String toString() {
-        return "Node{" +
+        return "BinTreeNode{" +
                 "next=" + next +
                 ", data=" + data +
                 '}';
