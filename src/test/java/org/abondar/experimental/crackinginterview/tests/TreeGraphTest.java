@@ -5,10 +5,7 @@ import org.abondar.experimental.crackinginterview.TreesGraphs.GraphNode;
 import org.abondar.experimental.crackinginterview.TreesGraphs.TreesGraphs;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -20,7 +17,7 @@ public class TreeGraphTest {
 
 
     @Test
-    public void hasRouteBFSTest(){
+    public void hasRouteBFSTest() {
 
         GraphNode zero = new GraphNode("0");
         GraphNode one = new GraphNode("1");
@@ -31,16 +28,16 @@ public class TreeGraphTest {
 
         List<GraphNode> graph = new ArrayList<>();
 
-        zero.setChildren(Arrays.asList(one,four,five));
+        zero.setChildren(Arrays.asList(one, four, five));
         graph.add(zero);
 
-        one.setChildren(Arrays.asList(four,three));
+        one.setChildren(Arrays.asList(four, three));
         graph.add(one);
 
-        two.setChildren(Arrays.asList(one,three));
+        two.setChildren(Arrays.asList(one, three));
         graph.add(two);
 
-        three.setChildren(Arrays.asList(two,four));
+        three.setChildren(Arrays.asList(two, four));
         graph.add(three);
 
         four.setChildren(Collections.emptyList());
@@ -49,14 +46,14 @@ public class TreeGraphTest {
         five.setChildren(Collections.emptyList());
         graph.add(five);
 
-        assertTrue(tg.hasRouteBFS(graph,zero,three));
-        assertFalse(tg.hasRouteBFS(graph,two,five));
+        assertTrue(tg.hasRouteBFS(graph, zero, three));
+        assertFalse(tg.hasRouteBFS(graph, two, five));
 
     }
 
 
     @Test
-    public void hasRouteDFSTest(){
+    public void hasRouteDFSTest() {
 
         GraphNode zero = new GraphNode("0");
         GraphNode one = new GraphNode("1");
@@ -67,16 +64,16 @@ public class TreeGraphTest {
 
         List<GraphNode> graph = new ArrayList<>();
 
-        zero.setChildren(Arrays.asList(one,four,five));
+        zero.setChildren(Arrays.asList(one, four, five));
         graph.add(zero);
 
-        one.setChildren(Arrays.asList(four,three));
+        one.setChildren(Arrays.asList(four, three));
         graph.add(one);
 
-        two.setChildren(Arrays.asList(one,three));
+        two.setChildren(Arrays.asList(one, three));
         graph.add(two);
 
-        three.setChildren(Arrays.asList(two,four));
+        three.setChildren(Arrays.asList(two, four));
         graph.add(three);
 
         four.setChildren(Collections.emptyList());
@@ -85,28 +82,28 @@ public class TreeGraphTest {
         five.setChildren(Collections.emptyList());
         graph.add(five);
 
-        assertTrue(tg.hasRouteDFS(graph,zero,three));
-        assertFalse(tg.hasRouteDFS(graph,two,five));
+        assertTrue(tg.hasRouteDFS(graph, zero, three));
+        assertFalse(tg.hasRouteDFS(graph, two, five));
 
     }
 
     @Test
-    public void minTreeTest(){
-        int[] arr = {1,3,9,11,15,19,29};
+    public void minTreeTest() {
+        int[] arr = {1, 3, 9, 11, 15, 19, 29};
 
         BinTreeNode root = tg.minTree(arr);
-        assertEquals((Object) 11,Integer.valueOf(root.getName()));
-        assertEquals((Object) 3,Integer.valueOf(root.getLeft().getName()));
-        assertEquals((Object) 19,Integer.valueOf(root.getRight().getName()));
-        assertEquals((Object) 1,Integer.valueOf(root.getLeft().getLeft().getName()));
-        assertEquals((Object) 9,Integer.valueOf(root.getLeft().getRight().getName()));
-        assertEquals((Object) 15,Integer.valueOf(root.getRight().getLeft().getName()));
-        assertEquals((Object) 29,Integer.valueOf(root.getRight().getRight().getName()));
+        assertEquals((Object) 11, Integer.valueOf(root.getName()));
+        assertEquals((Object) 3, Integer.valueOf(root.getLeft().getName()));
+        assertEquals((Object) 19, Integer.valueOf(root.getRight().getName()));
+        assertEquals((Object) 1, Integer.valueOf(root.getLeft().getLeft().getName()));
+        assertEquals((Object) 9, Integer.valueOf(root.getLeft().getRight().getName()));
+        assertEquals((Object) 15, Integer.valueOf(root.getRight().getLeft().getName()));
+        assertEquals((Object) 29, Integer.valueOf(root.getRight().getRight().getName()));
     }
 
 
     @Test
-    public void listOfDepthTest(){
+    public void listOfDepthTest() {
         BinTreeNode root = new BinTreeNode("11");
 
         BinTreeNode l1L = new BinTreeNode("3");
@@ -126,8 +123,147 @@ public class TreeGraphTest {
 
 
         List<List<BinTreeNode>> res = tg.listOfDepth(root);
-        assertEquals(3,res.size());
-        assertEquals(4,res.get(2).size());
+        assertEquals(3, res.size());
+        assertEquals(4, res.get(2).size());
 
     }
+
+    @Test
+    public void isBalancedTest() {
+
+        BinTreeNode root = new BinTreeNode("11");
+
+        BinTreeNode l1L = new BinTreeNode("3");
+        BinTreeNode l1R = new BinTreeNode("19");
+        root.setLeft(l1L);
+        root.setRight(l1R);
+
+        BinTreeNode l2l1 = new BinTreeNode("1");
+        BinTreeNode l2r1 = new BinTreeNode("9");
+        l1L.setLeft(l2l1);
+        l1L.setRight(l2r1);
+
+        BinTreeNode l2l2 = new BinTreeNode("15");
+        BinTreeNode l2r2 = new BinTreeNode("29");
+        l1R.setLeft(l2l2);
+        l1R.setRight(l2r2);
+
+        assertTrue(tg.isBalanced(root));
+
+    }
+
+
+    @Test
+    public void isBSTTest() {
+        BinTreeNode root = new BinTreeNode("11");
+
+        BinTreeNode l1L = new BinTreeNode("3");
+        BinTreeNode l1R = new BinTreeNode("19");
+        root.setLeft(l1L);
+        root.setRight(l1R);
+        l1L.setParent(root);
+        l1R.setParent(root);
+
+        BinTreeNode l2l1 = new BinTreeNode("1");
+        BinTreeNode l2r1 = new BinTreeNode("9");
+        l1L.setLeft(l2l1);
+        l1L.setRight(l2r1);
+        l2l1.setParent(l1L);
+        l2r1.setParent(l1L);
+
+        BinTreeNode l2l2 = new BinTreeNode("15");
+        BinTreeNode l2r2 = new BinTreeNode("29");
+        l1R.setLeft(l2l2);
+        l1R.setRight(l2r2);
+        l2l2.setParent(l1R);
+        l2r2.setParent(l1R);
+
+
+        assertTrue(tg.isBST(root));
+    }
+
+
+    @Test
+    public void isBSTTest1() {
+
+        BinTreeNode root = new BinTreeNode("8");
+        BinTreeNode l1L = new BinTreeNode("4");
+        BinTreeNode l1R = new BinTreeNode("10");
+        root.setLeft(l1L);
+        root.setRight(l1R);
+        l1L.setParent(root);
+        l1R.setParent(root);
+
+        BinTreeNode l2l1 = new BinTreeNode("2");
+        BinTreeNode l2r1 = new BinTreeNode("6");
+        l1L.setLeft(l2l1);
+        l1L.setRight(l2r1);
+        l2l1.setParent(l1L);
+        l2r1.setParent(l1L);
+
+        BinTreeNode l2r2 = new BinTreeNode("20");
+        l1R.setRight(l2r2);
+        l2r2.setParent(l1R);
+        assertTrue(tg.isBST(root));
+
+
+    }
+
+    @Test
+    public void isBSTTest2() {
+
+        BinTreeNode root = new BinTreeNode("8");
+        BinTreeNode l1L = new BinTreeNode("4");
+        BinTreeNode l1R = new BinTreeNode("10");
+        root.setLeft(l1L);
+        root.setRight(l1R);
+        l1L.setParent(root);
+        l1R.setParent(root);
+
+        BinTreeNode l2l1 = new BinTreeNode("2");
+        BinTreeNode l2r1 = new BinTreeNode("12");
+        l1L.setLeft(l2l1);
+        l1L.setRight(l2r1);
+        l2l1.setParent(l1L);
+        l2r1.setParent(l1L);
+
+        BinTreeNode l2r2 = new BinTreeNode("20");
+        l1R.setRight(l2r2);
+        l2r2.setParent(l1R);
+
+        assertFalse(tg.isBST(root));
+
+    }
+
+
+    @Test
+    public void buildOrderTest() {
+        Map<String, List<String>> deps = Map.of("a", List.of("d"),
+                "f", List.of("b","a"),
+                "b",List.of("d"),
+                "d",List.of("c"));
+
+        List<String> res = tg.buildOrder(deps);
+
+        System.out.println(res);
+        assertEquals(5,res.size());
+        assertEquals("f",res.get(0));
+    }
+
+
+    @Test
+    public void buildOrderTwoRootsTest() {
+        Map<String, List<String>> deps = Map.of("a", List.of("e"),
+                "f", List.of("b","c","a"),
+                "c",List.of("a"),
+                "b",List.of("a"),
+                "d",List.of("g"));
+
+        List<String> res = tg.buildOrder(deps);
+
+        System.out.println(res);
+        assertEquals(7,res.size());
+
+    }
+
 }
