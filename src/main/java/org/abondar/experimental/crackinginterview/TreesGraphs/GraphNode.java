@@ -8,6 +8,7 @@ public class GraphNode {
     private String name;
     private List<GraphNode> children;
     private boolean visited;
+    private GraphNode parent;
 
     public GraphNode(String name, List<GraphNode> children) {
         this.name = name;
@@ -40,6 +41,14 @@ public class GraphNode {
 
     public void setChildren(List<GraphNode> children) {
         this.children = children;
+    }
+
+    public GraphNode getParent() {
+        return parent;
+    }
+
+    public void setParent(GraphNode parent) {
+        this.parent = parent;
     }
 
     @Override

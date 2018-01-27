@@ -28,22 +28,22 @@ public class TreeGraphTest {
 
         List<GraphNode> graph = new ArrayList<>();
 
-        zero.setChildren(Arrays.asList(one, four, five));
+        zero.setChildren(List.of(one, four, five));
         graph.add(zero);
 
-        one.setChildren(Arrays.asList(four, three));
+        one.setChildren(List.of(four, three));
         graph.add(one);
 
-        two.setChildren(Arrays.asList(one, three));
+        two.setChildren(List.of(one, three));
         graph.add(two);
 
-        three.setChildren(Arrays.asList(two, four));
+        three.setChildren(List.of(two, four));
         graph.add(three);
 
-        four.setChildren(Collections.emptyList());
+        four.setChildren(List.of());
         graph.add(four);
 
-        five.setChildren(Collections.emptyList());
+        five.setChildren(List.of());
         graph.add(five);
 
         assertTrue(tg.hasRouteBFS(graph, zero, three));
@@ -64,22 +64,22 @@ public class TreeGraphTest {
 
         List<GraphNode> graph = new ArrayList<>();
 
-        zero.setChildren(Arrays.asList(one, four, five));
+        zero.setChildren(List.of(one, four, five));
         graph.add(zero);
 
-        one.setChildren(Arrays.asList(four, three));
+        one.setChildren(List.of(four, three));
         graph.add(one);
 
-        two.setChildren(Arrays.asList(one, three));
+        two.setChildren(List.of(one, three));
         graph.add(two);
 
-        three.setChildren(Arrays.asList(two, four));
+        three.setChildren(List.of(two, four));
         graph.add(three);
 
-        four.setChildren(Collections.emptyList());
+        four.setChildren(List.of());
         graph.add(four);
 
-        five.setChildren(Collections.emptyList());
+        five.setChildren(List.of());
         graph.add(five);
 
         assertTrue(tg.hasRouteDFS(graph, zero, three));
@@ -266,4 +266,36 @@ public class TreeGraphTest {
 
     }
 
+
+    @Test
+    public void findCommonAncestorTest(){
+        GraphNode root = new GraphNode("20");
+
+        GraphNode ch1 = new GraphNode("10");
+        GraphNode ch2 = new GraphNode("30");
+        root.setChildren(List.of(ch1,ch2));
+        ch1.setParent(root);
+        ch2.setParent(root);
+
+        GraphNode ch3 = new GraphNode("5");
+        GraphNode ch4 = new GraphNode("15");
+        ch1.setChildren(List.of(ch3,ch4));
+        ch3.setParent(ch1);
+        ch4.setParent(ch1);
+
+        GraphNode ch5 = new GraphNode("17");
+        ch4.setChildren(List.of(ch5));
+        ch5.setParent(ch4);
+
+        GraphNode ch6 = new GraphNode("3");
+        GraphNode ch7 = new GraphNode("4");
+        ch3.setChildren(List.of(ch6,ch7));
+        ch6.setParent(ch3);
+        ch7.setParent(ch3);
+
+        GraphNode ancestor = tg.findCommonAncestor(ch3,ch2);
+        assertEquals(root.getName(),ancestor.getName());
+
+
+    }
 }

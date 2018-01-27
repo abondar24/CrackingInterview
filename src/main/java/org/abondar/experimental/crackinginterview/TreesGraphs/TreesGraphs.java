@@ -201,4 +201,47 @@ public class TreesGraphs {
     }
 
 
+    /**
+     * Find first common ancestor of two given nodes without storing additional nodes in ds.
+     **/
+    public GraphNode findCommonAncestor(GraphNode node1, GraphNode node2) {
+
+        int delta = depth(node1) - depth(node2);
+
+        GraphNode shallowNode = delta > 0 ? node2 : node1;
+        GraphNode deepNode = delta > 0 ? node1 : node2;
+
+        deepNode = goUp(deepNode, Math.abs(delta));
+
+
+        while (shallowNode!=deepNode && deepNode != null) {
+            shallowNode = shallowNode.getParent();
+            deepNode = deepNode.getParent();
+
+        }
+
+        return deepNode == null ? null:shallowNode;
+    }
+
+    private GraphNode goUp(GraphNode node, int delta) {
+        while (delta > 0 && node != null) {
+            node = node.getParent();
+            delta--;
+        }
+
+        return node;
+    }
+
+
+    private int depth(GraphNode n) {
+        int depth = 0;
+        while (n != null) {
+            n = n.getParent();
+            depth++;
+        }
+
+        return depth;
+    }
+
 }
+
