@@ -11,10 +11,10 @@ public class ArraysStringsTest {
     @Test
     public void inUniqueTest() {
 
-        boolean res = as.isUniqque("hello world");
+        boolean res = as.isUnique("hello world");
         Assert.assertFalse(res);
 
-        res = as.isUniqque("formula");
+        res = as.isUnique("formula");
         Assert.assertTrue(res);
 
     }

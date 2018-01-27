@@ -197,7 +197,7 @@ public class ListsTest {
         sumNext.setNext(sumNext1);
 
 
-        Node actualSum = ll.sumListsStaight(n1,n2);
+        Node actualSum = ll.sumListsStraight(n1,n2);
         Assert.assertEquals(sum.toString(),actualSum.toString());
     }
 

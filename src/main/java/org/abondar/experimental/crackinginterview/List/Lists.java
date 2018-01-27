@@ -5,9 +5,6 @@ import java.util.Map;
 
 public class Lists {
 
-    /**
-     * Remove duplicates from list without using any tmp buffer
-     */
     public Node removeDups(Node head) {
 
         Node cur = head;
@@ -27,11 +24,6 @@ public class Lists {
         return head;
     }
 
-    /**
-     * Return  k elements from last element in list
-     * I count positions from 0
-     * if list is 1,2,3 and k=1 or 0 -> return 3; k=2 -> return 2,3
-     */
     public Node kToLast(Node head, int k) {
         Node kToLast = null;
 
@@ -61,10 +53,6 @@ public class Lists {
     }
 
 
-    /**
-     * Delete any node but not first or last
-     * we don't have access to the first so we don't check for first
-     */
     public Node deleteMiddleNode(Node nodeToDel) {
 
         if (nodeToDel.getNext() != null) {
@@ -80,10 +68,6 @@ public class Lists {
     }
 
 
-    /**
-     * Each param is a number in reverse : list 7-1-6 is number 617
-     * We need to return a list which represents sum of values
-     */
     public Node sumListsReverse(Node num1, Node num2){
        StringBuilder num1Str = new StringBuilder();
        StringBuilder num2Str = new StringBuilder();
@@ -120,11 +104,7 @@ public class Lists {
     }
 
 
-    /**
-     * Each param is a number  : list 7-1-6 is number 716
-     * We need to return a list which represents sum of values
-     */
-    public Node sumListsStaight(Node num1, Node num2){
+    public Node sumListsStraight(Node num1, Node num2){
         StringBuilder num1Str = new StringBuilder();
         StringBuilder num2Str = new StringBuilder();
 
@@ -159,9 +139,7 @@ public class Lists {
         return sumNodes[0];
     }
 
-    /**
-     * Check if list is a palindrome
-     * */
+
     public boolean checkPalindrome(Node head){
 
       Node reverseHead = null;
@@ -194,10 +172,6 @@ public class Lists {
     }
 
 
-    /**
-     * Check if two list have an intersection.
-     * Intersection is by ref, not by val which means one node in two lists
-     * */
     public boolean hasIntersection(Node h1,Node h2){
         HashMap<Node,Boolean> checkedNodes= new HashMap<>();
 
@@ -218,9 +192,7 @@ public class Lists {
         return checkedNodes.containsValue(true);
     }
 
-    /**
-     * Check if list has loops and return it
-     * */
+
     public Node detectLoop(Node head){
 
         Node loop = null;

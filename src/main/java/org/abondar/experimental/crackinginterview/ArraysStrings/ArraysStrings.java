@@ -7,10 +7,7 @@ import java.util.HashMap;
 
 public class ArraysStrings {
 
-    /**
-     * Determines if all the characters in string are unique
-     */
-    public boolean isUniqque(String str) {
+    public boolean isUnique(String str) {
         boolean isUnique = false;
 
         char[] strc = str.toCharArray();
@@ -29,9 +26,6 @@ public class ArraysStrings {
     }
 
 
-    /**
-     * Check if str2 is permutation of str1
-     */
     public boolean checkPermutation(String str1, String str2) {
         char[] strc1 = str1.toCharArray();
         char[] strc2 = str2.toCharArray();
@@ -43,9 +37,8 @@ public class ArraysStrings {
     }
 
 
-    /**
-     * Replace spaces with %20 except spaces at the end
-     * replace within char array
+    /*
+     *
      * pureLen -  str at the end has spaces, pureLen size of str without them
      */
     public String urlify(String str, int pureLen) {
@@ -73,9 +66,6 @@ public class ArraysStrings {
     }
 
 
-    /**
-     * Checks if any of words permutations can be a palindrome
-     */
     public boolean palindromePermutation(String str) {
         boolean isPalindromePermutation;
 
@@ -107,9 +97,7 @@ public class ArraysStrings {
     }
 
 
-    /**
-     * Check of oneString can be got from another by just one edit
-     */
+
     public boolean oneAway(String str1, String str2) {
         boolean oneEdit;
 
@@ -154,10 +142,7 @@ public class ArraysStrings {
         return numberOfDiffs <= 1;
     }
 
-    /**
-     * Compress repeated chars in string;
-     * e.g: aabcccccaaa -> a2b1c5a3
-     */
+
     public String stringCompressor(String str) {
         StringBuilder compression = new StringBuilder();
         char[] strc = str.toCharArray();
@@ -178,9 +163,6 @@ public class ArraysStrings {
         return compression.toString();
     }
 
-    /**
-     * Rotate matrix by 90 degrees clockwise
-     */
     public int[][] rotateMatrix(int[][] matrix) {
         printMatrix(matrix);
         for (int i = 0; i < matrix.length / 2; i++) {
@@ -209,9 +191,6 @@ public class ArraysStrings {
     }
 
 
-    /**
-     * If element [i][j] of matrix is zero - entire row and column must be zero
-     */
     public int[][] zeroMatrix(int[][] matrix) {
         printMatrix(matrix);
 

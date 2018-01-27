@@ -6,9 +6,6 @@ import java.util.stream.Collectors;
 public class TreesGraphs {
 
 
-    /**
-     * Check if a graph has route between two nodes.
-     */
     public boolean hasRouteBFS(List<GraphNode> graph, GraphNode start, GraphNode end) {
 
         return graph.contains(start) && graph.contains(end) && GraphUtil.doBFS(start).contains(end);
@@ -21,9 +18,6 @@ public class TreesGraphs {
 
     }
 
-    /**
-     * Build a tree with min height from sorted array
-     */
     public BinTreeNode minTree(int[] arr) {
 
         return minTree(arr, 0, arr.length - 1);
@@ -44,9 +38,7 @@ public class TreesGraphs {
 
     }
 
-    /**
-     * Get list of lists of nodes on every depth of the tree
-     */
+
     public List<List<BinTreeNode>> listOfDepth(BinTreeNode root) {
         List<List<BinTreeNode>> res = new ArrayList<>();
 
@@ -75,9 +67,7 @@ public class TreesGraphs {
         return res;
     }
 
-    /**
-     * Check if bin tree is balanced(e.g heights of subtrees of any node don't differ more than by one)
-     */
+
     public boolean isBalanced(BinTreeNode root) {
         return checkHeight(root) != Integer.MIN_VALUE;
     }
@@ -105,9 +95,6 @@ public class TreesGraphs {
     }
 
 
-    /**
-     * Check if binary tree is BST
-     */
     public boolean isBST(BinTreeNode root) {
         return checkNode(root);
     }
@@ -140,9 +127,7 @@ public class TreesGraphs {
         return false;
     }
 
-    /**
-     * By given list of dependencies build a list of build order
-     **/
+
     public List<String> buildOrder(Map<String, List<String>> dependencies) {
 
         List<GraphNode> roots = new ArrayList<>();
@@ -201,9 +186,6 @@ public class TreesGraphs {
     }
 
 
-    /**
-     * Find first common ancestor of two given nodes without storing additional nodes in ds.
-     **/
     public GraphNode findCommonAncestor(GraphNode node1, GraphNode node2) {
 
         int delta = depth(node1) - depth(node2);
