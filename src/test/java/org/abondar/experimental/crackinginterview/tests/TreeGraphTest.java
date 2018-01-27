@@ -298,4 +298,16 @@ public class TreeGraphTest {
 
 
     }
+
+
+    @Test
+    public void bstSeqTest(){
+        BinTreeNode root = new BinTreeNode("2");
+        root.setLeft(new BinTreeNode("1"));
+        root.setRight(new BinTreeNode("3"));
+
+        List<List<BinTreeNode>> res = tg.bstSequences(root);
+        assertEquals(2,res.size());
+        assertEquals(root,res.get(0).get(0));
+    }
 }

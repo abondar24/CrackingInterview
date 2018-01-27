@@ -1,6 +1,6 @@
 # CrackingInterview
 
-My solutions of tasks from "Cracking the coding interview" book
+Solutions of tasks from "Cracking the coding interview" book
 
 # Build and run:
 
@@ -49,3 +49,4 @@ Check comments in classes
 - isBST - Check if binary tree is BST
 - buildOrder - By given list of dependencies build a list of build order
 - findCommonAncestor - Find first common ancestor of two given nodes without storing additional nodes in ds.
+- bstSequences - Find all possible arrays of nodes in BST with distinct elems
