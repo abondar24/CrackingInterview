@@ -50,3 +50,12 @@ Check comments in classes
 - buildOrder - By given list of dependencies build a list of build order
 - findCommonAncestor - Find first common ancestor of two given nodes without storing additional nodes in ds.
 - bstSequences - Find all possible arrays of nodes in BST with distinct elems
+
+# Algorithms
+
+## Sorting
+
+- Insertion sort. Best,Avg: O(n), Worst: O(n^2) 
+- Heap sort. Best,Avg,Wprst: O(nlogn) 
+- Quick sort. Best,Avg: O(nlogn), Worst: O(n^2) 
+- Merge sort. Best,Avg,Wprst: O(nlogn) 
