@@ -1,6 +1,6 @@
 # CrackingInterview
 
-Solutions of tasks from "Cracking the coding interview" book
+Solutions of tasks from "Cracking the coding interview" book and some basic algorithms
 
 # Build and run:
 
@@ -56,6 +56,11 @@ Check comments in classes
 ## Sorting
 
 - Insertion sort. Best,Avg: O(n), Worst: O(n^2) 
-- Heap sort. Best,Avg,Wprst: O(nlogn) 
-- Quick sort. Best,Avg: O(nlogn), Worst: O(n^2) 
-- Merge sort. Best,Avg,Wprst: O(nlogn) 
+- Heap sort. Best,Avg,Worst: O(nlog n) 
+- Quick sort. Best,Avg: O(n log n), Worst: O(n^2) 
+- Merge sort. Best,Avg,Worst: O(n log n) 
+
+## Search
+- Sequential search. Best: O(1), Avg,Worst: O(n)
+- Binary search. Best: O(1), Avg,Worst: O(log n)
+- Hash search. Best,Avg: O(1), Worst: O(n)
