@@ -2,17 +2,28 @@ package org.abondar.experimental.crackinginterview.TreesGraphs;
 
 
 import java.util.List;
+import java.util.Map;
 
-public class GraphNode {
+public class GraphNode implements Comparable {
 
     private String name;
     private List<GraphNode> children;
     private boolean visited;
     private GraphNode parent;
+    private Map<GraphNode,Integer> childrenWithPath;
+
+    public GraphNode(){
+
+    }
 
     public GraphNode(String name, List<GraphNode> children) {
         this.name = name;
         this.children = children;
+    }
+
+    public GraphNode(String name, Map<GraphNode, Integer> childrenWithPath) {
+        this.name = name;
+        this.childrenWithPath = childrenWithPath;
     }
 
     public GraphNode(String name) {
@@ -51,10 +62,24 @@ public class GraphNode {
         this.parent = parent;
     }
 
+    public Map<GraphNode, Integer> getChildrenWithPath() {
+        return childrenWithPath;
+    }
+
+    public void setChildrenWithPath(Map<GraphNode, Integer> childrenWithPath) {
+        this.childrenWithPath = childrenWithPath;
+    }
+
     @Override
     public String toString() {
         return "GraphNode{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

@@ -64,3 +64,6 @@ Check comments in classes
 - Sequential search. Best: O(1), Avg,Worst: O(n)
 - Binary search. Best: O(1), Avg,Worst: O(log n)
 - Hash search. Best,Avg: O(1), Worst: O(n)
+
+## Graph Algorithms
+- Dijkstra algorithm for shortest path. Best,Avg,Worst: O((V+E)*log V)

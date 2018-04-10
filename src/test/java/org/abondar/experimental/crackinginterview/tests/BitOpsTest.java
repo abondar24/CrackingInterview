@@ -1,6 +1,7 @@
 package org.abondar.experimental.crackinginterview.tests;
 
 import org.abondar.experimental.crackinginterview.BitOps.BitOps;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,6 +11,7 @@ public class BitOpsTest {
     private BitOps bitOps = new BitOps();
 
     @Test
+    @Ignore
     public void insertTest(){
         int n = Integer.parseInt("10000000000",2);
         int m = Integer.parseInt("10011",2);

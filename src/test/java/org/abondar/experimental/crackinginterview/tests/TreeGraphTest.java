@@ -2,6 +2,7 @@ package org.abondar.experimental.crackinginterview.tests;
 
 import org.abondar.experimental.crackinginterview.TreesGraphs.BinTreeNode;
 import org.abondar.experimental.crackinginterview.TreesGraphs.GraphNode;
+import org.abondar.experimental.crackinginterview.TreesGraphs.GraphUtil;
 import org.abondar.experimental.crackinginterview.TreesGraphs.TreesGraphs;
 import org.junit.Test;
 
