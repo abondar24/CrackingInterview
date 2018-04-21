@@ -1,4 +1,4 @@
-package org.abondar.experimental.crackinginterview.TreesGraphs;
+package org.abondar.experimental.crackinginterview.treesgraphs;
 
 public class BinTreeNode {
 

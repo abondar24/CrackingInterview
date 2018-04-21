@@ -1,4 +1,4 @@
-package org.abondar.experimental.crackinginterview.StacksQueues;
+package org.abondar.experimental.crackinginterview.stacksqueues;
 
 
 import java.util.HashMap;

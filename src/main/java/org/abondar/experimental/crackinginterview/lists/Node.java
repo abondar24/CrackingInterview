@@ -1,4 +1,4 @@
-package org.abondar.experimental.crackinginterview.List;
+package org.abondar.experimental.crackinginterview.lists;
 
 public class Node<T> {
 

@@ -1,11 +1,9 @@
 package org.abondar.experimental.algorithms.tests;
 
 import org.abondar.experimental.algorithms.GraphAlgUtil;
-import org.abondar.experimental.crackinginterview.TreesGraphs.GraphNode;
+import org.abondar.experimental.crackinginterview.treesgraphs.GraphNode;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;

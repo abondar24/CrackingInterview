@@ -1,4 +1,4 @@
-package org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter;
+package org.abondar.experimental.crackinginterview.stacksqueues.shelter;
 
 /**
  * There are two types of animals which are stored in queue

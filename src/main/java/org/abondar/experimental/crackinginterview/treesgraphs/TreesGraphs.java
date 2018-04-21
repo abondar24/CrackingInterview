@@ -1,6 +1,5 @@
-package org.abondar.experimental.crackinginterview.TreesGraphs;
+package org.abondar.experimental.crackinginterview.treesgraphs;
 
-import javax.swing.tree.TreeNode;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -251,7 +250,7 @@ public class TreesGraphs {
         return res;
     }
 
-    //get all possible list combos. remove head from ls,recurse, than do the same with rs
+    //get all possible lists combos. remove head from ls,recurse, than do the same with rs
     private void weaveLists(List<BinTreeNode> ls, List<BinTreeNode> rs, List<List<BinTreeNode>> weaved,List<BinTreeNode>prefix) {
         if (ls.size()==0 || rs.size()==0){
             List<BinTreeNode> res = new ArrayList<>();

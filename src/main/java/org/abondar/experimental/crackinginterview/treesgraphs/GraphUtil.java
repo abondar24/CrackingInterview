@@ -1,6 +1,6 @@
-package org.abondar.experimental.crackinginterview.TreesGraphs;
+package org.abondar.experimental.crackinginterview.treesgraphs;
 
-import org.abondar.experimental.crackinginterview.StacksQueues.CustomQueue;
+import org.abondar.experimental.crackinginterview.stacksqueues.CustomQueue;
 
 import java.util.ArrayList;
 import java.util.List;

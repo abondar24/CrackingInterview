@@ -1,6 +1,6 @@
 package org.abondar.experimental.crackinginterview.tests;
 
-import org.abondar.experimental.crackinginterview.BitOps.BitOps;
+import org.abondar.experimental.crackinginterview.bitops.BitOps;
 import org.junit.Ignore;
 import org.junit.Test;
 

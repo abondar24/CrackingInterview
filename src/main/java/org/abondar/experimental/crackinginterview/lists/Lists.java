@@ -1,4 +1,4 @@
-package org.abondar.experimental.crackinginterview.List;
+package org.abondar.experimental.crackinginterview.lists;
 
 import java.util.HashMap;
 import java.util.Map;

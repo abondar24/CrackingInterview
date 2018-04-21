@@ -1,4 +1,4 @@
-package org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter;
+package org.abondar.experimental.crackinginterview.stacksqueues.shelter;
 
 import java.util.LinkedList;
 import java.util.List;

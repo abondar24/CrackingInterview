@@ -1,10 +1,10 @@
 package org.abondar.experimental.crackinginterview.tests;
 
-import org.abondar.experimental.crackinginterview.StacksQueues.*;
+import org.abondar.experimental.crackinginterview.stacksqueues.*;
 
-import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.AnimalQueue;
-import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.Cat;
-import org.abondar.experimental.crackinginterview.StacksQueues.AnimalShelter.Dog;
+import org.abondar.experimental.crackinginterview.stacksqueues.shelter.AnimalQueue;
+import org.abondar.experimental.crackinginterview.stacksqueues.shelter.Cat;
+import org.abondar.experimental.crackinginterview.stacksqueues.shelter.Dog;
 import org.junit.Test;
 
 import java.util.List;

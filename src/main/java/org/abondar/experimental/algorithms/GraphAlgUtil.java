@@ -1,10 +1,7 @@
 package org.abondar.experimental.algorithms;
 
-import org.abondar.experimental.crackinginterview.TreesGraphs.GraphNode;
-import org.abondar.experimental.crackinginterview.TreesGraphs.GraphUtil;
+import org.abondar.experimental.crackinginterview.treesgraphs.GraphNode;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 

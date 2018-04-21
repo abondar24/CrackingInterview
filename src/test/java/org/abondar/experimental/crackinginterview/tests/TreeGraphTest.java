@@ -1,9 +1,8 @@
 package org.abondar.experimental.crackinginterview.tests;
 
-import org.abondar.experimental.crackinginterview.TreesGraphs.BinTreeNode;
-import org.abondar.experimental.crackinginterview.TreesGraphs.GraphNode;
-import org.abondar.experimental.crackinginterview.TreesGraphs.GraphUtil;
-import org.abondar.experimental.crackinginterview.TreesGraphs.TreesGraphs;
+import org.abondar.experimental.crackinginterview.treesgraphs.BinTreeNode;
+import org.abondar.experimental.crackinginterview.treesgraphs.GraphNode;
+import org.abondar.experimental.crackinginterview.treesgraphs.TreesGraphs;
 import org.junit.Test;
 
 import java.util.*;

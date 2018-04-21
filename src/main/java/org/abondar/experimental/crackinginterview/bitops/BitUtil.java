@@ -1,4 +1,4 @@
-package org.abondar.experimental.crackinginterview.BitOps;
+package org.abondar.experimental.crackinginterview.bitops;
 
 public class BitUtil {
 
