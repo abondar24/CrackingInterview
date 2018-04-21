@@ -1,5 +1,7 @@
 package org.abondar.experimental.crackinginterview.bitops;
 
+import java.util.ArrayList;
+
 public class BitUtil {
 
     public static boolean getBit(int number, int i) {
@@ -31,5 +33,28 @@ public class BitUtil {
     }
 
 
+    public static int repeatedArithmeticShift(int x,int count){
+        for (int i=0;i<count;i++){
+            x >>=1;
+        }
 
+        return x;
+    }
+
+    public static int repaeatedLogicalShift(int x, int count){
+        for (int i=0;i<count;i++){
+            x >>>=1;
+        }
+
+        return x;
+    }
+
+    public static boolean[] convertToBoolArray(char[] bits){
+        boolean[] res = new boolean[bits.length];
+        for (int i=0;i<bits.length;i++){
+            res[i] = bits[i] != '0';
+        }
+
+        return res;
+    }
 }

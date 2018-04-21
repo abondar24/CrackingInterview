@@ -51,6 +51,10 @@ Check comments in classes
 - findCommonAncestor - Find first common ancestor of two given nodes without storing additional nodes in ds.
 - bstSequences - Find all possible arrays of nodes in BST with distinct elems
 
+## Bit opertations
+
+- insert - Insert 32-bit number m into number n from position j to position i. M fully fits between positions 
+
 # Algorithms
 
 ## Sorting
