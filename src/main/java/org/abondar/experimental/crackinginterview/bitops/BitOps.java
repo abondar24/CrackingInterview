@@ -12,6 +12,9 @@ public class BitOps {
         for (int k=mBool.length-1;k>-1;k--) {
             n = BitUtil.updateBit(n,pos,mBool[k]);
             pos++;
+            if (pos > j) {
+                break;
+            }
         }
     return n;
     }
