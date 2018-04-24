@@ -27,4 +27,23 @@ public class BitOpsTest {
 
 
     }
+
+    @Test
+    public void binToStrTest(){
+
+        double n = 0.72d;
+
+        String nBin = "10";
+
+        String res = bitOps.binToStr(n);
+        assertEquals(nBin,res);
+
+
+        n = 0.54d;
+
+        nBin = "10";
+
+        res = bitOps.binToStr(n);
+        assertEquals(nBin,res);
+    }
 }
