@@ -4,14 +4,16 @@ import org.abondar.experimental.crackinginterview.treesgraphs.GraphNode;
 
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class GraphAlgUtil {
 
-    public static int shortestPath(GraphNode root,GraphNode dest){
+    public  int shortestPath(GraphNode root,GraphNode dest){
 
-        PriorityQueue<GraphNode> toVisit = new PriorityQueue<>();
+        Queue<GraphNode> toVisit = new PriorityQueue<>();
         toVisit.add(root);
-         int res=0;
+        int res=0;
+
         while (!toVisit.isEmpty()){
             GraphNode min = toVisit.remove();
             if (min==dest){
@@ -21,10 +23,10 @@ public class GraphAlgUtil {
                 continue;
             }
             min.setVisited(true);
-
             for (Map.Entry<GraphNode, Integer> entry: min.getChildrenWithPath().entrySet()){
                 int adjDistance = getDistanceToSource(root,min) + entry.getValue();
-                if (getDistanceToSource(root, entry.getKey())>adjDistance && !entry.getKey().isVisited()){
+
+                if (getDistanceToSource(root, entry.getKey())>=adjDistance && !entry.getKey().isVisited()){
                     res = adjDistance;
                     toVisit.add(entry.getKey());
                 }
@@ -37,8 +39,13 @@ public class GraphAlgUtil {
 
 
 
-    public static int getDistanceToSource(GraphNode root,GraphNode dest){
-        if (dest.getParent()==root){
+    public int getDistanceToSource(GraphNode root,GraphNode dest){
+
+        if (root.equals(dest)){
+            return 0;
+        }
+
+        if (root.getChildrenWithPath().containsKey(dest)){
             return root.getChildrenWithPath().get(dest);
         }
 
@@ -47,8 +54,7 @@ public class GraphAlgUtil {
         GraphNode child = dest;
         while (parent!=null){
             parent = child.getParent();
-            distance += parent.getChildrenWithPath().get(child);
-
+            distance += parent.getChildrenWithPath().getOrDefault(child, 0);
             child = parent;
             parent = parent.getParent();
         }

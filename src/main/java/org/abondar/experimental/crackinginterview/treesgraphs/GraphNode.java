@@ -4,8 +4,7 @@ package org.abondar.experimental.crackinginterview.treesgraphs;
 import java.util.List;
 import java.util.Map;
 
-public class GraphNode implements Comparable {
-
+public class GraphNode implements Comparable<GraphNode>{
     private String name;
     private List<GraphNode> children;
     private boolean visited;
@@ -79,7 +78,12 @@ public class GraphNode implements Comparable {
 
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(GraphNode node) {
+
+        if (this.childrenWithPath.entrySet().contains(node)){
+            return this.childrenWithPath.get(node);
+        }
+
         return 0;
     }
 }
