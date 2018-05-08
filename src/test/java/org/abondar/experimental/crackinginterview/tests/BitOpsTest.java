@@ -46,4 +46,14 @@ public class BitOpsTest {
         res = bitOps.binToStr(n);
         assertEquals(nBin,res);
     }
+
+    @Test
+    public void conversionTest(){
+        int n1=29;
+        int n2=15;
+
+        int res = bitOps.conversion(n1,n2);
+
+        assertEquals(2,res);
+    }
 }
