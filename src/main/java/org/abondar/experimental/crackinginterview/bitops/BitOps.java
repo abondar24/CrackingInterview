@@ -76,6 +76,43 @@ public class BitOps {
 
     }
 
+    public int conversionBs(int num1,int num2){
+        int count =0;
+
+        for (int xr=num1^num2;xr!=0;xr =xr >>>1){
+            count+= xr&1;
+        }
+
+        return count;
+    }
+
+
+    public int pairwiseSwap(int x){
+        return (((x & 0xaaaaaaaa) >>> 1) | ((x & 0x55555555) << 1));
+    }
+
+    public int flipBit(int num){
+        if (~num ==0 ) return Integer.BYTES * 8;
+
+        int curLen =0;
+        int prevLen =0;
+
+        int maxLen =1;
+
+        while (num!=0){
+            if ((num & 1)==1){
+                curLen++;
+            } else if ((num & 1)==0){
+                //if next bit 0 upd to zero else  to 1
+                prevLen = (num & 2) == 0? 0: curLen;
+                curLen =0;
+            }
+            maxLen = Math.max(prevLen+curLen+1,maxLen);
+            num >>>=1;
+        }
+        return maxLen;
+    }
+
     private boolean[] fillZero(boolean[] num,int diff) {
         int size = num.length+diff;
 

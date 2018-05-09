@@ -56,7 +56,8 @@ Check comments in classes
 - insert - Insert 32-bit number m into number n from position j to position i. M fully fits between positions 
 - bin to str - Given real number between 0 and 1 convert it to bin and save as str.Max 32 chars.
 - conversion - Given two numbers determine how many bits are needed to convert one to another
-
+- pairwise swap - Swap odd and even bits in 32-bit int
+- flip bit to win - Find the longest sequence of 1 ny flipping only one 0  to 1
 # Algorithms
 
 ## Sorting

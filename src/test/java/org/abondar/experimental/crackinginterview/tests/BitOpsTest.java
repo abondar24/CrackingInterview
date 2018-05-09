@@ -53,7 +53,33 @@ public class BitOpsTest {
         int n2=15;
 
         int res = bitOps.conversion(n1,n2);
-
         assertEquals(2,res);
+
+        res = bitOps.conversionBs(n1,n2);
+        assertEquals(2,res);
+
     }
+
+
+    @Test
+    public void pairwiseTest(){
+        int n=29;
+
+        System.out.println(Integer.toBinaryString(29));
+
+        String swapped = "101110";
+        int res = bitOps.pairwiseSwap(n);
+
+        assertEquals(swapped,Integer.toBinaryString(res));
+
+
+    }
+
+    @Test
+    public void flibBitTest(){
+        int n=1775;
+        int res = bitOps.flipBit(n);
+        assertEquals(8,res);
+    }
+
 }
