@@ -1,6 +1,8 @@
 package org.abondar.experimental.crackinginterview.bitops;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class BitOps {
 
@@ -112,6 +114,131 @@ public class BitOps {
         }
         return maxLen;
     }
+
+
+    public List<Integer> nextNumber(int num){
+        List<Integer> res = new ArrayList<>();
+
+        res.add(getPrev(num));
+        res.add(getNext(num));
+
+        return res;
+    }
+
+
+    private int getNext(int n){
+        int tmp = n;
+        int c0 = 0;
+        int c1 =0;
+
+        while (((tmp & 1)==0) && (tmp!=0)){
+            c0++;
+            tmp >>=1;
+        }
+
+        while ((tmp & 1)==1){
+            c1++;
+            tmp >>=1;
+        }
+
+
+        if (c0+c1 == 31 || c0+c1==0){
+            return -1;
+        }
+
+        //pos of rightmost non-trailing zero
+        int p = c0 + c1;
+
+        // flip right bits
+        n |= (1<<p);
+
+        // clear bits right to p
+        n &= ~((1<<p)-1);
+
+        // insert c1-1 ones to the right
+        n |= (1<<(c1-1))-1;
+
+        return n;
+
+    }
+
+    public byte[] drawLine(byte[] screen, int width, int x1,int x2, int y){
+
+        int startOffset = x1 % 8;
+        int firstFullByte = x1 / 8;
+
+        if (startOffset !=0){
+            firstFullByte++;
+        }
+
+        int endOffset = x2 % 8;
+        int lastFullByte = x2 / 8;
+        if (endOffset !=7){
+            lastFullByte--;
+        }
+
+        //set full bytes
+        for (int b = firstFullByte;b<lastFullByte;b++){
+            screen[(width / 8) * y + b] = (byte) 0xff;
+        }
+
+        // masks for start and end of line
+        byte startMask = (byte) (0xff >> startOffset);
+        byte endMask = (byte) ~(0xff >> (endOffset+1));
+
+        // set start and end of the line
+        // x1 and x2 are in the same byte
+        if ((x1 / 8) == (x2 / 8)){
+            byte mask = (byte) (startMask & endMask);
+            screen[(width / 8) * y + (x1 / 8)] |=mask;
+        } else {
+            if (startOffset !=0){
+                int byteNum = (width / 8) * y + firstFullByte - 1;
+                screen[byteNum] |= startMask;
+            }
+
+            if (endOffset !=7){
+                int byteNum = (width / 8) * y + lastFullByte + 1;
+                screen[byteNum] |= endMask;
+            }
+        }
+
+        return screen;
+    }
+
+    private int getPrev(int n){
+        int tmp =n;
+
+        int c0 = 0;
+        int c1 =0;
+
+        while ((tmp & 1) ==1 ){
+            c1++;
+            tmp >>=1;
+        }
+
+        if (tmp ==0) return -1;
+
+        while (((tmp & 1)==0) && (tmp!=0)){
+            c0++;
+            tmp >>=1;
+        }
+
+
+
+        //pos of rightmost non-trailing one
+        int p = c0 + c1;
+
+        // clear bits from p onwards
+        n &= ((~0)<<(p+1));
+
+        // sequence of c1+1 ones
+        int mask = (1 << (c1+1))-1;
+        n |= mask <<(c0 -1);
+        return n;
+    }
+
+
 
     private boolean[] fillZero(boolean[] num,int diff) {
         int size = num.length+diff;

@@ -58,6 +58,9 @@ Check comments in classes
 - conversion - Given two numbers determine how many bits are needed to convert one to another
 - pairwise swap - Swap odd and even bits in 32-bit int
 - flip bit to win - Find the longest sequence of 1 ny flipping only one 0  to 1
+- next number - Find the next biggest and smallest numbers with the same number of 1 bits
+- draw line - Draw a line on the screen of width divisible by 8
+  
 # Algorithms
 
 ## Sorting

@@ -4,6 +4,8 @@ import org.abondar.experimental.crackinginterview.bitops.BitOps;
 import org.abondar.experimental.crackinginterview.bitops.BitUtil;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -80,6 +82,33 @@ public class BitOpsTest {
         int n=1775;
         int res = bitOps.flipBit(n);
         assertEquals(8,res);
+    }
+
+    @Test
+    public void nextNumTest(){
+        int n = 24;
+
+        List<Integer> res = bitOps.nextNumber(n);
+
+        assertEquals((long) 20,(long)res.get(0));
+        assertEquals((long) 33,(long)res.get(1));
+    }
+
+    @Test
+    public void drawLineTest(){
+
+        int width = 64;
+        int x1 = 4;
+        int x2 = 15;
+        int y = 6;
+
+        byte [] screen = bitOps.drawLine(new byte[width],width,x1,x2,y);
+
+        for (int i=0;i<width;i++){
+            System.out.print(screen[i]);
+        }
+
+        System.out.println();
     }
 
 }
