@@ -60,6 +60,10 @@ Check comments in classes
 - flip bit to win - Find the longest sequence of 1 ny flipping only one 0  to 1
 - next number - Find the next biggest and smallest numbers with the same number of 1 bits
 - draw line - Draw a line on the screen of width divisible by 8
+
+## Dynamic programming
+
+- child runs staircase with n steps with hops of 1 ,2 or 3 steps. How many possible ways can he run?
   
 # Algorithms
 
