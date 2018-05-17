@@ -20,6 +20,32 @@ public class DynaicUtil {
         return countWaysMemo(n,memo);
     }
 
+    public int magicIndex(int[] A){
+        return  magicIndex(A,0,A.length -1);
+    }
+
+    private int magicIndex(int[] a, int start, int end) {
+        if (end<start) return -1;
+
+        int midIndex = (start+end)/2;
+        int midValue = a[midIndex];
+        if (midValue == midIndex){
+            return midIndex;
+        }
+
+
+        int leftIndex = Math.min(midIndex -1,midValue);
+        int left = magicIndex(a, start, leftIndex);
+        if (left>=0){
+            return left;
+        }
+
+        int rightIndex = Math.max(midIndex+1,midValue);
+        int right = magicIndex(a,rightIndex,end);
+
+        return right;
+    }
+
     private int countWaysMemo(int n, int[] memo) {
         if (n<0) return 0;
 

@@ -3,6 +3,8 @@ package org.abondar.experimental.crackinginterview.tests;
 import org.abondar.experimental.crackinginterview.dynamic.DynaicUtil;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static junit.framework.TestCase.assertEquals;
 
 public class DynamicTest {
@@ -35,5 +37,14 @@ public class DynamicTest {
         res = du.countWaysMemo(6);
         assertEquals(24,res);
 
+    }
+
+    @Test
+    public void magicIndexTest(){
+        int[] a = {-10,-5,2,2,2,3,4,7,9,12,13};
+
+        int res = du.magicIndex(a);
+
+        assertEquals(2,res);
     }
 }
