@@ -65,6 +65,8 @@ Check comments in classes
 
 - count ways - child runs staircase with n steps with hops of 1 ,2 or 3 steps. How many possible ways can he run?
 - magic index - find an element in a sorted int array A where A[i] = i
+- power set - return all subsets of a set
+- recursive mult - write a func to mult two ints without *
 
 
 # Algorithms

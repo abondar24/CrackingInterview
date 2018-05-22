@@ -1,6 +1,8 @@
 package org.abondar.experimental.crackinginterview.dynamic;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DynaicUtil {
 
@@ -24,6 +26,58 @@ public class DynaicUtil {
         return  magicIndex(A,0,A.length -1);
     }
 
+
+    public List<List<Integer>> powerSet(List<Integer> set){
+        List<List<Integer>> res = new ArrayList<>();
+
+        // makes 2^n
+        Integer maxSubs = 1 << set.size();
+        for (int i=0;i<maxSubs;i++){
+            List<Integer> subset = getSubset(i,set);
+            res.add(subset);
+        }
+
+        return res;
+    }
+
+    public int recursiveMult(int a,int b){
+        int bigger = a > b ? a : b;
+        int smaller = a < b ? a : b;
+
+        return multHelper(smaller,bigger);
+    }
+
+    private int multHelper(int smaller, int bigger) {
+        if (smaller==0) return 0;
+        else if (smaller ==1) return bigger;
+
+
+        int s = smaller >> 1;
+
+        int halfProd = multHelper(s,bigger);
+
+        if (smaller % 2 ==0) return halfProd + halfProd;
+
+
+        return halfProd + halfProd + bigger;
+    }
+
+    private List<Integer> getSubset(int i, List<Integer> set) {
+        List<Integer> subset = new ArrayList<>();
+        int index =0;
+
+        //div j by 2
+        for (int j=i;j>0;j>>=1){
+            // if elem is in set add it
+            if ((j&1)==1){
+                subset.add(set.get(index));
+            }
+
+            index++;
+        }
+        return subset;
+    }
+
     private int magicIndex(int[] a, int start, int end) {
         if (end<start) return -1;
 
@@ -41,9 +95,8 @@ public class DynaicUtil {
         }
 
         int rightIndex = Math.max(midIndex+1,midValue);
-        int right = magicIndex(a,rightIndex,end);
 
-        return right;
+        return magicIndex(a,rightIndex,end);
     }
 
     private int countWaysMemo(int n, int[] memo) {
