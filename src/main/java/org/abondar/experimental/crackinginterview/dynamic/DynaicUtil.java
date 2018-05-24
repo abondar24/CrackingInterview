@@ -62,6 +62,46 @@ public class DynaicUtil {
         return halfProd + halfProd + bigger;
     }
 
+
+    public Tower [] hanoiTowers(int numDisks){
+
+        Tower[] towers = new Tower[3];
+        for (int i=0;i<3;i++){
+            towers[i] = new Tower(i);
+        }
+
+        for (int i=numDisks-1;i>=0;i--){
+            towers[0].add(i);
+        }
+
+        towers[0].moveDisks(numDisks,towers[2],towers[1]);
+
+        return towers;
+    }
+
+
+    public boolean paintFill(Color[][] screen, int r,int c, Color newColor){
+        if (screen[r][c] == newColor ) return false;
+        return  paintFill(screen,r,c,screen[r][c],newColor);
+    }
+
+    private boolean paintFill(Color[][] screen, int r, int c, Color oldColor, Color newColor) {
+        if (r<0 || r>=screen.length || c<0 || c>= screen[0].length){
+            return false;
+        }
+
+        if (screen[r][c] == oldColor) {
+            screen[r][c] = newColor;
+
+            paintFill(screen, r - 1, c, oldColor, newColor);
+            paintFill(screen,r+1,c,oldColor,newColor);
+            paintFill(screen,r,c-1,oldColor,newColor);
+            paintFill(screen,r,c+1,oldColor,newColor);
+        }
+        return true;
+    }
+
+
     private List<Integer> getSubset(int i, List<Integer> set) {
         List<Integer> subset = new ArrayList<>();
         int index =0;

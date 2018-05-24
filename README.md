@@ -67,7 +67,9 @@ Check comments in classes
 - magic index - find an element in a sorted int array A where A[i] = i
 - power set - return all subsets of a set
 - recursive mult - write a func to mult two ints without *
-
+- hanoi towers - popular hanoi towers task (one disk moved at a time,disk slid from top of one tower to another,disk 
+can"t be on top of a smaller one,disks sorted in ascending order)
+- paint fill - fill the area arount selected point on the screen with color
 
 # Algorithms
 
