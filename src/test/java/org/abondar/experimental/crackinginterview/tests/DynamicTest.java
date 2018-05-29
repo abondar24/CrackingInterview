@@ -122,4 +122,32 @@ public class DynamicTest {
         assertFalse(res);
 
     }
+
+    @Test(expected = RuntimeException.class)
+    public void maxPermmutaionsNoDupsTestNonUnique() throws RuntimeException{
+        du.maxPermutationsNoDups("aabc");
+    }
+
+    @Test
+    public void maxPermmutaionsNoDupsTestEmpty(){
+        List<String> res = du.maxPermutationsNoDups("");
+        assertEquals(1L,res.size());
+        assertEquals("",res.get(0));
+    }
+
+    @Test
+    public void maxPermmutaionsNoDupsTest(){
+        List<String> res = du.maxPermutationsNoDups("abcd");
+        System.out.println(res);
+        assertEquals(24L,res.size());
+    }
+
+    @Test
+    public void maxPermsDups(){
+        List<String> res = du.maxPermutationsDups("aabc");
+
+        System.out.println(res);
+        assertEquals(12L,res.size());
+    }
+
 }

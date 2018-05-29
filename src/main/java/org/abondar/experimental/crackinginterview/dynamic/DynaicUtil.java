@@ -1,8 +1,8 @@
 package org.abondar.experimental.crackinginterview.dynamic;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import org.abondar.experimental.crackinginterview.arraystrings.ArraysStrings;
+
+import java.util.*;
 
 public class DynaicUtil {
 
@@ -83,6 +83,92 @@ public class DynaicUtil {
     public boolean paintFill(Color[][] screen, int r,int c, Color newColor){
         if (screen[r][c] == newColor ) return false;
         return  paintFill(screen,r,c,screen[r][c],newColor);
+    }
+
+    public List<String> maxPermutationsNoDups(String str){
+        ArraysStrings as = new ArraysStrings();
+        if (!str.isEmpty() && !as.isUnique(str)) throw  new RuntimeException("Chars are not unique");
+
+
+        int len = str.length();
+        List<String> res = new ArrayList<>();
+        if (len==0){
+            res.add("");
+            return res;
+        }
+
+        for (int i=0;i<len;i++){
+            // find all perms without char i
+            String before = str.substring(0,i);
+            String after = str.substring(i+1,len);
+            List<String> partials = getPerms(before+after);
+
+            //prepend i to permutation
+            for (String s: partials){
+                res.add(str.charAt(i)+s);
+            }
+        }
+
+        return res;
+    }
+
+    public List<String> maxPermutationsDups(String str){
+        List<String> res = new ArrayList<>();
+        Map<Character,Integer> freqs = buildFreqsMap(str);
+        getPerms(freqs,"",str.length(),res);
+
+        return res;
+     }
+
+
+    private Map<Character,Integer> buildFreqsMap(String s){
+         Map<Character,Integer> freqsMap = new HashMap<>();
+         for (char c: s.toCharArray()){
+             if (!freqsMap.containsKey(c)){
+                 freqsMap.put(c,0);
+             }
+
+             freqsMap.put(c,freqsMap.get(c)+1);
+         }
+
+        return freqsMap;
+     }
+
+
+    private void getPerms(Map<Character, Integer> freqs, String prefix, int remaining, List<String> res) {
+        if (remaining==0){
+            res.add(prefix);
+            return;
+        }
+
+        freqs.forEach((c,count)->{
+            if (count>0){
+                freqs.put(c,count-1);
+                getPerms(freqs,prefix+c,remaining -1,res);
+                freqs.put(c,count);
+            }
+        });
+
+    }
+
+
+    private List<String> getPerms(String s) {
+        List<String> res = new ArrayList<>();
+        getPerms("",s,res);
+        return res;
+
+    }
+
+    private void getPerms(String prefix, String reminder, List<String> res) {
+        if (reminder.length()==0) res.add(prefix);
+
+        int len = reminder.length();
+        for (int i=0;i<len;i++){
+            String before = reminder.substring(0,i);
+            String after = reminder.substring(i+1,len);
+            char c = reminder.charAt(i);
+            getPerms(prefix+c,before+after,res);
+        }
     }
 
     private boolean paintFill(Color[][] screen, int r, int c, Color oldColor, Color newColor) {

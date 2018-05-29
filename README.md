@@ -69,8 +69,9 @@ Check comments in classes
 - recursive mult - write a func to mult two ints without *
 - hanoi towers - popular hanoi towers task (one disk moved at a time,disk slid from top of one tower to another,disk 
 can"t be on top of a smaller one,disks sorted in ascending order)
-- paint fill - fill the area arount selected point on the screen with color
-
+- paint fill - fill the area arount selected point on the screen with color(contains bug)
+- max permutations(no dups) - find max number of char permutaions in a string of unique chars
+- max permutations(dups) - find max number of unique char permutaions in a string with dup chars
 # Algorithms
 
 ## Sorting
