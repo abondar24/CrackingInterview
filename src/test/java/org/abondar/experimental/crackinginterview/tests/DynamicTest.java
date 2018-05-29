@@ -150,4 +150,33 @@ public class DynamicTest {
         assertEquals(12L,res.size());
     }
 
+    @Test
+    public void parenthnessTest(){
+        List<String> res = du.parentheses(2);
+
+        System.out.println(res);
+        assertEquals(2L,res.size());
+        assertTrue(res.contains("(())"));
+        assertTrue(res.contains("()()"));
+
+        res = du.parentheses(3);
+
+        System.out.println(res);
+        assertEquals(5L,res.size());
+        assertTrue(res.contains("(()())"));
+        assertTrue(res.contains("((()))"));
+        assertTrue(res.contains("()(())"));
+        assertTrue(res.contains("(())()"));
+        assertTrue(res.contains("()()()"));
+    }
+
+    @Test
+    public void coinsTest(){
+        int ways = du.coins(25);
+        assertEquals(144L,ways);
+
+        ways = du.coins(100);
+        System.out.println(ways);
+
+    }
 }

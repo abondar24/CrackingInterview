@@ -72,6 +72,8 @@ can"t be on top of a smaller one,disks sorted in ascending order)
 - paint fill - fill the area arount selected point on the screen with color(contains bug)
 - max permutations(no dups) - find max number of char permutaions in a string of unique chars
 - max permutations(dups) - find max number of unique char permutaions in a string with dup chars
+- parentheses - print all valid combinations of n pairs of parentheses
+- coins - given coins of 25,10,5 and 1 cents calc a number of ways to represent n cents
 # Algorithms
 
 ## Sorting

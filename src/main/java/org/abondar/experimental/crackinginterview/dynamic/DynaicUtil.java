@@ -121,6 +121,52 @@ public class DynaicUtil {
      }
 
 
+    public List<String> parentheses(int pairs){
+        List<String> res = new ArrayList<>();
+        char[] str = new char[pairs*2];
+
+        addParen(res,pairs,pairs,str,0);
+
+        return res;
+     }
+
+
+     public int coins(int n){
+        int[] denoms = {25,10,5,1};
+
+        return makeChange(n,denoms,0);
+     }
+
+    private int makeChange(int amount, int[] denoms, int i) {
+        if (i>denoms.length-1) return 1;
+
+        int denomVal = denoms[i];
+        int ways = 0;
+
+        for (int j=0;j*denomVal<=amount;j++){
+            int amountRemaining = amount - i*denomVal;
+            ways +=makeChange(amountRemaining,denoms,i+1);
+        }
+
+        return ways;
+    }
+
+    private void addParen(List<String> res, int left, int right, char[] str, int i) {
+        if (left<0 || right<left ) return;
+
+        if (left==0 && right==0){
+            res.add(String.copyValueOf(str));
+        } else {
+            str[i] = '(';
+            addParen(res,left-1,right,str,i+1);
+
+            str[i] = ')';
+            addParen(res,left,right-1,str,i+1);
+
+        }
+    }
+
+
     private Map<Character,Integer> buildFreqsMap(String s){
          Map<Character,Integer> freqsMap = new HashMap<>();
          for (char c: s.toCharArray()){
