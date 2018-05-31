@@ -1,5 +1,6 @@
 package org.abondar.experimental.crackinginterview.tests;
 
+import org.abondar.experimental.crackinginterview.dynamic.Box;
 import org.abondar.experimental.crackinginterview.dynamic.Color;
 import org.abondar.experimental.crackinginterview.dynamic.DynaicUtil;
 import org.abondar.experimental.crackinginterview.dynamic.Tower;
@@ -7,6 +8,7 @@ import org.junit.Test;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static junit.framework.Assert.assertTrue;
@@ -178,5 +180,43 @@ public class DynamicTest {
         ways = du.coins(100);
         System.out.println(ways);
 
+    }
+
+
+    @Test
+    public void boxesCompareTest(){
+        Box b1 = new Box(1,2,3);
+        Box b2 = new Box(2,2,2);
+
+        assertTrue(b1.compareTo(b2)>0);
+
+        List<Box> boxList = Arrays.asList(b1,b2);
+        Collections.sort(boxList);
+
+        assertEquals(b2,boxList.get(0));
+        assertEquals(b1,boxList.get(1));
+    }
+
+    @Test
+    public void boxesStackTest(){
+        Box b1 = new Box(5,2,3);
+        Box b2 = new Box(2,2,2);
+        Box b3 = new Box(7,2,3);
+        Box b4 = new Box(3,2,2);
+
+        List<Box> boxList = Arrays.asList(b1,b2,b3,b4);
+
+        int res = du.boxesStack(boxList);
+
+        assertEquals(17L,res);
+    }
+
+    @Test
+    public void exprEval(){
+        int res = du.countEval("1^0|0|1",false);
+        assertEquals(2L,res);
+
+        res = du.countEval("0&0&0&1^1|0",true);
+        assertEquals(10L,res);
     }
 }

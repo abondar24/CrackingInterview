@@ -74,7 +74,10 @@ can"t be on top of a smaller one,disks sorted in ascending order)
 - max permutations(dups) - find max number of unique char permutaions in a string with dup chars
 - parentheses - print all valid combinations of n pairs of parentheses
 - coins - given coins of 25,10,5 and 1 cents calc a number of ways to represent n cents
-# Algorithms
+- stack of boxes - given stack of n boxes with dimenstions w1,h1,d1. The boxes can't be rotated. 
+the largest boxes are at the bottom of the stack. find the height of max possible stack as sum of heights of all boxes in it.
+- boolean equation - given bool expression with 0,1,or,xor,and + desired result , 
+find number of ways to parentesizing expression that it will evaluate result 
 
 ## Sorting
 

@@ -6,6 +6,8 @@ import java.util.*;
 
 public class DynaicUtil {
 
+    private int GRID_SIZE = 8;
+
     public int countWays(int n){
         if (n<0) return 0;
 
@@ -136,6 +138,80 @@ public class DynaicUtil {
 
         return makeChange(n,denoms,0);
      }
+
+     public int boxesStack(List<Box> boxes){
+        Collections.sort(boxes);
+        int maxHeight = 0;
+        int [] stackMap = new int[boxes.size()];
+
+        for (int i=0;i<boxes.size();i++){
+            int height = createStack(boxes,i,stackMap);
+            maxHeight = Math.max(maxHeight,height);
+        }
+        return maxHeight;
+     }
+
+     public int countEval(String expr,boolean res){
+        if (expr.length()==0) return 0;
+        if (expr.length()==1) return strToBool(expr) == res ? 1:0;
+
+         int ways = 0;
+
+         for (int i=1; i<expr.length();i+=2){
+             char c = expr.charAt(i);
+             String left = expr.substring(0,i);
+             String right = expr.substring(i+1,expr.length());
+
+             int leftTrue = countEval(left,true);
+             int leftFalse = countEval(left,false);
+             int rightTrue = countEval(right,true);
+             int rightFalse = countEval(right,false);
+
+             int total = (leftTrue+leftFalse) * (rightTrue+rightFalse);
+
+             int totalTrue = 0;
+
+             if (c=='^'){
+                 totalTrue = leftTrue * rightFalse + leftFalse*rightTrue;
+             } else if (c=='&'){
+                 totalTrue = leftTrue*rightTrue;
+             } else if (c=='|'){
+                 totalTrue = leftTrue*rightTrue + leftFalse*rightTrue + leftTrue*rightFalse;
+             }
+
+             int subways = res ? totalTrue : total - totalTrue;
+             ways += subways;
+         }
+
+         return ways;
+     }
+
+    private boolean strToBool(String expr) {
+        return expr.equals("1");
+    }
+
+
+    private int createStack(List<Box> boxes, int bottomIndex, int[] stackMap) {
+        if (bottomIndex<boxes.size() && stackMap[bottomIndex]>0){
+            return stackMap[bottomIndex];
+        }
+
+        Box bottom = boxes.get(bottomIndex);
+        int maxHeight = 0;
+
+        for (int i =bottomIndex+1;i<boxes.size();i++){
+            if (boxes.get(i).compareTo(bottom)>0){
+                int height = createStack(boxes,i,stackMap);
+                maxHeight = Math.max(height,maxHeight);
+            }
+
+        }
+
+        maxHeight +=bottom.getHeight();
+        stackMap[bottomIndex] = maxHeight;
+
+        return maxHeight;
+    }
 
     private int makeChange(int amount, int[] denoms, int i) {
         if (i>denoms.length-1) return 1;
