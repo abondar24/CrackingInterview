@@ -83,6 +83,11 @@ find number of ways to parentesizing expression that it will evaluate result
 
 These tasks use algorithms from Sorting section below
 
+- sortedMerge - given two sorted arrays A and B merge them in sorted order.
+- groupAnagrams - sort an array of strings so that all annagrams are next to each other
+
+
+
 # Algorithms
 
 ## Sorting

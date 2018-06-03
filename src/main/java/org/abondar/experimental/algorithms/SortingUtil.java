@@ -109,7 +109,7 @@ public class SortingUtil {
         return doMerge(copy, data, 0, data.length);
     }
 
-    private int[] doMerge(int[] copy, int[] data, int start, int end) {
+    public int[] doMerge(int[] copy, int[] data, int start, int end) {
 
         if (end - start < 2) {
             return data;
