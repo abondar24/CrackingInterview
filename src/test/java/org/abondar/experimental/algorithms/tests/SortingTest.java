@@ -10,10 +10,11 @@ import static org.junit.Assert.assertEquals;
 public class SortingTest {
 
     private int[] data = new int[]{5,7,12,34,5,2,1};
+    private SortingUtil su = new SortingUtil();
 
     @Test
     public void insertSortTest(){
-        int []actualRes = SortingUtil.insertionSort(data);
+        int []actualRes = su.insertionSort(data);
 
         for (int aData : data) {
             System.out.println(aData);
@@ -30,7 +31,7 @@ public class SortingTest {
 
     @Test
     public void heapSortTest(){
-        int []actualRes = SortingUtil.heapSort(data);
+        int []actualRes = su.heapSort(data);
 
         for (int aData : data) {
             System.out.println(aData);
@@ -48,7 +49,7 @@ public class SortingTest {
 
     @Test
     public void quickSortTest(){
-        int []actualRes = SortingUtil.quickSort(data);
+        int []actualRes = su.quickSort(data);
 
         for (int aData : data) {
             System.out.println(aData);
@@ -65,7 +66,7 @@ public class SortingTest {
 
     @Test
     public void mergeSortTest(){
-        int []actualRes = SortingUtil.mergeSort(data);
+        int []actualRes = su.mergeSort(data);
 
         for (int aData : data) {
             System.out.println(aData);

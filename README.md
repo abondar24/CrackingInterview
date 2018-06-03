@@ -79,6 +79,12 @@ the largest boxes are at the bottom of the stack. find the height of max possibl
 - boolean equation - given bool expression with 0,1,or,xor,and + desired result , 
 find number of ways to parentesizing expression that it will evaluate result 
 
+## Sorting tasks
+
+These tasks use algorithms from Sorting section below
+
+# Algorithms
+
 ## Sorting
 
 - Insertion sort. Best,Avg: O(n), Worst: O(n^2) 

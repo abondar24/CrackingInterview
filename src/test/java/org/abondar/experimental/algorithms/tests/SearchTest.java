@@ -8,27 +8,29 @@ import static org.junit.Assert.assertTrue;
 
 public class SearchTest {
 
+    private SearchUtil su = new SearchUtil();
+
     @Test
     public void seqSearchTest(){
         int[] data = new int[]{5,7,12,34,5,2,1};
 
-        assertTrue(SearchUtil.sequentialSearch(data,5));
-        assertFalse(SearchUtil.sequentialSearch(data,41));
+        assertTrue(su.sequentialSearch(data,5));
+        assertFalse(su.sequentialSearch(data,41));
     }
 
     @Test
     public void binSearchTest(){
         int[] data = new int[]{1,2,5,7,12,34};
 
-        assertTrue(SearchUtil.binarySearch(data,12));
-        assertFalse(SearchUtil.sequentialSearch(data,6));
+        assertTrue(su.binarySearch(data,12));
+        assertFalse(su.sequentialSearch(data,6));
     }
     @Test
     public void hashSearchTest(){
         int[] data = new int[]{5,7,12,34,5,2,1};
 
-        assertTrue(SearchUtil.hashSearch(data,5));
-        assertFalse(SearchUtil.hashSearch(data,41));
+        assertTrue(su.hashSearch(data,5));
+        assertFalse(su.hashSearch(data,41));
     }
 
 }
