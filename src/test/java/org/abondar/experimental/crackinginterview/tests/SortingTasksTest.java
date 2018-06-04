@@ -1,8 +1,10 @@
 package org.abondar.experimental.crackinginterview.tests;
 
+import org.abondar.experimental.crackinginterview.sortingTasks.Listy;
 import org.abondar.experimental.crackinginterview.sortingTasks.SortingTasks;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,5 +40,22 @@ public class SortingTasksTest {
         assertEquals(1,Math.abs(rs.indexOf("race")-rs.indexOf("care")));
         assertEquals(1,Math.abs(rs.indexOf("baba")-rs.indexOf("abba")));
 
+    }
+
+    @Test
+    public void rotatedSearchIndex(){
+        int[] arr = {15,16,19,20,25,1,3,4,5,7,10,14};
+
+        int res = st.rotatedSearch(arr,5);
+        assertEquals(8,res);
+    }
+
+    @Test
+    public void sortedSearchIndex(){
+        int[] arr = {1,3,4,5,7,10,14};
+
+        Listy list = new Listy(arr);
+        int res = st.sortedSearch(list,5);
+        assertEquals(3,res);
     }
 }

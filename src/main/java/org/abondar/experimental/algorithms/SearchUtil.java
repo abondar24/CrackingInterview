@@ -34,6 +34,25 @@ public class SearchUtil {
     }
 
 
+    public int binarySearchIndex(int[] data, int elem) {
+        int low = 0;
+        int high = data.length - 1;
+
+        while (low < high) {
+            int mid = (low + high) / 2;
+            if (elem < data[mid]) {
+                high = mid - 1;
+            } else if (elem > data[mid]) {
+                low = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+
+        return -1;
+    }
+
+
     public boolean hashSearch(int[] data, int elem) {
         int h = hash(elem);
 

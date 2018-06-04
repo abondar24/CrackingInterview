@@ -3,6 +3,7 @@ package org.abondar.experimental.algorithms.tests;
 import org.abondar.experimental.algorithms.SearchUtil;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -25,6 +26,14 @@ public class SearchTest {
         assertTrue(su.binarySearch(data,12));
         assertFalse(su.sequentialSearch(data,6));
     }
+
+    @Test
+    public void binSearchIndexTest(){
+        int[] data = new int[]{1,2,5,7,12,34};
+
+        assertEquals(2,su.binarySearchIndex(data,5));
+    }
+
     @Test
     public void hashSearchTest(){
         int[] data = new int[]{5,7,12,34,5,2,1};

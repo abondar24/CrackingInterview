@@ -85,6 +85,9 @@ These tasks use algorithms from Sorting section below
 
 - sortedMerge - given two sorted arrays A and B merge them in sorted order.
 - groupAnagrams - sort an array of strings so that all annagrams are next to each other
+- rotated search - find an element in sorted in inc order array which has been rotated
+- sorted search - given a ds called listy(list without size method) with positive sorted ints 
+find and index where element occurs
 
 
 
