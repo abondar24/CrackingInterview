@@ -59,7 +59,7 @@ public class SortingTasks {
 
     public int rotatedSearch(int[] arr,int elem){
 
-        return search(arr,0,arr.length-1,elem);
+        return rotatedSearch(arr,0,arr.length-1,elem);
     }
 
     public int sortedSearch(Listy list,int elem){
@@ -88,7 +88,70 @@ public class SortingTasks {
         return -1;
     }
 
-    private int search(int[] arr, int left, int right, int elem) {
+    public int sparseSearch(String[] arr,String elem){
+        if (arr==null || elem==null || elem.isEmpty()){
+           return -1;
+        }
+
+        return sparseSearch(arr,0,arr.length-1,elem);
+    }
+
+    public List<Integer> checkDups(int[] arr){
+        List<Integer> res = new ArrayList<>();
+        BitSet bs = new BitSet(32000);
+        for (int num : arr) {
+            //bit set start from 0
+            int num0 = num - 1;
+            if (bs.get(num0)) {
+                System.out.println(num);
+                res.add(num);
+            } else {
+                bs.set(num0);
+            }
+        }
+
+        return res;
+    }
+
+    private int sparseSearch(String[] arr, int low, int high, String elem){
+        if (low>high) return -1;
+
+        int mid = (low + high)/2;
+
+        //if mid empty closest non-empty
+        if (arr[mid].isEmpty()){
+            int left = mid -1;
+            int right = mid + 1;
+
+            while (true){
+                if (left < low && right> high){
+                    return -1;
+                } else if (right<=high && !arr[right].isEmpty()){
+                    mid = right;
+                    break;
+                } else if(left >= low && !arr[left].isEmpty()){
+                    mid = left;
+                    break;
+                }
+                right++;
+                left--;
+            }
+        }
+
+        //check str and recurse
+        if (elem.equals(arr[mid])){
+            return mid;
+        } else if (arr[mid].compareTo(elem) < 0){
+            //search right
+            return sparseSearch(arr,mid+1,high,elem);
+        } else {
+            //search left;
+            return sparseSearch(arr,low,mid-1,elem);
+        }
+
+    }
+
+    private int rotatedSearch(int[] arr, int left, int right, int elem) {
        int mid = (left + right)/2;
        if (elem==arr[mid]) return mid;
 
@@ -96,25 +159,25 @@ public class SortingTasks {
 
        if (arr[left]<arr[mid]){
            if (elem>=arr[left] && elem<arr[mid]){
-               // search left
-               return search(arr,left,mid-1,elem);
+               // rotatedSearch left
+               return rotatedSearch(arr,left,mid-1,elem);
            } else {
-               // search right
-               return search(arr,mid+1,right,elem);
+               // rotatedSearch right
+               return rotatedSearch(arr,mid+1,right,elem);
            }
        } else if (arr[mid] < arr[left]){
            if (elem>arr[mid] && elem<=arr[right]){
-               return search(arr,mid+1,right,elem);
+               return rotatedSearch(arr,mid+1,right,elem);
            } else {
-               return search(arr,left,mid-1,elem);
+               return rotatedSearch(arr,left,mid-1,elem);
            }
        } else if(arr[mid]==arr[left]){
             if (arr[mid]!=arr[right]){
-                return search(arr,mid+1,right,elem);
+                return rotatedSearch(arr,mid+1,right,elem);
             } else {
-                int res = search(arr,left,mid-1,elem);
+                int res = rotatedSearch(arr,left,mid-1,elem);
                 if (res==-1){
-                    return search(arr,mid+1,right,elem);
+                    return rotatedSearch(arr,mid+1,right,elem);
                 } else return elem;
             }
         }

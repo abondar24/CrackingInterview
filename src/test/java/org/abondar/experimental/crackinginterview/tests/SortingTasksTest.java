@@ -58,4 +58,20 @@ public class SortingTasksTest {
         int res = st.sortedSearch(list,5);
         assertEquals(3,res);
     }
+
+    @Test
+    public void sparseSearchTest(){
+        String[] arr = {"at","","","","ball","","","car","","","dad","",""};
+
+        int res = st.sparseSearch(arr,"ball");
+        assertEquals(4,res);
+    }
+
+    @Test
+    public void checkDupsTest(){
+        int[] arr = {1,2,3,4,5,6,83,4,7,132,256,10000,28400,14567,7,18,24,24,100,10,55,12};
+
+        List<Integer> res= st.checkDups(arr);
+        assertEquals(3,res.size());
+    }
 }

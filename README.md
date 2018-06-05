@@ -88,7 +88,8 @@ These tasks use algorithms from Sorting section below
 - rotated search - find an element in sorted in inc order array which has been rotated
 - sorted search - given a ds called listy(list without size method) with positive sorted ints 
 find and index where element occurs
-
+- sparse search - given a sorted array of strings interpressed with empty strs write a method to find a location of string
+- find dups - in array with numbers from 1 to N (N <=32000) find duplicate entries having 4kb of memory
 
 
 # Algorithms
