@@ -1,10 +1,10 @@
 package org.abondar.experimental.crackinginterview.tests;
 
 import org.abondar.experimental.crackinginterview.sortingTasks.Listy;
+import org.abondar.experimental.crackinginterview.sortingTasks.MatrixElement;
 import org.abondar.experimental.crackinginterview.sortingTasks.SortingTasks;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -73,5 +73,65 @@ public class SortingTasksTest {
 
         List<Integer> res= st.checkDups(arr);
         assertEquals(3,res.size());
+    }
+
+    @Test
+    public void sortedMatrixSearchTest(){
+        int[][] matrix = new int[4][4];
+
+        matrix[0][0]=15;
+        matrix[0][1]=20;
+        matrix[0][2]=40;
+        matrix[0][3]=85;
+        matrix[1][0]=20;
+        matrix[1][1]=35;
+        matrix[1][2]=80;
+        matrix[1][3]=95;
+        matrix[2][0]=30;
+        matrix[2][1]=55;
+        matrix[2][2]=95;
+        matrix[2][3]=105;
+        matrix[3][0]=40;
+        matrix[3][1]=80;
+        matrix[3][2]=100;
+        matrix[3][3]=120;
+
+        MatrixElement me = st.sortedMatrixSearch(matrix,55);
+        assertEquals(2,me.getRow());
+        assertEquals(1,me.getColumn());
+
+    }
+
+    @Test
+    public void  getRankOfNumTest(){
+        int [] arr = {5,1,4,4,5,9,7,13,3};
+
+        for (int i:arr){
+            st.trackNum(i);
+        }
+
+        int res = st.getRankOfNum(1);
+        assertEquals(0,res);
+
+        res = st.getRankOfNum(3);
+        assertEquals(1,res);
+
+        res = st.getRankOfNum(4);
+        assertEquals(3,res);
+
+    }
+
+    @Test
+    public void peaksValleysSort(){
+        int[] arr = {5,3,1,2,3};
+
+        st.valleyPeakSort(arr);
+
+        assertEquals(5,arr[0]);
+        assertEquals(1,arr[1]);
+        assertEquals(3,arr[2]);
+        assertEquals(2,arr[3]);
+        assertEquals(3,arr[4]);
+
     }
 }

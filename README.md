@@ -90,6 +90,9 @@ These tasks use algorithms from Sorting section below
 find and index where element occurs
 - sparse search - given a sorted array of strings interpressed with empty strs write a method to find a location of string
 - find dups - in array with numbers from 1 to N (N <=32000) find duplicate entries having 4kb of memory
+- sortedMatrixSearch - given matrix m x n with sorted in asc order rows and cols find an element
+- rank from stream - reading stream of ints it's needed to check a rank of number x(the number of vals <= x)
+- peaks and valleys - sort an array in alternating seq of peaks(elem>=adjacent elems) and valleys(elem<=adjacent)
 
 
 # Algorithms
