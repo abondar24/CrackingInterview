@@ -29,8 +29,8 @@
                     <jdkToolchain>
                         <version>[1.8,9,10)</version>
                     </jdkToolchain>
-                    <source>9</source>
-                    <target>9</target>
+                    <source>11</source>
+                    <target>11</target>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
                 </configuration>

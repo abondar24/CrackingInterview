@@ -62,6 +62,7 @@ Check comments in classes
 - flip bit to win - Find the longest sequence of 1 ny flipping only one 0  to 1
 - next number - Find the next biggest and smallest numbers with the same number of 1 bits
 - draw line - Draw a line on the screen of width divisible by 8
+- reverse integer - Given a 32-bit signed integer, reverse digits of an integer.
 
 ## Dynamic programming
 
