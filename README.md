@@ -20,6 +20,7 @@ All examples are ran in unit tests.
 - oneAway - Check of oneString can be got from another by just one edit
 - stringCompressor - Compress repeated chars in string(e.g: aabcccccaaa -> a2b1c5a3)
 - reverseString - In place string reverse
+- isStringPalindrome - Is string a palindrome
 - twoSum - Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 - rotateMatrix - Rotate matrix by 90 degrees clockwise
 - zeroMatrix - If element [i][j] of matrix is zero - entire row and column must be zero
@@ -63,6 +64,7 @@ Check comments in classes
 - next number - Find the next biggest and smallest numbers with the same number of 1 bits
 - draw line - Draw a line on the screen of width divisible by 8
 - reverse integer - Given a 32-bit signed integer, reverse digits of an integer.
+- isIntegerPalindrome - Is integer a palindrome
 
 ## Dynamic programming
 

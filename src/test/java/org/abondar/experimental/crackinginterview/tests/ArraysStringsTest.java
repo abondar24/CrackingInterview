@@ -94,22 +94,33 @@ public class ArraysStringsTest {
     }
 
     @Test
-    public void reverseStringTest(){
+    public void reverseStringTest() {
         String str = "abcde";
         String expected = "edcba";
         String actual = as.reverseString(str);
 
-        Assert.assertEquals(expected,actual);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
-    public void twoSumTest(){
-        int[] arr = {2,7,11,15};
-        int target =9;
-        int[] expected={0,1};
+    public void twoSumTest() {
+        int[] arr = {2, 7, 11, 15};
+        int target = 9;
+        int[] expected = {0, 1};
 
-        int[] actual = as.twoSum(arr,target);
-        Assert.assertArrayEquals(expected,actual);
+        int[] actual = as.twoSum(arr, target);
+        Assert.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void isStringPalindromeTest() {
+        String str = "aabbaa";
+        boolean res = as.isStringPalindrome(str);
+        Assert.assertTrue(res);
+
+        str = "aacbaa";
+        res = as.isStringPalindrome(str);
+        Assert.assertFalse(res);
     }
 
     @Test
@@ -136,12 +147,10 @@ public class ArraysStringsTest {
         expectedMatrix[2][1] = 6;
         expectedMatrix[2][2] = 3;
 
-        int [][] actualMatrix = as.rotateMatrix(matrix);
-        Assert.assertArrayEquals(expectedMatrix,actualMatrix);
+        int[][] actualMatrix = as.rotateMatrix(matrix);
+        Assert.assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
-
-
 
 
     @Test
@@ -182,11 +191,10 @@ public class ArraysStringsTest {
         expectedMatrix[3][2] = 8;
         expectedMatrix[3][3] = 4;
 
-        int [][] actualMatrix = as.rotateMatrix(matrix);
-        Assert.assertArrayEquals(expectedMatrix,actualMatrix);
+        int[][] actualMatrix = as.rotateMatrix(matrix);
+        Assert.assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
-
 
 
     @Test
@@ -213,11 +221,10 @@ public class ArraysStringsTest {
         expectedMatrix[2][1] = 8;
         expectedMatrix[2][2] = 9;
 
-        int [][] actualMatrix = as.zeroMatrix(matrix);
-        Assert.assertArrayEquals(expectedMatrix,actualMatrix);
+        int[][] actualMatrix = as.zeroMatrix(matrix);
+        Assert.assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
-
 
 
     @Test
@@ -244,8 +251,8 @@ public class ArraysStringsTest {
         expectedMatrix[2][1] = 0;
         expectedMatrix[2][2] = 0;
 
-        int [][] actualMatrix = as.zeroMatrix(matrix);
-        Assert.assertArrayEquals(expectedMatrix,actualMatrix);
+        int[][] actualMatrix = as.zeroMatrix(matrix);
+        Assert.assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
 }

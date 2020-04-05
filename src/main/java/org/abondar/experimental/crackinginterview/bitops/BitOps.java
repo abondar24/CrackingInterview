@@ -220,6 +220,15 @@ public class BitOps {
         return (int) res;
     }
 
+    public boolean isIntegerPalindrome(int x){
+        if (x<0){
+            return false;
+        }
+
+        int reverseX = reverseInteger(x);
+
+        return reverseX==x;
+    }
 
     private int getPrev(int n) {
         int tmp = n;

@@ -74,8 +74,8 @@ public class ArraysStrings {
 
         char[] strc = str.toCharArray();
 
+        int numberOfPairs = 0;
         if (str.length() % 2 == 0) {
-            int numberOfPairs = 0;
             for (char c : strc) {
                 if (str.indexOf(c) != str.lastIndexOf(c)) {
                     numberOfPairs++;
@@ -84,13 +84,12 @@ public class ArraysStrings {
             isPalindromePermutation = numberOfPairs % 2 == 0;
 
         } else {
-            int numberOfUnique = 0;
             for (char c : strc) {
                 if (str.indexOf(c) == str.lastIndexOf(c)) {
-                    numberOfUnique++;
+                    numberOfPairs++;
                 }
             }
-            isPalindromePermutation = numberOfUnique == 1;
+            isPalindromePermutation = numberOfPairs == 1;
 
         }
 
@@ -182,6 +181,12 @@ public class ArraysStrings {
         }
 
         return new String(strArr);
+    }
+
+    public boolean isStringPalindrome(String str){
+        String reverse = reverseString(str);
+
+        return reverse.equals(str);
     }
 
     public int[] twoSum(int[] nums, int target){
