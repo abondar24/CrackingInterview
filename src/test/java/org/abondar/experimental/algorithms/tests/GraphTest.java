@@ -1,7 +1,7 @@
 package org.abondar.experimental.algorithms.tests;
 
 import org.abondar.experimental.algorithms.GraphAlgUtil;
-import org.abondar.experimental.crackinginterview.treesgraphs.GraphNode;
+import org.abondar.experimental.tasks.treesgraphs.GraphNode;
 import org.junit.Test;
 
 import java.util.Map;

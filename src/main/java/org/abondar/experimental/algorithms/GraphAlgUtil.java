@@ -1,6 +1,6 @@
 package org.abondar.experimental.algorithms;
 
-import org.abondar.experimental.crackinginterview.treesgraphs.GraphNode;
+import org.abondar.experimental.tasks.treesgraphs.GraphNode;
 
 import java.util.Map;
 import java.util.PriorityQueue;
