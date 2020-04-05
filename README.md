@@ -19,6 +19,8 @@ All examples are ran in unit tests.
 - palindromePermutation - Check if any of words permutations can be a palindrome
 - oneAway - Check of oneString can be got from another by just one edit
 - stringCompressor - Compress repeated chars in string(e.g: aabcccccaaa -> a2b1c5a3)
+- reverseString - In place string reverse
+- twoSum - Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 - rotateMatrix - Rotate matrix by 90 degrees clockwise
 - zeroMatrix - If element [i][j] of matrix is zero - entire row and column must be zero
 If element [i][j] of matrix is zero - entire row and column must be zero

@@ -91,9 +91,26 @@ public class ArraysStringsTest {
         expected = "a1b1f1c3g1h1";
         Assert.assertEquals(expected, actual);
 
-
     }
 
+    @Test
+    public void reverseStringTest(){
+        String str = "abcde";
+        String expected = "edcba";
+        String actual = as.reverseString(str);
+
+        Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void twoSumTest(){
+        int[] arr = {2,7,11,15};
+        int target =9;
+        int[] expected={0,1};
+
+        int[] actual = as.twoSum(arr,target);
+        Assert.assertArrayEquals(expected,actual);
+    }
 
     @Test
     public void rotateMatrixTest() {

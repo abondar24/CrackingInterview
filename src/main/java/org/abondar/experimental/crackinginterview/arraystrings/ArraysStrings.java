@@ -3,6 +3,7 @@ package org.abondar.experimental.crackinginterview.arraystrings;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class ArraysStrings {
@@ -162,6 +163,48 @@ public class ArraysStrings {
 
         return compression.toString();
     }
+
+
+    public String reverseString(String str){
+
+        char[] strArr = str.toCharArray();
+
+        int half = strArr.length/2;
+
+        int swpId;
+        char buf;
+        for (int i=0;i<half;i++){
+            swpId = strArr.length - i - 1;
+            buf = strArr[i];
+            strArr[i] = strArr[swpId];
+            strArr[swpId] = buf;
+
+        }
+
+        return new String(strArr);
+    }
+
+    public int[] twoSum(int[] nums, int target){
+        Map<Integer,Integer> valsMap = new HashMap<>();
+
+        for (int i=0;i<nums.length;i++){
+            valsMap.put(nums[i],i);
+        }
+
+        for (int i=0;i<nums.length;i++){
+            int minusVal = target - nums[i];
+            if (valsMap.containsKey(minusVal)){
+                if(valsMap.get(minusVal) != i){
+                    return new int[]{i, valsMap.get(minusVal)};
+                }
+
+
+            }
+
+        }
+        return new int[]{0,0};
+    }
+
 
     public int[][] rotateMatrix(int[][] matrix) {
         printMatrix(matrix);
