@@ -213,11 +213,8 @@ public class BitOps {
             xl = xl/10;
         }
 
-        if (res > Integer.MAX_VALUE || res< Integer.MIN_VALUE){
-            return 0;
-        }
+        return (res == (int)res) ? (int)res : 0;
 
-        return (int) res;
     }
 
     public boolean isIntegerPalindrome(int x){
