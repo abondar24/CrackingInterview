@@ -1,6 +1,6 @@
 package org.abondar.experimental.tasks.dynamic;
 
-import org.abondar.experimental.tasks.arraystrings.ArraysStrings;
+import org.abondar.experimental.tasks.strings.Strings;
 
 import java.util.*;
 
@@ -88,7 +88,7 @@ public class DynaicUtil {
     }
 
     public List<String> maxPermutationsNoDups(String str) {
-        ArraysStrings as = new ArraysStrings();
+        Strings as = new Strings();
         if (!str.isEmpty() && !as.isUnique(str)) throw new RuntimeException("Chars are not unique");
 
 

@@ -11,7 +11,7 @@ All examples are ran in unit tests.
 
 # Tasks
 
-## Arrays and Strings
+## Strings
 
 - isUnique - Determine if all the characters in string are unique
 - checkPermutation - Check if str2 is permutation of str1
@@ -21,6 +21,10 @@ All examples are ran in unit tests.
 - stringCompressor - Compress repeated chars in string(e.g: aabcccccaaa -> a2b1c5a3)
 - reverseString - In place string reverse
 - isStringPalindrome - Is string a palindrome
+
+
+## Arrays
+
 - twoSum - Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 - rotateMatrix - Rotate matrix by 90 degrees clockwise
 - zeroMatrix - If element [i][j] of matrix is zero - entire row and column must be zero

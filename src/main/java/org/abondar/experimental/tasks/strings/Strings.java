@@ -1,12 +1,10 @@
-package org.abondar.experimental.tasks.arraystrings;
+package org.abondar.experimental.tasks.strings;
 
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 
-public class ArraysStrings {
+public class Strings {
 
     public boolean isUnique(String str) {
         boolean isUnique = false;
@@ -97,7 +95,6 @@ public class ArraysStrings {
     }
 
 
-
     public boolean oneAway(String str1, String str2) {
         boolean oneEdit;
 
@@ -164,15 +161,15 @@ public class ArraysStrings {
     }
 
 
-    public String reverseString(String str){
+    public String reverseString(String str) {
 
         char[] strArr = str.toCharArray();
 
-        int half = strArr.length/2;
+        int half = strArr.length / 2;
 
         int swpId;
         char buf;
-        for (int i=0;i<half;i++){
+        for (int i = 0; i < half; i++) {
             swpId = strArr.length - i - 1;
             buf = strArr[i];
             strArr[i] = strArr[swpId];
@@ -183,102 +180,11 @@ public class ArraysStrings {
         return new String(strArr);
     }
 
-    public boolean isStringPalindrome(String str){
+    public boolean isStringPalindrome(String str) {
         String reverse = reverseString(str);
 
         return reverse.equals(str);
     }
 
-    public int[] twoSum(int[] nums, int target){
-        Map<Integer,Integer> valsMap = new HashMap<>();
 
-        for (int i=0;i<nums.length;i++){
-            valsMap.put(nums[i],i);
-        }
-
-        for (int i=0;i<nums.length;i++){
-            int minusVal = target - nums[i];
-            if (valsMap.containsKey(minusVal)){
-                if(valsMap.get(minusVal) != i){
-                    return new int[]{i, valsMap.get(minusVal)};
-                }
-
-
-            }
-
-        }
-        return new int[]{0,0};
-    }
-
-
-    public int[][] rotateMatrix(int[][] matrix) {
-        printMatrix(matrix);
-        for (int i = 0; i < matrix.length / 2; i++) {
-            for (int j = i; j < matrix.length - i - 1; j++) {
-                //top to tmp
-                int tmp = matrix[i][j];
-
-                //left to top
-                matrix[i][j] = matrix[matrix.length - 1 - j][i];
-
-                // bottom to left
-                matrix[matrix.length - 1 - j][i] = matrix[matrix.length - 1 - i][matrix.length - 1 - j];
-
-                //right to bottom
-                matrix[matrix.length - 1 - i][matrix.length - 1 - j] = matrix[j][matrix.length - 1 - i];
-
-
-                //temp to right
-                matrix[j][matrix.length - 1 - i] = tmp;
-            }
-        }
-
-        System.out.println(" ");
-        printMatrix(matrix);
-        return matrix;
-    }
-
-
-    public int[][] zeroMatrix(int[][] matrix) {
-        printMatrix(matrix);
-
-        HashMap<Integer,Integer> zeroPos = new HashMap<>();
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                if (matrix[i][j] == 0) {
-                    zeroPos.put(i,j);
-                }
-            }
-        }
-
-        for (int row:zeroPos.keySet()){
-            matrix = fillZero(matrix,row,zeroPos.get(row));
-        }
-        printMatrix(matrix);
-        return matrix;
-    }
-
-    private int[][] fillZero(int[][] matrix, int row, int col) {
-        for (int i = 0; i < matrix.length; i++) {
-
-            for (int j = 0; j < matrix.length; j++) {
-
-                matrix[row][j] = 0;
-                matrix[i][col] = 0;
-            }
-        }
-
-        return matrix;
-    }
-
-
-    private void printMatrix(int[][] matrix) {
-        for (int[] row : matrix) {
-            for (int col : row) {
-                System.out.print(col + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
 }

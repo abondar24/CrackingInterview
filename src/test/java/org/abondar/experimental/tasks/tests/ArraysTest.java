@@ -1,106 +1,12 @@
 package org.abondar.experimental.tasks.tests;
 
-import org.abondar.experimental.tasks.arraystrings.ArraysStrings;
+import org.abondar.experimental.tasks.arrays.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ArraysStringsTest {
+public class ArraysTest {
 
-    private ArraysStrings as = new ArraysStrings();
-
-    @Test
-    public void inUniqueTest() {
-
-        boolean res = as.isUnique("hello world");
-        Assert.assertFalse(res);
-
-        res = as.isUnique("formula");
-        Assert.assertTrue(res);
-
-    }
-
-
-    @Test
-    public void checkPermutation() {
-        boolean res = as.checkPermutation("debug", "buged");
-        Assert.assertTrue(res);
-
-        res = as.checkPermutation("debug", "cat");
-        Assert.assertFalse(res);
-
-        res = as.checkPermutation("debug", "bug");
-        Assert.assertFalse(res);
-    }
-
-    @Test
-    public void urllifyTest() {
-        String url = as.urlify("Mr John Smith    ", 13);
-        String expectedRes = "Mr%20John%20Smith";
-        Assert.assertEquals(expectedRes, url);
-    }
-
-
-    @Test
-    public void palindromePermutationTest() {
-        boolean res = as.palindromePermutation("Tact Coa");
-        Assert.assertTrue(res);
-
-        res = as.palindromePermutation("Tact Coat");
-        Assert.assertFalse(res);
-
-        res = as.palindromePermutation("aabcb");
-        Assert.assertTrue(res);
-
-        res = as.palindromePermutation("civil");
-        Assert.assertFalse(res);
-    }
-
-
-    @Test
-    public void oneAwayTest() {
-        boolean res = as.oneAway("pale", "ple");
-        Assert.assertTrue(res);
-
-        res = as.oneAway("pales", "pale");
-        Assert.assertTrue(res);
-
-        res = as.oneAway("pale", "bale");
-        Assert.assertTrue(res);
-
-        res = as.oneAway("pale", "bake");
-        Assert.assertFalse(res);
-
-        res = as.oneAway("pale", "pale");
-        Assert.assertTrue(res);
-
-        res = as.oneAway("paalee", "pale");
-        Assert.assertFalse(res);
-
-        res = as.oneAway("pale", "pkb");
-        Assert.assertFalse(res);
-    }
-
-
-    @Test
-    public void stringCompressionTest() {
-        String actual = as.stringCompressor("aabcccccaaa");
-        String expected = "a2b1c5a3";
-        Assert.assertEquals(expected, actual);
-
-        actual = as.stringCompressor("abfcccgh");
-        expected = "a1b1f1c3g1h1";
-        Assert.assertEquals(expected, actual);
-
-    }
-
-    @Test
-    public void reverseStringTest() {
-        String str = "abcde";
-        String expected = "edcba";
-        String actual = as.reverseString(str);
-
-        Assert.assertEquals(expected, actual);
-    }
+    private Arrays arrays = new Arrays();
 
     @Test
     public void twoSumTest() {
@@ -108,19 +14,8 @@ public class ArraysStringsTest {
         int target = 9;
         int[] expected = {0, 1};
 
-        int[] actual = as.twoSum(arr, target);
+        int[] actual = arrays.twoSum(arr, target);
         Assert.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void isStringPalindromeTest() {
-        String str = "aabbaa";
-        boolean res = as.isStringPalindrome(str);
-        Assert.assertTrue(res);
-
-        str = "aacbaa";
-        res = as.isStringPalindrome(str);
-        Assert.assertFalse(res);
     }
 
     @Test
@@ -147,7 +42,7 @@ public class ArraysStringsTest {
         expectedMatrix[2][1] = 6;
         expectedMatrix[2][2] = 3;
 
-        int[][] actualMatrix = as.rotateMatrix(matrix);
+        int[][] actualMatrix = arrays.rotateMatrix(matrix);
         Assert.assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
@@ -191,7 +86,7 @@ public class ArraysStringsTest {
         expectedMatrix[3][2] = 8;
         expectedMatrix[3][3] = 4;
 
-        int[][] actualMatrix = as.rotateMatrix(matrix);
+        int[][] actualMatrix = arrays.rotateMatrix(matrix);
         Assert.assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
@@ -221,7 +116,7 @@ public class ArraysStringsTest {
         expectedMatrix[2][1] = 8;
         expectedMatrix[2][2] = 9;
 
-        int[][] actualMatrix = as.zeroMatrix(matrix);
+        int[][] actualMatrix = arrays.zeroMatrix(matrix);
         Assert.assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
@@ -251,7 +146,7 @@ public class ArraysStringsTest {
         expectedMatrix[2][1] = 0;
         expectedMatrix[2][2] = 0;
 
-        int[][] actualMatrix = as.zeroMatrix(matrix);
+        int[][] actualMatrix = arrays.zeroMatrix(matrix);
         Assert.assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
