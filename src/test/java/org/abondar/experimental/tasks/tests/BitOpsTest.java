@@ -111,28 +111,5 @@ public class BitOpsTest {
         System.out.println();
     }
 
-    @Test
-    public void reverseIntegerTest(){
-        int num = 123;
-        int expected = 321;
-        int actual= bitOps.reverseInteger(num);
 
-        assertEquals(expected,actual);
-    }
-
-    @Test
-    public void isIntegerPalindromeTest(){
-        int num = 121;
-        boolean res = bitOps.isIntegerPalindrome(num);
-        assertTrue(res);
-
-        num = -121;
-        res = bitOps.isIntegerPalindrome(num);
-        assertFalse(res);
-
-        num = 10;
-        res = bitOps.isIntegerPalindrome(num);
-        assertFalse(res);
-
-    }
 }
