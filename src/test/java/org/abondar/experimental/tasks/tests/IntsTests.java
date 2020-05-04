@@ -35,4 +35,31 @@ public class IntsTests {
         assertFalse(res);
 
     }
+
+    @Test
+    public void romanToIntTest(){
+        String roman = "III";
+        int res =  ints.romanToInt(roman);
+        assertEquals(3,res);
+
+        roman = "IV";
+        res =  ints.romanToInt(roman);
+        assertEquals(4,res);
+
+        roman = "IX";
+        res =  ints.romanToInt(roman);
+        assertEquals(9,res);
+
+        roman = "LVIII";
+        res =  ints.romanToInt(roman);
+        assertEquals(58,res);
+
+        roman = "MCMXCIV";
+        res =  ints.romanToInt(roman);
+        assertEquals(1994,res);
+
+        roman = "MCMGCIV";
+        res =  ints.romanToInt(roman);
+        assertEquals(0,res);
+    }
 }
