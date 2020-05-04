@@ -26,7 +26,7 @@ All examples are ran in unit tests.
 
 - reverse integer - Given a 32-bit signed integer, reverse digits of an integer.
 - isIntegerPalindrome - Is integer a palindrome
-
+- romanToInt - Transform roman number to decimal integer
 ## Arrays
 
 - twoSum - Given an array of integers, return indices of the two numbers such that they add up to a specific target.
