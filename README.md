@@ -21,6 +21,8 @@ All examples are ran in unit tests.
 - stringCompressor - Compress repeated chars in string(e.g: aabcccccaaa -> a2b1c5a3)
 - reverseString - In place string reverse
 - isStringPalindrome - Is string a palindrome
+- longestCommonPrefix - Find the longest common prefix string amongst an array of strings.
+All given inputs are in lowercase letters a-z.
 
 ## Ints
 

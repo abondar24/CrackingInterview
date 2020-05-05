@@ -115,4 +115,16 @@ public class StringsTest {
     }
 
 
+    @Test
+    public void longestCommonPrefixTest(){
+       String [] arr = new String[]{"flower","flow","flight"};
+
+       String res = strs.longestCommonPrefix(arr);
+       Assert.assertEquals("fl",res);
+
+        arr = new String[]{"dog","racecar","car"};
+        res = strs.longestCommonPrefix(arr);
+
+        Assert.assertEquals("",res);
+    }
 }

@@ -186,5 +186,32 @@ public class Strings {
         return reverse.equals(str);
     }
 
+    public String longestCommonPrefix(String[] arr){
+        if (arr.length==0){
+            return "";
+        }
+        char[] prefixStr = arr[0].toCharArray();
+
+        StringBuilder prefix = new StringBuilder();
+        for (char pfx : prefixStr) {
+            prefix.append(pfx);
+            if (!containsPrefix(arr, prefix.toString())) {
+                prefix.deleteCharAt(prefix.length()-1);
+                break;
+            }
+        }
+        return prefix.toString();
+    }
+
+    private boolean containsPrefix(String[] arr,String prefix){
+        for (String s : arr) {
+            if (s.indexOf(prefix) != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
 }
