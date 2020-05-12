@@ -127,4 +127,47 @@ public class StringsTest {
 
         Assert.assertEquals("",res);
     }
+
+    @Test
+    public void validParentheses(){
+        String str = "()";
+        boolean res = strs.validParentheses(str);
+        Assert.assertTrue(res);
+
+        str = "{[]}";
+        res = strs.validParentheses(str);
+        Assert.assertTrue(res);
+
+        str = "(((((())))))";
+        res = strs.validParentheses(str);
+        Assert.assertTrue(res);
+
+        str = "()()()()";
+        res = strs.validParentheses(str);
+        Assert.assertTrue(res);
+
+        str = "()[]{}";
+        res = strs.validParentheses(str);
+        Assert.assertTrue(res);
+
+        str = "((()(())))";
+        res = strs.validParentheses(str);
+        Assert.assertTrue(res);
+
+        str = "{[]}";
+        res = strs.validParentheses(str);
+        Assert.assertTrue(res);
+
+        str = "(((((((()";
+        res = strs.validParentheses(str);
+        Assert.assertFalse(res);
+
+        str = "(]";
+        res = strs.validParentheses(str);
+        Assert.assertFalse(res);
+
+        str = "([)]";
+        res = strs.validParentheses(str);
+        Assert.assertFalse(res);
+    }
 }

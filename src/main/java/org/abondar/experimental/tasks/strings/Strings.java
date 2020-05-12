@@ -2,6 +2,9 @@ package org.abondar.experimental.tasks.strings;
 
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 
 public class Strings {
@@ -186,8 +189,8 @@ public class Strings {
         return reverse.equals(str);
     }
 
-    public String longestCommonPrefix(String[] arr){
-        if (arr.length==0){
+    public String longestCommonPrefix(String[] arr) {
+        if (arr.length == 0) {
             return "";
         }
         char[] prefixStr = arr[0].toCharArray();
@@ -196,14 +199,14 @@ public class Strings {
         for (char pfx : prefixStr) {
             prefix.append(pfx);
             if (!containsPrefix(arr, prefix.toString())) {
-                prefix.deleteCharAt(prefix.length()-1);
+                prefix.deleteCharAt(prefix.length() - 1);
                 break;
             }
         }
         return prefix.toString();
     }
 
-    private boolean containsPrefix(String[] arr,String prefix){
+    private boolean containsPrefix(String[] arr, String prefix) {
         for (String s : arr) {
             if (s.indexOf(prefix) != 0) {
                 return false;
@@ -212,6 +215,30 @@ public class Strings {
 
         return true;
     }
+
+    public boolean validParentheses(String str) {
+        Map<Character, Character> parMap = new HashMap<>();
+        parMap.put( '}','{');
+        parMap.put(']','[' );
+        parMap.put(')','(');
+
+        Stack<Character> pars = new Stack<>();
+
+        for (char c : str.toCharArray()) {
+            if (parMap.containsKey(c)) {
+                char top = pars.isEmpty() ? '#' : pars.pop();
+                if (top != parMap.get(c)) {
+                    return false;
+                }
+            } else {
+                pars.push(c);
+            }
+        }
+
+        return pars.isEmpty();
+    }
+
+
 
 
 }

@@ -23,7 +23,7 @@ All examples are ran in unit tests.
 - isStringPalindrome - Is string a palindrome
 - longestCommonPrefix - Find the longest common prefix string amongst an array of strings.
 All given inputs are in lowercase letters a-z.
-
+- validParentheses - Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 ## Ints
 
 - reverse integer - Given a 32-bit signed integer, reverse digits of an integer.
