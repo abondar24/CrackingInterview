@@ -1,10 +1,13 @@
 package org.abondar.experimental.tasks.arrays;
 
-import java.util.Collections;
+import org.abondar.experimental.algorithms.SearchUtil;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Arrays {
+
+    private final SearchUtil su = new SearchUtil();
 
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> valsMap = new HashMap<>();
@@ -104,7 +107,7 @@ public class Arrays {
         int len = 0;
 
         if (nums.length > 0) {
-            for (int i = 1; i < nums.length ; i++) {
+            for (int i = 1; i < nums.length; i++) {
                 if (nums[i] != nums[len]) {
                     len++;
                     nums[len] = nums[i];
@@ -112,10 +115,10 @@ public class Arrays {
             }
         }
 
-        return len+1;
+        return len + 1;
     }
 
-    public int removeElement(int[] nums,int val){
+    public int removeElement(int[] nums, int val) {
         int len = 0;
 
         if (nums.length > 0) {
@@ -129,5 +132,31 @@ public class Arrays {
         }
 
         return len;
+    }
+
+    public int searchInsert(int[] nums, int target) {
+        int res = su.sequentialSearchIndex(nums,target);
+        if (res==-1){
+            res = findPos(nums,target);
+        }
+        return res;
+    }
+
+    private int findPos(int[] nums, int target) {
+        if (target <nums[0]) {
+            return 0;
+        }
+
+        if (target > nums[nums.length - 1]) {
+            return nums.length;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (target > nums[i] && target < nums[i + 1]) {
+                return i + 1;
+            }
+        }
+
+        return 0;
     }
 }

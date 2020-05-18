@@ -192,4 +192,36 @@ public class ArraysTest {
         Assert.assertEquals(4,nums[4]);
 
     }
+
+    @Test
+    public void searchInsertTest(){
+        int[] nums = new int[]{1,3,5,6};
+        int res = arrays.searchInsert(nums,5);
+        Assert.assertEquals(2,res);
+
+        res = arrays.searchInsert(nums,2);
+        Assert.assertEquals(1,res);
+
+        res = arrays.searchInsert(nums,7);
+        Assert.assertEquals(4,res);
+
+        res = arrays.searchInsert(nums,0);
+        Assert.assertEquals(0,res);
+
+        nums = new int[]{1,3};
+        res = arrays.searchInsert(nums,3);
+        Assert.assertEquals(1,res);
+
+        nums = new int[]{1,3};
+        res = arrays.searchInsert(nums,1);
+        Assert.assertEquals(0,res);
+
+        nums = new int[]{1,2,3,4,5,10};
+        res = arrays.searchInsert(nums,2);
+        Assert.assertEquals(1,res);
+
+        nums = new int[]{3,4,8,9,10};
+        res = arrays.searchInsert(nums,8);
+        Assert.assertEquals(2,res);
+    }
 }

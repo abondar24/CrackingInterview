@@ -39,7 +39,7 @@ All given inputs are in lowercase letters a-z.
 If element [i][j] of matrix is zero - entire row and column must be zero
 - removeDuplicates - calc length of array(L) with no duplicates and return no-duplicates from 0 to L
 - removeValue - calc length of array(L) with no value(V) and return array with no value from 0 to L
-
+- searchIndex - find elem index or position to insert
 ##  List
 
 - removeDups - Remove duplicates from list without using any tmp buffer
