@@ -170,4 +170,10 @@ public class StringsTest {
         res = strs.validParentheses(str);
         Assert.assertFalse(res);
     }
+
+    @Test
+    public void strStrTest(){
+        Assert.assertEquals(2,strs.strStr("hello","ll"));
+        Assert.assertEquals(-1,strs.strStr("aaaaa","bba"));
+    }
 }

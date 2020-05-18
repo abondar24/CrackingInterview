@@ -238,7 +238,9 @@ public class Strings {
         return pars.isEmpty();
     }
 
-
+    public int strStr(String haystack, String needle) {
+           return haystack.indexOf(needle,0);
+    }
 
 
 }

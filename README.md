@@ -24,6 +24,8 @@ All examples are ran in unit tests.
 - longestCommonPrefix - Find the longest common prefix string amongst an array of strings.
 All given inputs are in lowercase letters a-z.
 - validParentheses - Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+- strStr - Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
 ## Ints
 
 - reverse integer - Given a 32-bit signed integer, reverse digits of an integer.
