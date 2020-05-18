@@ -35,6 +35,7 @@ All given inputs are in lowercase letters a-z.
 - rotateMatrix - Rotate matrix by 90 degrees clockwise
 - zeroMatrix - If element [i][j] of matrix is zero - entire row and column must be zero
 If element [i][j] of matrix is zero - entire row and column must be zero
+- removeDuplicates - calc length of array with no duplicates(L) and return no-duplicates from 0 to L
 
 ##  List
 

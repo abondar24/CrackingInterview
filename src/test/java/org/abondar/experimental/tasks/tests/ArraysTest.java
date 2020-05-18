@@ -150,4 +150,25 @@ public class ArraysTest {
         Assert.assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
+
+    @Test
+    public void removeDuplicatesTest(){
+        int[] nums = new int[]{1,1,2};
+        int res = arrays.removeDuplicates(nums);
+
+        Assert.assertEquals(2,res);
+        Assert.assertEquals(1,nums[0]);
+        Assert.assertEquals(2,nums[1]);
+
+        nums = new int[]{0,0,1,1,1,2,2,3,3,4};
+        res = arrays.removeDuplicates(nums);
+        Assert.assertEquals(0,nums[0]);
+        Assert.assertEquals(1,nums[1]);
+        Assert.assertEquals(2,nums[2]);
+        Assert.assertEquals(3,nums[3]);
+        Assert.assertEquals(4,nums[4]);
+
+        Assert.assertEquals(5,res);
+
+    }
 }
