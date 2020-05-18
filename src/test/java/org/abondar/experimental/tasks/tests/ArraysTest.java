@@ -171,4 +171,25 @@ public class ArraysTest {
         Assert.assertEquals(5,res);
 
     }
+
+    @Test
+    public void removeValueTest(){
+        int[] nums = new int[]{3,2,2,3};
+        int res = arrays.removeElement(nums,3);
+
+        Assert.assertEquals(2,res);
+        Assert.assertEquals(2,nums[0]);
+        Assert.assertEquals(2,nums[1]);
+
+        nums = new int[]{0,1,2,2,3,0,4,2};
+        res = arrays.removeElement(nums,2);
+
+        Assert.assertEquals(5,res);
+        Assert.assertEquals(0,nums[0]);
+        Assert.assertEquals(1,nums[1]);
+        Assert.assertEquals(3,nums[2]);
+        Assert.assertEquals(0,nums[3]);
+        Assert.assertEquals(4,nums[4]);
+
+    }
 }
