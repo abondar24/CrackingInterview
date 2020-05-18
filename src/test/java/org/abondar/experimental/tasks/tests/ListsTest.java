@@ -1,13 +1,15 @@
 package org.abondar.experimental.tasks.tests;
 
-import org.abondar.experimental.tasks.lists.Node;
 import org.abondar.experimental.tasks.lists.Lists;
+import org.abondar.experimental.tasks.lists.Node;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Optional;
+
 public class ListsTest {
 
-    private Lists ll = new Lists();
+    private final Lists ll = new Lists();
 
     @Test
     public void removeDupsTest() {
@@ -146,7 +148,7 @@ public class ListsTest {
     }
 
     @Test
-    public void  sumListsReverseTest(){
+    public void sumListsReverseTest() {
         //it represents 617
         Node<Integer> n1 = new Node<>(7);
         Node<Integer> n1Next = new Node<>(1);
@@ -169,12 +171,12 @@ public class ListsTest {
         sumNext.setNext(sumNext1);
 
 
-        Node actualSum = ll.sumListsReverse(n1,n2);
-        Assert.assertEquals(sum.toString(),actualSum.toString());
+        Node actualSum = ll.sumListsReverse(n1, n2);
+        Assert.assertEquals(sum.toString(), actualSum.toString());
     }
 
     @Test
-    public void  sumListsStraightTest(){
+    public void sumListsStraightTest() {
         //it represents 617
         Node<Integer> n1 = new Node<>(6);
         Node<Integer> n1Next = new Node<>(1);
@@ -197,13 +199,13 @@ public class ListsTest {
         sumNext.setNext(sumNext1);
 
 
-        Node actualSum = ll.sumListsStraight(n1,n2);
-        Assert.assertEquals(sum.toString(),actualSum.toString());
+        Node actualSum = ll.sumListsStraight(n1, n2);
+        Assert.assertEquals(sum.toString(), actualSum.toString());
     }
 
 
     @Test
-    public void checkPalindromeTestInt(){
+    public void checkPalindromeTestInt() {
         Node<Integer> head = new Node<>(0);
         Node<Integer> next = new Node<>(1);
         Node<Integer> next1 = new Node<>(2);
@@ -220,7 +222,7 @@ public class ListsTest {
     }
 
     @Test
-    public void checkPalindromeTestStr(){
+    public void checkPalindromeTestStr() {
         Node<String> head = new Node<>("a");
         Node<String> next = new Node<>("b");
         Node<String> next1 = new Node<>("b");
@@ -235,7 +237,7 @@ public class ListsTest {
     }
 
     @Test
-    public void checkPalindromeTestNotPalindrome(){
+    public void checkPalindromeTestNotPalindrome() {
         Node<Integer> head = new Node<>(0);
         Node<Integer> next = new Node<>(1);
         Node<Integer> next1 = new Node<>(2);
@@ -253,7 +255,7 @@ public class ListsTest {
 
 
     @Test
-    public void detectLoopTest(){
+    public void detectLoopTest() {
         Node<String> head = new Node<>("a");
         Node<String> next = new Node<>("b");
         Node<String> next1 = new Node<>("c");
@@ -267,12 +269,12 @@ public class ListsTest {
         next3.setNext(next1);
 
         Node loop = ll.detectLoop(head);
-        Assert.assertEquals(next1,loop);
+        Assert.assertEquals(next1, loop);
 
     }
 
     @Test
-    public void detectLoopTestNoLoop(){
+    public void detectLoopTestNoLoop() {
         Node<String> head = new Node<>("a");
         Node<String> next = new Node<>("b");
         Node<String> next1 = new Node<>("c");
@@ -285,13 +287,13 @@ public class ListsTest {
         next1.setNext(next3);
 
         Node loop = ll.detectLoop(head);
-        Assert.assertEquals(null,loop);
+        Assert.assertEquals(null, loop);
 
     }
 
 
     @Test
-    public void checkIntersection(){
+    public void checkIntersection() {
         Node<Integer> head1 = new Node<>(3);
         Node<Integer> next = new Node<>(1);
         Node<Integer> next1 = new Node<>(5);
@@ -305,7 +307,7 @@ public class ListsTest {
 
         Node<Integer> head2 = new Node<>(4);
         Node<Integer> next4 = new Node<>(6);
-        Node<Integer> next5 =  next3;
+        Node<Integer> next5 = next3;
         Node<Integer> next6 = new Node<>(2);
         Node<Integer> next7 = new Node<>(1);
 
@@ -315,12 +317,12 @@ public class ListsTest {
         next6.setNext(next7);
 
 
-        boolean hasIntersection = ll.hasIntersection(head1,head2);
+        boolean hasIntersection = ll.hasIntersection(head1, head2);
         Assert.assertTrue(hasIntersection);
     }
 
     @Test
-    public void checkIntersectionNoInter(){
+    public void checkIntersectionNoInter() {
         Node<Integer> head1 = new Node<>(3);
         Node<Integer> next = new Node<>(1);
         Node<Integer> next1 = new Node<>(5);
@@ -334,7 +336,7 @@ public class ListsTest {
 
         Node<Integer> head2 = new Node<>(4);
         Node<Integer> next4 = new Node<>(6);
-        Node<Integer> next5 =  new Node<>(7);
+        Node<Integer> next5 = new Node<>(7);
         Node<Integer> next6 = new Node<>(2);
         Node<Integer> next7 = new Node<>(1);
 
@@ -344,8 +346,34 @@ public class ListsTest {
         next6.setNext(next7);
 
 
-        boolean hasIntersection = ll.hasIntersection(head1,head2);
+        boolean hasIntersection = ll.hasIntersection(head1, head2);
         Assert.assertFalse(hasIntersection);
     }
 
+    @Test
+    public void mergeListsTest() {
+        Node<Integer> head1 = new Node<>(1);
+        Node<Integer> next = new Node<>(2);
+        Node<Integer> next1 = new Node<>(4);
+
+        head1.setNext(next);
+        next.setNext(next1);
+
+        Node<Integer> head2 = new Node<>(1);
+        Node<Integer> next4 = new Node<>(3);
+        Node<Integer> next5 = new Node<>(4);
+
+        head2.setNext(next4);
+        next4.setNext(next5);
+
+        Node<Integer> merge = ll.mergeLists(head1, head2);
+
+        Assert.assertEquals((Integer) 1,merge.getData());
+        Assert.assertEquals(1,merge.getNext().getData());
+        Assert.assertEquals(2,merge.getNext().getNext().getData());
+        Assert.assertEquals(3,merge.getNext().getNext().getNext().getData());
+        Assert.assertEquals(4,merge.getNext().getNext().getNext().getNext().getData());
+        Assert.assertEquals(4,merge.getNext().getNext().getNext().getNext().getNext().getData());
+
+    }
 }

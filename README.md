@@ -39,7 +39,7 @@ If element [i][j] of matrix is zero - entire row and column must be zero
 ##  List
 
 - removeDups - Remove duplicates from list without using any tmp buffer
-- kToLast - Return  k elements from last element in list
+- kToLast   - Return  k elements from last element in list
 - deleteMiddleNode - Delete any node but not first or last (we don't have access to the first so we don't check for first)
 - sumListsReverse - Each param is a number in reverse : list 7-1-6 is number 617.
 We need to return a list which represents sum of values
@@ -48,7 +48,7 @@ We need to return a list which represents sum of values
 - checkPalindrome - Check if list is a palindrome
 - hasIntersection - Check if two list have an intersection.Intersection is by ref, not by val which means one node in two lists 
 - detectLoop - Check if list has loops and return it.
-
+- mergeLists - merge two sorted linked lists 
 ## StacksQueues
 
 Check comments in classes
