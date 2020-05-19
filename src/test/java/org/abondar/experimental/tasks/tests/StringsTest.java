@@ -112,6 +112,14 @@ public class StringsTest {
         str = "aacbaa";
         res = strs.isStringPalindrome(str);
         Assert.assertFalse(res);
+
+        str = "A man, a plan, a canal: Panama";
+        res = strs.isStringPalindrome(str);
+        Assert.assertTrue(res);
+
+        str = "race a car";
+        res = strs.isStringPalindrome(str);
+        Assert.assertFalse(res);
     }
 
 

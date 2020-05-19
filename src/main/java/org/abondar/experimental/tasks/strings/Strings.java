@@ -184,6 +184,10 @@ public class Strings {
     }
 
     public boolean isStringPalindrome(String str) {
+        str = str
+                .replaceAll("[^A-Za-z0-9]","")
+                .toLowerCase();
+
         String reverse = reverseString(str);
 
         return reverse.equals(str);
