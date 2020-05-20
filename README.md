@@ -53,6 +53,7 @@ We need to return a list which represents sum of values
 - hasIntersection - Check if two list have an intersection.Intersection is by ref, not by val which means one node in two lists 
 - detectLoop - Check if list has loops and return it.
 - mergeLists - merge two sorted linked lists 
+
 ## StacksQueues
 
 Check comments in classes
@@ -77,6 +78,7 @@ Check comments in classes
 - flip bit to win - Find the longest sequence of 1 ny flipping only one 0  to 1
 - next number - Find the next biggest and smallest numbers with the same number of 1 bits
 - draw line - Draw a line on the screen of width divisible by 8
+- power of two - Check if a given number is power of 2
 
 ## Dynamic programming
 

@@ -252,5 +252,18 @@ public class BitOps {
 
     }
 
+    public boolean isPowerOfTwo(int n) {
+        if (n<1){
+            return false;
+        }
+
+        if (n==1){
+            return true;
+        }
+
+        String bin = Integer.toBinaryString(n);
+
+        return bin.charAt(0)=='1' && bin.substring(1).matches("^[0]+$");
+    }
 
 }

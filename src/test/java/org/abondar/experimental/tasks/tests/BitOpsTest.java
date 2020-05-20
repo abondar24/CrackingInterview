@@ -111,5 +111,20 @@ public class BitOpsTest {
         System.out.println();
     }
 
+    @Test
+    public void isPowerOfTwoTest(){
+        boolean res = bitOps.isPowerOfTwo(1);
+        assertTrue(res);
+
+        res = bitOps.isPowerOfTwo(16);
+        assertTrue(res);
+
+        res = bitOps.isPowerOfTwo(218);
+        assertFalse(res);
+
+        res = bitOps.isPowerOfTwo(4096);
+        assertTrue(res);
+    }
+
 
 }
