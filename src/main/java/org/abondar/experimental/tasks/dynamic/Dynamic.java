@@ -4,7 +4,7 @@ import org.abondar.experimental.tasks.strings.Strings;
 
 import java.util.*;
 
-public class DynaicUtil {
+public class Dynamic {
 
     private int GRID_SIZE = 8;
 
@@ -358,4 +358,37 @@ public class DynaicUtil {
 
         return memo[n];
     }
+
+    public String countAndSay(int n) {
+        if (n<1 || n>30){
+            return "";
+        }
+
+        if (n==1){
+            return "1";
+        }
+
+        String prev = countAndSay(n-1);
+        StringBuilder res = new StringBuilder();
+        char head = prev.charAt(0);
+        int count = 0;
+
+        for (int i=0;i<prev.length();i++){
+            char cur = prev.charAt(i);
+            if (head==cur){
+                count++;
+            } else {
+                res.append(count);
+                res.append(head);
+                count=1;
+                head=cur;
+            }
+        }
+
+        res.append(count);
+        res.append(head);
+
+        return res.toString();
+    }
+
 }
