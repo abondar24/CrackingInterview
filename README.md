@@ -40,6 +40,8 @@ If element [i][j] of matrix is zero - entire row and column must be zero
 - removeDuplicates - calc length of array(L) with no duplicates and return no-duplicates from 0 to L
 - removeValue - calc length of array(L) with no value(V) and return array with no value from 0 to L
 - searchIndex - find elem index or position to insert
+
+
 ##  List
 
 - removeDups - Remove duplicates from list without using any tmp buffer
@@ -79,7 +81,7 @@ Check comments in classes
 - next number - Find the next biggest and smallest numbers with the same number of 1 bits
 - draw line - Draw a line on the screen of width divisible by 8
 - power of two - Check if a given number is power of 2
-
+- hamming weight - return the number of '1' bits in unsigned int.
 ## Dynamic programming
 
 - count ways - child runs staircase with n steps with hops of 1 ,2 or 3 steps. How many possible ways can he run?

@@ -126,5 +126,16 @@ public class BitOpsTest {
         assertTrue(res);
     }
 
+    @Test
+    public void hammingWeightTest(){
+        int res = bitOps.hammingWeight(11);
+        assertEquals(3,res);
+
+        res = bitOps.hammingWeight(128);
+        assertEquals(1,res);
+
+        res = bitOps.hammingWeight(-3);
+        assertEquals(31,res);
+    }
 
 }
