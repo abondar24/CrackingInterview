@@ -30,8 +30,10 @@ public class SearchTest {
     @Test
     public void binSearchIndexTest(){
         int[] data = new int[]{1,2,5,7,12,34};
-
         assertEquals(2,su.binarySearchIndex(data,5));
+
+        data = new int[]{5};
+        assertEquals(0,su.binarySearchIndex(data,5));
     }
 
     @Test

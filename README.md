@@ -82,6 +82,7 @@ Check comments in classes
 - draw line - Draw a line on the screen of width divisible by 8
 - power of two - Check if a given number is power of 2
 - hamming weight - return the number of '1' bits in unsigned int.
+
 ## Dynamic programming
 
 - count ways - child runs staircase with n steps with hops of 1 ,2 or 3 steps. How many possible ways can he run?
