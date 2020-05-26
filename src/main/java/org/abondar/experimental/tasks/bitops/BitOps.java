@@ -205,7 +205,6 @@ public class BitOps {
     }
 
 
-
     private int getPrev(int n) {
         int tmp = n;
 
@@ -253,56 +252,67 @@ public class BitOps {
     }
 
     public boolean isPowerOfTwo(int n) {
-        if (n<1){
+        if (n < 1) {
             return false;
         }
 
-        if (n==1){
+        if (n == 1) {
             return true;
         }
 
         String bin = Integer.toBinaryString(n);
 
-        return bin.charAt(0)=='1' && bin.substring(1).matches("^[0]+$");
+        return bin.charAt(0) == '1' && bin.substring(1).matches("^[0]+$");
     }
 
-    public int hammingWeight(int n){
+    public int hammingWeight(int n) {
 
-        int bits =0;
+        int bits = 0;
         int mask = 1;
 
-        for (int i=0;i<32;i++){
-             if ((n&mask)!=0){
-                 bits++;
-             }
-             mask <<=1;
+        for (int i = 0; i < 32; i++) {
+            if ((n & mask) != 0) {
+                bits++;
+            }
+            mask <<= 1;
         }
         return bits;
     }
 
-    public String addBinary(String a,String b){
+    public String addBinary(String a, String b) {
         StringBuilder res = new StringBuilder();
 
         int carry = 0;
         int aLen = a.length();
         int bLen = b.length();
 
-        int maxLen = Math.max(aLen,bLen);
-        for (int i=0;i<maxLen;i++){
+        int maxLen = Math.max(aLen, bLen);
+        for (int i = 0; i < maxLen; i++) {
 
-            int p = i<aLen ? a.charAt(aLen - 1 - i) - '0':0;
-            int q = i<bLen ? b.charAt(bLen - 1 - i) - '0' : 0;
+            int p = i < aLen ? a.charAt(aLen - 1 - i) - '0' : 0;
+            int q = i < bLen ? b.charAt(bLen - 1 - i) - '0' : 0;
             int tmp = p + q + carry;
 
-            carry = tmp /2;
-            res.insert(0,tmp % 2);
+            carry = tmp / 2;
+            res.insert(0, tmp % 2);
         }
 
-        if (carry!=0){
-            res.insert(0,"1");
+        if (carry != 0) {
+            res.insert(0, "1");
         }
 
 
         return res.toString();
+    }
+
+    public int getSum(int a, int b) {
+        while (b != 0) {
+            int carry = a & b;
+            a = a ^ b;
+
+            b = carry << 1;
+
+        }
+        return a;
     }
 }

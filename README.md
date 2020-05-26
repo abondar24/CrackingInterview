@@ -31,6 +31,7 @@ All given inputs are in lowercase letters a-z.
 - reverse integer - Given a 32-bit signed integer, reverse digits of an integer.
 - isIntegerPalindrome - Is integer a palindrome
 - romanToInt - Transform roman number to decimal integer
+
 ## Arrays
 
 - twoSum - Given an array of integers, return indices of the two numbers such that they add up to a specific target.
@@ -83,6 +84,7 @@ Check comments in classes
 - power of two - Check if a given number is power of 2
 - hamming weight - return the number of '1' bits in unsigned int.
 - add binary - sum two binary nums
+- getSum - sum two ints without using +- operators
 
 ## Dynamic programming
 

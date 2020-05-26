@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
 
 public class BitOpsTest {
 
-    private BitOps bitOps = new BitOps();
+    private final BitOps bitOps = new BitOps();
 
     @Test
     public void insertTest() {
@@ -112,7 +112,7 @@ public class BitOpsTest {
     }
 
     @Test
-    public void isPowerOfTwoTest(){
+    public void isPowerOfTwoTest() {
         boolean res = bitOps.isPowerOfTwo(1);
         assertTrue(res);
 
@@ -127,29 +127,37 @@ public class BitOpsTest {
     }
 
     @Test
-    public void hammingWeightTest(){
+    public void hammingWeightTest() {
         int res = bitOps.hammingWeight(11);
-        assertEquals(3,res);
+        assertEquals(3, res);
 
         res = bitOps.hammingWeight(128);
-        assertEquals(1,res);
+        assertEquals(1, res);
 
         res = bitOps.hammingWeight(-3);
-        assertEquals(31,res);
+        assertEquals(31, res);
     }
 
 
     @Test
-    public void addBinaryTest(){
+    public void addBinaryTest() {
         String a = "11";
         String b = "1";
-        String res = bitOps.addBinary(a,b);
-        assertEquals("100",res);
+        String res = bitOps.addBinary(a, b);
+        assertEquals("100", res);
 
         a = "1010";
         b = "1011";
-        res = bitOps.addBinary(a,b);
-        assertEquals("10101",res);
+        res = bitOps.addBinary(a, b);
+        assertEquals("10101", res);
     }
 
+    @Test
+    public void getSumTest() {
+        int res = bitOps.getSum(1, 2);
+        assertEquals(3, res);
+
+        res = bitOps.getSum(-2, 3);
+        assertEquals(1, res);
+    }
 }
