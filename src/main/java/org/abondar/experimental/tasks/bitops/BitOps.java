@@ -279,4 +279,30 @@ public class BitOps {
         }
         return bits;
     }
+
+    public String addBinary(String a,String b){
+        StringBuilder res = new StringBuilder();
+
+        int carry = 0;
+        int aLen = a.length();
+        int bLen = b.length();
+
+        int maxLen = Math.max(aLen,bLen);
+        for (int i=0;i<maxLen;i++){
+
+            int p = i<aLen ? a.charAt(aLen - 1 - i) - '0':0;
+            int q = i<bLen ? b.charAt(bLen - 1 - i) - '0' : 0;
+            int tmp = p + q + carry;
+
+            carry = tmp /2;
+            res.insert(0,tmp % 2);
+        }
+
+        if (carry!=0){
+            res.insert(0,"1");
+        }
+
+
+        return res.toString();
+    }
 }

@@ -82,6 +82,7 @@ Check comments in classes
 - draw line - Draw a line on the screen of width divisible by 8
 - power of two - Check if a given number is power of 2
 - hamming weight - return the number of '1' bits in unsigned int.
+- add binary - sum two binary nums
 
 ## Dynamic programming
 

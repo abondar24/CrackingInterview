@@ -138,4 +138,18 @@ public class BitOpsTest {
         assertEquals(31,res);
     }
 
+
+    @Test
+    public void addBinaryTest(){
+        String a = "11";
+        String b = "1";
+        String res = bitOps.addBinary(a,b);
+        assertEquals("100",res);
+
+        a = "1010";
+        b = "1011";
+        res = bitOps.addBinary(a,b);
+        assertEquals("10101",res);
+    }
+
 }
