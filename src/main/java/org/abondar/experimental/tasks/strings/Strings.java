@@ -185,7 +185,7 @@ public class Strings {
 
     public boolean isStringPalindrome(String str) {
         str = str
-                .replaceAll("[^A-Za-z0-9]","")
+                .replaceAll("[^A-Za-z0-9]", "")
                 .toLowerCase();
 
         String reverse = reverseString(str);
@@ -222,9 +222,9 @@ public class Strings {
 
     public boolean validParentheses(String str) {
         Map<Character, Character> parMap = new HashMap<>();
-        parMap.put( '}','{');
-        parMap.put(']','[' );
-        parMap.put(')','(');
+        parMap.put('}', '{');
+        parMap.put(']', '[');
+        parMap.put(')', '(');
 
         Stack<Character> pars = new Stack<>();
 
@@ -243,8 +243,68 @@ public class Strings {
     }
 
     public int strStr(String haystack, String needle) {
-           return haystack.indexOf(needle);
+        return haystack.indexOf(needle);
     }
 
+
+    public int stringLen(String str) {
+        int count = 0;
+
+        char[] strc = str.toCharArray();
+
+        String mult;
+        int startBracket=0;
+        int endBracket=0;
+        int multStart=-1;
+        for (int i = 0; i < strc.length; i++) {
+            if (strc[i] == '[') {
+
+                startBracket = i;
+                endBracket = findEndBracketPos(str.toCharArray(),startBracket);
+                String substr = str.substring(startBracket+1, endBracket);
+                mult = str.substring(multStart,startBracket);
+                if (!mult.isEmpty()) {
+                    if (substr.contains("[") && substr.contains("]")) {
+                        count += Integer.parseInt(mult) * stringLen(substr);
+                        if (endBracket==strc.length-1){
+                            break;
+                        }
+                    } else {
+                        count += countInside(substr, Integer.parseInt(mult));
+                        multStart=-1;
+                    }
+                }
+            }
+
+            if (Character.isDigit(strc[i])) {
+                if (multStart==-1){
+                    multStart = i;
+                }
+
+            } else if (startBracket==0 || i>endBracket) {
+                count++;
+            }
+        }
+        return count;
+}
+
+    private int findEndBracketPos(char[] str, int index) {
+        int closePos = index;
+        int counter = 1;
+        while (counter > 0) {
+            char c = str[++closePos];
+            if (c == '[') {
+                counter++;
+            }
+            else if (c == ']') {
+                counter--;
+            }
+        }
+        return closePos;
+    }
+
+    private int countInside(String str, int mult) {
+        return mult * str.length();
+    }
 
 }

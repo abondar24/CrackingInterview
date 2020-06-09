@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class StringsTest {
 
-    private Strings strs = new Strings();
+    private final Strings strs = new Strings();
 
     @Test
     public void inUniqueTest() {
@@ -124,20 +124,20 @@ public class StringsTest {
 
 
     @Test
-    public void longestCommonPrefixTest(){
-       String [] arr = new String[]{"flower","flow","flight"};
+    public void longestCommonPrefixTest() {
+        String[] arr = new String[]{"flower", "flow", "flight"};
 
-       String res = strs.longestCommonPrefix(arr);
-       Assert.assertEquals("fl",res);
+        String res = strs.longestCommonPrefix(arr);
+        Assert.assertEquals("fl", res);
 
-        arr = new String[]{"dog","racecar","car"};
+        arr = new String[]{"dog", "racecar", "car"};
         res = strs.longestCommonPrefix(arr);
 
-        Assert.assertEquals("",res);
+        Assert.assertEquals("", res);
     }
 
     @Test
-    public void validParentheses(){
+    public void validParentheses() {
         String str = "()";
         boolean res = strs.validParentheses(str);
         Assert.assertTrue(res);
@@ -180,8 +180,23 @@ public class StringsTest {
     }
 
     @Test
-    public void strStrTest(){
-        Assert.assertEquals(2,strs.strStr("hello","ll"));
-        Assert.assertEquals(-1,strs.strStr("aaaaa","bba"));
+    public void strStrTest() {
+        Assert.assertEquals(2, strs.strStr("hello", "ll"));
+        Assert.assertEquals(-1, strs.strStr("aaaaa", "bba"));
+    }
+
+    @Test
+    public void strLenTest() {
+        int res = strs.stringLen("10[]");
+        Assert.assertEquals(0, res);
+
+        res = strs.stringLen("a5[ab]bc");
+        Assert.assertEquals(13, res);
+
+        res = strs.stringLen("2[a]b3[c]");
+        Assert.assertEquals(6,res);
+
+        res = strs.stringLen("3[2[a]b3[c]]");
+        Assert.assertEquals(18,res);
     }
 }

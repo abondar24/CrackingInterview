@@ -25,6 +25,7 @@ All examples are ran in unit tests.
 All given inputs are in lowercase letters a-z.
 - validParentheses - Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 - strStr - Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+- string len - find length of string in format a5[ab] where 5 is number of repeats of ab
 
 ## Ints
 
