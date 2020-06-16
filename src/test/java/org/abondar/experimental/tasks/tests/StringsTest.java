@@ -194,9 +194,25 @@ public class StringsTest {
         Assert.assertEquals(13, res);
 
         res = strs.stringLen("2[a]b3[c]");
-        Assert.assertEquals(6,res);
+        Assert.assertEquals(6, res);
 
         res = strs.stringLen("3[2[a]b3[c]]");
-        Assert.assertEquals(18,res);
+        Assert.assertEquals(18, res);
+    }
+
+    @Test
+    public void strLen1Test() {
+        int res = strs.stringLen1("10[]");
+        Assert.assertEquals(0, res);
+
+        res = strs.stringLen1("a5[ab]bc");
+        Assert.assertEquals(13, res);
+
+        res = strs.stringLen1("2[a]b3[c]");
+        Assert.assertEquals(6, res);
+
+        res = strs.stringLen1("3[2[a]b3[c]]");
+        Assert.assertEquals(18, res);
+
     }
 }

@@ -253,40 +253,40 @@ public class Strings {
         char[] strc = str.toCharArray();
 
         String mult;
-        int startBracket=0;
-        int endBracket=0;
-        int multStart=-1;
+        int startBracket = 0;
+        int endBracket = 0;
+        int multStart = -1;
         for (int i = 0; i < strc.length; i++) {
             if (strc[i] == '[') {
 
                 startBracket = i;
-                endBracket = findEndBracketPos(str.toCharArray(),startBracket);
-                String substr = str.substring(startBracket+1, endBracket);
-                mult = str.substring(multStart,startBracket);
+                endBracket = findEndBracketPos(str.toCharArray(), startBracket);
+                String substr = str.substring(startBracket + 1, endBracket);
+                mult = str.substring(multStart, startBracket);
                 if (!mult.isEmpty()) {
                     if (substr.contains("[") && substr.contains("]")) {
                         count += Integer.parseInt(mult) * stringLen(substr);
-                        if (endBracket==strc.length-1){
+                        if (endBracket == strc.length - 1) {
                             break;
                         }
                     } else {
                         count += countInside(substr, Integer.parseInt(mult));
-                        multStart=-1;
+                        multStart = -1;
                     }
                 }
             }
 
             if (Character.isDigit(strc[i])) {
-                if (multStart==-1){
+                if (multStart == -1) {
                     multStart = i;
                 }
 
-            } else if (startBracket==0 || i>endBracket) {
+            } else if (startBracket == 0 || i > endBracket) {
                 count++;
             }
         }
         return count;
-}
+    }
 
     private int findEndBracketPos(char[] str, int index) {
         int closePos = index;
@@ -295,8 +295,7 @@ public class Strings {
             char c = str[++closePos];
             if (c == '[') {
                 counter++;
-            }
-            else if (c == ']') {
+            } else if (c == ']') {
                 counter--;
             }
         }
@@ -305,6 +304,68 @@ public class Strings {
 
     private int countInside(String str, int mult) {
         return mult * str.length();
+    }
+
+    public int stringLen1(String str) {
+        int count = 0;
+        char[] strc = str.toCharArray();
+
+        String mult = "0";
+        int multStart = -1;
+
+        Stack<MultCLass> multStack = new Stack<>();
+        int intCount = -1;
+
+        for (int i = 0; i < strc.length; i++) {
+            MultCLass mcl = new MultCLass();
+            if (strc[i] == '[') {
+                intCount = 0;
+                mult = str.substring(multStart, i);
+
+                multStart = -1;
+                mcl.mult = Integer.parseInt(mult);
+                mcl.count = intCount;
+                multStack.push(mcl);
+
+            }
+
+            if (strc[i] == ']') {
+                mcl = multStack.pop();
+                if (mcl.count==0){
+                    count*=mcl.mult;
+                } else {
+                    count += mcl.count * mcl.mult;
+                }
+
+                intCount = -1;
+            }
+
+            if (Character.isDigit(strc[i])) {
+                if (multStart == -1) {
+                    multStart = i;
+                }
+
+            } else if (strc[i] != '[' && strc[i] != ']') {
+
+                if (intCount != -1) {
+                    intCount++;
+                    mcl.mult = Integer.parseInt(mult);
+                    mcl.count = intCount;
+                    multStack.push(mcl);
+                } else {
+                    count++;
+                }
+            }
+
+        }
+
+
+        return count;
+    }
+
+    static class MultCLass {
+        private int mult;
+        private int count;
     }
 
 }

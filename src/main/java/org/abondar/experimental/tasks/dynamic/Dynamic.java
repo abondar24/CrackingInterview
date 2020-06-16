@@ -6,8 +6,6 @@ import java.util.*;
 
 public class Dynamic {
 
-    private int GRID_SIZE = 8;
-
     public int countWays(int n) {
         if (n < 0) return 0;
 
