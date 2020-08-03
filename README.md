@@ -26,6 +26,9 @@ All given inputs are in lowercase letters a-z.
 - validParentheses - Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 - strStr - Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
 - string len - find length of string in format a5[ab] where 5 is number of repeats of ab
+- filter strings - filter collection of strings (remove blank,trim leading/trailing white spaces,
+convert to upperCase,sort by len(ASC) and return distinct)
+- card war - check /screens/cardwar.png for description 
 
 ## Ints
 
@@ -42,7 +45,7 @@ If element [i][j] of matrix is zero - entire row and column must be zero
 - removeDuplicates - calc length of array(L) with no duplicates and return no-duplicates from 0 to L
 - removeValue - calc length of array(L) with no value(V) and return array with no value from 0 to L
 - searchIndex - find elem index or position to insert
-
+- fairIndex - check /screens/fair_index.png for description 
 
 ##  List
 
@@ -58,6 +61,10 @@ We need to return a list which represents sum of values
 - detectLoop - Check if list has loops and return it.
 - mergeLists - merge two sorted linked lists 
 
+## Multithread
+- pipeline - A container which serves as a pipeline for a single element. The pipeline makes sure that no elements get lost/
+- instantiation counter - count a number of class instances(including the ones in another threads) 
+
 ## StacksQueues
 
 Check comments in classes
@@ -72,6 +79,7 @@ Check comments in classes
 - buildOrder - By given list of dependencies build a list of build order
 - findCommonAncestor - Find first common ancestor of two given nodes without storing additional nodes in ds.
 - bstSequences - Find all possible arrays of nodes in BST with distinct elems
+- treeHeight - find a height of a tree
 
 ## Bit opertations
 

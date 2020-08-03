@@ -1,8 +1,9 @@
-package org.abondar.experimental.tasks.tests;
+package org.abondar.experimental.tasks;
 
 import org.abondar.experimental.tasks.treesgraphs.BinTreeNode;
 import org.abondar.experimental.tasks.treesgraphs.GraphNode;
 import org.abondar.experimental.tasks.treesgraphs.TreesGraphs;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.*;
@@ -309,5 +310,27 @@ public class TreeGraphTest {
         List<List<BinTreeNode>> res = tg.bstSequences(root);
         assertEquals(2,res.size());
         assertEquals(root,res.get(0).get(0));
+    }
+
+    @Test
+    public void treeHeightTest(){
+        BinTreeNode leaf1 = new BinTreeNode("l1");
+        leaf1.setRight(null);
+        leaf1.setLeft(null);
+
+        BinTreeNode leaf2 = new BinTreeNode("l2");
+        leaf2.setRight(null);
+        leaf2.setLeft(null);
+
+
+        BinTreeNode node = new BinTreeNode("n1");
+        node.setRight(null);
+        node.setLeft(leaf1);
+
+        BinTreeNode root = new BinTreeNode("root");
+        root.setLeft(node);
+        root.setRight(leaf2);
+
+        Assert.assertEquals(2,root.height());
     }
 }

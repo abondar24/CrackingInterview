@@ -1,4 +1,4 @@
-package org.abondar.experimental.algorithms.tests;
+package org.abondar.experimental.algorithms;
 
 import org.abondar.experimental.algorithms.SearchUtil;
 import org.junit.Test;

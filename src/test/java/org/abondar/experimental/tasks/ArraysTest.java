@@ -1,4 +1,4 @@
-package org.abondar.experimental.tasks.tests;
+package org.abondar.experimental.tasks;
 
 import org.abondar.experimental.tasks.arrays.Arrays;
 import org.junit.Assert;
@@ -222,6 +222,34 @@ public class ArraysTest {
 
         nums = new int[]{3,4,8,9,10};
         res = arrays.searchInsert(nums,8);
+        Assert.assertEquals(2,res);
+    }
+
+    @Test
+    public void fairIndexTest(){
+        int[] a = new int[]{4,-1,0,3};
+        int[] b = new int[]{-2,5,0,3};
+        int res = arrays.fairIndex(a,b);
+        Assert.assertEquals(2,res);
+
+        a = new int[]{2,-2,-3,3};
+        b = new int[]{0,0,4,-4};
+        res = arrays.fairIndex(a,b);
+        Assert.assertEquals(1,res);
+
+        a = new int[]{4,-1,0,3};
+        b = new int[]{-2,6,0,4};
+        res = arrays.fairIndex(a,b);
+        Assert.assertEquals(0,res);
+
+        a = new int[]{3,2,6};
+        b = new int[]{4,1,6};
+        res = arrays.fairIndex(a,b);
+        Assert.assertEquals(0,res);
+
+        a = new int[]{1,4,2,-2,5};
+        b = new int[]{7,-2,-2,2,5};
+        res = arrays.fairIndex(a,b);
         Assert.assertEquals(2,res);
     }
 }

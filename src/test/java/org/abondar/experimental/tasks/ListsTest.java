@@ -1,4 +1,4 @@
-package org.abondar.experimental.tasks.tests;
+package org.abondar.experimental.tasks;
 
 import org.abondar.experimental.tasks.lists.Lists;
 import org.abondar.experimental.tasks.lists.Node;

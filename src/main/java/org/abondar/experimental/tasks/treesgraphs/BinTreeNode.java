@@ -11,6 +11,27 @@ public class BinTreeNode {
         this.name = name;
     }
 
+    public int height() {
+        return height(this);
+    }
+
+    private int height(BinTreeNode node){
+        if (node == null)
+            return -1;
+        else
+        {
+            /* compute the depth of each subtree */
+            int lHeight = height(node.getLeft());
+            int rHeight = height(node.getRight());
+
+            /* use the larger one */
+            if (lHeight > rHeight)
+                return (lHeight + 1);
+            else
+                return (rHeight + 1);
+        }
+    }
+
 
     public String getName() {
         return name;

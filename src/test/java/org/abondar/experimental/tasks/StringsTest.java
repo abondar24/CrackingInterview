@@ -1,8 +1,10 @@
-package org.abondar.experimental.tasks.tests;
+package org.abondar.experimental.tasks;
 
 import org.abondar.experimental.tasks.strings.Strings;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.List;
 
 public class StringsTest {
 
@@ -214,5 +216,32 @@ public class StringsTest {
         res = strs.stringLen1("3[2[a]b3[c]]");
         Assert.assertEquals(18, res);
 
+    }
+
+    @Test
+    public void filterStringsTest() {
+        List<String> incoming = List.of("abc", "", "a", " fdf ", "aaaa", "bb", "aaaa", "a");
+        var res = strs.filterStrings(incoming);
+
+
+        Assert.assertEquals(5, res.size());
+        Assert.assertEquals("A", res.get(0));
+        Assert.assertEquals("FDF", res.get(3));
+    }
+
+
+    @Test
+    public void cardWarTest() {
+        String a = "A586QK";
+        String b = "JJ653K";
+
+        int res = strs.cardWar(a, b);
+        Assert.assertEquals(4, res);
+
+        a = "23A84Q";
+        b = "K2Q25J";
+
+        res = strs.cardWar(a, b);
+        Assert.assertEquals(4, res);
     }
 }

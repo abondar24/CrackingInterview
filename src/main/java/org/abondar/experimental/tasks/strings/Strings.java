@@ -2,9 +2,14 @@ package org.abondar.experimental.tasks.strings;
 
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Stack;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 
 public class Strings {
@@ -368,4 +373,71 @@ public class Strings {
         private int count;
     }
 
+
+    public List<String> filterStrings(Collection<String> strings) {
+
+        return strings.stream()
+                .filter(s -> s != null && !s.isEmpty())
+                .map(String::trim)
+                .map(String::toUpperCase)
+                .distinct()
+                .sorted(Comparator.comparing(String::length))
+                .collect(Collectors.toList());
+    }
+
+
+
+    public int cardWar(String A, String B) {
+        if (A.length() != B.length()) {
+            return -1;
+        }
+        int count = 0;
+        for (int x = 0; x < A.length(); x++) {
+            char ac = A.charAt(x);
+            char bc = B.charAt(x);
+
+            count += getRank(ac, bc);
+        }
+        return count;
+    }
+
+    private  int getRank(Character a, Character b) {
+
+        int count = 0;
+        Map<Integer, Character> rank = new HashMap<>();
+        rank.put(2, '2');
+        rank.put(3, '3');
+        rank.put(4, '4');
+        rank.put(5, '5');
+        rank.put(7, '6');
+        rank.put(6, '7');
+        rank.put(8, '8');
+        rank.put(9, '9');
+        rank.put(10, 'T');
+        rank.put(11, 'J');
+        rank.put(12, 'Q');
+        rank.put(13, 'K');
+        rank.put(14, 'A');
+
+        AtomicInteger ap = new AtomicInteger();
+        AtomicInteger bp = new AtomicInteger();
+
+
+        rank.forEach((k,v)->{
+            if (v==a){
+                ap.set(k);
+            }
+
+            if (v==b){
+                bp.set(k);
+            }
+
+        });
+
+
+        if (ap.get() > bp.get()) {
+            count++;
+        }
+        return count;
+    }
 }

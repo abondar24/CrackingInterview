@@ -159,4 +159,30 @@ public class Arrays {
 
         return 0;
     }
+
+    public int fairIndex(int[] A, int[] B) {
+
+        if (A.length!=B.length){
+            return 0;
+        }
+
+        int length = A.length;
+
+        int[] incSumA = new int[length + 1];
+        int[] incSumB = new int[length + 1];
+
+        for (int index = 1; index <= length; index++) {
+            incSumA[index] = incSumA[index - 1] + A[index - 1];
+            incSumB[index] = incSumB[index - 1] + B[index - 1];
+        }
+        int res = 0;
+        for (int index = 1; index < length; index++) {
+            // all possible indexes check if sum is same for all four sub arrays
+            if (incSumA[index] == incSumB[index] &&
+                    incSumA[index] == incSumA[length] - incSumA[index] &&
+                    incSumB[index] == incSumB[length] - incSumB[index])
+                res++;
+        }
+        return res;
+    }
 }
