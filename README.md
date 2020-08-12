@@ -29,12 +29,16 @@ All given inputs are in lowercase letters a-z.
 - filter strings - filter collection of strings (remove blank,trim leading/trailing white spaces,
 convert to upperCase,sort by len(ASC) and return distinct)
 - card war - check /screens/cardwar.png for description 
+- string chain - check /screens/string.chains for description
+
 
 ## Ints
 
 - reverse integer - Given a 32-bit signed integer, reverse digits of an integer.
 - isIntegerPalindrome - Is integer a palindrome
 - romanToInt - Transform roman number to decimal integer
+- diskSegment - check /screens/disk_space_segments.png for description
+- maxOrders - check /sreens/max_orders.png for description
 
 ## Arrays
 
@@ -48,6 +52,7 @@ If element [i][j] of matrix is zero - entire row and column must be zero
 - searchIndex - find elem index or position to insert
 - fairIndex - check /screens/fair_index.png for description 
 - duplicatesStat - check /screens/duplicates_stat.png for description
+- largestSubGrid - check /screens/largerst_sub_grid1.png and largerst_sub_grid2.png for description
 
 ##  List
 

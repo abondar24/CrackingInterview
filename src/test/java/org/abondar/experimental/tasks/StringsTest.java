@@ -4,6 +4,8 @@ import org.abondar.experimental.tasks.strings.Strings;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StringsTest {
@@ -243,5 +245,14 @@ public class StringsTest {
 
         res = strs.cardWar(a, b);
         Assert.assertEquals(4, res);
+    }
+
+    @Test
+    public void stringChainTest(){
+        List<String> strList = Arrays.asList("a","b","ba","bca","bda","bdca");
+
+        int res = strs.stringChains(strList);
+        Assert.assertEquals(4, res);
+
     }
 }

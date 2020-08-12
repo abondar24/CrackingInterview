@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -439,5 +440,48 @@ public class Strings {
             count++;
         }
         return count;
+    }
+
+    public int stringChains(List<String> words){
+        Map<String,Integer> chains = new HashMap<>();
+        AtomicInteger res = new AtomicInteger();
+        res.set(0);
+
+        Set<String> dict = words.stream().collect(Collectors.toSet());
+
+
+        words.forEach(w->{
+            res.set(dfs(w,dict,chains));
+        });
+
+
+        return res.get();
+    }
+
+    private  int dfs(String word,Set<String> dict, Map<String,Integer> chains){
+        int maxChain = 0;
+        StringBuilder sb = new StringBuilder(word);
+
+        if (word.length()==0 || !dict.contains(word)){
+            return 0;
+        }
+
+        if (chains.containsKey(word)){
+            return chains.get(word);
+        }
+
+        for (int i = 0; i<word.length();i++){
+            char delete = sb.charAt(i);
+            sb.deleteCharAt(i);
+
+            String predcessor = sb.toString();
+            maxChain = Math.max(maxChain, 1 + dfs(predcessor, dict, chains));
+
+            sb.insert(i, delete);
+        }
+
+        chains.put(word, maxChain);
+
+        return maxChain;
     }
 }
