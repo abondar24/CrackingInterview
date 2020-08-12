@@ -1,7 +1,9 @@
 package org.abondar.experimental.tasks.ints;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -70,5 +72,43 @@ public class Ints {
         return res;
     }
 
+    public int diskSegment(int segLen, List<Integer> space) {
+        List<List<Integer>> segmentSpaces = new ArrayList<>();
 
+        if (space.size()<=segLen){
+            segmentSpaces.add(space);
+        } else {
+            for (int i=0;i<space.size()-segLen+1;i++){
+                List<Integer>  segment = space.subList(i, i+segLen-1);
+
+                if (segLen==1){
+                    segment = space.subList(i, i+segLen);
+                }
+                segmentSpaces.add(segment);
+            }
+        }
+
+        List<Integer> minSpaces = new ArrayList<>();
+
+
+        segmentSpaces.forEach(ss->{
+            int minSpace = ss.stream()
+                    .mapToInt(s->s)
+                    .min()
+                    .getAsInt();
+            minSpaces.add(minSpace);
+        });
+
+
+        return minSpaces.stream()
+                .mapToInt(s->s)
+                .max()
+                .getAsInt();
+    }
+
+    public  int maxOrders(List<Integer> start, List<Integer> duration, List<Integer> volume) {
+        // Write your code here
+
+        return 0;
+    }
 }
