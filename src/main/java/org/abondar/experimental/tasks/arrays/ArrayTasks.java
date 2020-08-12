@@ -2,10 +2,16 @@ package org.abondar.experimental.tasks.arrays;
 
 import org.abondar.experimental.algorithms.SearchUtil;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
-public class Arrays {
+public class ArrayTasks {
 
     private final SearchUtil su = new SearchUtil();
 
@@ -103,7 +109,7 @@ public class Arrays {
     }
 
 
-    public int removeDuplicates(int[] nums) {
+    public int calcUniqueLen(int[] nums) {
         int len = 0;
 
         if (nums.length > 0) {
@@ -116,6 +122,20 @@ public class Arrays {
         }
 
         return len + 1;
+    }
+
+    public int[] cleanDuplicates(int[] nums) {
+        int len = nums.length;
+
+        Set<Integer> unique = new LinkedHashSet<>();
+        for (int num : nums) {
+            if (!unique.contains(num)) {
+                unique.add(num);
+            }
+        }
+
+
+        return toIntArray(unique);
     }
 
     public int removeElement(int[] nums, int val) {
@@ -135,15 +155,15 @@ public class Arrays {
     }
 
     public int searchInsert(int[] nums, int target) {
-        int res = su.sequentialSearchIndex(nums,target);
-        if (res==-1){
-            res = findPos(nums,target);
+        int res = su.sequentialSearchIndex(nums, target);
+        if (res == -1) {
+            res = findPos(nums, target);
         }
         return res;
     }
 
     private int findPos(int[] nums, int target) {
-        if (target <nums[0]) {
+        if (target < nums[0]) {
             return 0;
         }
 
@@ -162,7 +182,7 @@ public class Arrays {
 
     public int fairIndex(int[] A, int[] B) {
 
-        if (A.length!=B.length){
+        if (A.length != B.length) {
             return 0;
         }
 
@@ -184,5 +204,57 @@ public class Arrays {
                 res++;
         }
         return res;
+    }
+
+    public int[] duplicatesStat(int[] arr) {
+        int requiredLen = 3;
+        int[] noDup = cleanDuplicates(arr);
+        int[] res = new int[requiredLen + noDup.length];
+
+        Map<Integer,Integer> countMap = new HashMap<>();
+        for (int i: arr){
+            if (!countMap.containsKey(i)){
+                countMap.put(i,1);
+            } else {
+                countMap.put(i,countMap.get(i)+1);
+            }
+        }
+
+        List<Integer> nonUnique = new ArrayList<>();
+
+        countMap.forEach((k,v)->{
+            if (v>1){
+                nonUnique.add(k);
+            }
+        });
+
+        res[0] =nonUnique.size();
+
+        res[1] = nonUnique.stream()
+                .mapToInt(k->k)
+                .min()
+                .getAsInt();
+
+        res[2] = nonUnique.stream()
+                .mapToInt(k->k)
+                .max()
+                .getAsInt();
+
+        int j = 3;
+        for (int nd : noDup) {
+            res[j] = nd;
+            j++;
+        }
+
+
+        return res;
+    }
+
+    private int[] toIntArray(Collection<Integer> list) {
+        int[] ret = new int[list.size()];
+        int i = 0;
+        for (Integer e : list)
+            ret[i++] = e;
+        return ret;
     }
 }

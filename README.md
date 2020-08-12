@@ -42,10 +42,12 @@ convert to upperCase,sort by len(ASC) and return distinct)
 - rotateMatrix - Rotate matrix by 90 degrees clockwise
 - zeroMatrix - If element [i][j] of matrix is zero - entire row and column must be zero
 If element [i][j] of matrix is zero - entire row and column must be zero
-- removeDuplicates - calc length of array(L) with no duplicates and return no-duplicates from 0 to L
+- calcUniqueLen - calc length of array(L) with no duplicates and return no-duplicates from 0 to L
+- cleanDuplicates - return array without duplications
 - removeValue - calc length of array(L) with no value(V) and return array with no value from 0 to L
 - searchIndex - find elem index or position to insert
 - fairIndex - check /screens/fair_index.png for description 
+- duplicatesStat - check /screens/duplicates_stat.png for description
 
 ##  List
 
