@@ -30,7 +30,7 @@ All given inputs are in lowercase letters a-z.
 convert to upperCase,sort by len(ASC) and return distinct)
 - card war - check /screens/cardwar.png for description 
 - string chain - check /screens/string.chains for description
-
+- length of last word - Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
 
 ## Ints
 

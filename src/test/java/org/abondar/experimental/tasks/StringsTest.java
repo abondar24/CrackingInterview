@@ -255,4 +255,16 @@ public class StringsTest {
         Assert.assertEquals(4, res);
 
     }
+
+    @Test
+    public void lengthOfLastWordTest(){
+        String str = "Hello World";
+
+        int res = strs.lengthOfLastWord(str);
+        Assert.assertEquals(5,res);
+
+        str = "Today was a nice day";
+        res = strs.lengthOfLastWord(str);
+        Assert.assertEquals(3,res);
+    }
 }

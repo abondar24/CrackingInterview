@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -447,7 +448,7 @@ public class Strings {
         AtomicInteger res = new AtomicInteger();
         res.set(0);
 
-        Set<String> dict = words.stream().collect(Collectors.toSet());
+        Set<String> dict = new HashSet<>(words);
 
 
         words.forEach(w->{
@@ -483,5 +484,15 @@ public class Strings {
         chains.put(word, maxChain);
 
         return maxChain;
+    }
+
+    public int lengthOfLastWord(String s) {
+      String[] words = s.split(" ");
+
+      if (words.length==0){
+          return 0;
+      }
+
+      return words[words.length-1].length();
     }
 }
