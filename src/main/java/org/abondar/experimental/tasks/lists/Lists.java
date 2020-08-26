@@ -244,4 +244,20 @@ public class Lists {
 
         return head.getNext();
     }
+
+    public Node<Integer> deleteDuplicates(Node<Integer> head){
+        Node<Integer> res = head;
+
+        while (res!=null && res.getNext()!=null){
+            if ((res.getData()==res.getNext().getData())){
+                res.setNext(res.getNext().getNext());
+            } else {
+                res = res.getNext();
+            }
+
+
+        }
+
+        return head;
+    }
 }

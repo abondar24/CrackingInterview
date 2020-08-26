@@ -376,4 +376,34 @@ public class ListsTest {
         Assert.assertEquals(4,merge.getNext().getNext().getNext().getNext().getNext().getData());
 
     }
+
+    @Test
+    public void deleteDuplicatesTest() {
+        Node<Integer> head = new Node<>(1);
+        Node<Integer> next = new Node<>(1);
+        Node<Integer> next1 = new Node<>(2);
+
+        head.setNext(next);
+        next.setNext(next1);
+
+
+        Node<Integer> res = ll.deleteDuplicates(head);
+
+        Assert.assertEquals((Integer) 1,res.getData());
+        Assert.assertEquals(2,res.getNext().getData());
+
+        Node<Integer> next2 = new Node<>(3);
+        Node<Integer> next3 = new Node<>(3);
+
+        next1.setNext(next2);
+        next2.setNext(next3);
+
+
+        res = ll.deleteDuplicates(head);
+
+        Assert.assertEquals((Integer) 1,res.getData());
+        Assert.assertEquals(2,res.getNext().getData());
+        Assert.assertEquals(3,res.getNext().getNext().getData());
+
+    }
 }
