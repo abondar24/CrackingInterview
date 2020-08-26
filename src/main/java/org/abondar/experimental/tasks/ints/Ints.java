@@ -3,8 +3,11 @@ package org.abondar.experimental.tasks.ints;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Ints {
@@ -106,9 +109,5 @@ public class Ints {
                 .getAsInt();
     }
 
-    public  int maxOrders(List<Integer> start, List<Integer> duration, List<Integer> volume) {
-        // Write your code here
 
-        return 0;
-    }
 }
