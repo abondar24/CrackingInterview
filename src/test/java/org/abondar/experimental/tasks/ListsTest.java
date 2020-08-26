@@ -406,4 +406,48 @@ public class ListsTest {
         Assert.assertEquals(3,res.getNext().getNext().getData());
 
     }
+
+    @Test
+    public void deleteValTest(){
+        Node<Integer> head = new Node<>(1);
+        Node<Integer> next = new Node<>(2);
+        Node<Integer> next1 = new Node<>(6);
+        Node<Integer> next2 = new Node<>(3);
+        Node<Integer> next3 = new Node<>(4);
+        Node<Integer> next4 = new Node<>(5);
+        Node<Integer> next5 = new Node<>(6);
+
+        head.setNext(next);
+        next.setNext(next1);
+        next1.setNext(next2);
+        next2.setNext(next3);
+        next3.setNext(next4);
+        next4.setNext(next5);
+
+        Node<Integer> res = ll.deleteVal(head,6);
+
+        Assert.assertEquals((Integer) 1,res.getData());
+        Assert.assertEquals(2,res.getNext().getData());
+        Assert.assertEquals(3,res.getNext().getNext().getData());
+        Assert.assertEquals(4,res.getNext().getNext().getNext().getData());
+        Assert.assertEquals(5,res.getNext().getNext().getNext().getNext().getData());
+
+        Node<Integer> head1 = new Node<>(1);
+        res = ll.deleteVal(head1, 1);
+        Assert.assertNull(res);
+
+        Node<Integer> head2 = new Node<>(1);
+        Node<Integer> next6 = new Node<>(1);
+        head2.setNext(next6);
+
+        res = ll.deleteVal(head2, 1);
+        Assert.assertNull(res);
+
+        Node<Integer> head3 = new Node<>(1);
+        Node<Integer> next7 = new Node<>(2);
+        head3.setNext(next7);
+        res = ll.deleteVal(head3, 1);
+        Assert.assertEquals((Integer) 2,res.getData());
+
+    }
 }

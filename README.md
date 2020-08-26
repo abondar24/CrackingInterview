@@ -68,6 +68,8 @@ We need to return a list which represents sum of values
 - detectLoop - Check if list has loops and return it.
 - mergeLists - merge two sorted linked lists 
 - deleteDuplicates - remove duplicates from linked list
+- deleteVal - delete element from value
+
 
 ## Multithread
 - pipeline - A container which serves as a pipeline for a single element. The pipeline makes sure that no elements get lost/

@@ -260,4 +260,26 @@ public class Lists {
 
         return head;
     }
+
+    public Node<Integer> deleteVal(Node<Integer> head,int val){
+
+
+        Node<Integer> cur = new Node<>(-1);
+        cur.setNext(head);
+        head = cur;
+
+        while (cur.getNext()!=null){
+            if ((Integer) cur.getNext().getData()==val){
+                cur.setNext(cur.getNext().getNext());
+            } else {
+                cur = cur.getNext();
+            }
+        }
+
+
+        return head.getNext();
+    }
+
+
+
 }
