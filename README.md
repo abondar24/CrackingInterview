@@ -67,7 +67,6 @@ We need to return a list which represents sum of values
 - hasIntersection - Check if two list have an intersection.Intersection is by ref, not by val which means one node in two lists 
 - detectLoop - Check if list has loops and return it.
 - mergeLists - merge two sorted linked lists 
-- deleteDuplicates - remove duplicates from linked list
 - deleteVal - delete element from value
 
 

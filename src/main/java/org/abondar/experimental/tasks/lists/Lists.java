@@ -245,21 +245,6 @@ public class Lists {
         return head.getNext();
     }
 
-    public Node<Integer> deleteDuplicates(Node<Integer> head){
-        Node<Integer> cur = head;
-
-        while (cur!=null && cur.getNext()!=null){
-            if ((cur.getData()==cur.getNext().getData())){
-                cur.setNext(cur.getNext().getNext());
-            } else {
-                cur = cur.getNext();
-            }
-
-
-        }
-
-        return head;
-    }
 
     public Node<Integer> deleteVal(Node<Integer> head,int val){
 
