@@ -1,6 +1,8 @@
 package org.abondar.experimental.tasks.lists;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Lists {
@@ -245,6 +247,22 @@ public class Lists {
         return head.getNext();
     }
 
+    //repeats removeDUps but more efficient
+    public Node<Integer> deleteDuplicates(Node<Integer> head){
+        Node<Integer> cur = head;
+
+        while (cur!=null && cur.getNext()!=null){
+            if ((cur.getData()==cur.getNext().getData())){
+                cur.setNext(cur.getNext().getNext());
+            } else {
+                cur = cur.getNext();
+            }
+
+
+        }
+
+        return head;
+    }
 
     public Node<Integer> deleteVal(Node<Integer> head,int val){
 
@@ -265,6 +283,31 @@ public class Lists {
         return head.getNext();
     }
 
+    public Node<Integer> reverseList(Node<Integer> head){
+        List<Node<Integer>> nodes = new ArrayList<>();
+
+        while (head!=null){
+            nodes.add(head);
+
+            head = head.getNext();
+        }
+
+
+        for (int i=nodes.size()-1; i >0;i--){
+            nodes.get(i).setNext(nodes.get(i-1));
+
+        }
+
+        if (!nodes.isEmpty()){
+            nodes.get(0).setNext(null);
+            return nodes.get(nodes.size()-1);
+
+        } else {
+            return head;
+        }
+
+
+    }
 
 
 }

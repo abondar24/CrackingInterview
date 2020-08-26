@@ -450,4 +450,32 @@ public class ListsTest {
         Assert.assertEquals((Integer) 2,res.getData());
 
     }
+
+
+    @Test
+    public void reverseListTest() {
+        Node<Integer> head = new Node<>(1);
+        Node<Integer> next = new Node<>(2);
+        Node<Integer> next1 = new Node<>(3);
+        Node<Integer> next2 = new Node<>(4);
+        Node<Integer> next3 = new Node<>(5);
+
+        head.setNext(next);
+        next.setNext(next1);
+        next1.setNext(next2);
+        next2.setNext(next3);
+
+        Node<Integer> res = ll.reverseList(head);
+
+        Assert.assertEquals((Integer) 5,res.getData());
+        Assert.assertEquals(4,res.getNext().getData());
+        Assert.assertEquals(3,res.getNext().getNext().getData());
+        Assert.assertEquals(2,res.getNext().getNext().getNext().getData());
+        Assert.assertEquals(1,res.getNext().getNext().getNext().getNext().getData());
+
+        head = new Node<>(null);
+        res = ll.reverseList(head);
+        Assert.assertNull(res.getData());
+    }
+
 }
