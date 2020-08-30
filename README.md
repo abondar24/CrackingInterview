@@ -6,7 +6,7 @@ Solutions of tasks from "Cracking the coding interview" book and some basic algo
 
 All examples are ran in unit tests.
 ```yaml
- mvn clean install
+ mvn clean test
 ```
 
 # Tasks
@@ -54,6 +54,7 @@ If element [i][j] of matrix is zero - entire row and column must be zero
 - duplicatesStat - check /screens/duplicates_stat.png for description
 - largestSubGrid - check /screens/largerst_sub_grid1.png and largerst_sub_grid2.png for description
 - plusOne - Given a non-empty array of digits representing a non-negative integer, increment one to the integer.
+- singleNumber  - find a unique number in array 
 
 ##  List
 

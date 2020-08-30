@@ -323,4 +323,17 @@ public class ArrayTasksTest {
         Assert.assertEquals(0,res[2]);
         Assert.assertEquals(0,res[3]);
     }
+
+    @Test
+    public void singleNumberseTest(){
+        int[] arr = new int[]{2,2,1};
+        int res = arrayTasks.singleNumber(arr);
+
+        Assert.assertEquals(1,res);
+
+        arr = new int[]{4,1,2,1,2};
+        res = arrayTasks.singleNumber(arr);
+
+        Assert.assertEquals(4,res);
+    }
 }

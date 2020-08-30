@@ -125,7 +125,6 @@ public class ArrayTasks {
     }
 
     public int[] cleanDuplicates(int[] nums) {
-        int len = nums.length;
 
         Set<Integer> unique = new LinkedHashSet<>();
         for (int num : nums) {
@@ -283,5 +282,15 @@ public class ArrayTasks {
         }
 
         return digits;
+    }
+
+    public int singleNumber (int[] arr){
+        int res = 0;
+
+        for (int a:arr){
+            res^=a;
+        }
+
+        return res;
     }
 }
