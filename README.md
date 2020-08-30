@@ -53,6 +53,7 @@ If element [i][j] of matrix is zero - entire row and column must be zero
 - fairIndex - check /screens/fair_index.png for description 
 - duplicatesStat - check /screens/duplicates_stat.png for description
 - largestSubGrid - check /screens/largerst_sub_grid1.png and largerst_sub_grid2.png for description
+- plusOne - Given a non-empty array of digits representing a non-negative integer, increment one to the integer.
 
 ##  List
 

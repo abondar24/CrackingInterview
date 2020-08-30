@@ -292,4 +292,35 @@ public class ArrayTasksTest {
 
 
     }
+
+    @Test
+    public void plusOneTest(){
+        int[] digits = new int[]{1,2,3};
+        int[] res = arrayTasks.plusOne(digits);
+
+        Assert.assertEquals(4,res[2]);
+
+
+        digits = new int[]{1,2,9};
+        res = arrayTasks.plusOne(digits);
+
+        Assert.assertEquals(3,res[1]);
+        Assert.assertEquals(0,res[2]);
+
+        digits = new int[]{1,9,9};
+        res = arrayTasks.plusOne(digits);
+
+        Assert.assertEquals(2,res[0]);
+        Assert.assertEquals(0,res[1]);
+        Assert.assertEquals(0,res[2]);
+
+        digits = new int[]{9,9,9};
+        res = arrayTasks.plusOne(digits);
+
+        Assert.assertEquals(4,res.length);
+        Assert.assertEquals(1,res[0]);
+        Assert.assertEquals(0,res[1]);
+        Assert.assertEquals(0,res[2]);
+        Assert.assertEquals(0,res[3]);
+    }
 }

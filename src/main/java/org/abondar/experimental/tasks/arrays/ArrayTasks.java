@@ -257,4 +257,31 @@ public class ArrayTasks {
             ret[i++] = e;
         return ret;
     }
+
+
+    public int[] plusOne(int[] digits){
+        int last = digits.length-1;
+        if (digits[last]!=9){
+            digits[last]+=1;
+        } else {
+            int i=last;
+            while (i>-1){
+                if (digits[i]+1==10){
+                    digits[i]=0;
+                    i--;
+                } else {
+                    digits[i]+=1;
+                    break;
+                }
+            }
+
+            if (i==-1){
+                int[] newDigits = new int[digits.length+1];
+                newDigits[0]=1;
+                return newDigits;
+            }
+        }
+
+        return digits;
+    }
 }
