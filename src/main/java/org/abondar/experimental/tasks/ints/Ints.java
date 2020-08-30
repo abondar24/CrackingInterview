@@ -1,6 +1,7 @@
 package org.abondar.experimental.tasks.ints;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -142,6 +143,18 @@ public class Ints {
     }
 
     private int[] toDigits(int num){
-        return Integer.toString(num).chars().map(c -> c-'0').toArray();
+
+        int len = numLen(num);
+        int div = (int) Math.pow(10,len-1);
+        int[] res = new int[len];
+
+        for (int i=0;i<len;i++){
+            res[i] = num / div;
+            num = num % div;
+            div = div/10;
+
+        }
+
+        return res;
     }
 }
