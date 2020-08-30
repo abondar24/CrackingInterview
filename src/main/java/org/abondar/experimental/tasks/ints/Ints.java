@@ -109,5 +109,39 @@ public class Ints {
                 .getAsInt();
     }
 
+    public int multPersistence(int num){
+        if (numLen(num)==1){
+            return 1;
+        }
 
+        return multPeristence(num,0);
+    }
+
+    private int multPeristence(int num, int calls){
+        int[] digits = toDigits(num);
+        int mult = 1;
+        calls++;
+
+        for (int d:digits){
+            mult*=d;
+            if (mult==0){
+                return calls;
+            }
+        }
+
+        if (numLen(mult)!=1){
+            return multPeristence(mult,calls);
+        } else {
+            return calls;
+        }
+
+    }
+
+    private int numLen(int num){
+        return (int) (Math.log10(num) + 1);
+    }
+
+    private int[] toDigits(int num){
+        return Integer.toString(num).chars().map(c -> c-'0').toArray();
+    }
 }

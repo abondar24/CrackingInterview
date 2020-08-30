@@ -94,4 +94,19 @@ public class IntsTests {
         assertEquals(4, res);
 
     }
+
+    @Test
+    public void multPersistenceTest(){
+        int num = 7;
+        int res = ints.multPersistence(num);
+        assertEquals(1,res);
+
+        num = 2761;
+        res = ints.multPersistence(num);
+        assertEquals(3,res);
+
+        num = 99999999;
+        res = ints.multPersistence(num);
+        assertEquals(2,res);
+    }
 }
