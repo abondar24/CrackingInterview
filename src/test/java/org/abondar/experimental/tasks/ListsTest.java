@@ -5,8 +5,6 @@ import org.abondar.experimental.tasks.lists.Node;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Optional;
-
 public class ListsTest {
 
     private final Lists ll = new Lists();
@@ -368,12 +366,12 @@ public class ListsTest {
 
         Node<Integer> merge = ll.mergeLists(head1, head2);
 
-        Assert.assertEquals((Integer) 1,merge.getData());
-        Assert.assertEquals(1,merge.getNext().getData());
-        Assert.assertEquals(2,merge.getNext().getNext().getData());
-        Assert.assertEquals(3,merge.getNext().getNext().getNext().getData());
-        Assert.assertEquals(4,merge.getNext().getNext().getNext().getNext().getData());
-        Assert.assertEquals(4,merge.getNext().getNext().getNext().getNext().getNext().getData());
+        Assert.assertEquals((Integer) 1, merge.getData());
+        Assert.assertEquals(1, merge.getNext().getData());
+        Assert.assertEquals(2, merge.getNext().getNext().getData());
+        Assert.assertEquals(3, merge.getNext().getNext().getNext().getData());
+        Assert.assertEquals(4, merge.getNext().getNext().getNext().getNext().getData());
+        Assert.assertEquals(4, merge.getNext().getNext().getNext().getNext().getNext().getData());
 
     }
 
@@ -389,8 +387,8 @@ public class ListsTest {
 
         Node<Integer> res = ll.deleteDuplicates(head);
 
-        Assert.assertEquals((Integer) 1,res.getData());
-        Assert.assertEquals(2,res.getNext().getData());
+        Assert.assertEquals((Integer) 1, res.getData());
+        Assert.assertEquals(2, res.getNext().getData());
 
         Node<Integer> next2 = new Node<>(3);
         Node<Integer> next3 = new Node<>(3);
@@ -401,14 +399,14 @@ public class ListsTest {
 
         res = ll.deleteDuplicates(head);
 
-        Assert.assertEquals((Integer) 1,res.getData());
-        Assert.assertEquals(2,res.getNext().getData());
-        Assert.assertEquals(3,res.getNext().getNext().getData());
+        Assert.assertEquals((Integer) 1, res.getData());
+        Assert.assertEquals(2, res.getNext().getData());
+        Assert.assertEquals(3, res.getNext().getNext().getData());
 
     }
 
     @Test
-    public void deleteValTest(){
+    public void deleteValTest() {
         Node<Integer> head = new Node<>(1);
         Node<Integer> next = new Node<>(2);
         Node<Integer> next1 = new Node<>(6);
@@ -424,13 +422,13 @@ public class ListsTest {
         next3.setNext(next4);
         next4.setNext(next5);
 
-        Node<Integer> res = ll.deleteVal(head,6);
+        Node<Integer> res = ll.deleteVal(head, 6);
 
-        Assert.assertEquals((Integer) 1,res.getData());
-        Assert.assertEquals(2,res.getNext().getData());
-        Assert.assertEquals(3,res.getNext().getNext().getData());
-        Assert.assertEquals(4,res.getNext().getNext().getNext().getData());
-        Assert.assertEquals(5,res.getNext().getNext().getNext().getNext().getData());
+        Assert.assertEquals((Integer) 1, res.getData());
+        Assert.assertEquals(2, res.getNext().getData());
+        Assert.assertEquals(3, res.getNext().getNext().getData());
+        Assert.assertEquals(4, res.getNext().getNext().getNext().getData());
+        Assert.assertEquals(5, res.getNext().getNext().getNext().getNext().getData());
 
         Node<Integer> head1 = new Node<>(1);
         res = ll.deleteVal(head1, 1);
@@ -447,7 +445,7 @@ public class ListsTest {
         Node<Integer> next7 = new Node<>(2);
         head3.setNext(next7);
         res = ll.deleteVal(head3, 1);
-        Assert.assertEquals((Integer) 2,res.getData());
+        Assert.assertEquals((Integer) 2, res.getData());
 
     }
 
@@ -467,11 +465,11 @@ public class ListsTest {
 
         Node<Integer> res = ll.reverseList(head);
 
-        Assert.assertEquals((Integer) 5,res.getData());
-        Assert.assertEquals(4,res.getNext().getData());
-        Assert.assertEquals(3,res.getNext().getNext().getData());
-        Assert.assertEquals(2,res.getNext().getNext().getNext().getData());
-        Assert.assertEquals(1,res.getNext().getNext().getNext().getNext().getData());
+        Assert.assertEquals((Integer) 5, res.getData());
+        Assert.assertEquals(4, res.getNext().getData());
+        Assert.assertEquals(3, res.getNext().getNext().getData());
+        Assert.assertEquals(2, res.getNext().getNext().getNext().getData());
+        Assert.assertEquals(1, res.getNext().getNext().getNext().getNext().getData());
 
         head = new Node<>(null);
         res = ll.reverseList(head);

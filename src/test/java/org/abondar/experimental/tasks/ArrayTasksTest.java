@@ -184,7 +184,7 @@ public class ArrayTasksTest {
         Assert.assertEquals(3, res[3]);
         Assert.assertEquals(4, res[4]);
 
-        nums = new int[]{5,2,5,5,6,6,10};
+        nums = new int[]{5, 2, 5, 5, 6, 6, 10};
         res = arrayTasks.cleanDuplicates(nums);
 
         Assert.assertEquals(4, res.length);
@@ -277,63 +277,63 @@ public class ArrayTasksTest {
     }
 
     @Test
-    public void duplicatesStatTest(){
-        int[] arr = new int[]{5,2,5,6,6,10};
+    public void duplicatesStatTest() {
+        int[] arr = new int[]{5, 2, 5, 6, 6, 10};
         int[] res = arrayTasks.duplicatesStat(arr);
 
-        Assert.assertEquals(7,res.length);
-        Assert.assertEquals(2,res[0]);
-        Assert.assertEquals(5,res[1]);
-        Assert.assertEquals(6,res[2]);
-        Assert.assertEquals(5,res[3]);
-        Assert.assertEquals(2,res[4]);
-        Assert.assertEquals(6,res[5]);
-        Assert.assertEquals(10,res[6]);
+        Assert.assertEquals(7, res.length);
+        Assert.assertEquals(2, res[0]);
+        Assert.assertEquals(5, res[1]);
+        Assert.assertEquals(6, res[2]);
+        Assert.assertEquals(5, res[3]);
+        Assert.assertEquals(2, res[4]);
+        Assert.assertEquals(6, res[5]);
+        Assert.assertEquals(10, res[6]);
 
 
     }
 
     @Test
-    public void plusOneTest(){
-        int[] digits = new int[]{1,2,3};
+    public void plusOneTest() {
+        int[] digits = new int[]{1, 2, 3};
         int[] res = arrayTasks.plusOne(digits);
 
-        Assert.assertEquals(4,res[2]);
+        Assert.assertEquals(4, res[2]);
 
 
-        digits = new int[]{1,2,9};
+        digits = new int[]{1, 2, 9};
         res = arrayTasks.plusOne(digits);
 
-        Assert.assertEquals(3,res[1]);
-        Assert.assertEquals(0,res[2]);
+        Assert.assertEquals(3, res[1]);
+        Assert.assertEquals(0, res[2]);
 
-        digits = new int[]{1,9,9};
+        digits = new int[]{1, 9, 9};
         res = arrayTasks.plusOne(digits);
 
-        Assert.assertEquals(2,res[0]);
-        Assert.assertEquals(0,res[1]);
-        Assert.assertEquals(0,res[2]);
+        Assert.assertEquals(2, res[0]);
+        Assert.assertEquals(0, res[1]);
+        Assert.assertEquals(0, res[2]);
 
-        digits = new int[]{9,9,9};
+        digits = new int[]{9, 9, 9};
         res = arrayTasks.plusOne(digits);
 
-        Assert.assertEquals(4,res.length);
-        Assert.assertEquals(1,res[0]);
-        Assert.assertEquals(0,res[1]);
-        Assert.assertEquals(0,res[2]);
-        Assert.assertEquals(0,res[3]);
+        Assert.assertEquals(4, res.length);
+        Assert.assertEquals(1, res[0]);
+        Assert.assertEquals(0, res[1]);
+        Assert.assertEquals(0, res[2]);
+        Assert.assertEquals(0, res[3]);
     }
 
     @Test
-    public void singleNumberseTest(){
-        int[] arr = new int[]{2,2,1};
+    public void singleNumberseTest() {
+        int[] arr = new int[]{2, 2, 1};
         int res = arrayTasks.singleNumber(arr);
 
-        Assert.assertEquals(1,res);
+        Assert.assertEquals(1, res);
 
-        arr = new int[]{4,1,2,1,2};
+        arr = new int[]{4, 1, 2, 1, 2};
         res = arrayTasks.singleNumber(arr);
 
-        Assert.assertEquals(4,res);
+        Assert.assertEquals(4, res);
     }
 }

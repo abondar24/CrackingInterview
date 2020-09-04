@@ -1,6 +1,6 @@
 package org.abondar.experimental.tasks.dynamic;
 
-public class Box implements Comparable<Box>{
+public class Box implements Comparable<Box> {
 
     private int height;
 

@@ -3,8 +3,10 @@ package org.abondar.experimental.tasks;
 import org.abondar.experimental.tasks.ints.Ints;
 import org.junit.Test;
 
+import java.security.PublicKey;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -96,17 +98,17 @@ public class IntsTests {
     }
 
     @Test
-    public void multPersistenceTest(){
+    public void multPersistenceTest() {
         int num = 7;
         int res = ints.multPersistence(num);
-        assertEquals(1,res);
+        assertEquals(1, res);
 
         num = 2761;
         res = ints.multPersistence(num);
-        assertEquals(3,res);
+        assertEquals(3, res);
 
         num = 99999999;
         res = ints.multPersistence(num);
-        assertEquals(2,res);
+        assertEquals(2, res);
     }
 }

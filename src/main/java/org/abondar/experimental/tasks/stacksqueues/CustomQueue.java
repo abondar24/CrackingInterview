@@ -4,15 +4,6 @@ import java.util.NoSuchElementException;
 
 public class CustomQueue<T> {
 
-    private static class QueueNode<T> {
-        private T data;
-        private QueueNode<T> next;
-
-        public QueueNode(T data) {
-            this.data = data;
-        }
-    }
-
     private QueueNode<T> first;
     private QueueNode<T> last;
 
@@ -22,27 +13,36 @@ public class CustomQueue<T> {
             last.next = t;
         }
         last = t;
-        if (first==null){
+        if (first == null) {
             first = last;
         }
     }
 
-    public T remove(){
+    public T remove() {
         if (first == null) throw new NoSuchElementException();
         T data = first.data;
         first = first.next;
-        if (first == null){
-            last=null;
+        if (first == null) {
+            last = null;
         }
         return data;
     }
 
-    public T peek(){
+    public T peek() {
         if (first == null) throw new NoSuchElementException();
         return first.data;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return first == null;
+    }
+
+    private static class QueueNode<T> {
+        private final T data;
+        private QueueNode<T> next;
+
+        public QueueNode(T data) {
+            this.data = data;
+        }
     }
 }

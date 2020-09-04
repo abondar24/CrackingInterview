@@ -4,7 +4,7 @@ package org.abondar.experimental.algorithms;
 import java.util.LinkedList;
 
 public class SearchUtil {
-    private int tableSize = 65136;
+    private final int tableSize = 65136;
 
     public boolean sequentialSearch(int[] data, int elem) {
         for (int i : data) {
@@ -16,7 +16,7 @@ public class SearchUtil {
     }
 
     public int sequentialSearchIndex(int[] data, int elem) {
-        for (int i=0;i<data.length;i++) {
+        for (int i = 0; i < data.length; i++) {
             if (data[i] == elem) {
                 return i;
             }

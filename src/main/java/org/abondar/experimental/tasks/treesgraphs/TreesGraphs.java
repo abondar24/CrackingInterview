@@ -1,6 +1,8 @@
 package org.abondar.experimental.tasks.treesgraphs;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class TreesGraphs {
@@ -196,13 +198,13 @@ public class TreesGraphs {
         deepNode = goUp(deepNode, Math.abs(delta));
 
 
-        while (shallowNode!=deepNode && deepNode != null) {
+        while (shallowNode != deepNode && deepNode != null) {
             shallowNode = shallowNode.getParent();
             deepNode = deepNode.getParent();
 
         }
 
-        return deepNode == null ? null:shallowNode;
+        return deepNode == null ? null : shallowNode;
     }
 
     private GraphNode goUp(GraphNode node, int delta) {
@@ -226,10 +228,10 @@ public class TreesGraphs {
     }
 
 
-    public  List<List<BinTreeNode>> bstSequences(BinTreeNode root){
+    public List<List<BinTreeNode>> bstSequences(BinTreeNode root) {
         List<List<BinTreeNode>> res = new ArrayList<>();
 
-        if (root==null){
+        if (root == null) {
             res.add(new ArrayList<>());
             return res;
         }
@@ -241,9 +243,9 @@ public class TreesGraphs {
         prefix.add(root);
 
         //weave lists from left and right
-        leftSeq.forEach(ls-> rightSeq.forEach(rs->{
+        leftSeq.forEach(ls -> rightSeq.forEach(rs -> {
             List<List<BinTreeNode>> weaved = new ArrayList<>();
-            weaveLists(ls,rs,weaved,prefix);
+            weaveLists(ls, rs, weaved, prefix);
             res.addAll(weaved);
         }));
 
@@ -251,8 +253,8 @@ public class TreesGraphs {
     }
 
     //get all possible lists combos. remove head from ls,recurse, than do the same with rs
-    private void weaveLists(List<BinTreeNode> ls, List<BinTreeNode> rs, List<List<BinTreeNode>> weaved,List<BinTreeNode>prefix) {
-        if (ls.size()==0 || rs.size()==0){
+    private void weaveLists(List<BinTreeNode> ls, List<BinTreeNode> rs, List<List<BinTreeNode>> weaved, List<BinTreeNode> prefix) {
+        if (ls.size() == 0 || rs.size() == 0) {
             List<BinTreeNode> res = new ArrayList<>();
             res.addAll(prefix);
             res.addAll(ls);
@@ -263,15 +265,15 @@ public class TreesGraphs {
 
         BinTreeNode headLS = ls.remove(0);
         prefix.add(headLS);
-        weaveLists(ls,rs,weaved,prefix);
-        prefix.remove(prefix.size()-1);
-        ls.add(0,headLS);
+        weaveLists(ls, rs, weaved, prefix);
+        prefix.remove(prefix.size() - 1);
+        ls.add(0, headLS);
 
         BinTreeNode headRS = ls.remove(0);
         prefix.add(headRS);
-        weaveLists(ls,rs,weaved,prefix);
-        prefix.remove(prefix.size()-1);
-        rs.add(0,headRS);
+        weaveLists(ls, rs, weaved, prefix);
+        prefix.remove(prefix.size() - 1);
+        rs.add(0, headRS);
 
 
     }

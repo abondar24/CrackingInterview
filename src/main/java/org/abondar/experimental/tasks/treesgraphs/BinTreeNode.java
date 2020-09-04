@@ -15,11 +15,10 @@ public class BinTreeNode {
         return height(this);
     }
 
-    private int height(BinTreeNode node){
+    private int height(BinTreeNode node) {
         if (node == null)
             return -1;
-        else
-        {
+        else {
             /* compute the depth of each subtree */
             int lHeight = height(node.getLeft());
             int rHeight = height(node.getRight());

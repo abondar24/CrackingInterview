@@ -10,9 +10,9 @@ import java.util.List;
  */
 public class MultiStack {
 
-    private int[] arrayToSplit;
-    private int numberOfStacks;
-    private int singleStackSize;
+    private final int[] arrayToSplit;
+    private final int numberOfStacks;
+    private final int singleStackSize;
 
     public MultiStack(int[] arrayToSplit, int numberOfStacks) {
         this.arrayToSplit = arrayToSplit;
@@ -31,22 +31,22 @@ public class MultiStack {
 
         int counter = 0;
         System.out.println(singleStackSize);
-        for (CustomStack s:stackList){
-            int endOfStack = counter+singleStackSize;
-            if (counter!=stackList.size()){
-                fillStack(s,counter,endOfStack);
+        for (CustomStack s : stackList) {
+            int endOfStack = counter + singleStackSize;
+            if (counter != stackList.size()) {
+                fillStack(s, counter, endOfStack);
             } else {
-                fillStack(s,counter,arrayToSplit.length);
+                fillStack(s, counter, arrayToSplit.length);
             }
-            counter+=singleStackSize;
+            counter += singleStackSize;
         }
         return stackList;
     }
 
 
-    private void fillStack(CustomStack stack,int startIndex,int endIndex) {
+    private void fillStack(CustomStack stack, int startIndex, int endIndex) {
 
-        int [] subArray = Arrays.copyOfRange(arrayToSplit,startIndex,endIndex);
+        int[] subArray = Arrays.copyOfRange(arrayToSplit, startIndex, endIndex);
         for (int aSubArray : subArray) {
             stack.push(aSubArray);
         }

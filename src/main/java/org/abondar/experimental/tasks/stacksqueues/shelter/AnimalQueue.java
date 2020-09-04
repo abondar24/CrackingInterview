@@ -9,8 +9,8 @@ import java.util.List;
 public class AnimalQueue {
 
     private int order = 0;
-    private LinkedList<Dog> dogList = new LinkedList<>();
-    private LinkedList<Cat> catList = new LinkedList<>();
+    private final LinkedList<Dog> dogList = new LinkedList<>();
+    private final LinkedList<Cat> catList = new LinkedList<>();
 
     public void enqueue(Animal a) {
         a.setOrder(order++);

@@ -2,7 +2,7 @@ package org.abondar.experimental.tasks.lists;
 
 public class Node<T> {
 
-    private Node next=null;
+    private Node next = null;
     private T data;
 
 
@@ -10,10 +10,10 @@ public class Node<T> {
         this.data = data;
     }
 
-    public void appendToTail(int data){
+    public void appendToTail(int data) {
         Node end = new Node<>(data);
         Node n = this;
-        while (n.next!=null){
+        while (n.next != null) {
             n = n.next;
         }
 

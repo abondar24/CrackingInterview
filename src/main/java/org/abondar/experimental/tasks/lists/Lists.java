@@ -230,14 +230,14 @@ public class Lists {
             if (l1.getData() <= l2.getData()) {
                 merge.setNext(l1);
                 l1 = l1.getNext();
-            } else{
+            } else {
                 merge.setNext(l2);
                 l2 = l2.getNext();
             }
             merge = merge.getNext();
         }
 
-        if (l1 !=null){
+        if (l1 != null) {
             merge.setNext(l1);
         } else {
             merge.setNext(l2);
@@ -248,11 +248,11 @@ public class Lists {
     }
 
     //repeats removeDUps but more efficient
-    public Node<Integer> deleteDuplicates(Node<Integer> head){
+    public Node<Integer> deleteDuplicates(Node<Integer> head) {
         Node<Integer> cur = head;
 
-        while (cur!=null && cur.getNext()!=null){
-            if ((cur.getData()==cur.getNext().getData())){
+        while (cur != null && cur.getNext() != null) {
+            if ((cur.getData() == cur.getNext().getData())) {
                 cur.setNext(cur.getNext().getNext());
             } else {
                 cur = cur.getNext();
@@ -264,15 +264,15 @@ public class Lists {
         return head;
     }
 
-    public Node<Integer> deleteVal(Node<Integer> head,int val){
+    public Node<Integer> deleteVal(Node<Integer> head, int val) {
 
 
         Node<Integer> cur = new Node<>(-1);
         cur.setNext(head);
         head = cur;
 
-        while (cur.getNext()!=null){
-            if ((Integer) cur.getNext().getData()==val){
+        while (cur.getNext() != null) {
+            if ((Integer) cur.getNext().getData() == val) {
                 cur.setNext(cur.getNext().getNext());
             } else {
                 cur = cur.getNext();
@@ -283,24 +283,24 @@ public class Lists {
         return head.getNext();
     }
 
-    public Node<Integer> reverseList(Node<Integer> head){
+    public Node<Integer> reverseList(Node<Integer> head) {
         List<Node<Integer>> nodes = new ArrayList<>();
 
-        while (head!=null){
+        while (head != null) {
             nodes.add(head);
 
             head = head.getNext();
         }
 
 
-        for (int i=nodes.size()-1; i >0;i--){
-            nodes.get(i).setNext(nodes.get(i-1));
+        for (int i = nodes.size() - 1; i > 0; i--) {
+            nodes.get(i).setNext(nodes.get(i - 1));
 
         }
 
-        if (!nodes.isEmpty()){
+        if (!nodes.isEmpty()) {
             nodes.get(0).setNext(null);
-            return nodes.get(nodes.size()-1);
+            return nodes.get(nodes.size() - 1);
 
         } else {
             return head;

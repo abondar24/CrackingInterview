@@ -25,7 +25,7 @@ public class RankNode {
         if (d == data) {
             return leftSize;
         } else if (d < data) {
-            if (left==null) return -1;
+            if (left == null) return -1;
             else return left.getRank(d);
         } else {
             int rightRank = right == null ? -1 : right.getRank(d);

@@ -154,7 +154,7 @@ public class SortingTasks {
         }
     }
 
-    private void swap(int[] array,int left,int right){
+    private void swap(int[] array, int left, int right) {
         int tmp = array[left];
         array[left] = array[right];
         array[right] = tmp;

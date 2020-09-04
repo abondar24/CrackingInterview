@@ -4,14 +4,14 @@ package org.abondar.experimental.tasks.treesgraphs;
 import java.util.List;
 import java.util.Map;
 
-public class GraphNode implements Comparable<GraphNode>{
+public class GraphNode implements Comparable<GraphNode> {
     private String name;
     private List<GraphNode> children;
     private boolean visited;
     private GraphNode parent;
-    private Map<GraphNode,Integer> childrenWithPath;
+    private Map<GraphNode, Integer> childrenWithPath;
 
-    public GraphNode(){
+    public GraphNode() {
 
     }
 
@@ -80,7 +80,7 @@ public class GraphNode implements Comparable<GraphNode>{
     @Override
     public int compareTo(GraphNode node) {
 
-        if (this.childrenWithPath.entrySet().contains(node)){
+        if (this.childrenWithPath.entrySet().contains(node)) {
             return this.childrenWithPath.get(node);
         }
 

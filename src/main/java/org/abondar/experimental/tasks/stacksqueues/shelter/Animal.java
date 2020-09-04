@@ -14,8 +14,8 @@ public abstract class Animal {
 
     }
 
-    public boolean isOlder(Animal animal){
-        return this.order<animal.order;
+    public boolean isOlder(Animal animal) {
+        return this.order < animal.order;
     }
 
     public String getName() {

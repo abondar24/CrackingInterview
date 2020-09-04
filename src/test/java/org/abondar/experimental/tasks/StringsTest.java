@@ -4,7 +4,6 @@ import org.abondar.experimental.tasks.strings.Strings;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -248,8 +247,8 @@ public class StringsTest {
     }
 
     @Test
-    public void stringChainTest(){
-        List<String> strList = Arrays.asList("a","b","ba","bca","bda","bdca");
+    public void stringChainTest() {
+        List<String> strList = Arrays.asList("a", "b", "ba", "bca", "bda", "bdca");
 
         int res = strs.stringChains(strList);
         Assert.assertEquals(4, res);
@@ -257,19 +256,19 @@ public class StringsTest {
     }
 
     @Test
-    public void lengthOfLastWordTest(){
+    public void lengthOfLastWordTest() {
         String str = "Hello World";
 
         int res = strs.lengthOfLastWord(str);
-        Assert.assertEquals(5,res);
+        Assert.assertEquals(5, res);
 
         str = "Today was a nice day";
         res = strs.lengthOfLastWord(str);
-        Assert.assertEquals(3,res);
+        Assert.assertEquals(3, res);
     }
 
     @Test
-    public void validPasswordTest(){
+    public void validPasswordTest() {
         String pwd = "passWord123!!!";
         boolean res = strs.validPassword(pwd);
         Assert.assertFalse(res);

@@ -2,7 +2,12 @@ package org.abondar.experimental.tasks.dynamic;
 
 import org.abondar.experimental.tasks.strings.Strings;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Dynamic {
 
@@ -15,7 +20,7 @@ public class Dynamic {
     }
 
     public int countWaysMemo(int n) {
-        int memo[] = new int[n + 1];
+        int[] memo = new int[n + 1];
 
         Arrays.fill(memo, -1);
 
@@ -158,7 +163,7 @@ public class Dynamic {
         for (int i = 1; i < expr.length(); i += 2) {
             char c = expr.charAt(i);
             String left = expr.substring(0, i);
-            String right = expr.substring(i + 1, expr.length());
+            String right = expr.substring(i + 1);
 
             int leftTrue = countEval(left, true);
             int leftFalse = countEval(left, false);
@@ -358,28 +363,28 @@ public class Dynamic {
     }
 
     public String countAndSay(int n) {
-        if (n<1 || n>30){
+        if (n < 1 || n > 30) {
             return "";
         }
 
-        if (n==1){
+        if (n == 1) {
             return "1";
         }
 
-        String prev = countAndSay(n-1);
+        String prev = countAndSay(n - 1);
         StringBuilder res = new StringBuilder();
         char head = prev.charAt(0);
         int count = 0;
 
-        for (int i=0;i<prev.length();i++){
+        for (int i = 0; i < prev.length(); i++) {
             char cur = prev.charAt(i);
-            if (head==cur){
+            if (head == cur) {
                 count++;
             } else {
                 res.append(count);
                 res.append(head);
-                count=1;
-                head=cur;
+                count = 1;
+                head = cur;
             }
         }
 

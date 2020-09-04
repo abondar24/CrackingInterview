@@ -1,6 +1,6 @@
 package org.abondar.experimental.tasks.treesgraphs;
 
-public class BinTreeutil {
+public class BinTreeUtil {
 
 
     /**
@@ -14,6 +14,10 @@ public class BinTreeutil {
         }
     }
 
+    private static void visit(BinTreeNode n) {
+        System.out.println(n);
+    }
+
     /**
      * Visit left,current,right
      */
@@ -25,7 +29,6 @@ public class BinTreeutil {
         }
     }
 
-
     /**
      * Visit left,right,current
      */
@@ -35,11 +38,6 @@ public class BinTreeutil {
             postOrderTraversal(node.getRight());
             visit(node);
         }
-    }
-
-
-    private static void visit(BinTreeNode n) {
-        System.out.println(n);
     }
 
 }

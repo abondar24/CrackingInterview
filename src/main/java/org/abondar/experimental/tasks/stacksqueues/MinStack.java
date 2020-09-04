@@ -7,7 +7,7 @@ import java.util.Objects;
  */
 public class MinStack extends CustomStack<Integer> {
 
-    private CustomStack<Integer> stack;
+    private final CustomStack<Integer> stack;
 
     public MinStack() {
         stack = new CustomStack<>();

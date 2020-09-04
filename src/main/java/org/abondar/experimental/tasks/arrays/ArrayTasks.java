@@ -9,7 +9,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 
 public class ArrayTasks {
 
@@ -128,9 +127,7 @@ public class ArrayTasks {
 
         Set<Integer> unique = new LinkedHashSet<>();
         for (int num : nums) {
-            if (!unique.contains(num)) {
-                unique.add(num);
-            }
+            unique.add(num);
         }
 
 
@@ -210,32 +207,32 @@ public class ArrayTasks {
         int[] noDup = cleanDuplicates(arr);
         int[] res = new int[requiredLen + noDup.length];
 
-        Map<Integer,Integer> countMap = new HashMap<>();
-        for (int i: arr){
-            if (!countMap.containsKey(i)){
-                countMap.put(i,1);
+        Map<Integer, Integer> countMap = new HashMap<>();
+        for (int i : arr) {
+            if (!countMap.containsKey(i)) {
+                countMap.put(i, 1);
             } else {
-                countMap.put(i,countMap.get(i)+1);
+                countMap.put(i, countMap.get(i) + 1);
             }
         }
 
         List<Integer> nonUnique = new ArrayList<>();
 
-        countMap.forEach((k,v)->{
-            if (v>1){
+        countMap.forEach((k, v) -> {
+            if (v > 1) {
                 nonUnique.add(k);
             }
         });
 
-        res[0] =nonUnique.size();
+        res[0] = nonUnique.size();
 
         res[1] = nonUnique.stream()
-                .mapToInt(k->k)
+                .mapToInt(k -> k)
                 .min()
                 .getAsInt();
 
         res[2] = nonUnique.stream()
-                .mapToInt(k->k)
+                .mapToInt(k -> k)
                 .max()
                 .getAsInt();
 
@@ -258,25 +255,25 @@ public class ArrayTasks {
     }
 
 
-    public int[] plusOne(int[] digits){
-        int last = digits.length-1;
-        if (digits[last]!=9){
-            digits[last]+=1;
+    public int[] plusOne(int[] digits) {
+        int last = digits.length - 1;
+        if (digits[last] != 9) {
+            digits[last] += 1;
         } else {
-            int i=last;
-            while (i>-1){
-                if (digits[i]+1==10){
-                    digits[i]=0;
+            int i = last;
+            while (i > -1) {
+                if (digits[i] + 1 == 10) {
+                    digits[i] = 0;
                     i--;
                 } else {
-                    digits[i]+=1;
+                    digits[i] += 1;
                     break;
                 }
             }
 
-            if (i==-1){
-                int[] newDigits = new int[digits.length+1];
-                newDigits[0]=1;
+            if (i == -1) {
+                int[] newDigits = new int[digits.length + 1];
+                newDigits[0] = 1;
                 return newDigits;
             }
         }
@@ -284,11 +281,11 @@ public class ArrayTasks {
         return digits;
     }
 
-    public int singleNumber (int[] arr){
+    public int singleNumber(int[] arr) {
         int res = 0;
 
-        for (int a:arr){
-            res^=a;
+        for (int a : arr) {
+            res ^= a;
         }
 
         return res;

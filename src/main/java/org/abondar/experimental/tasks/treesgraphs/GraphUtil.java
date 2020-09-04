@@ -16,7 +16,7 @@ public class GraphUtil {
         System.out.println(root);
         for (GraphNode n : root.getChildren()) {
             if (!n.isVisited()) {
-               doDFS(n);
+                doDFS(n);
             }
         }
 

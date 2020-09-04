@@ -3,7 +3,7 @@ package org.abondar.experimental.tasks.multithread;
 public class InstantiationCounter {
     private static int counter;
 
-    public InstantiationCounter(){
+    public InstantiationCounter() {
         counter++;
     }
 
@@ -12,7 +12,7 @@ public class InstantiationCounter {
     }
 
     public synchronized int getNumOfInstances() {
-       return counter;
+        return counter;
     }
 
 }
