@@ -4,10 +4,12 @@ Solutions of tasks from "Cracking the coding interview" book and some basic algo
 
 # Build and run:
 
-All examples are ran in unit tests.
+All examples(except CountItems,Pipeline) are ran in unit tests.
 ```yaml
  mvn clean test
 ```
+
+For non-unit test example set main class in pom.xml before build
 
 # Tasks
 
