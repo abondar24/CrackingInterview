@@ -31,7 +31,9 @@ convert to upperCase,sort by len(ASC) and return distinct)
 - card war - check /screens/cardwar.png for description 
 - string chain - check /screens/string.chains for description
 - length of last word - Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
-
+- validPassword - given a string verify if it is a valid password. Valid password must have length between 7 and 30,
+ should have 1 capital letter, one punctuation character and should not contain word 'password'
+ 
 ## Ints
 
 - reverse integer - Given a 32-bit signed integer, reverse digits of an integer.

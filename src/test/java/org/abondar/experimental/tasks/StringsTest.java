@@ -267,4 +267,36 @@ public class StringsTest {
         res = strs.lengthOfLastWord(str);
         Assert.assertEquals(3,res);
     }
+
+    @Test
+    public void validPasswordTest(){
+        String pwd = "passWord123!!!";
+        boolean res = strs.validPassword(pwd);
+        Assert.assertFalse(res);
+
+        pwd = "admin123!!!";
+        res = strs.validPassword(pwd);
+        Assert.assertFalse(res);
+
+        pwd = "Admin123";
+        res = strs.validPassword(pwd);
+        Assert.assertFalse(res);
+
+        pwd = "Admin!!!";
+        res = strs.validPassword(pwd);
+        Assert.assertFalse(res);
+
+        pwd = "Ad";
+        res = strs.validPassword(pwd);
+        Assert.assertFalse(res);
+
+        pwd = "Admin123!!!dfsjfkdsflkdsflkdsfdsfdsfdsfdsfdsfdsf";
+        res = strs.validPassword(pwd);
+        Assert.assertFalse(res);
+
+
+        pwd = "Admin123!!!";
+        res = strs.validPassword(pwd);
+        Assert.assertTrue(res);
+    }
 }

@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 
@@ -338,8 +339,8 @@ public class Strings {
 
             if (strc[i] == ']') {
                 mcl = multStack.pop();
-                if (mcl.count==0){
-                    count*=mcl.mult;
+                if (mcl.count == 0) {
+                    count *= mcl.mult;
                 } else {
                     count += mcl.count * mcl.mult;
                 }
@@ -370,12 +371,6 @@ public class Strings {
         return count;
     }
 
-    static class MultCLass {
-        private int mult;
-        private int count;
-    }
-
-
     public List<String> filterStrings(Collection<String> strings) {
 
         return strings.stream()
@@ -386,8 +381,6 @@ public class Strings {
                 .sorted(Comparator.comparing(String::length))
                 .collect(Collectors.toList());
     }
-
-
 
     public int cardWar(String A, String B) {
         if (A.length() != B.length()) {
@@ -403,7 +396,7 @@ public class Strings {
         return count;
     }
 
-    private  int getRank(Character a, Character b) {
+    private int getRank(Character a, Character b) {
 
         int count = 0;
         Map<Integer, Character> rank = new HashMap<>();
@@ -425,12 +418,12 @@ public class Strings {
         AtomicInteger bp = new AtomicInteger();
 
 
-        rank.forEach((k,v)->{
-            if (v==a){
+        rank.forEach((k, v) -> {
+            if (v == a) {
                 ap.set(k);
             }
 
-            if (v==b){
+            if (v == b) {
                 bp.set(k);
             }
 
@@ -443,35 +436,35 @@ public class Strings {
         return count;
     }
 
-    public int stringChains(List<String> words){
-        Map<String,Integer> chains = new HashMap<>();
+    public int stringChains(List<String> words) {
+        Map<String, Integer> chains = new HashMap<>();
         AtomicInteger res = new AtomicInteger();
         res.set(0);
 
         Set<String> dict = new HashSet<>(words);
 
 
-        words.forEach(w->{
-            res.set(dfs(w,dict,chains));
+        words.forEach(w -> {
+            res.set(dfs(w, dict, chains));
         });
 
 
         return res.get();
     }
 
-    private  int dfs(String word,Set<String> dict, Map<String,Integer> chains){
+    private int dfs(String word, Set<String> dict, Map<String, Integer> chains) {
         int maxChain = 0;
         StringBuilder sb = new StringBuilder(word);
 
-        if (word.length()==0 || !dict.contains(word)){
+        if (word.length() == 0 || !dict.contains(word)) {
             return 0;
         }
 
-        if (chains.containsKey(word)){
+        if (chains.containsKey(word)) {
             return chains.get(word);
         }
 
-        for (int i = 0; i<word.length();i++){
+        for (int i = 0; i < word.length(); i++) {
             char delete = sb.charAt(i);
             sb.deleteCharAt(i);
 
@@ -487,12 +480,27 @@ public class Strings {
     }
 
     public int lengthOfLastWord(String s) {
-      String[] words = s.split(" ");
+        String[] words = s.split(" ");
 
-      if (words.length==0){
-          return 0;
-      }
+        if (words.length == 0) {
+            return 0;
+        }
 
-      return words[words.length-1].length();
+        return words[words.length - 1].length();
+    }
+
+    public boolean validPassword(String password) {
+        Pattern overallPattern = Pattern.compile("^(?=.*[0-9])(?=.*[A-Z])(?=.*[.,:=!?()\\-]).{7,31}+$");
+        boolean overallMatch = overallPattern.matcher(password).matches();
+
+        String pwd = password.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        String stopWord = "password";
+
+        return overallMatch && !pwd.equals(stopWord);
+    }
+
+    static class MultCLass {
+        private int mult;
+        private int count;
     }
 }
