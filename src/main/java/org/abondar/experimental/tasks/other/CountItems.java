@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-//fetch json with with data in format {"data":"key=IAfpK, age=58, key=WNVdi, age=64, key=jp9zt, age=47"}.
-//Where item is key=IAfpK, age=58. Calc number of items >=50
+
 public class CountItems {
     public static void main(String[] args) {
         System.setProperty("http.agent", "Chrome");
