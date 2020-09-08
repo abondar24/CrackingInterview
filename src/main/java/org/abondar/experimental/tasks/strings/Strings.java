@@ -490,13 +490,13 @@ public class Strings {
     }
 
     public boolean validPassword(String password) {
-        Pattern overallPattern = Pattern.compile("^(?=.*[0-9])(?=.*[A-Z])(?=.*[.,:=!?()\\-]).{7,31}+$");
+        Pattern overallPattern = Pattern.compile("^(?=.*[0-9])(?=.*[A-Z])(?=.*[.,:=!?()+*\\-]).{7,31}+$");
         boolean overallMatch = overallPattern.matcher(password).matches();
 
         String pwd = password.replaceAll("[^a-zA-Z]", "").toLowerCase();
         String stopWord = "password";
 
-        return overallMatch && !pwd.equals(stopWord);
+        return overallMatch && !pwd.contains(stopWord);
     }
 
     static class MultCLass {

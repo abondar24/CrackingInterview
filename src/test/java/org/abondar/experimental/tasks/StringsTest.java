@@ -293,8 +293,15 @@ public class StringsTest {
         res = strs.validPassword(pwd);
         Assert.assertFalse(res);
 
+        pwd = "passworD3E+";
+        res = strs.validPassword(pwd);
+        Assert.assertFalse(res);
 
         pwd = "Admin123!!!";
+        res = strs.validPassword(pwd);
+        Assert.assertTrue(res);
+
+        pwd = "Admin123!!!+";
         res = strs.validPassword(pwd);
         Assert.assertTrue(res);
     }
