@@ -60,7 +60,12 @@ If element [i][j] of matrix is zero - entire row and column must be zero
 - largestSubGrid - check /screens/largerst_sub_grid1.png and largerst_sub_grid2.png for description
 - plusOne - Given a non-empty array of digits representing a non-negative integer, increment one to the integer.
 - singleNumber  - find a unique number in array 
-
+- tv time -  given a room with tv. the tv is on only when there is at least one person watching
+              tv slots are presented as below.
+                [(1,4),(2,6)] - > 5
+                [(4,6)(1,2)(1,2)] -> 3
+                [(1,4)(6,8)(2,4)(7,9)(10,15)] -> 11
+                
 ##  List
 
 - removeDups - Remove duplicates from list without using any tmp buffer

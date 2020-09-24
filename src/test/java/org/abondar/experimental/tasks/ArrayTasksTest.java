@@ -1,8 +1,13 @@
 package org.abondar.experimental.tasks;
 
 import org.abondar.experimental.tasks.arrays.ArrayTasks;
+import org.abondar.experimental.tasks.arrays.TimeSlot;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class ArrayTasksTest {
 
@@ -335,5 +340,46 @@ public class ArrayTasksTest {
         res = arrayTasks.singleNumber(arr);
 
         Assert.assertEquals(4, res);
+    }
+
+    @Test
+    public void tvTimeTest(){
+        List<TimeSlot> data = new ArrayList<>();
+        data.add(new TimeSlot(1,4));
+        data.add(new TimeSlot(2,6));
+        var res = arrayTasks.tvTime(data);
+        Assert.assertEquals(5,res);
+
+
+        data = new ArrayList<>();
+        data.add(new TimeSlot(4,6));
+        data.add(new TimeSlot(1,2));
+        res = arrayTasks.tvTime(data);
+        Assert.assertEquals(3,res);
+
+        data = new ArrayList<>();
+        data.add(new TimeSlot(4,6));
+        data.add(new TimeSlot(1,2));
+        data.add(new TimeSlot(1,2));
+        res = arrayTasks.tvTime(data);
+        Assert.assertEquals(3,res);
+
+        data = new ArrayList<>();
+        data.add(new TimeSlot(1,4));
+        data.add(new TimeSlot(6,8));
+        data.add(new TimeSlot(2,4));
+        data.add(new TimeSlot(7,9));
+        data.add(new TimeSlot(10,15));
+        res = arrayTasks.tvTime(data);
+        Assert.assertEquals(11,res);
+
+        data = new ArrayList<>();
+        data.add(new TimeSlot(1,4));
+        data.add(new TimeSlot(6,8));
+        data.add(new TimeSlot(2,4));
+        data.add(new TimeSlot(7,12));
+        data.add(new TimeSlot(10,15));
+        res = arrayTasks.tvTime(data);
+        Assert.assertEquals(12,res);
     }
 }

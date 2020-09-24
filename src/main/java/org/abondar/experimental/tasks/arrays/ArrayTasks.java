@@ -4,6 +4,7 @@ import org.abondar.experimental.algorithms.SearchUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -288,6 +289,35 @@ public class ArrayTasks {
             res ^= a;
         }
 
+        return res;
+    }
+
+
+    public int tvTime(List<TimeSlot> slots) {
+        if (slots.size() == 0) {
+            return 0;
+        }
+        Collections.sort(slots);
+
+        var res = slots.get(0).getEnd() - slots.get(0).getStart();
+
+        for (int i = 0; i < slots.size(); i++) {
+            var diff = 0;
+            if (i != slots.size() - 1) {
+                var ts = slots.get(i);
+                var next = slots.get(i + 1);
+
+                if (next.getStart() < ts.getEnd() && ts.getEnd() < next.getEnd()) {
+                    diff = next.getEnd() - ts.getEnd();
+                } else if (next.getEnd()==ts.getEnd()){
+                  continue;
+                } else {
+                    diff = next.getEnd() - next.getStart();
+                }
+
+                res += diff;
+            }
+        }
         return res;
     }
 }
