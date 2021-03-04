@@ -1,4 +1,4 @@
-package org.abondar.experimental.tasks.treesgraphs;
+package org.abondar.experimental.structs.tree;
 
 
 import java.util.List;

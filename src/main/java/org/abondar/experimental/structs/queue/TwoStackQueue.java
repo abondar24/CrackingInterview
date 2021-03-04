@@ -1,4 +1,6 @@
-package org.abondar.experimental.tasks.stacksqueues;
+package org.abondar.experimental.structs.queue;
+
+import org.abondar.experimental.structs.stack.CustomStack;
 
 /**
  * Queue Based on two stacks

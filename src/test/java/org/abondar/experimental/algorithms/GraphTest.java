@@ -1,7 +1,6 @@
 package org.abondar.experimental.algorithms;
 
-import org.abondar.experimental.algorithms.GraphAlgUtil;
-import org.abondar.experimental.tasks.treesgraphs.GraphNode;
+import org.abondar.experimental.structs.tree.GraphNode;
 import org.junit.Test;
 
 import java.util.Map;

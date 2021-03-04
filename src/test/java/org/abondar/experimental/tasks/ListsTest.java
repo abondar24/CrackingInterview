@@ -1,7 +1,7 @@
 package org.abondar.experimental.tasks;
 
 import org.abondar.experimental.tasks.lists.Lists;
-import org.abondar.experimental.tasks.lists.Node;
+import org.abondar.experimental.structs.list.Node;
 import org.junit.Assert;
 import org.junit.Test;
 

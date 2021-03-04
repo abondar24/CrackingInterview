@@ -186,3 +186,15 @@ find and index where element occurs
 Calculate number of items with age >=50
   
 - keyStorage - create a dummy in memory key-value storage for secrets with various secret types
+
+
+# Data Structures
+
+- Node - linked list node
+- Binary Tree Node with visiting and traversal
+- Graph Node with dfs and bfs
+- Queue 
+- Queue with two stacks
+- Custom stack
+- Min Stack - stack with basic functionality
+- Set of Stacks - set consisting of several stacks

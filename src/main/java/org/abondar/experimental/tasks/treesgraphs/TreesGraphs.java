@@ -1,5 +1,9 @@
 package org.abondar.experimental.tasks.treesgraphs;
 
+import org.abondar.experimental.structs.tree.BinTreeNode;
+import org.abondar.experimental.structs.tree.GraphNode;
+import org.abondar.experimental.structs.tree.GraphUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

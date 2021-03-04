@@ -1,6 +1,12 @@
 package org.abondar.experimental.tasks;
 
-import org.abondar.experimental.tasks.stacksqueues.*;
+import org.abondar.experimental.structs.queue.CustomQueue;
+import org.abondar.experimental.structs.queue.TwoStackQueue;
+import org.abondar.experimental.structs.stack.CustomStack;
+import org.abondar.experimental.structs.stack.MinStack;
+import org.abondar.experimental.structs.stack.MultiStack;
+import org.abondar.experimental.structs.stack.SetOfStacks;
+import org.abondar.experimental.structs.stack.StackUtil;
 
 import org.abondar.experimental.tasks.stacksqueues.shelter.AnimalQueue;
 import org.abondar.experimental.tasks.stacksqueues.shelter.Cat;

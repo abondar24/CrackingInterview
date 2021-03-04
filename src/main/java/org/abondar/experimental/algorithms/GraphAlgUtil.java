@@ -1,6 +1,6 @@
 package org.abondar.experimental.algorithms;
 
-import org.abondar.experimental.tasks.treesgraphs.GraphNode;
+import org.abondar.experimental.structs.tree.GraphNode;
 
 import java.util.Map;
 import java.util.PriorityQueue;

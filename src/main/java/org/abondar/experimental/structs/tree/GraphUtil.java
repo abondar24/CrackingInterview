@@ -1,6 +1,6 @@
-package org.abondar.experimental.tasks.treesgraphs;
+package org.abondar.experimental.structs.tree;
 
-import org.abondar.experimental.tasks.stacksqueues.CustomQueue;
+import org.abondar.experimental.structs.queue.CustomQueue;
 
 import java.util.ArrayList;
 import java.util.List;

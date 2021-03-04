@@ -1,7 +1,7 @@
 package org.abondar.experimental.tasks;
 
-import org.abondar.experimental.tasks.treesgraphs.BinTreeNode;
-import org.abondar.experimental.tasks.treesgraphs.GraphNode;
+import org.abondar.experimental.structs.tree.BinTreeNode;
+import org.abondar.experimental.structs.tree.GraphNode;
 import org.abondar.experimental.tasks.treesgraphs.TreesGraphs;
 import org.junit.Assert;
 import org.junit.Test;

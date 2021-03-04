@@ -1,4 +1,6 @@
-package org.abondar.experimental.tasks.stacksqueues;
+package org.abondar.experimental.structs.stack;
+
+import org.abondar.experimental.structs.stack.CustomStack;
 
 public class StackUtil {
 

@@ -1,5 +1,7 @@
 package org.abondar.experimental.tasks.lists;
 
+import org.abondar.experimental.structs.list.Node;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

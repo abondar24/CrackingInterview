@@ -1,4 +1,4 @@
-package org.abondar.experimental.tasks.stacksqueues;
+package org.abondar.experimental.structs.stack;
 
 
 import java.util.HashMap;

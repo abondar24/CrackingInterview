@@ -1,4 +1,4 @@
-package org.abondar.experimental.tasks.lists;
+package org.abondar.experimental.structs.list;
 
 public class Node<T> {
 
