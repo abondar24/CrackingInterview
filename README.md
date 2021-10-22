@@ -185,7 +185,6 @@ find and index where element occurs
 - countItems - Fetch json with data in format {"data":"key=IAfpK, age=58, key=WNVdi, age=64, key=jp9zt, age=47"}.Where item is key=IAfpK, age=58. 
 Calculate number of items with age >=50
   
-- keyStorage - create a dummy in memory key-value storage for secrets with various secret types
 
 
 # Data Structures
