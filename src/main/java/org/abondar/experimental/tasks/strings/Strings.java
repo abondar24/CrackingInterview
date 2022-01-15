@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
@@ -497,6 +498,20 @@ public class Strings {
         String stopWord = "password";
 
         return overallMatch && !pwd.contains(stopWord);
+    }
+
+
+    public boolean isAnagram(String a,String b){
+        String aSorted = sortString(a);
+        String bSorted = sortString(b);
+
+        return aSorted.equals(bSorted);
+    }
+
+    private String sortString(String str){
+        char[] arr = str.toLowerCase(Locale.ROOT).toCharArray();
+        Arrays.sort(arr);
+        return new String(arr);
     }
 
     static class MultCLass {

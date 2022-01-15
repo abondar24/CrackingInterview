@@ -305,4 +305,22 @@ public class StringsTest {
         res = strs.validPassword(pwd);
         Assert.assertTrue(res);
     }
+
+    @Test
+    public void isAnagramTest(){
+        String a = "anagram";
+        String b = "margana";
+        boolean res = strs.isAnagram(a,b);
+        Assert.assertTrue(res);
+
+        a = "Hello";
+        b = "hello";
+        res = strs.isAnagram(a,b);
+        Assert.assertTrue(res);
+
+        a = "anagram";
+        b = "marganaa";
+        res = strs.isAnagram(a,b);
+        Assert.assertFalse(res);
+    }
 }
