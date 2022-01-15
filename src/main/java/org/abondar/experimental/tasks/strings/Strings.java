@@ -1,6 +1,7 @@
 package org.abondar.experimental.tasks.strings;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -512,6 +514,16 @@ public class Strings {
         char[] arr = str.toLowerCase(Locale.ROOT).toCharArray();
         Arrays.sort(arr);
         return new String(arr);
+    }
+
+    public List<String> printTokens(String str){
+        String delimiters = "[ .!,@?_']";
+        String[] tokens = str.split(delimiters);
+
+        return Arrays
+                .stream(tokens)
+                .filter(t->!t.isBlank())
+                .collect(Collectors.toList());
     }
 
     static class MultCLass {

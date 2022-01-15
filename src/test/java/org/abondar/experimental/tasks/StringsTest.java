@@ -323,4 +323,15 @@ public class StringsTest {
         res = strs.isAnagram(a,b);
         Assert.assertFalse(res);
     }
+
+    @Test
+    public void printTokensTest(){
+        String str = "He is a very very good boy, isn't he?";
+
+        List<String> res= strs.printTokens(str);
+        System.out.println(res);
+        res.forEach(System.out::println);
+        Assert.assertEquals(10,res.size());
+
+    }
 }

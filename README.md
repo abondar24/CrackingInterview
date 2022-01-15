@@ -35,7 +35,8 @@ convert to upperCase,sort by len(ASC) and return distinct)
 - length of last word - Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
 - validPassword - given a string verify if it is a valid password. Valid password must have length between 7 and 30,
  should have 1 capital letter, one punctuation character and should not contain word 'password'
-- isAnagram - checl if two given strings are anagrams of each other
+- isAnagram - check if two given strings are anagrams of each other
+- printTokens - print tokens from string (token is a sequence of chars not containing spaces and following chars: !,._'@)
 
 ## Ints
 
