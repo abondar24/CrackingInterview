@@ -307,6 +307,41 @@ public class StringsTest {
     }
 
     @Test
+    public void validUsernameTest(){
+        String username = "Julia";
+        boolean res = strs.validUsername(username);
+        Assert.assertFalse(res);
+
+        username = "Samantha";
+        res = strs.validUsername(username);
+        Assert.assertTrue(res);
+
+        username = "Samantha_21";
+        res = strs.validUsername(username);
+        Assert.assertTrue(res);
+
+        username = "1Samantha";
+        res = strs.validUsername(username);
+        Assert.assertFalse(res);
+
+        username = "Samantha?10_2A";
+        res = strs.validUsername(username);
+        Assert.assertFalse(res);
+
+        username = "JuliaZ007";
+        res = strs.validUsername(username);
+        Assert.assertTrue(res);
+
+        username = "Julia@007";
+        res = strs.validUsername(username);
+        Assert.assertFalse(res);
+
+        username = "_Julia007";
+        res = strs.validUsername(username);
+        Assert.assertFalse(res);
+    }
+
+    @Test
     public void isAnagramTest(){
         String a = "anagram";
         String b = "margana";

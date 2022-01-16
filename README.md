@@ -37,6 +37,8 @@ convert to upperCase,sort by len(ASC) and return distinct)
  should have 1 capital letter, one punctuation character and should not contain word 'password'
 - isAnagram - check if two given strings are anagrams of each other
 - printTokens - print tokens from string (token is a sequence of chars not containing spaces and following chars: !,._'@)
+- validUsername - given a string verify if it is a valid username. Valid username must have length between 7 and 30,
+  should contain alpanumeric characters and underscores(_). First character must be alphabetical character
 
 ## Ints
 

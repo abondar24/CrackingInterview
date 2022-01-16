@@ -502,6 +502,14 @@ public class Strings {
         return overallMatch && !pwd.contains(stopWord);
     }
 
+    public boolean validUsername(String username){
+        Pattern pt= Pattern.compile( "^[A-Za-z]\\w{7,29}$");
+        Matcher matcher = pt.matcher(username);
+
+        return matcher.matches();
+
+    }
+
 
     public boolean isAnagram(String a,String b){
         String aSorted = sortString(a);
