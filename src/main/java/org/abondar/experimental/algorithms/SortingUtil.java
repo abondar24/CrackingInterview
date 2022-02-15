@@ -1,8 +1,28 @@
 package org.abondar.experimental.algorithms;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class SortingUtil {
+
+    public int[] selectionSort(int[] data){
+
+        for (int i=0;i<data.length-1;i++){
+            int minIndex= i;
+            for (int j=i+1;j<data.length;j++){
+                if (data[j]<data[minIndex]){
+                    minIndex = j;
+                }
+            }
+
+            int min = data[minIndex];
+            data[minIndex] = data[i];
+            data[i] = min;
+        }
+
+        return data;
+    }
+
 
     public int[] insertionSort(int[] data) {
         for (int i = 0; i < data.length; i++) {

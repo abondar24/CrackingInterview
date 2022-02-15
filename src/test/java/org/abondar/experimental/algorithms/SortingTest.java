@@ -1,9 +1,9 @@
 package org.abondar.experimental.algorithms;
 
-import org.abondar.experimental.algorithms.SortingUtil;
 import org.junit.Test;
 
 
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -72,6 +72,24 @@ public class SortingTest {
             System.out.println(aData);
         }
 
+        assertEquals(1L,actualRes[0]);
+        assertEquals(2L,actualRes[1]);
+        assertEquals(5L,actualRes[2]);
+        assertEquals(5L,actualRes[3]);
+        assertEquals(7L,actualRes[4]);
+        assertEquals(12L,actualRes[5]);
+        assertEquals(34L,actualRes[6]);
+    }
+
+    @Test
+    public void selectionSortTest(){
+        int []actualRes = su.selectionSort(data);
+
+        for (int aData : data) {
+            System.out.println(aData);
+        }
+
+        System.out.println(Arrays.toString(actualRes));
         assertEquals(1L,actualRes[0]);
         assertEquals(2L,actualRes[1]);
         assertEquals(5L,actualRes[2]);

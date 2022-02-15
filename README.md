@@ -171,7 +171,7 @@ find and index where element occurs
 # Algorithms
 
 ## Sorting
-
+- Selection Sort. Best,Avg: O(n^2)
 - Insertion sort. Best,Avg: O(n), Worst: O(n^2) 
 - Heap sort. Best,Avg,Worst: O(nlog n) 
 - Quick sort. Best,Avg: O(n log n), Worst: O(n^2) 
