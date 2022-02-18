@@ -13,6 +13,16 @@ public class ArrayTasksTest {
 
     private final ArrayTasks arrayTasks = new ArrayTasks();
 
+
+    @Test
+    public void sumTest(){
+        int[] arr = {2, 7, 10, 11};
+        int res = arrayTasks.sum(arr);
+        int expected = 30;
+
+        Assert.assertEquals(expected, res);
+    }
+
     @Test
     public void twoSumTest() {
         int[] arr = {2, 7, 11, 15};
@@ -21,6 +31,14 @@ public class ArrayTasksTest {
 
         int[] actual = arrayTasks.twoSum(arr, target);
         Assert.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void lenTest(){
+        int[] arr = {2, 7, 10, 11};
+        int res = arrayTasks.len(arr);
+
+        Assert.assertEquals(arr.length, res);
     }
 
     @Test

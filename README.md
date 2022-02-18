@@ -50,8 +50,9 @@ convert to upperCase,sort by len(ASC) and return distinct)
 - multPersistence - count multiplexing persistence of a number
 
 ## Arrays
-
+- sum - sum elements of array via recursion
 - twoSum - Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+- len - count number of elements of array via recursion
 - rotateMatrix - Rotate matrix by 90 degrees clockwise
 - zeroMatrix - If element [i][j] of matrix is zero - entire row and column must be zero
 If element [i][j] of matrix is zero - entire row and column must be zero

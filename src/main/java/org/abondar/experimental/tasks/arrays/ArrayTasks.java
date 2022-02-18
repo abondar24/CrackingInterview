@@ -3,6 +3,7 @@ package org.abondar.experimental.tasks.arrays;
 import org.abondar.experimental.algorithms.SearchUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,6 +15,15 @@ import java.util.Set;
 public class ArrayTasks {
 
     private final SearchUtil su = new SearchUtil();
+
+    public int sum(int[] data){
+        if (data.length==0){
+            return 0;
+        }
+
+        return data[0]+sum(Arrays.copyOfRange(data,1,data.length));
+    }
+
 
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> valsMap = new HashMap<>();
@@ -36,6 +46,13 @@ public class ArrayTasks {
         return new int[]{0, 0};
     }
 
+    public int len(int[] data){
+        if (data.length==0){
+            return 0;
+        }
+
+        return 1+len(Arrays.copyOfRange(data,1,data.length));
+    }
 
     public int[][] rotateMatrix(int[][] matrix) {
         printMatrix(matrix);
