@@ -9,7 +9,7 @@ public class GraphNode implements Comparable<GraphNode> {
     private List<GraphNode> children;
     private boolean visited;
     private GraphNode parent;
-    private Map<GraphNode, Integer> childrenWithPath;
+    private Map<GraphNode, Integer> childrenWithWeight;
 
     public GraphNode() {
 
@@ -22,7 +22,7 @@ public class GraphNode implements Comparable<GraphNode> {
 
     public GraphNode(String name, Map<GraphNode, Integer> childrenWithPath) {
         this.name = name;
-        this.childrenWithPath = childrenWithPath;
+        this.childrenWithWeight = childrenWithPath;
     }
 
     public GraphNode(String name) {
@@ -61,12 +61,12 @@ public class GraphNode implements Comparable<GraphNode> {
         this.parent = parent;
     }
 
-    public Map<GraphNode, Integer> getChildrenWithPath() {
-        return childrenWithPath;
+    public Map<GraphNode, Integer> getChildrenWithWeight() {
+        return childrenWithWeight;
     }
 
-    public void setChildrenWithPath(Map<GraphNode, Integer> childrenWithPath) {
-        this.childrenWithPath = childrenWithPath;
+    public void setChildrenWithWeight(Map<GraphNode, Integer> childrenWithWeight) {
+        this.childrenWithWeight = childrenWithWeight;
     }
 
     @Override
@@ -80,8 +80,8 @@ public class GraphNode implements Comparable<GraphNode> {
     @Override
     public int compareTo(GraphNode node) {
 
-        if (this.childrenWithPath.entrySet().contains(node)) {
-            return this.childrenWithPath.get(node);
+        if (this.childrenWithWeight.entrySet().contains(node)) {
+            return this.childrenWithWeight.get(node);
         }
 
         return 0;

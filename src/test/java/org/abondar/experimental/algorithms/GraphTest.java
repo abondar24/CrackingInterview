@@ -20,7 +20,7 @@ public class GraphTest {
         two.setParent(one);
         one.setParent(root);
 
-        root.setChildrenWithPath(Map.of(one,1));
+        root.setChildrenWithWeight(Map.of(one,1));
 
         int distToSource = gu.getDistanceToSource(root,two);
         assertEquals(2,distToSource);
@@ -41,23 +41,23 @@ public class GraphTest {
 
         one.setParent(root);
 
-        root.setChildrenWithPath(Map.of(one,6,two,8,three,18));
-        two.setChildrenWithPath(Map.of(three,9));
+        root.setChildrenWithWeight(Map.of(one,6,two,8,three,18));
+        two.setChildrenWithWeight(Map.of(three,9));
 
 
         GraphNode four = new GraphNode("4");
         four.setParent(one);
-        one.setChildrenWithPath(Map.of(four,11));
+        one.setChildrenWithWeight(Map.of(four,11));
 
         GraphNode five = new GraphNode("5");
         five.setParent(four);
-        four.setChildrenWithPath(Map.of(five,3));
-        five.setChildrenWithPath(Map.of(three,4,two,7));
+        four.setChildrenWithWeight(Map.of(five,3));
+        five.setChildrenWithWeight(Map.of(three,4,two,7));
 
 
         //cheat-code: I set as a parent the one with shortest distance
         three.setParent(five);
-        three.setChildrenWithPath(Map.of());
+        three.setChildrenWithWeight(Map.of());
 
         two.setParent(five);
 

@@ -27,7 +27,7 @@ public class GraphAlgs {
                 continue;
             }
             min.setVisited(true);
-            for (Map.Entry<GraphNode, Integer> entry : min.getChildrenWithPath().entrySet()) {
+            for (Map.Entry<GraphNode, Integer> entry : min.getChildrenWithWeight().entrySet()) {
                 int adjDistance = getDistanceToSource(root, min) + entry.getValue();
 
                 if (getDistanceToSource(root, entry.getKey()) >= adjDistance && !entry.getKey().isVisited()) {
@@ -48,8 +48,8 @@ public class GraphAlgs {
             return 0;
         }
 
-        if (root.getChildrenWithPath().containsKey(dest)) {
-            return root.getChildrenWithPath().get(dest);
+        if (root.getChildrenWithWeight().containsKey(dest)) {
+            return root.getChildrenWithWeight().get(dest);
         }
 
         int distance = 0;
@@ -57,7 +57,7 @@ public class GraphAlgs {
         GraphNode child = dest;
         while (parent != null) {
             parent = child.getParent();
-            distance += parent.getChildrenWithPath().getOrDefault(child, 0);
+            distance += parent.getChildrenWithWeight().getOrDefault(child, 0);
             child = parent;
             parent = parent.getParent();
         }
