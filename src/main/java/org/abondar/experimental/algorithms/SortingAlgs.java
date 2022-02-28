@@ -1,9 +1,8 @@
 package org.abondar.experimental.algorithms;
 
-import java.util.Arrays;
 import java.util.Random;
 
-public class SortingUtil {
+public class SortingAlgs {
 
     public int[] selectionSort(int[] data){
 

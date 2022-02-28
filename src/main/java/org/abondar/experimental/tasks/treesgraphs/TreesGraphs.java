@@ -1,8 +1,8 @@
 package org.abondar.experimental.tasks.treesgraphs;
 
+import org.abondar.experimental.algorithms.GraphAlgs;
 import org.abondar.experimental.structs.tree.BinTreeNode;
 import org.abondar.experimental.structs.tree.GraphNode;
-import org.abondar.experimental.structs.tree.GraphUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +11,17 @@ import java.util.stream.Collectors;
 
 public class TreesGraphs {
 
+    private GraphAlgs algs = new GraphAlgs();
 
     public boolean hasRouteBFS(List<GraphNode> graph, GraphNode start, GraphNode end) {
 
-        return graph.contains(start) && graph.contains(end) && GraphUtil.doBFS(start).contains(end);
+        return graph.contains(start) && graph.contains(end) && algs.bfs(start).contains(end);
 
     }
 
     public boolean hasRouteDFS(List<GraphNode> graph, GraphNode start, GraphNode end) {
 
-        return graph.contains(start) && graph.contains(end) && GraphUtil.doDFSStack(start).contains(end);
+        return graph.contains(start) && graph.contains(end) && algs.dfsStack(start).contains(end);
 
     }
 
@@ -182,7 +183,7 @@ public class TreesGraphs {
 
         roots.forEach(r -> {
             res.add(r.getName());
-            GraphUtil.doDFSStack(r).forEach(n -> res.add(n.getName()));
+            algs.dfsStack(r).forEach(n -> res.add(n.getName()));
         });
 
 

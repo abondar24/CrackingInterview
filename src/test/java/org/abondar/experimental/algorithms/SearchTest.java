@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class SearchTest {
 
-    private final SearchUtil su = new SearchUtil();
+    private final SearchAlgs su = new SearchAlgs();
 
     @Test
     public void seqSearchTest() {

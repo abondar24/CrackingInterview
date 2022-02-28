@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class GraphTest {
 
-    private GraphAlgUtil gu = new GraphAlgUtil();
+    private GraphAlgs gu = new GraphAlgs();
 
     @Test
     public void distanceToSourceTest(){
@@ -62,7 +62,7 @@ public class GraphTest {
         two.setParent(five);
 
 
-        assertEquals(6,gu.shortestPath(root,one));
+        assertEquals(6,gu.dijktstraShortestPath(root,one));
         root.setVisited(false);
         one.setVisited(false);
         two.setVisited(false);
@@ -70,7 +70,7 @@ public class GraphTest {
         four.setVisited(false);
         five.setVisited(false);
 
-        assertEquals(8,gu.shortestPath(root,two));
+        assertEquals(8,gu.dijktstraShortestPath(root,two));
         root.setVisited(false);
         one.setVisited(false);
         two.setVisited(false);
@@ -88,7 +88,7 @@ public class GraphTest {
         five.setVisited(false);
         */
 
-        assertEquals(17,gu.shortestPath(root,four));
+        assertEquals(17,gu.dijktstraShortestPath(root,four));
         root.setVisited(false);
         one.setVisited(false);
         two.setVisited(false);
@@ -96,7 +96,7 @@ public class GraphTest {
         four.setVisited(false);
         five.setVisited(false);
 
-        assertEquals(20,gu.shortestPath(root,five));
+        assertEquals(20,gu.dijktstraShortestPath(root,five));
         root.setVisited(false);
         one.setVisited(false);
         two.setVisited(false);

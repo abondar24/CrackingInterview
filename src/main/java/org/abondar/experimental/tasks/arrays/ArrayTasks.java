@@ -1,6 +1,6 @@
 package org.abondar.experimental.tasks.arrays;
 
-import org.abondar.experimental.algorithms.SearchUtil;
+import org.abondar.experimental.algorithms.SearchAlgs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class ArrayTasks {
 
-    private final SearchUtil su = new SearchUtil();
+    private final SearchAlgs su = new SearchAlgs();
 
     public int sum(int[] data){
         if (data.length==0){

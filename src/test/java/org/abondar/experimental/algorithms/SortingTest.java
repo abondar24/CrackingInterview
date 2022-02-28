@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class SortingTest {
 
     private int[] data = new int[]{5,7,12,34,5,2,1};
-    private SortingUtil su = new SortingUtil();
+    private SortingAlgs su = new SortingAlgs();
 
     @Test
     public void insertSortTest(){

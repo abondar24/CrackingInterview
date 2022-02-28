@@ -3,7 +3,7 @@ package org.abondar.experimental.algorithms;
 
 import java.util.LinkedList;
 
-public class SearchUtil {
+public class SearchAlgs {
     private final int tableSize = 65136;
 
     public boolean sequentialSearch(int[] data, int elem) {
