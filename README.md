@@ -123,6 +123,10 @@ Check comments in classes
 - add binary - sum two binary nums
 - getSum - sum two ints without using +- operators
 
+## Greedy Tasks
+
+- set coverage - Given a list of states and radio stations you want to reach listeners in provided states. You have to decide what
+  stations to play on to reach all those listeners. 
 ## Dynamic programming
 
 - count ways - child runs staircase with n steps with hops of 1 ,2 or 3 steps. How many possible ways can he run?
