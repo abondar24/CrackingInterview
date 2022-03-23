@@ -1,5 +1,7 @@
 package org.abondar.experimental.algorithms;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class SortingAlgs {
@@ -79,7 +81,31 @@ public class SortingAlgs {
         return max;
     }
 
-    //todo bucket sort
+
+
+    public double[] bucketSort(double[] data) {
+        @SuppressWarnings("unchecked")
+        ArrayList<Double>[] bucket = new ArrayList[data.length];
+
+        int index = 0;
+
+        for (int i = 0; i < data.length; i++) {
+            bucket[i] = new ArrayList<>();
+            int bucketIndex = (int) data[i]*data.length;
+            bucket[bucketIndex].add(data[i]);
+        }
+
+        for (int i = 0; i < data.length; i++) {
+            Collections.sort(bucket[i]);
+
+            for (int j =0, size = bucket[i].size();j<size;j++){
+                data[index++] = bucket[i].get(j);
+            }
+
+        }
+
+        return data;
+    }
 
     public int[] selectionSort(int[] data) {
 

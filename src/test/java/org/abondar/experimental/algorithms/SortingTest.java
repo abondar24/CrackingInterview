@@ -118,4 +118,21 @@ public class SortingTest {
         assertEquals(564L,actualRes[5]);
         assertEquals(788L,actualRes[6]);
     }
+
+
+
+    @Test
+    public void bucketFloatSortTest(){
+        double[] data = { 0.42, 0.32, 0.33, 0.52, 0.37, 0.47, 0.51 };
+        double[] actualRes = su.bucketSort(data);
+
+        assertEquals( 0.32,actualRes[0],0.01);
+        assertEquals(0.33,actualRes[1],0.01);
+        assertEquals(0.37,actualRes[2],0.01);
+        assertEquals(0.42,actualRes[3],0.01);
+        assertEquals(0.47,actualRes[4],0.01);
+        assertEquals(0.51,actualRes[5],0.01);
+        assertEquals(0.52,actualRes[6],0.01);
+    }
+
 }
