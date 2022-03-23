@@ -158,4 +158,16 @@ public class SortingTest {
         assertEquals(0.52,actualRes[6],0.01);
     }
 
+    @Test
+    public void bubbleSortTest(){
+        int []actualRes = su.bubbleSort(data);
+
+        assertEquals(1L,actualRes[0]);
+        assertEquals(2L,actualRes[1]);
+        assertEquals(5L,actualRes[2]);
+        assertEquals(5L,actualRes[3]);
+        assertEquals(7L,actualRes[4]);
+        assertEquals(12L,actualRes[5]);
+        assertEquals(34L,actualRes[6]);
+    }
 }

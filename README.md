@@ -176,10 +176,11 @@ find and index where element occurs
 # Algorithms
 
 ## Sorting
-- Counting Sort. Best,Avg,Worst: O(n+k)
+- Bubble Sort. Best,Avg: O(n^2)
+- Selection Sort. Best,Avg: O(n^2)
+- - Counting Sort. Best,Avg,Worst: O(n+k)
 - Radix Sort. Best,Avg,Worst: O(n+k)
 - Bucket Sort. Best:O(n+k),Avg:O(n),Worst:O(n^2)
-- Selection Sort. Best,Avg: O(n^2)
 - Insertion sort. Best,Avg: O(n), Worst: O(n^2) 
 - Heap sort. Best,Avg,Worst: O(nlog n) 
 - Quick sort. Best,Avg: O(n log n), Worst: O(n^2) 

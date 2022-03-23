@@ -5,7 +5,47 @@ import java.util.Collections;
 import java.util.Random;
 
 public class SortingAlgs {
-    //todo add bubble sort
+
+    public int[] bubbleSort(int[] data) {
+        for (int i = 0; i < data.length - 1; i++) {
+            boolean swapped = false;
+
+            for (int j = 0; j < data.length - i - 1; j++) {
+                if (data[j] > data[j + 1]) {
+                    int tmp = data[j];
+                    data[j] = data[j + 1];
+                    data[j + 1] = tmp;
+                    swapped = true;
+                }
+            }
+
+            if (!swapped){
+                break;
+            }
+        }
+
+        return data;
+    }
+
+    public int[] selectionSort(int[] data) {
+
+        for (int i = 0; i < data.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < data.length; j++) {
+                if (data[j] < data[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            int min = data[minIndex];
+            data[minIndex] = data[i];
+            data[i] = min;
+        }
+
+        return data;
+    }
+
+
     public int[] countingSort(int[] data) {
         int[] res = new int[data.length];
 
@@ -85,17 +125,17 @@ public class SortingAlgs {
         double[] doubleData = new double[data.length];
 
         int max = getMax(data, data[0]);
-        double mult = Math.pow(10.0,getDigitsLen(max));
+        double mult = Math.pow(10.0, getDigitsLen(max));
 
         for (int i = 0; i < data.length; i++) {
-            doubleData[i] = data[i]/mult;
+            doubleData[i] = data[i] / mult;
         }
 
         doubleData = bucketSort(doubleData);
         int[] res = new int[data.length];
 
-        for (int i=0;i<doubleData.length;i++){
-            res[i] = (int)(doubleData[i]*mult) ;
+        for (int i = 0; i < doubleData.length; i++) {
+            res[i] = (int) (doubleData[i] * mult);
         }
 
         return res;
@@ -103,7 +143,7 @@ public class SortingAlgs {
 
     private double getDigitsLen(int num) {
         int len = 0;
-        for(; num != 0; num/=10, ++len);
+        for (; num != 0; num /= 10, ++len) ;
         return len;
     }
 
@@ -111,14 +151,13 @@ public class SortingAlgs {
         @SuppressWarnings("unchecked")
         ArrayList<Double>[] bucket = new ArrayList[data.length];
 
-        int index = 0;
-
         for (int i = 0; i < data.length; i++) {
             bucket[i] = new ArrayList<>();
             int bucketIndex = (int) data[i] * data.length;
             bucket[bucketIndex].add(data[i]);
         }
 
+        int index = 0;
         for (int i = 0; i < data.length; i++) {
             Collections.sort(bucket[i]);
 
@@ -126,24 +165,6 @@ public class SortingAlgs {
                 data[index++] = bucket[i].get(j);
             }
 
-        }
-
-        return data;
-    }
-
-    public int[] selectionSort(int[] data) {
-
-        for (int i = 0; i < data.length - 1; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < data.length; j++) {
-                if (data[j] < data[minIndex]) {
-                    minIndex = j;
-                }
-            }
-
-            int min = data[minIndex];
-            data[minIndex] = data[i];
-            data[i] = min;
         }
 
         return data;
