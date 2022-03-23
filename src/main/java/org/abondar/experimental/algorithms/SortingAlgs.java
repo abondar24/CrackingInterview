@@ -1,15 +1,17 @@
 package org.abondar.experimental.algorithms;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class SortingAlgs {
+    //todo add bubble sort
 
-    public int[] selectionSort(int[] data){
+    public int[] selectionSort(int[] data) {
 
-        for (int i=0;i<data.length-1;i++){
-            int minIndex= i;
-            for (int j=i+1;j<data.length;j++){
-                if (data[j]<data[minIndex]){
+        for (int i = 0; i < data.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < data.length; j++) {
+                if (data[j] < data[minIndex]) {
                     minIndex = j;
                 }
             }
@@ -21,6 +23,40 @@ public class SortingAlgs {
 
         return data;
     }
+
+
+    public int[] countingSort(int[] data) {
+        int[] res = new int[data.length];
+
+        int max = data[0];
+        for (int datum : data) {
+            if (datum > max) {
+                max = datum;
+            }
+        }
+
+        int[] count = new int[max + 1];
+
+        //count of each elem
+        for (int datum : data) {
+            count[datum]++;
+        }
+
+        //calc cumulitive count - sum previous elem + current val
+        for (int i = 1; i <= max; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = data.length -1; i>=0;i--){
+            res[count[data[i]]-1] = data[i];
+            count[data[i]]--;
+        }
+
+
+        return res;
+    }
+
+    //todo add radix sort
 
 
     public int[] insertionSort(int[] data) {
