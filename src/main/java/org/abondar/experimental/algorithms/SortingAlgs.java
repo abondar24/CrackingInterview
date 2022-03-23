@@ -81,7 +81,31 @@ public class SortingAlgs {
         return max;
     }
 
+    public int[] bucketSort(int[] data) {
+        double[] doubleData = new double[data.length];
 
+        int max = getMax(data, data[0]);
+        double mult = Math.pow(10.0,getDigitsLen(max));
+
+        for (int i = 0; i < data.length; i++) {
+            doubleData[i] = data[i]/mult;
+        }
+
+        doubleData = bucketSort(doubleData);
+        int[] res = new int[data.length];
+
+        for (int i=0;i<doubleData.length;i++){
+            res[i] = (int)(doubleData[i]*mult) ;
+        }
+
+        return res;
+    }
+
+    private double getDigitsLen(int num) {
+        int len = 0;
+        for(; num != 0; num/=10, ++len);
+        return len;
+    }
 
     public double[] bucketSort(double[] data) {
         @SuppressWarnings("unchecked")
@@ -91,14 +115,14 @@ public class SortingAlgs {
 
         for (int i = 0; i < data.length; i++) {
             bucket[i] = new ArrayList<>();
-            int bucketIndex = (int) data[i]*data.length;
+            int bucketIndex = (int) data[i] * data.length;
             bucket[bucketIndex].add(data[i]);
         }
 
         for (int i = 0; i < data.length; i++) {
             Collections.sort(bucket[i]);
 
-            for (int j =0, size = bucket[i].size();j<size;j++){
+            for (int j = 0, size = bucket[i].size(); j < size; j++) {
                 data[index++] = bucket[i].get(j);
             }
 
