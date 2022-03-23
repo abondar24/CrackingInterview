@@ -1,10 +1,85 @@
 package org.abondar.experimental.algorithms;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class SortingAlgs {
     //todo add bubble sort
+    public int[] countingSort(int[] data) {
+        int[] res = new int[data.length];
+
+        int max = getMax(data, data[0]);
+
+        int[] count = new int[max + 1];
+
+        //count of each elem
+        for (int datum : data) {
+            count[datum]++;
+        }
+
+        //calc cumulitive count - sum previous elem + current val
+        for (int i = 1; i <= max; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = data.length - 1; i >= 0; i--) {
+            res[count[data[i]] - 1] = data[i];
+            count[data[i]]--;
+        }
+
+
+        return res;
+    }
+
+    public int[] radixSort(int[] data) {
+        int[] res;
+        int max = getMax(data, data.length);
+
+        for (int place = 1; max / place > 0; place *= 10) {
+            res = countingSortRadix(data, place);
+            System.arraycopy(res, 0, data, 0, data.length);
+        }
+
+        return data;
+    }
+
+
+    private int[] countingSortRadix(int[] data, int place) {
+        int[] res = new int[data.length];
+
+        int max = getMax(data, data[0]);
+
+        int[] count = new int[max + 1];
+
+        for (int datum : data) {
+            count[(datum / place) % 10]++;
+        }
+
+        for (int i = 1; i < 10; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = data.length - 1; i >= 0; i--) {
+            res[count[(data[i] / place) % 10] - 1] = data[i];
+            count[(data[i] / place) % 10]--;
+        }
+
+        // System.arraycopy(res, 0, data, 0, data.length);
+
+        return res;
+    }
+
+    private int getMax(int[] data, int init) {
+        int max = init;
+        for (int datum : data) {
+            if (datum > max) {
+                max = datum;
+            }
+        }
+
+        return max;
+    }
+
+    //todo bucket sort
 
     public int[] selectionSort(int[] data) {
 
@@ -23,40 +98,6 @@ public class SortingAlgs {
 
         return data;
     }
-
-
-    public int[] countingSort(int[] data) {
-        int[] res = new int[data.length];
-
-        int max = data[0];
-        for (int datum : data) {
-            if (datum > max) {
-                max = datum;
-            }
-        }
-
-        int[] count = new int[max + 1];
-
-        //count of each elem
-        for (int datum : data) {
-            count[datum]++;
-        }
-
-        //calc cumulitive count - sum previous elem + current val
-        for (int i = 1; i <= max; i++) {
-            count[i] += count[i - 1];
-        }
-
-        for (int i = data.length -1; i>=0;i--){
-            res[count[data[i]]-1] = data[i];
-            count[data[i]]--;
-        }
-
-
-        return res;
-    }
-
-    //todo add radix sort
 
 
     public int[] insertionSort(int[] data) {

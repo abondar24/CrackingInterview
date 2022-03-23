@@ -91,4 +91,31 @@ public class SortingTest {
         assertEquals(12L,actualRes[5]);
         assertEquals(34L,actualRes[6]);
     }
+
+    @Test
+    public void radixSortTest(){
+        int []actualRes = su.radixSort(data);
+
+        assertEquals(1L,actualRes[0]);
+        assertEquals(2L,actualRes[1]);
+        assertEquals(5L,actualRes[2]);
+        assertEquals(5L,actualRes[3]);
+        assertEquals(7L,actualRes[4]);
+        assertEquals(12L,actualRes[5]);
+        assertEquals(34L,actualRes[6]);
+    }
+
+    @Test
+    public void radixSortHundredTest(){
+        int[] data = { 121, 432, 564, 23, 1, 45, 788 };
+        int []actualRes = su.radixSort(data);
+
+        assertEquals(1L,actualRes[0]);
+        assertEquals(23L,actualRes[1]);
+        assertEquals(45L,actualRes[2]);
+        assertEquals(121L,actualRes[3]);
+        assertEquals(432L,actualRes[4]);
+        assertEquals(564L,actualRes[5]);
+        assertEquals(788L,actualRes[6]);
+    }
 }
