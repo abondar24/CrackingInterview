@@ -311,5 +311,35 @@ public class Lists {
 
     }
 
+    public Node<Integer> appendToTail(Node<Integer> root,int data) {
+        Node<Integer> end = new Node<>(data);
+        if (root.getNext()==null){
+            root.setNext(end);
+        } else {
+            Node<Integer> next = root.getNext();
+            while (next != null) {
+               if (next.getNext()==null){
+                   next.setNext(end);
+                   break;
+               }
+               next = next.getNext();
+            }
+
+        }
+        return root;
+    }
+
+    //todo add test
+    public Node<Integer> findNode(Node<Integer> root,Integer data){
+        while (root!= null) {
+            if (root.getData().equals(data)){
+                return root;
+            }
+
+            root = root.getNext();
+        }
+
+        return null;
+    }
 
 }

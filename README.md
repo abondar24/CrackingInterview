@@ -87,6 +87,8 @@ We need to return a list which represents sum of values
 - deleteDuplicates - remove duplicates from linked list
 - deleteVal - delete element from value
 - reverseList - reverse linked list
+- appendToTail - append a new node to the end of list
+- findNode - find node by data
 
 
 ## Multithread

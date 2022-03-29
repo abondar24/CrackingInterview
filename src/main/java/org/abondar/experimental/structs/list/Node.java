@@ -10,15 +10,6 @@ public class Node<T> {
         this.data = data;
     }
 
-    public void appendToTail(int data) {
-        Node end = new Node<>(data);
-        Node n = this;
-        while (n.next != null) {
-            n = n.next;
-        }
-
-        n.setNext(end);
-    }
 
 
     public Node getNext() {
@@ -39,7 +30,7 @@ public class Node<T> {
 
     @Override
     public String toString() {
-        return "BinTreeNode{" +
+        return "ListNode{" +
                 "next=" + next +
                 ", data=" + data +
                 '}';

@@ -476,4 +476,46 @@ public class ListsTest {
         Assert.assertNull(res.getData());
     }
 
+    @Test
+    public void appendToTailTest() {
+        Node<Integer> head = new Node<>(1);
+        head = ll.appendToTail(head,2);
+        Assert.assertNotNull(head.getNext());
+        Assert.assertEquals(2,head.getNext().getData());
+
+        Node<Integer> next = head.getNext();
+        Node<Integer> next1 = new Node<>(3);
+        Node<Integer> next2 = new Node<>(4);
+        Node<Integer> next3 = new Node<>(5);
+
+        next.setNext(next1);
+        next1.setNext(next2);
+        next2.setNext(next3);
+
+        Node<Integer>res = ll.appendToTail(head,6);
+        Assert.assertNotNull(next3.getNext());
+        Assert.assertEquals(res.getNext().getNext().getNext().getNext().getNext().getData(), next3.getNext().getData());
+    }
+
+    @Test
+    public void findNodeTest() {
+        Node<Integer> head = new Node<>(1);
+        Node<Integer> next = new Node<>(2);
+        Node<Integer> next1 = new Node<>(3);
+        Node<Integer> next2 = new Node<>(4);
+        Node<Integer> next3 = new Node<>(5);
+
+        head.setNext(next);
+        next.setNext(next1);
+        next1.setNext(next2);
+        next2.setNext(next3);
+
+
+        Node<Integer>res = ll.findNode(head,5);
+        Assert.assertEquals(res.getData(),next3.getData());
+
+        res = ll.findNode(head,6);
+        Assert.assertNull(res);
+
+    }
 }
