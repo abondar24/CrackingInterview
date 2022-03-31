@@ -7,6 +7,8 @@ public class BinTreeNode {
     private BinTreeNode right;
     private BinTreeNode parent;
 
+    //Refactor to store int value
+    private int val;
     public BinTreeNode(String name) {
         this.name = name;
     }
@@ -38,6 +40,14 @@ public class BinTreeNode {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getVal() {
+        return val;
+    }
+
+    public void setVal(int val) {
+        this.val = val;
     }
 
     public BinTreeNode getLeft() {
