@@ -394,4 +394,52 @@ public class Dynamic {
         return res.toString();
     }
 
+
+    public int cutRodMem(int[] data,int rodLen) {
+        int[] memory = new int[rodLen+1];
+
+        Arrays.fill(memory, Integer.MIN_VALUE);
+
+
+        return memAux(data, memory,rodLen);
+    }
+
+    private int memAux(int[] data, int[] memory,int rodLen) {
+        int res= Integer.MIN_VALUE;;
+
+        if (memory[rodLen] >= 0) {
+            return memory[rodLen];
+        }
+
+        if (rodLen == 0) {
+           res =0;
+        } else {
+
+            for (int i = 0; i < rodLen; i++) {
+                res = Math.max(res, data[i] + memAux(data, memory,rodLen-i-1));
+            }
+        }
+
+        memory[rodLen] = res;
+
+        return res;
+    }
+
+    public int cutRodBottomUp(int[] data, int rodLen) {
+        int[] memory = new int[rodLen + 1];
+
+        memory[0] = 0;
+
+        for (int i = 1; i <= rodLen; i++) {
+            int max = Integer.MIN_VALUE;
+            for (int j = 0; j < i; j++) {
+                max = Math.max(max, data[j] + memory[i - j - 1]);
+            }
+            memory[i] = max;
+        }
+
+        return memory[rodLen];
+    }
+
+
 }

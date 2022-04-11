@@ -242,4 +242,15 @@ public class DynamicTest {
         res = dyn.countAndSay(5);
         assertEquals("111221", res);
     }
+
+    @Test
+    public void cutRodTest(){
+        int[] data = {1,5,8,9,10,17,17,20};
+
+        int res = dyn.cutRodMem(data,data.length);
+        assertEquals(22L,res);
+
+        res = dyn.cutRodBottomUp(data,data.length);
+        assertEquals(22L,res);
+    }
 }
