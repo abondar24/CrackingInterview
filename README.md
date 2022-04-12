@@ -159,7 +159,11 @@ find number of ways to parentesizing expression that it will evaluate result
                   
                   Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence. You can do so recursively, in other words from the previous member read off the digits, counting the number of digits in groups of the same digit.
 - rod cut - get max revenue of rod-cutting (both memorized and bottom up solution).
-- 
+- matrix chain multiplication order - Given a sequence of matrices, find the most efficient way to multiply these matrices together. Sequence of matrices is represented as array p  such that the ith matrix Ai is of dimension p[i-1] x p[i].
+For example  p[] = {40, 20, 30, 10, 30} represents matrices 40x20 20x30 30x10 and 10x30.
+
+
+
 ## Sorting tasks
 
 These tasks use algorithms from Sorting section below

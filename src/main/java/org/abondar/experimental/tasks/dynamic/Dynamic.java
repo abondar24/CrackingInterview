@@ -395,28 +395,29 @@ public class Dynamic {
     }
 
 
-    public int cutRodMem(int[] data,int rodLen) {
-        int[] memory = new int[rodLen+1];
+    public int cutRodMem(int[] data, int rodLen) {
+        int[] memory = new int[rodLen + 1];
 
         Arrays.fill(memory, Integer.MIN_VALUE);
 
 
-        return memAux(data, memory,rodLen);
+        return memAux(data, memory, rodLen);
     }
 
-    private int memAux(int[] data, int[] memory,int rodLen) {
-        int res= Integer.MIN_VALUE;;
+    private int memAux(int[] data, int[] memory, int rodLen) {
+        int res = Integer.MIN_VALUE;
+        ;
 
         if (memory[rodLen] >= 0) {
             return memory[rodLen];
         }
 
         if (rodLen == 0) {
-           res =0;
+            res = 0;
         } else {
 
             for (int i = 0; i < rodLen; i++) {
-                res = Math.max(res, data[i] + memAux(data, memory,rodLen-i-1));
+                res = Math.max(res, data[i] + memAux(data, memory, rodLen - i - 1));
             }
         }
 
@@ -442,4 +443,25 @@ public class Dynamic {
     }
 
 
+    public int matrixChainMultOrder(int[] chain) {
+        int[][] memory = new int[chain.length][chain.length];
+
+        for (int chainLen = 2; chainLen < chain.length; chainLen++) {
+            for (int i = 1; i < chain.length - chainLen + 1; i++) {
+                int j = i + chainLen - 1;
+                if (j == chain.length) {
+                    continue;
+                }
+                memory[i][j] = Integer.MAX_VALUE;
+                for (int k = i; k <= j - 1; k++) {
+                     int cost = memory[i][k] + memory[k+1][j] + chain[i-1]*chain[k]*chain[j];
+                     if (cost < memory[i][j]){
+                         memory[i][j] = cost;
+                     }
+                }
+            }
+        }
+
+        return memory[1][chain.length-1];
+    }
 }

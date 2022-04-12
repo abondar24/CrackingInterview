@@ -253,4 +253,19 @@ public class DynamicTest {
         res = dyn.cutRodBottomUp(data,data.length);
         assertEquals(22L,res);
     }
+
+    @Test
+    public void matrixChainMultOrderTest(){
+        int [] chain = {40, 20, 30, 10, 30};
+        int res = dyn.matrixChainMultOrder(chain);
+        assertEquals(26000,res);
+
+        chain = new int[]{10, 20, 30, 40, 30};
+        res = dyn.matrixChainMultOrder(chain);
+        assertEquals(30000,res);
+
+        chain = new int[]{10, 20, 30};
+        res = dyn.matrixChainMultOrder(chain);
+        assertEquals(6000,res);
+    }
 }
