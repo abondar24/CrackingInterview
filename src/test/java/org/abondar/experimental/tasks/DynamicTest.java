@@ -268,4 +268,13 @@ public class DynamicTest {
         res = dyn.matrixChainMultOrder(chain);
         assertEquals(6000,res);
     }
+
+    @Test
+    public void longestCommonSubsequenceLenTest(){
+        String s1 = "AGGTAB";
+        String s2 = "GXTXAYB";
+        int res = dyn.longestCommonSubsequenceLen(s1,s2);
+
+        assertEquals(4,res);
+    }
 }

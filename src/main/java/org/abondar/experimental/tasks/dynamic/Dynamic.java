@@ -464,4 +464,25 @@ public class Dynamic {
 
         return memory[1][chain.length-1];
     }
+
+    public int longestCommonSubsequenceLen(String s1, String s2){
+        char[] s1c = s1.toCharArray();
+        char[] s2c = s2.toCharArray();
+
+        int [][] len = new int[s1.length()+1][s2.length()+1];
+
+        for (int i=0;i<=s1.length();i++) {
+            for (int j=0;j<=s2.length();j++){
+                if (i ==0 || j == 0){
+                    len[i][j] = 0;
+                } else if (s1c[i-1] == s2c[j-1]){
+                    len[i][j] = len[i-1][j-1] +1;
+                } else {
+                    len[i][j] = Math.max(len[i-1][j],len[i][j-1]);
+                }
+            }
+        }
+
+        return len[s1.length()][s2.length()];
+    };
 }
