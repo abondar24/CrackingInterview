@@ -32,9 +32,6 @@ public class GreedyTest {
 
         assertEquals(4,coverage.size());
         assertTrue(coverage.contains("ktwo"));
-        assertTrue(coverage.contains("kthree"));
-        assertTrue(coverage.contains("kone"));
-        assertTrue(coverage.contains("kfive"));
 
     }
 }
