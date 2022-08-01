@@ -1,8 +1,11 @@
 package org.abondar.experimental.tasks;
 
 import org.abondar.experimental.structs.hashmap.CustomHashMap;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HashMapTest {
 
@@ -10,22 +13,22 @@ public class HashMapTest {
     public void hasMapTest(){
         CustomHashMap<String,Integer> map = new CustomHashMap<>();
         map.add("test",1);
-        Assert.assertEquals(1,map.size());
+        assertEquals(1,map.size());
 
         map.add("test1",2);
-        Assert.assertEquals(2,map.size());
+        assertEquals(2,map.size());
 
         map.add("test1",3);
-        Assert.assertEquals(2,map.size());
-        Assert.assertEquals(Integer.valueOf(3),map.get("test1"));
+        assertEquals(2,map.size());
+        assertEquals(Integer.valueOf(3),map.get("test1"));
 
-        Assert.assertNull(map.get("test2"));
+        assertNull(map.get("test2"));
 
         map.remove("test1");
-        Assert.assertEquals(1,map.size());
+        assertEquals(1,map.size());
 
         map.remove("test");
-        Assert.assertTrue(map.isEmpty());
+        assertTrue(map.isEmpty());
     }
 
 

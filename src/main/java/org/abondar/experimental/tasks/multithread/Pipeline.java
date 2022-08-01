@@ -23,7 +23,7 @@ public class Pipeline {
             Thread.onSpinWait();
             queue.put(obj);
         } catch (InterruptedException ex){
-            System.out.println(ex.getLocalizedMessage());
+            System.err.println(ex.getLocalizedMessage());
         }
 
     }
@@ -39,7 +39,7 @@ public class Pipeline {
             Thread.onSpinWait();
             return queue.take();
         } catch (InterruptedException ex){
-            System.out.println(ex.getLocalizedMessage());
+            System.err.println(ex.getLocalizedMessage());
         }
         return null;
     }

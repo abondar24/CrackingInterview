@@ -99,7 +99,6 @@ public class SortingTasks {
             //bit set start from 0
             int num0 = num - 1;
             if (bs.get(num0)) {
-                System.out.println(num);
                 res.add(num);
             } else {
                 bs.set(num0);

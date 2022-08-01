@@ -18,7 +18,7 @@ public class Tower {
 
     public void add(int d) {
         if (!disks.isEmpty() && disks.peek() <= d) {
-            System.out.println("Error placing disk " + d);
+            System.err.println("Error placing disk " + d);
         } else {
             disks.push(d);
         }

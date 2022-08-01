@@ -71,7 +71,6 @@ public class GraphAlgs {
         if (root == null) return;
 
         root.setVisited(true);
-        System.out.println(root);
         for (GraphNode n : root.getChildren()) {
             if (!n.isVisited()) {
                 dfs(n);

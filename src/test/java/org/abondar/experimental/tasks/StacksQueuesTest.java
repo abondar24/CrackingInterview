@@ -11,14 +11,13 @@ import org.abondar.experimental.structs.stack.StackUtil;
 import org.abondar.experimental.tasks.stacksqueues.shelter.AnimalQueue;
 import org.abondar.experimental.tasks.stacksqueues.shelter.Cat;
 import org.abondar.experimental.tasks.stacksqueues.shelter.Dog;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StacksQueuesTest {
 
@@ -161,7 +160,6 @@ public class StacksQueuesTest {
 
         CustomStack<Integer> sorted = StackUtil.sortStack(stack);
 
-        System.out.println(sorted);
         assertEquals((Object) 12, sorted.peek());
     }
 
@@ -178,7 +176,6 @@ public class StacksQueuesTest {
 
         CustomStack<Integer> sorted = StackUtil.sortStack(stack);
 
-        System.out.println(sorted);
         assertEquals((Object) 14, sorted.peek());
     }
 

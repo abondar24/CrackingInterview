@@ -1,13 +1,13 @@
 package org.abondar.experimental.tasks;
 
 import org.abondar.experimental.tasks.bitops.BitOps;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BitOpsTest {
 
@@ -18,11 +18,7 @@ public class BitOpsTest {
         int n = Integer.parseInt("10000000000", 2);
         int m = Integer.parseInt("10011", 2);
 
-        System.out.printf("N: %d\n", n);
-        System.out.printf("M: %d\n", m);
-
         int res = Integer.parseInt("10001001100", 2);
-        System.out.printf("Expected res: %d\n", res);
 
         int actualRes = bitOps.insert(n, m, 2, 6);
         assertEquals(res, actualRes);
@@ -66,8 +62,6 @@ public class BitOpsTest {
     @Test
     public void pairwiseTest() {
         int n = 29;
-
-        System.out.println(Integer.toBinaryString(29));
 
         String swapped = "101110";
         int res = bitOps.pairwiseSwap(n);

@@ -3,14 +3,15 @@ package org.abondar.experimental.tasks;
 import org.abondar.experimental.structs.tree.BinTreeNode;
 import org.abondar.experimental.structs.tree.GraphNode;
 import org.abondar.experimental.tasks.treesgraphs.TreesGraphs;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TreeGraphTest {
 
@@ -246,7 +247,6 @@ public class TreeGraphTest {
 
         List<String> res = tg.buildOrder(deps);
 
-        System.out.println(res);
         assertEquals(5,res.size());
         assertEquals("f",res.get(0));
     }
@@ -262,7 +262,6 @@ public class TreeGraphTest {
 
         List<String> res = tg.buildOrder(deps);
 
-        System.out.println(res);
         assertEquals(7,res.size());
 
     }
@@ -331,6 +330,6 @@ public class TreeGraphTest {
         root.setLeft(node);
         root.setRight(leaf2);
 
-        Assert.assertEquals(2,root.height());
+        assertEquals(2,root.height());
     }
 }

@@ -49,10 +49,10 @@ public class CountItems {
 
 
             } catch (IOException ioEx) {
-                System.out.println(ioEx);
+                System.err.println(ioEx.getMessage());
             }
         } catch (MalformedURLException malEx) {
-            System.out.println(malEx);
+            System.err.println(malEx.getMessage());
         }
     }
 }

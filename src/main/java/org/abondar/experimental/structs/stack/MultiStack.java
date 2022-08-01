@@ -30,7 +30,6 @@ public class MultiStack {
         }
 
         int counter = 0;
-        System.out.println(singleStackSize);
         for (CustomStack s : stackList) {
             int endOfStack = counter + singleStackSize;
             if (counter != stackList.size()) {

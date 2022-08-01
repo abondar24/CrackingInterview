@@ -1,16 +1,14 @@
 package org.abondar.experimental.tasks;
 
 import org.abondar.experimental.tasks.ints.Ints;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.security.PublicKey;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class IntsTests {
 

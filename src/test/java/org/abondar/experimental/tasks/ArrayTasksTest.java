@@ -2,12 +2,13 @@ package org.abondar.experimental.tasks;
 
 import org.abondar.experimental.tasks.arrays.ArrayTasks;
 import org.abondar.experimental.tasks.arrays.TimeSlot;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ArrayTasksTest {
 
@@ -20,7 +21,7 @@ public class ArrayTasksTest {
         int res = arrayTasks.sum(arr);
         int expected = 30;
 
-        Assert.assertEquals(expected, res);
+       assertEquals(expected, res);
     }
 
     @Test
@@ -30,7 +31,7 @@ public class ArrayTasksTest {
         int[] expected = {0, 1};
 
         int[] actual = arrayTasks.twoSum(arr, target);
-        Assert.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -38,7 +39,7 @@ public class ArrayTasksTest {
         int[] arr = {2, 7, 10, 11};
         int res = arrayTasks.len(arr);
 
-        Assert.assertEquals(arr.length, res);
+        assertEquals(arr.length, res);
     }
 
     @Test
@@ -66,7 +67,7 @@ public class ArrayTasksTest {
         expectedMatrix[2][2] = 3;
 
         int[][] actualMatrix = arrayTasks.rotateMatrix(matrix);
-        Assert.assertArrayEquals(expectedMatrix, actualMatrix);
+        assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
 
@@ -110,7 +111,7 @@ public class ArrayTasksTest {
         expectedMatrix[3][3] = 4;
 
         int[][] actualMatrix = arrayTasks.rotateMatrix(matrix);
-        Assert.assertArrayEquals(expectedMatrix, actualMatrix);
+        assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
 
@@ -140,7 +141,7 @@ public class ArrayTasksTest {
         expectedMatrix[2][2] = 9;
 
         int[][] actualMatrix = arrayTasks.zeroMatrix(matrix);
-        Assert.assertArrayEquals(expectedMatrix, actualMatrix);
+        assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
 
@@ -170,7 +171,7 @@ public class ArrayTasksTest {
         expectedMatrix[2][2] = 0;
 
         int[][] actualMatrix = arrayTasks.zeroMatrix(matrix);
-        Assert.assertArrayEquals(expectedMatrix, actualMatrix);
+        assertArrayEquals(expectedMatrix, actualMatrix);
 
     }
 
@@ -179,19 +180,19 @@ public class ArrayTasksTest {
         int[] nums = new int[]{1, 1, 2};
         int res = arrayTasks.calcUniqueLen(nums);
 
-        Assert.assertEquals(2, res);
-        Assert.assertEquals(1, nums[0]);
-        Assert.assertEquals(2, nums[1]);
+        assertEquals(2, res);
+        assertEquals(1, nums[0]);
+        assertEquals(2, nums[1]);
 
         nums = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
         res = arrayTasks.calcUniqueLen(nums);
-        Assert.assertEquals(0, nums[0]);
-        Assert.assertEquals(1, nums[1]);
-        Assert.assertEquals(2, nums[2]);
-        Assert.assertEquals(3, nums[3]);
-        Assert.assertEquals(4, nums[4]);
+        assertEquals(0, nums[0]);
+        assertEquals(1, nums[1]);
+        assertEquals(2, nums[2]);
+        assertEquals(3, nums[3]);
+        assertEquals(4, nums[4]);
 
-        Assert.assertEquals(5, res);
+        assertEquals(5, res);
 
     }
 
@@ -200,21 +201,21 @@ public class ArrayTasksTest {
         int[] nums = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
         int[] res = arrayTasks.cleanDuplicates(nums);
 
-        Assert.assertEquals(5, res.length);
-        Assert.assertEquals(0, res[0]);
-        Assert.assertEquals(1, res[1]);
-        Assert.assertEquals(2, res[2]);
-        Assert.assertEquals(3, res[3]);
-        Assert.assertEquals(4, res[4]);
+        assertEquals(5, res.length);
+        assertEquals(0, res[0]);
+        assertEquals(1, res[1]);
+        assertEquals(2, res[2]);
+        assertEquals(3, res[3]);
+        assertEquals(4, res[4]);
 
         nums = new int[]{5, 2, 5, 5, 6, 6, 10};
         res = arrayTasks.cleanDuplicates(nums);
 
-        Assert.assertEquals(4, res.length);
-        Assert.assertEquals(5, res[0]);
-        Assert.assertEquals(2, res[1]);
-        Assert.assertEquals(6, res[2]);
-        Assert.assertEquals(10, res[3]);
+        assertEquals(4, res.length);
+        assertEquals(5, res[0]);
+        assertEquals(2, res[1]);
+        assertEquals(6, res[2]);
+        assertEquals(10, res[3]);
 
     }
 
@@ -223,19 +224,19 @@ public class ArrayTasksTest {
         int[] nums = new int[]{3, 2, 2, 3};
         int res = arrayTasks.removeElement(nums, 3);
 
-        Assert.assertEquals(2, res);
-        Assert.assertEquals(2, nums[0]);
-        Assert.assertEquals(2, nums[1]);
+        assertEquals(2, res);
+        assertEquals(2, nums[0]);
+        assertEquals(2, nums[1]);
 
         nums = new int[]{0, 1, 2, 2, 3, 0, 4, 2};
         res = arrayTasks.removeElement(nums, 2);
 
-        Assert.assertEquals(5, res);
-        Assert.assertEquals(0, nums[0]);
-        Assert.assertEquals(1, nums[1]);
-        Assert.assertEquals(3, nums[2]);
-        Assert.assertEquals(0, nums[3]);
-        Assert.assertEquals(4, nums[4]);
+        assertEquals(5, res);
+        assertEquals(0, nums[0]);
+        assertEquals(1, nums[1]);
+        assertEquals(3, nums[2]);
+        assertEquals(0, nums[3]);
+        assertEquals(4, nums[4]);
 
     }
 
@@ -243,32 +244,32 @@ public class ArrayTasksTest {
     public void searchInsertTest() {
         int[] nums = new int[]{1, 3, 5, 6};
         int res = arrayTasks.searchInsert(nums, 5);
-        Assert.assertEquals(2, res);
+        assertEquals(2, res);
 
         res = arrayTasks.searchInsert(nums, 2);
-        Assert.assertEquals(1, res);
+        assertEquals(1, res);
 
         res = arrayTasks.searchInsert(nums, 7);
-        Assert.assertEquals(4, res);
+        assertEquals(4, res);
 
         res = arrayTasks.searchInsert(nums, 0);
-        Assert.assertEquals(0, res);
+        assertEquals(0, res);
 
         nums = new int[]{1, 3};
         res = arrayTasks.searchInsert(nums, 3);
-        Assert.assertEquals(1, res);
+        assertEquals(1, res);
 
         nums = new int[]{1, 3};
         res = arrayTasks.searchInsert(nums, 1);
-        Assert.assertEquals(0, res);
+        assertEquals(0, res);
 
         nums = new int[]{1, 2, 3, 4, 5, 10};
         res = arrayTasks.searchInsert(nums, 2);
-        Assert.assertEquals(1, res);
+        assertEquals(1, res);
 
         nums = new int[]{3, 4, 8, 9, 10};
         res = arrayTasks.searchInsert(nums, 8);
-        Assert.assertEquals(2, res);
+        assertEquals(2, res);
     }
 
     @Test
@@ -276,27 +277,27 @@ public class ArrayTasksTest {
         int[] a = new int[]{4, -1, 0, 3};
         int[] b = new int[]{-2, 5, 0, 3};
         int res = arrayTasks.fairIndex(a, b);
-        Assert.assertEquals(2, res);
+        assertEquals(2, res);
 
         a = new int[]{2, -2, -3, 3};
         b = new int[]{0, 0, 4, -4};
         res = arrayTasks.fairIndex(a, b);
-        Assert.assertEquals(1, res);
+        assertEquals(1, res);
 
         a = new int[]{4, -1, 0, 3};
         b = new int[]{-2, 6, 0, 4};
         res = arrayTasks.fairIndex(a, b);
-        Assert.assertEquals(0, res);
+        assertEquals(0, res);
 
         a = new int[]{3, 2, 6};
         b = new int[]{4, 1, 6};
         res = arrayTasks.fairIndex(a, b);
-        Assert.assertEquals(0, res);
+        assertEquals(0, res);
 
         a = new int[]{1, 4, 2, -2, 5};
         b = new int[]{7, -2, -2, 2, 5};
         res = arrayTasks.fairIndex(a, b);
-        Assert.assertEquals(2, res);
+        assertEquals(2, res);
     }
 
     @Test
@@ -304,14 +305,14 @@ public class ArrayTasksTest {
         int[] arr = new int[]{5, 2, 5, 6, 6, 10};
         int[] res = arrayTasks.duplicatesStat(arr);
 
-        Assert.assertEquals(7, res.length);
-        Assert.assertEquals(2, res[0]);
-        Assert.assertEquals(5, res[1]);
-        Assert.assertEquals(6, res[2]);
-        Assert.assertEquals(5, res[3]);
-        Assert.assertEquals(2, res[4]);
-        Assert.assertEquals(6, res[5]);
-        Assert.assertEquals(10, res[6]);
+        assertEquals(7, res.length);
+        assertEquals(2, res[0]);
+        assertEquals(5, res[1]);
+        assertEquals(6, res[2]);
+        assertEquals(5, res[3]);
+        assertEquals(2, res[4]);
+        assertEquals(6, res[5]);
+        assertEquals(10, res[6]);
 
 
     }
@@ -321,30 +322,30 @@ public class ArrayTasksTest {
         int[] digits = new int[]{1, 2, 3};
         int[] res = arrayTasks.plusOne(digits);
 
-        Assert.assertEquals(4, res[2]);
+        assertEquals(4, res[2]);
 
 
         digits = new int[]{1, 2, 9};
         res = arrayTasks.plusOne(digits);
 
-        Assert.assertEquals(3, res[1]);
-        Assert.assertEquals(0, res[2]);
+        assertEquals(3, res[1]);
+        assertEquals(0, res[2]);
 
         digits = new int[]{1, 9, 9};
         res = arrayTasks.plusOne(digits);
 
-        Assert.assertEquals(2, res[0]);
-        Assert.assertEquals(0, res[1]);
-        Assert.assertEquals(0, res[2]);
+        assertEquals(2, res[0]);
+        assertEquals(0, res[1]);
+        assertEquals(0, res[2]);
 
         digits = new int[]{9, 9, 9};
         res = arrayTasks.plusOne(digits);
 
-        Assert.assertEquals(4, res.length);
-        Assert.assertEquals(1, res[0]);
-        Assert.assertEquals(0, res[1]);
-        Assert.assertEquals(0, res[2]);
-        Assert.assertEquals(0, res[3]);
+        assertEquals(4, res.length);
+        assertEquals(1, res[0]);
+        assertEquals(0, res[1]);
+        assertEquals(0, res[2]);
+        assertEquals(0, res[3]);
     }
 
     @Test
@@ -352,12 +353,12 @@ public class ArrayTasksTest {
         int[] arr = new int[]{2, 2, 1};
         int res = arrayTasks.singleNumber(arr);
 
-        Assert.assertEquals(1, res);
+        assertEquals(1, res);
 
         arr = new int[]{4, 1, 2, 1, 2};
         res = arrayTasks.singleNumber(arr);
 
-        Assert.assertEquals(4, res);
+        assertEquals(4, res);
     }
 
     @Test
@@ -366,21 +367,21 @@ public class ArrayTasksTest {
         data.add(new TimeSlot(1,4));
         data.add(new TimeSlot(2,6));
         var res = arrayTasks.tvTime(data);
-        Assert.assertEquals(5,res);
+        assertEquals(5,res);
 
 
         data = new ArrayList<>();
         data.add(new TimeSlot(4,6));
         data.add(new TimeSlot(1,2));
         res = arrayTasks.tvTime(data);
-        Assert.assertEquals(3,res);
+        assertEquals(3,res);
 
         data = new ArrayList<>();
         data.add(new TimeSlot(4,6));
         data.add(new TimeSlot(1,2));
         data.add(new TimeSlot(1,2));
         res = arrayTasks.tvTime(data);
-        Assert.assertEquals(3,res);
+        assertEquals(3,res);
 
         data = new ArrayList<>();
         data.add(new TimeSlot(1,4));
@@ -389,7 +390,7 @@ public class ArrayTasksTest {
         data.add(new TimeSlot(7,9));
         data.add(new TimeSlot(10,15));
         res = arrayTasks.tvTime(data);
-        Assert.assertEquals(11,res);
+        assertEquals(11,res);
 
         data = new ArrayList<>();
         data.add(new TimeSlot(1,4));
@@ -398,6 +399,6 @@ public class ArrayTasksTest {
         data.add(new TimeSlot(7,12));
         data.add(new TimeSlot(10,15));
         res = arrayTasks.tvTime(data);
-        Assert.assertEquals(12,res);
+        assertEquals(12,res);
     }
 }

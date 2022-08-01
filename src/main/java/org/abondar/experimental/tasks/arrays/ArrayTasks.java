@@ -76,7 +76,6 @@ public class ArrayTasks {
             }
         }
 
-        System.out.println(" ");
         printMatrix(matrix);
         return matrix;
     }

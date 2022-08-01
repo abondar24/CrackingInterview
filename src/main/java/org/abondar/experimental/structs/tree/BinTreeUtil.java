@@ -15,7 +15,7 @@ public class BinTreeUtil {
     }
 
     private static void visit(BinTreeNode n) {
-        System.out.println(n);
+
     }
 
     /**

@@ -4,15 +4,16 @@ import org.abondar.experimental.tasks.dynamic.Box;
 import org.abondar.experimental.tasks.dynamic.Color;
 import org.abondar.experimental.tasks.dynamic.Dynamic;
 import org.abondar.experimental.tasks.dynamic.Tower;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DynamicTest {
 
@@ -61,7 +62,6 @@ public class DynamicTest {
 
         List<List<Integer>> res = dyn.powerSet(set);
 
-        System.out.println(res);
         assertEquals(8, res.size());
         assertTrue(res.get(0).isEmpty());
         assertEquals(Arrays.asList(1, 3), res.get(5));
@@ -95,12 +95,6 @@ public class DynamicTest {
 
         boolean res = dyn.paintFill(screen, 1, 2, Color.Black);
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 5; j++) {
-                System.out.print(screen[i][j] + " ");
-            }
-            System.out.println();
-        }
         assertTrue(res);
         // assertEquals(Color.Black,screen[0][2]);
         assertEquals(Color.Black, screen[1][3]);
@@ -124,9 +118,9 @@ public class DynamicTest {
 
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void maxPermmutaionsNoDupsTestNonUnique() throws RuntimeException {
-        dyn.maxPermutationsNoDups("aabc");
+        assertThrows(RuntimeException.class,()-> dyn.maxPermutationsNoDups("aabc"));
     }
 
     @Test
@@ -139,7 +133,6 @@ public class DynamicTest {
     @Test
     public void maxPermmutaionsNoDupsTest() {
         List<String> res = dyn.maxPermutationsNoDups("abcd");
-        System.out.println(res);
         assertEquals(24L, res.size());
     }
 
@@ -147,7 +140,6 @@ public class DynamicTest {
     public void maxPermsDups() {
         List<String> res = dyn.maxPermutationsDups("aabc");
 
-        System.out.println(res);
         assertEquals(12L, res.size());
     }
 
@@ -155,14 +147,12 @@ public class DynamicTest {
     public void parenthnessTest() {
         List<String> res = dyn.parentheses(2);
 
-        System.out.println(res);
         assertEquals(2L, res.size());
         assertTrue(res.contains("(())"));
         assertTrue(res.contains("()()"));
 
         res = dyn.parentheses(3);
 
-        System.out.println(res);
         assertEquals(5L, res.size());
         assertTrue(res.contains("(()())"));
         assertTrue(res.contains("((()))"));
@@ -177,7 +167,6 @@ public class DynamicTest {
         assertEquals(144L, ways);
 
         ways = dyn.coins(100);
-        System.out.println(ways);
 
     }
 

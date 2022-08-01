@@ -1,13 +1,16 @@
 package org.abondar.experimental.tasks;
 
+
 import org.abondar.experimental.tasks.greedy.Greedy;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GreedyTest {
 
@@ -27,13 +30,11 @@ public class GreedyTest {
 
         List<String> coverage = greedy.setCoverage(states,stationMap);
 
-        System.out.println(coverage);
-
-        Assert.assertEquals(4,coverage.size());
-        Assert.assertTrue(coverage.contains("ktwo"));
-        Assert.assertTrue(coverage.contains("kthree"));
-        Assert.assertTrue(coverage.contains("kone"));
-        Assert.assertTrue(coverage.contains("kfive"));
+        assertEquals(4,coverage.size());
+        assertTrue(coverage.contains("ktwo"));
+        assertTrue(coverage.contains("kthree"));
+        assertTrue(coverage.contains("kone"));
+        assertTrue(coverage.contains("kfive"));
 
     }
 }
