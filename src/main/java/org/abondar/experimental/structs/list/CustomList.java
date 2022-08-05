@@ -14,7 +14,6 @@ public class CustomList<T> {
         root = new ListNode<>(rootVal);
     }
 
-    //TODO: test
     public void addToEnd(T addVal){
         ListNode<T> cur = root;
         while (cur !=null){
@@ -40,7 +39,6 @@ public class CustomList<T> {
         }
     }
 
-    //todo add test
     public ListNode<T> findNode(T val){
         while (root!= null) {
             if (root.val.equals(val)){
@@ -54,9 +52,9 @@ public class CustomList<T> {
     }
 
 
-    public ListNode<T> removeDups(ListNode<T> head) {
+    public void removeDuplicates() {
 
-        ListNode<T> cur = head;
+        ListNode<T> cur = root;
         while (cur != null) {
             ListNode<T> runner = cur;
             while (runner.next != null) {
@@ -70,7 +68,6 @@ public class CustomList<T> {
             cur = cur.next;
         }
 
-        return head;
     }
 
     public ListNode kToLast(ListNode head, int k) {

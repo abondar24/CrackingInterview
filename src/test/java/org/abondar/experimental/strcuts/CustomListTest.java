@@ -47,47 +47,34 @@ public class CustomListTest {
 
     }
 
-//    @Test
-//    public void removeDupsTest() {
-//        ListNode<Integer> head = new ListNode<>(1);
-//
-//        ListNode<Integer> next1 = new ListNode<>(1);
-//        head.setNext(next1);
-//
-//        ListNode<Integer> next2 = new ListNode<>(2);
-//        next1.setNext(next2);
-//
-//        ListNode<Integer> next3 = new ListNode<>(3);
-//        next2.setNext(next3);
-//
-//
-//        ListNode expectedHead = new ListNode<>(1);
-//        expectedHead.setNext(next2);
-//
-//        ListNode actualHead = ll.removeDups(head);
-//        assertEquals(expectedHead.getNext(), actualHead.getNext());
-//
-//
-//    }
+    @Test
+    public void removeDuplicatesTest() {
+        customList.initList(1);
+        customList.addToEnd(1);
+        customList.addToEnd(2);
+        customList.addToEnd(3);
 
-//    @Test
-//    public void removeDupsMiddleTest() {
-//        ListNode<Integer> head = new ListNode<>(1);
-//
-//        ListNode<Integer> next1 = new ListNode<>(2);
-//        head.setNext(next1);
-//
-//        ListNode<Integer> next2 = new ListNode<>(1);
-//        next1.setNext(next2);
-//
-//        ListNode<Integer> next3 = new ListNode<>(3);
-//        next2.setNext(next3);
-//
-//        ListNode<Integer> actualNext2 = ll.removeDups(head).getNext().getNext();
-//        assertEquals(next3, actualNext2);
-//    }
-//
-//
+        customList.removeDuplicates();
+
+        assertEquals(customList.getRoot().getNext().getVal(),2);
+
+    }
+
+    @Test
+    public void removeDuplicatesMiddleTest() {
+        customList.initList(1);
+        customList.addToEnd(2);
+        customList.addToEnd(1);
+        customList.addToEnd(3);
+
+        customList.removeDuplicates();
+
+        CustomList.ListNode<Integer> resNode = customList.findNode(2);
+
+        assertEquals(resNode.getNext().getVal(),3);
+    }
+
+
 //    @Test
 //    public void kToLastTest() {
 //        ListNode<Integer> head = new ListNode<>(1);
