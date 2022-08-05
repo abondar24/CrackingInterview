@@ -11,7 +11,7 @@ All examples(except CountItems,Pipeline) are ran in unit tests.
 
 For non-unit test example set main class in pom.xml before build
 
-# Tasks
+# Problems
 
 ## Strings
 
