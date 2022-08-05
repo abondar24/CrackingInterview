@@ -29,7 +29,7 @@ public class CustomList<T> {
     public void addToMiddle(T midVal,T addVal){
         ListNode<T> cur = root;
         while (cur !=null){
-            if (cur.val==midVal){
+            if (cur.val.equals(midVal)){
                 ListNode<T> add = new ListNode<>(addVal);
                 add.next= cur.next;
                 cur.next=add;
@@ -40,15 +40,29 @@ public class CustomList<T> {
     }
 
     public ListNode<T> findNode(T val){
-        while (root!= null) {
-            if (root.val.equals(val)){
-                return root;
+        ListNode<T> cur = root;
+        while (cur!= null) {
+            if (cur.val.equals(val)){
+                return cur;
             }
 
-            root = root.next;
+            cur = cur.next;
         }
 
         return null;
+    }
+
+    public void deleteNode(T delVal) {
+        ListNode<T> cur = root;
+        while (cur.next !=null){
+            if (cur.next.val.equals(delVal)){
+                cur.next = cur.next.next;
+            } else {
+                cur = cur.next;
+            }
+
+        }
+
     }
 
 
@@ -98,20 +112,6 @@ public class CustomList<T> {
         return kToLast;
     }
 
-
-    public ListNode deleteMiddleNode(ListNode listNodeToDel) {
-
-        if (listNodeToDel.next != null) {
-
-            ListNode next = listNodeToDel.next;
-            next.val=listNodeToDel.val;
-            next.next=listNodeToDel.next;
-
-            listNodeToDel = next;
-        }
-
-        return listNodeToDel;
-    }
 
 
     public ListNode<T> sumListsReverse(ListNode num1, ListNode num2) {
@@ -308,25 +308,6 @@ public class CustomList<T> {
         return head;
     }
 
-    //TODO: make generic
-    public ListNode<Integer> deleteVal(ListNode<Integer> head, int val) {
-
-
-        ListNode<Integer> cur = new ListNode<>(-1);
-        cur.next=head;
-        head = cur;
-
-        while (cur.next != null) {
-            if (cur.next.val == val) {
-                cur.next=cur.next.next;
-            } else {
-                cur = cur.next;
-            }
-        }
-
-
-        return head.next;
-    }
 
     //TODO: make generic
     public ListNode<Integer> reverseList(ListNode<Integer> head) {
@@ -353,25 +334,6 @@ public class CustomList<T> {
         }
 
 
-    }
-
-    //TODO: make generic
-    public ListNode<Integer> appendToTail(ListNode<Integer> root, int data) {
-        ListNode<Integer> end = new ListNode<>(data);
-        if (root.next==null){
-            root.next=end;
-        } else {
-            ListNode<Integer> next = root.next;
-            while (next != null) {
-               if (next.next==null){
-                   next.next=end;
-                   break;
-               }
-               next = next.next;
-            }
-
-        }
-        return root;
     }
 
 

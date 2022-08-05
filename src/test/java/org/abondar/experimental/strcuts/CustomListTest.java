@@ -14,38 +14,55 @@ public class CustomListTest {
     private final CustomList<Integer> customList = new CustomList<>();
 
     @Test
-    public void initListTest(){
+    public void initListTest() {
         customList.initList(1);
-        assertEquals(customList.getRoot().getVal(),1);
+        assertEquals(customList.getRoot().getVal(), 1);
     }
 
     @Test
-    public void findNodeTest(){
+    public void findNodeTest() {
         customList.initList(1);
         CustomList.ListNode<Integer> resNode = customList.findNode(1);
-        assertEquals(resNode.getVal(),1);
+        assertEquals(resNode.getVal(), 1);
     }
 
 
     @Test
-    public void addToEndTest(){
+    public void addToEndTest() {
         customList.initList(1);
         customList.addToEnd(2);
         CustomList.ListNode<Integer> resNode = customList.findNode(2);
-        assertEquals(resNode.getVal(),2);
+        assertEquals(resNode.getVal(), 2);
     }
 
     @Test
-    public void addToMiddleTest(){
+    public void addToMiddleTest() {
         customList.initList(1);
         customList.addToEnd(2);
-        customList.addToMiddle(1,3);
+        customList.addToMiddle(1, 3);
 
         CustomList.ListNode<Integer> lastNode = customList.findNode(2);
-        assertEquals(lastNode.getVal(),2);
+        assertEquals(lastNode.getVal(), 2);
         assertNull(lastNode.getNext());
 
     }
+
+    @Test
+    public void deleteNodeTest() {
+        CustomList<String> stringCustomList = new CustomList<>();
+        stringCustomList.initList("a");
+        stringCustomList.addToEnd("b");
+        stringCustomList.addToEnd("c");
+        stringCustomList.addToEnd("d");
+
+        stringCustomList.deleteNode("c");
+
+        CustomList.ListNode<String> resNode = stringCustomList.findNode("b");
+        assertEquals(resNode.getNext().getVal(), "d");
+
+    }
+
+
 
     @Test
     public void removeDuplicatesTest() {
@@ -56,7 +73,7 @@ public class CustomListTest {
 
         customList.removeDuplicates();
 
-        assertEquals(customList.getRoot().getNext().getVal(),2);
+        assertEquals(customList.getRoot().getNext().getVal(), 2);
 
     }
 
@@ -71,8 +88,9 @@ public class CustomListTest {
 
         CustomList.ListNode<Integer> resNode = customList.findNode(2);
 
-        assertEquals(resNode.getNext().getVal(),3);
+        assertEquals(resNode.getNext().getVal(), 3);
     }
+}
 
 
 //    @Test
@@ -141,35 +159,7 @@ public class CustomListTest {
 //    }
 //
 //
-//    @Test
-//    public void deleteMiddleNodeTest() {
-//
-//        ListNode<String> head = new ListNode<>("a");
-//
-//        ListNode<String> b = new ListNode<>("b");
-//        head.setNext(b);
-//
-//        ListNode<String> c = new ListNode<>("c");
-//        b.setNext(c);
-//
-//        ListNode<String> d = new ListNode<>("d");
-//        c.setNext(d);
-//
-//        ListNode<String> e = new ListNode<>("e");
-//        d.setNext(e);
-//
-//        ListNode<String> f = new ListNode<>("f");
-//        e.setNext(f);
-//
-//        ListNode res = ll.deleteMiddleNode(d);
-//        assertEquals(e, res);
-//
-//
-//        res = ll.deleteMiddleNode(f);
-//        assertEquals(res, f);
-//
-//    }
-//
+
 //    @Test
 //    public void sumListsReverseTest() {
 //        //it represents 617
@@ -430,50 +420,6 @@ public class CustomListTest {
 //
 //    }
 //
-//    @Test
-//    public void deleteValTest() {
-//        ListNode<Integer> head = new ListNode<>(1);
-//        ListNode<Integer> next = new ListNode<>(2);
-//        ListNode<Integer> next1 = new ListNode<>(6);
-//        ListNode<Integer> next2 = new ListNode<>(3);
-//        ListNode<Integer> next3 = new ListNode<>(4);
-//        ListNode<Integer> next4 = new ListNode<>(5);
-//        ListNode<Integer> next5 = new ListNode<>(6);
-//
-//        head.setNext(next);
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//        next2.setNext(next3);
-//        next3.setNext(next4);
-//        next4.setNext(next5);
-//
-//        ListNode<Integer> res = ll.deleteVal(head, 6);
-//
-//        assertEquals((Integer) 1, res.getVal());
-//        assertEquals(2, res.getNext().getVal());
-//        assertEquals(3, res.getNext().getNext().getVal());
-//        assertEquals(4, res.getNext().getNext().getNext().getVal());
-//        assertEquals(5, res.getNext().getNext().getNext().getNext().getVal());
-//
-//        ListNode<Integer> head1 = new ListNode<>(1);
-//        res = ll.deleteVal(head1, 1);
-//        assertNull(res);
-//
-//        ListNode<Integer> head2 = new ListNode<>(1);
-//        ListNode<Integer> next6 = new ListNode<>(1);
-//        head2.setNext(next6);
-//
-//        res = ll.deleteVal(head2, 1);
-//        assertNull(res);
-//
-//        ListNode<Integer> head3 = new ListNode<>(1);
-//        ListNode<Integer> next7 = new ListNode<>(2);
-//        head3.setNext(next7);
-//        res = ll.deleteVal(head3, 1);
-//        assertEquals((Integer) 2, res.getVal());
-//
-//    }
-//
 //
 //    @Test
 //    public void reverseListTest() {
@@ -501,46 +447,3 @@ public class CustomListTest {
 //        assertNull(res.getVal());
 //    }
 //
-//    @Test
-//    public void appendToTailTest() {
-//        ListNode<Integer> head = new ListNode<>(1);
-//        head = ll.appendToTail(head,2);
-//        assertNotNull(head.getNext());
-//        assertEquals(2,head.getNext().getVal());
-//
-//        ListNode<Integer> next = head.getNext();
-//        ListNode<Integer> next1 = new ListNode<>(3);
-//        ListNode<Integer> next2 = new ListNode<>(4);
-//        ListNode<Integer> next3 = new ListNode<>(5);
-//
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//        next2.setNext(next3);
-//
-//        ListNode<Integer> res = ll.appendToTail(head,6);
-//        assertNotNull(next3.getNext());
-//        assertEquals(res.getNext().getNext().getNext().getNext().getNext().getVal(), next3.getNext().getVal());
-//    }
-//
-//    @Test
-//    public void findNodeTest() {
-//        ListNode<Integer> head = new ListNode<>(1);
-//        ListNode<Integer> next = new ListNode<>(2);
-//        ListNode<Integer> next1 = new ListNode<>(3);
-//        ListNode<Integer> next2 = new ListNode<>(4);
-//        ListNode<Integer> next3 = new ListNode<>(5);
-//
-//        head.setNext(next);
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//        next2.setNext(next3);
-//
-//
-//        ListNode<Integer> res = ll.findNode(head,5);
-//        assertEquals(res.getVal(),next3.getVal());
-//
-//        res = ll.findNode(head,6);
-//        assertNull(res);
-//
-//    }
-}
