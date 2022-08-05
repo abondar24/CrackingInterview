@@ -62,8 +62,6 @@ public class CustomListTest {
 
     }
 
-
-
     @Test
     public void removeDuplicatesTest() {
         customList.initList(1);
@@ -90,6 +88,19 @@ public class CustomListTest {
 
         assertEquals(resNode.getNext().getVal(), 3);
     }
+
+    @Test
+    public void deleteDuplicatesTest() {
+        customList.initList(1);
+        customList.addToEnd(1);
+        customList.addToEnd(2);
+        customList.addToEnd(3);
+
+        customList.deleteDuplicates();
+
+        assertEquals(customList.getRoot().getNext().getVal(), 2);
+    }
+
 }
 
 
@@ -390,37 +401,7 @@ public class CustomListTest {
 //
 //    }
 //
-//    @Test
-//    public void deleteDuplicatesTest() {
-//        ListNode<Integer> head = new ListNode<>(1);
-//        ListNode<Integer> next = new ListNode<>(1);
-//        ListNode<Integer> next1 = new ListNode<>(2);
-//
-//        head.setNext(next);
-//        next.setNext(next1);
-//
-//
-//        ListNode<Integer> res = ll.deleteDuplicates(head);
-//
-//        assertEquals((Integer) 1, res.getVal());
-//        assertEquals(2, res.getNext().getVal());
-//
-//        ListNode<Integer> next2 = new ListNode<>(3);
-//        ListNode<Integer> next3 = new ListNode<>(3);
-//
-//        next1.setNext(next2);
-//        next2.setNext(next3);
-//
-//
-//        res = ll.deleteDuplicates(head);
-//
-//        assertEquals((Integer) 1, res.getVal());
-//        assertEquals(2, res.getNext().getVal());
-//        assertEquals(3, res.getNext().getNext().getVal());
-//
-//    }
-//
-//
+
 //    @Test
 //    public void reverseListTest() {
 //        ListNode<Integer> head = new ListNode<>(1);

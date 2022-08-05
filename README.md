@@ -72,10 +72,13 @@ If element [i][j] of matrix is zero - entire row and column must be zero
                 [(1,4)(6,8)(2,4)(7,9)(10,15)] -> 11
                 
 ##  List
-
-- removeDups - Remove duplicates from list without using any tmp buffer
+- addToEnd - append a new node to the end of list
+- addToMiddle - append a new node to the middle of list
+- findNode - find node by value
+- deleteVal - delete element by value
+- removeDuplicates - Remove duplicates from list without using any tmp buffer
+- deleteDuplicates - remove duplicates from linked list
 - kToLast   - Return  k elements from last element in list
-- deleteMiddleNode - Delete any node but not first or last (we don't have access to the first so we don't check for first)
 - sumListsReverse - Each param is a number in reverse : list 7-1-6 is number 617.
 We need to return a list which represents sum of values
 - sumListsStraight - Each param is a number  : list 7-1-6 is number 716.
@@ -84,11 +87,7 @@ We need to return a list which represents sum of values
 - hasIntersection - Check if two list have an intersection.Intersection is by ref, not by val which means one node in two lists 
 - detectLoop - Check if list has loops and return it.
 - mergeLists - merge two sorted linked lists 
-- deleteDuplicates - remove duplicates from linked list
-- deleteVal - delete element from value
 - reverseList - reverse linked list
-- appendToTail - append a new node to the end of list
-- findNode - find node by data
 
 
 ## Multithread

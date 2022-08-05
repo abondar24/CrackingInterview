@@ -84,10 +84,27 @@ public class CustomList<T> {
 
     }
 
-    public ListNode kToLast(ListNode head, int k) {
+    //repeats removeDUps but more efficient
+    public void deleteDuplicates() {
+        ListNode<T> cur = root;
+
+        while (cur != null && cur.next != null) {
+            if ((cur.val == cur.next.val)) {
+                cur.next= cur.next.next;
+            } else {
+                cur = cur.next;
+            }
+
+
+        }
+
+    }
+
+
+    public ListNode kToLast( int k) {
         ListNode kToLast = null;
 
-        ListNode cur = head;
+        ListNode cur = root;
         int size = 0;
 
         while (cur != null) {
@@ -99,7 +116,7 @@ public class CustomList<T> {
         int posToRet = size - k;
         int curPos = 0;
 
-        cur = head;
+        cur = root;
         while (cur != null) {
 
             if (curPos == posToRet) {
@@ -291,22 +308,6 @@ public class CustomList<T> {
         return head.next;
     }
 
-    //repeats removeDUps but more efficient
-    public ListNode<Integer> deleteDuplicates(ListNode<Integer> head) {
-        ListNode<Integer> cur = head;
-
-        while (cur != null && cur.next != null) {
-            if ((cur.val == cur.next.val)) {
-                cur.next= cur.next.next;
-            } else {
-                cur = cur.next;
-            }
-
-
-        }
-
-        return head;
-    }
 
 
     //TODO: make generic
