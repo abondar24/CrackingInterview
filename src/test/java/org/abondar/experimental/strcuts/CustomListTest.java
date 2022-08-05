@@ -13,14 +13,14 @@ public class CustomListTest {
     @Test
     public void initListTest() {
         customList.initList(1);
-        assertEquals(1,customList.getRoot().getVal());
+        assertEquals(1, customList.getRoot().getVal());
     }
 
     @Test
     public void findNodeTest() {
         customList.initList(1);
         CustomList.ListNode<Integer> resNode = customList.findNode(1);
-        assertEquals(1,resNode.getVal());
+        assertEquals(1, resNode.getVal());
     }
 
 
@@ -29,7 +29,7 @@ public class CustomListTest {
         customList.initList(1);
         customList.addToEnd(2);
         CustomList.ListNode<Integer> resNode = customList.findNode(2);
-        assertEquals(2,resNode.getVal());
+        assertEquals(2, resNode.getVal());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class CustomListTest {
         customList.addToMiddle(1, 3);
 
         CustomList.ListNode<Integer> lastNode = customList.findNode(2);
-        assertEquals(2,lastNode.getVal());
+        assertEquals(2, lastNode.getVal());
         assertNull(lastNode.getNext());
 
     }
@@ -83,7 +83,7 @@ public class CustomListTest {
 
         CustomList.ListNode<Integer> resNode = customList.findNode(2);
 
-        assertEquals(3,resNode.getNext().getVal());
+        assertEquals(3, resNode.getNext().getVal());
     }
 
     @Test
@@ -95,78 +95,52 @@ public class CustomListTest {
 
         customList.deleteDuplicates();
 
-        assertEquals(2,customList.getRoot().getNext().getVal());
+        assertEquals(2, customList.getRoot().getNext().getVal());
     }
 
-}
+
+    @Test
+    public void kToLastTest() {
+        customList.initList(1);
+        customList.addToEnd(2);
+        customList.addToEnd(3);
+        customList.addToEnd(4);
+        customList.addToEnd(5);
+
+        CustomList.ListNode<Integer> res = customList.kToLast(2);
+        assertEquals(4, res.getVal());
+        assertEquals(5,res.getNext().getVal());
+
+    }
 
 
-//    @Test
-//    public void kToLastTest() {
-//        ListNode<Integer> head = new ListNode<>(1);
-//
-//        ListNode<Integer> next = new ListNode<>(2);
-//        head.setNext(next);
-//
-//        ListNode<Integer> next1 = new ListNode<>(3);
-//        next.setNext(next1);
-//
-//        ListNode<Integer> next2 = new ListNode<>(4);
-//        next1.setNext(next2);
-//
-//        ListNode<Integer> next3 = new ListNode<>(5);
-//        next2.setNext(next3);
-//
-//        ListNode res = ll.kToLast(head, 2);
-//
-//        assertEquals(next2, res);
-//
-//    }
-//
-//
-//    @Test
-//    public void kToLastTestRetLast() {
-//        ListNode<Integer> head = new ListNode<>(1);
-//
-//        ListNode<Integer> next = new ListNode<>(2);
-//        head.setNext(next);
-//
-//        ListNode<Integer> next1 = new ListNode<>(3);
-//        next.setNext(next1);
-//
-//        ListNode<Integer> next2 = new ListNode<>(4);
-//        next1.setNext(next2);
-//
-//        ListNode<Integer> next3 = new ListNode<>(5);
-//        next2.setNext(next3);
-//
-//        ListNode res = ll.kToLast(head, 1);
-//
-//        assertEquals(next3, res);
-//    }
-//
-//    @Test
-//    public void kToLastTestRetNull() {
-//        ListNode<Integer> head = new ListNode<>(1);
-//
-//        ListNode<Integer> next = new ListNode<>(2);
-//        head.setNext(next);
-//
-//        ListNode<Integer> next1 = new ListNode<>(3);
-//        next.setNext(next1);
-//
-//        ListNode<Integer> next2 = new ListNode<>(4);
-//        next1.setNext(next2);
-//
-//        ListNode<Integer> next3 = new ListNode<>(5);
-//        next2.setNext(next3);
-//
-//        ListNode res = ll.kToLast(head, 7);
-//
-//        assertEquals(null, res);
-//    }
-//
-//
+    @Test
+    public void kToLastTestRetLast() {
+        customList.initList(1);
+        customList.addToEnd(2);
+        customList.addToEnd(3);
+        customList.addToEnd(4);
+        customList.addToEnd(5);
+
+        CustomList.ListNode<Integer> res = customList.kToLast(1);
+
+        assertEquals(5, res.getVal());
+    }
+
+    @Test
+    public void kToLastTestRetNull() {
+        customList.initList(1);
+        customList.addToEnd(2);
+        customList.addToEnd(3);
+        customList.addToEnd(4);
+        customList.addToEnd(5);
+
+        CustomList.ListNode<Integer> res = customList.kToLast(7);
+
+        assertNull(res);
+    }
+
+
 
 //    @Test
 //    public void sumListsReverseTest() {
@@ -425,3 +399,5 @@ public class CustomListTest {
 //        assertNull(res.getVal());
 //    }
 //
+
+}

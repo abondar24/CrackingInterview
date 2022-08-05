@@ -94,17 +94,14 @@ public class CustomList<T> {
             } else {
                 cur = cur.next;
             }
-
-
         }
-
     }
 
 
-    public ListNode kToLast( int k) {
-        ListNode kToLast = null;
+    public ListNode<T> kToLast( int k) {
+        ListNode<T> kToLast = null;
 
-        ListNode cur = root;
+        ListNode<T> cur = root;
         int size = 0;
 
         while (cur != null) {
