@@ -4,10 +4,7 @@ import org.abondar.experimental.structs.list.CustomList;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CustomListTest {
 
@@ -16,14 +13,14 @@ public class CustomListTest {
     @Test
     public void initListTest() {
         customList.initList(1);
-        assertEquals(customList.getRoot().getVal(), 1);
+        assertEquals(1,customList.getRoot().getVal());
     }
 
     @Test
     public void findNodeTest() {
         customList.initList(1);
         CustomList.ListNode<Integer> resNode = customList.findNode(1);
-        assertEquals(resNode.getVal(), 1);
+        assertEquals(1,resNode.getVal());
     }
 
 
@@ -32,7 +29,7 @@ public class CustomListTest {
         customList.initList(1);
         customList.addToEnd(2);
         CustomList.ListNode<Integer> resNode = customList.findNode(2);
-        assertEquals(resNode.getVal(), 2);
+        assertEquals(2,resNode.getVal());
     }
 
     @Test
@@ -42,7 +39,7 @@ public class CustomListTest {
         customList.addToMiddle(1, 3);
 
         CustomList.ListNode<Integer> lastNode = customList.findNode(2);
-        assertEquals(lastNode.getVal(), 2);
+        assertEquals(2,lastNode.getVal());
         assertNull(lastNode.getNext());
 
     }
@@ -58,7 +55,7 @@ public class CustomListTest {
         stringCustomList.deleteNode("c");
 
         CustomList.ListNode<String> resNode = stringCustomList.findNode("b");
-        assertEquals(resNode.getNext().getVal(), "d");
+        assertEquals("d", resNode.getNext().getVal());
 
     }
 
@@ -71,7 +68,7 @@ public class CustomListTest {
 
         customList.removeDuplicates();
 
-        assertEquals(customList.getRoot().getNext().getVal(), 2);
+        assertEquals(2, customList.getRoot().getNext().getVal());
 
     }
 
@@ -86,7 +83,7 @@ public class CustomListTest {
 
         CustomList.ListNode<Integer> resNode = customList.findNode(2);
 
-        assertEquals(resNode.getNext().getVal(), 3);
+        assertEquals(3,resNode.getNext().getVal());
     }
 
     @Test
@@ -98,7 +95,7 @@ public class CustomListTest {
 
         customList.deleteDuplicates();
 
-        assertEquals(customList.getRoot().getNext().getVal(), 2);
+        assertEquals(2,customList.getRoot().getNext().getVal());
     }
 
 }
