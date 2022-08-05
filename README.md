@@ -101,14 +101,14 @@ Check comments in classes
 
 ## Trees Graphs
 
-- hasRouteBFS,hasRouteDFS - Check if a graph has route between two nodes.
+- hasRouteBFS,hasRouteDFS - Check if a graph has route between two listNodes.
 - minTree - Build a tree with min height from sorted array
-- listOfDepth - Get list of lists of nodes on every depth of the tree
+- listOfDepth - Get list of lists of listNodes on every depth of the tree
 - isBalanced - Check if bin tree is balanced(e.g heights of subtrees of any node don't differ more than by one)
 - isBST - Check if binary tree is BST
 - buildOrder - By given list of dependencies build a list of build order
-- findCommonAncestor - Find first common ancestor of two given nodes without storing additional nodes in ds.
-- bstSequences - Find all possible arrays of nodes in BST with distinct elems
+- findCommonAncestor - Find first common ancestor of two given listNodes without storing additional listNodes in ds.
+- bstSequences - Find all possible arrays of listNodes in BST with distinct elems
 - treeHeight - find a height of a tree
 
 ## Bit opertations
