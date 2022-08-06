@@ -7,11 +7,16 @@ import java.util.Map;
 
 public class CustomList<T> {
 
-
     private ListNode<T> root;
 
+    public CustomList (T rootVal){
+       initList(rootVal);
+    }
+
+    public CustomList(){}
+
     public void initList(T rootVal){
-        root = new ListNode<>(rootVal);
+       root = new ListNode<>(rootVal);
     }
 
     public void addToEnd(T addVal){
@@ -126,77 +131,48 @@ public class CustomList<T> {
         return kToLast;
     }
 
-
-
-    public ListNode<T> sumListsReverse(ListNode num1, ListNode num2) {
+    public CustomList<Integer> sumLists(CustomList<T> listToSum,boolean isReverse) {
         StringBuilder num1Str = new StringBuilder();
         StringBuilder num2Str = new StringBuilder();
 
-        ListNode cur = num1;
+        ListNode<T> cur = root;
         while (cur != null) {
             num1Str.append(cur.val);
             cur = cur.next;
         }
 
-        cur = num2;
+        cur = listToSum.root;
         while (cur != null) {
             num2Str.append(cur.val);
             cur = cur.next;
         }
 
-        Integer n1 = Integer.valueOf(num1Str.reverse().toString());
-        Integer n2 = Integer.valueOf(num2Str.reverse().toString());
-
-        Integer sum = n1 + n2;
-
-        String reverseSum = new StringBuilder(Integer.toString(sum)).reverse().toString();
-
-        ListNode[] sumListNodes = new ListNode[reverseSum.length()];
-        for (int i = 0; i < reverseSum.length(); i++) {
-            sumListNodes[i] = new ListNode<>(Integer.valueOf(reverseSum.substring(i, i + 1)));
+        if (isReverse){
+            num1Str.reverse();
+            num2Str.reverse();
         }
 
-        for (int i = 0; i < sumListNodes.length - 1; i++) {
-            sumListNodes[i].next=sumListNodes[i + 1];
-        }
+        int n1 = Integer.parseInt(num1Str.toString());
+        int n2 = Integer.parseInt(num2Str.toString());
 
-        return sumListNodes[0];
-    }
-
-
-    public ListNode sumListsStraight(ListNode num1, ListNode num2) {
-        StringBuilder num1Str = new StringBuilder();
-        StringBuilder num2Str = new StringBuilder();
-
-        ListNode cur = num1;
-        while (cur != null) {
-            num1Str.append(cur.val);
-            cur = cur.next;
-        }
-
-        cur = num2;
-        while (cur != null) {
-            num2Str.append(cur.val);
-            cur = cur.next;
-        }
-
-        Integer n1 = Integer.valueOf(num1Str.toString());
-        Integer n2 = Integer.valueOf(num2Str.toString());
-
-        Integer sum = n1 + n2;
+        int sum = n1 + n2;
 
         String strSum = Integer.toString(sum);
+        if (isReverse){
+            strSum = new StringBuilder(strSum).reverse().toString();
+        }
 
-        ListNode[] sumListNodes = new ListNode[strSum.length()];
+        int[] sumListValues = new int[strSum.length()];
         for (int i = 0; i < strSum.length(); i++) {
-            sumListNodes[i] = new ListNode<>(Integer.valueOf(strSum.substring(i, i + 1)));
+            sumListValues[i] = Integer.parseInt(strSum.substring(i, i + 1));
         }
 
-        for (int i = 0; i < sumListNodes.length - 1; i++) {
-            sumListNodes[i].next=sumListNodes[i + 1];
+        CustomList<Integer> res = new CustomList<>(sumListValues[0]);
+        for (int i = 1; i < sumListValues.length; i++) {
+            res.addToEnd(sumListValues[i]);
         }
 
-        return sumListNodes[0];
+        return res;
     }
 
 

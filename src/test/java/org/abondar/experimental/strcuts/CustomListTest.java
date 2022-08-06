@@ -8,17 +8,16 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class CustomListTest {
 
-    private final CustomList<Integer> customList = new CustomList<>();
 
     @Test
     public void initListTest() {
-        customList.initList(1);
+        CustomList<Integer> customList = new CustomList<>(1);
         assertEquals(1, customList.getRoot().getVal());
     }
 
     @Test
     public void findNodeTest() {
-        customList.initList(1);
+        CustomList<Integer> customList = new CustomList<>(1);
         CustomList.ListNode<Integer> resNode = customList.findNode(1);
         assertEquals(1, resNode.getVal());
     }
@@ -26,7 +25,7 @@ public class CustomListTest {
 
     @Test
     public void addToEndTest() {
-        customList.initList(1);
+        CustomList<Integer> customList = new CustomList<>(1);
         customList.addToEnd(2);
         CustomList.ListNode<Integer> resNode = customList.findNode(2);
         assertEquals(2, resNode.getVal());
@@ -34,7 +33,7 @@ public class CustomListTest {
 
     @Test
     public void addToMiddleTest() {
-        customList.initList(1);
+        CustomList<Integer> customList = new CustomList<>(1);
         customList.addToEnd(2);
         customList.addToMiddle(1, 3);
 
@@ -46,8 +45,7 @@ public class CustomListTest {
 
     @Test
     public void deleteNodeTest() {
-        CustomList<String> stringCustomList = new CustomList<>();
-        stringCustomList.initList("a");
+        CustomList<String> stringCustomList = new CustomList<>("a");
         stringCustomList.addToEnd("b");
         stringCustomList.addToEnd("c");
         stringCustomList.addToEnd("d");
@@ -61,7 +59,7 @@ public class CustomListTest {
 
     @Test
     public void removeDuplicatesTest() {
-        customList.initList(1);
+        CustomList<Integer> customList = new CustomList<>(1);
         customList.addToEnd(1);
         customList.addToEnd(2);
         customList.addToEnd(3);
@@ -74,7 +72,7 @@ public class CustomListTest {
 
     @Test
     public void removeDuplicatesMiddleTest() {
-        customList.initList(1);
+        CustomList<Integer> customList = new CustomList<>(1);
         customList.addToEnd(2);
         customList.addToEnd(1);
         customList.addToEnd(3);
@@ -88,7 +86,7 @@ public class CustomListTest {
 
     @Test
     public void deleteDuplicatesTest() {
-        customList.initList(1);
+        CustomList<Integer> customList = new CustomList<>(1);
         customList.addToEnd(1);
         customList.addToEnd(2);
         customList.addToEnd(3);
@@ -101,7 +99,7 @@ public class CustomListTest {
 
     @Test
     public void kToLastTest() {
-        customList.initList(1);
+        CustomList<Integer> customList = new CustomList<>(1);
         customList.addToEnd(2);
         customList.addToEnd(3);
         customList.addToEnd(4);
@@ -116,7 +114,7 @@ public class CustomListTest {
 
     @Test
     public void kToLastTestRetLast() {
-        customList.initList(1);
+        CustomList<Integer> customList = new CustomList<>(1);
         customList.addToEnd(2);
         customList.addToEnd(3);
         customList.addToEnd(4);
@@ -129,7 +127,7 @@ public class CustomListTest {
 
     @Test
     public void kToLastTestRetNull() {
-        customList.initList(1);
+        CustomList<Integer> customList = new CustomList<>(1);
         customList.addToEnd(2);
         customList.addToEnd(3);
         customList.addToEnd(4);
@@ -142,63 +140,58 @@ public class CustomListTest {
 
 
 
-//    @Test
-//    public void sumListsReverseTest() {
-//        //it represents 617
-//        ListNode<Integer> n1 = new ListNode<>(7);
-//        ListNode<Integer> n1Next = new ListNode<>(1);
-//        ListNode<Integer> n1Next1 = new ListNode<>(6);
-//        n1.setNext(n1Next);
-//        n1Next.setNext(n1Next1);
-//
-//        //it represents 295
-//        ListNode<Integer> n2 = new ListNode<>(5);
-//        ListNode<Integer> n2Next = new ListNode<>(9);
-//        ListNode<Integer> n2Next1 = new ListNode<>(2);
-//        n2.setNext(n2Next);
-//        n2Next.setNext(n2Next1);
-//
-//        //ExpectedSum
-//        ListNode<Integer> sum = new ListNode<>(2);
-//        ListNode<Integer> sumNext = new ListNode<>(1);
-//        ListNode<Integer> sumNext1 = new ListNode<>(9);
-//        sum.setNext(sumNext);
-//        sumNext.setNext(sumNext1);
-//
-//
-//        ListNode actualSum = ll.sumListsReverse(n1, n2);
-//        assertEquals(sum.toString(), actualSum.toString());
-//    }
-//
-//    @Test
-//    public void sumListsStraightTest() {
-//        //it represents 617
-//        ListNode<Integer> n1 = new ListNode<>(6);
-//        ListNode<Integer> n1Next = new ListNode<>(1);
-//        ListNode<Integer> n1Next1 = new ListNode<>(7);
-//        n1.setNext(n1Next);
-//        n1Next.setNext(n1Next1);
-//
-//        //it represents 295
-//        ListNode<Integer> n2 = new ListNode<>(2);
-//        ListNode<Integer> n2Next = new ListNode<>(9);
-//        ListNode<Integer> n2Next1 = new ListNode<>(5);
-//        n2.setNext(n2Next);
-//        n2Next.setNext(n2Next1);
-//
-//        //ExpectedSum
-//        ListNode<Integer> sum = new ListNode<>(9);
-//        ListNode<Integer> sumNext = new ListNode<>(1);
-//        ListNode<Integer> sumNext1 = new ListNode<>(2);
-//        sum.setNext(sumNext);
-//        sumNext.setNext(sumNext1);
-//
-//
-//        ListNode actualSum = ll.sumListsStraight(n1, n2);
-//        assertEquals(sum.toString(), actualSum.toString());
-//    }
-//
-//
+    @Test
+    public void sumListsReverseTest() {
+        //it represents 617
+        CustomList<Integer> n1 = new CustomList<>(7);
+        n1.addToEnd(1);
+        n1.addToEnd(6);
+
+        //it represents 295
+        CustomList<Integer> n2 = new CustomList<>(5);
+        n2.addToEnd(9);
+        n2.addToEnd(2);
+
+        //ExpectedSum
+        CustomList<Integer> sum = new CustomList<>(2);
+        sum.addToEnd(1);
+        sum.addToEnd(9);
+
+    //    CustomList<Integer> res = n1.sumListsReverse(n2);
+        CustomList<Integer> res = n1.sumLists(n2,true);
+
+        assertEquals(sum.getRoot().getVal(),res.getRoot().getVal());
+        assertEquals(sum.getRoot().getNext().getVal(),res.getRoot().getNext().getVal());
+        assertEquals(sum.getRoot().getNext().getNext().getVal(),res.getRoot().getNext().getNext().getVal());
+
+    }
+
+    @Test
+    public void sumListsStraightTest() {
+        //it represents 617
+        CustomList<Integer> n1 = new CustomList<>(6);
+        n1.addToEnd(1);
+        n1.addToEnd(7);
+
+        //it represents 295
+        CustomList<Integer> n2 = new CustomList<>(2);
+        n2.addToEnd(9);
+        n2.addToEnd(5);
+
+        //ExpectedSum
+        CustomList<Integer> sum = new CustomList<>(9);
+        sum.addToEnd(1);
+        sum.addToEnd(2);
+
+
+        CustomList<Integer> res = n1.sumLists(n2,false);
+
+        assertEquals(sum.getRoot().getVal(),res.getRoot().getVal());
+        assertEquals(sum.getRoot().getNext().getVal(),res.getRoot().getNext().getVal());
+        assertEquals(sum.getRoot().getNext().getNext().getVal(),res.getRoot().getNext().getNext().getVal());
+    }
+
+
 //    @Test
 //    public void checkPalindromeTestInt() {
 //        ListNode<Integer> head = new ListNode<>(0);
