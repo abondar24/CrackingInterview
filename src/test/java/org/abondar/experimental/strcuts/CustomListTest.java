@@ -34,6 +34,16 @@ public class CustomListTest {
     }
 
     @Test
+    public void addToEndNodeTest() {
+        CustomList<Integer> customList = new CustomList<>(1);
+        CustomList.ListNode<Integer> listNode = new CustomList.ListNode<>(2);
+        customList.addToEnd(listNode);
+
+        CustomList.ListNode<Integer> resNode = customList.findNode(2);
+        assertEquals(listNode, resNode);
+    }
+
+    @Test
     public void addToMiddleTest() {
         CustomList<Integer> customList = new CustomList<>(1);
         customList.addToEnd(2);
@@ -41,6 +51,20 @@ public class CustomListTest {
 
         CustomList.ListNode<Integer> lastNode = customList.findNode(2);
         assertEquals(2, lastNode.getVal());
+        assertNull(lastNode.getNext());
+
+    }
+
+    @Test
+    public void addToMiddleNodeTest() {
+        CustomList<Integer> customList = new CustomList<>(1);
+        customList.addToEnd(2);
+
+        CustomList.ListNode<Integer> addNode = new CustomList.ListNode<>(3);
+        customList.addToMiddle(1, addNode);
+
+        CustomList.ListNode<Integer> lastNode = customList.findNode(2);
+        assertEquals(addNode.getNext(), lastNode);
         assertNull(lastNode.getNext());
 
     }
@@ -230,6 +254,45 @@ public class CustomListTest {
         assertFalse(isPalindrome);
     }
 
+    @Test
+    public void checkIntersection() {
+        CustomList<Integer> list = new CustomList<>(3);
+        list.addToEnd(1);
+        list.addToEnd(5);
+        list.addToEnd(6);
+        CustomList.ListNode<Integer> interNode = new CustomList.ListNode<>(7);
+        list.addToEnd(interNode);
+
+        CustomList<Integer> interList = new CustomList<>(4);
+        interList.addToEnd(6);
+        interList.addToEnd(interNode);
+        interList.addToEnd(2);
+        interList.addToEnd(1);
+
+        boolean hasIntersection = list.hasIntersection(interList);
+        assertTrue(hasIntersection);
+    }
+
+    @Test
+    public void checkNoIntersectionTest() {
+        CustomList<Integer> list = new CustomList<>(3);
+        list.addToEnd(1);
+        list.addToEnd(5);
+        list.addToEnd(6);
+        list.addToEnd(7);
+
+        CustomList<Integer> interList = new CustomList<>(4);
+        interList.addToEnd(6);
+        interList.addToEnd(7);
+        interList.addToEnd(2);
+        interList.addToEnd(1);
+
+
+        boolean hasIntersection = list.hasIntersection(interList);
+        assertFalse(hasIntersection);
+    }
+
+
 //
 //    @Test
 //    public void detectLoopTest() {
@@ -267,66 +330,7 @@ public class CustomListTest {
 //        assertEquals(null, loop);
 //
 //    }
-//
-//
-//    @Test
-//    public void checkIntersection() {
-//        ListNode<Integer> head1 = new ListNode<>(3);
-//        ListNode<Integer> next = new ListNode<>(1);
-//        ListNode<Integer> next1 = new ListNode<>(5);
-//        ListNode<Integer> next2 = new ListNode<>(6);
-//        ListNode<Integer> next3 = new ListNode<>(7);
-//
-//        head1.setNext(next);
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//        next2.setNext(next3);
-//
-//        ListNode<Integer> head2 = new ListNode<>(4);
-//        ListNode<Integer> next4 = new ListNode<>(6);
-//        ListNode<Integer> next5 = next3;
-//        ListNode<Integer> next6 = new ListNode<>(2);
-//        ListNode<Integer> next7 = new ListNode<>(1);
-//
-//        head2.setNext(next4);
-//        next4.setNext(next5);
-//        next5.setNext(next6);
-//        next6.setNext(next7);
-//
-//
-//        boolean hasIntersection = ll.hasIntersection(head1, head2);
-//        assertTrue(hasIntersection);
-//    }
-//
-//    @Test
-//    public void checkIntersectionNoInter() {
-//        ListNode<Integer> head1 = new ListNode<>(3);
-//        ListNode<Integer> next = new ListNode<>(1);
-//        ListNode<Integer> next1 = new ListNode<>(5);
-//        ListNode<Integer> next2 = new ListNode<>(6);
-//        ListNode<Integer> next3 = new ListNode<>(7);
-//
-//        head1.setNext(next);
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//        next2.setNext(next3);
-//
-//        ListNode<Integer> head2 = new ListNode<>(4);
-//        ListNode<Integer> next4 = new ListNode<>(6);
-//        ListNode<Integer> next5 = new ListNode<>(7);
-//        ListNode<Integer> next6 = new ListNode<>(2);
-//        ListNode<Integer> next7 = new ListNode<>(1);
-//
-//        head2.setNext(next4);
-//        next4.setNext(next5);
-//        next5.setNext(next6);
-//        next6.setNext(next7);
-//
-//
-//        boolean hasIntersection = ll.hasIntersection(head1, head2);
-//        assertFalse(hasIntersection);
-//    }
-//
+
 //    @Test
 //    public void mergeListsTest() {
 //        ListNode<Integer> head1 = new ListNode<>(1);

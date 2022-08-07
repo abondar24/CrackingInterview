@@ -31,13 +31,37 @@ public class CustomList<T> {
         }
     }
 
-    public void addToMiddle(T midVal,T addVal){
+    public void addToEnd(ListNode<T> addNode){
+        ListNode<T> cur = root;
+        while (cur !=null){
+            if (cur.next==null){
+                cur.next= addNode;
+                break;
+            }
+
+            cur = cur.next;
+        }
+    }
+
+    public void addToMiddle(T midVal,T addVal) {
+        ListNode<T> cur = root;
+        while (cur != null) {
+            if (cur.val.equals(midVal)) {
+                ListNode<T> add = new ListNode<>(addVal);
+                add.next = cur.next;
+                cur.next = add;
+            }
+
+            cur = cur.next;
+        }
+    }
+
+    public void addToMiddle(T midVal,ListNode<T> addNode){
         ListNode<T> cur = root;
         while (cur !=null){
             if (cur.val.equals(midVal)){
-                ListNode<T> add = new ListNode<>(addVal);
-                add.next= cur.next;
-                cur.next=add;
+                addNode.next= cur.next;
+                cur.next=addNode;
             }
 
             cur = cur.next;
@@ -208,21 +232,22 @@ public class CustomList<T> {
     }
 
 
-    public boolean hasIntersection(ListNode h1, ListNode h2) {
-        HashMap<ListNode, Boolean> checkedNodes = new HashMap<>();
+    public boolean hasIntersection(CustomList<T> interList) {
+        HashMap<ListNode<T>, Boolean> checkedNodes = new HashMap<>();
 
-        while (h1 != null) {
-
-            checkedNodes.put(h1, false);
-            h1 = h1.next;
+        ListNode<T> cur = root;
+        while (cur != null) {
+            checkedNodes.put(cur, false);
+            cur = cur.next;
         }
 
-        while (h2 != null) {
-            if (checkedNodes.containsKey(h2)) {
-                checkedNodes.put(h2, true);
+        cur = interList.root;
+        while (cur != null) {
+            if (checkedNodes.containsKey(cur)) {
+                checkedNodes.put(cur, true);
                 break;
             }
-            h2 = h2.next;
+            cur = cur.next;
         }
 
         return checkedNodes.containsValue(true);
