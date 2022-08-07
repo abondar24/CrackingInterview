@@ -319,13 +319,13 @@ public class CustomList<T> {
 
 
     //TODO: make generic
-    public ListNode<Integer> reverseList(ListNode<Integer> head) {
-        List<ListNode<Integer>> listNodes = new ArrayList<>();
+    public CustomList<T> reverseList() {
+        List<ListNode<T>> listNodes = new ArrayList<>();
 
-        while (head != null) {
-            listNodes.add(head);
+        while (root != null) {
+            listNodes.add(root);
 
-            head = head.next;
+            root = root.next;
         }
 
 
@@ -334,15 +334,26 @@ public class CustomList<T> {
 
         }
 
+        ListNode<T> reverseRoot = null;
         if (!listNodes.isEmpty()) {
             listNodes.get(0).next = null;
-            return listNodes.get(listNodes.size() - 1);
+            reverseRoot = listNodes.get(listNodes.size() - 1);
 
         } else {
-            return head;
+            reverseRoot = root;
         }
 
+        CustomList<T> res = new CustomList<>();
+        while (reverseRoot!=null){
+            if (res.root==null){
+                res.initList(reverseRoot.val);
+            } else {
+                res.addToEnd(reverseRoot.val);
+            }
 
+            reverseRoot = reverseRoot.next;
+        }
+        return res;
     }
 
 

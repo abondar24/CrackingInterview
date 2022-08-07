@@ -133,7 +133,7 @@ public class CustomListTest {
 
         CustomList.ListNode<Integer> res = customList.kToLast(2);
         assertEquals(4, res.getVal());
-        assertEquals(5,res.getNext().getVal());
+        assertEquals(5, res.getNext().getVal());
 
     }
 
@@ -165,7 +165,6 @@ public class CustomListTest {
     }
 
 
-
     @Test
     public void sumListsReverseTest() {
         //it represents 617
@@ -183,12 +182,12 @@ public class CustomListTest {
         sum.addToEnd(1);
         sum.addToEnd(9);
 
-    //    CustomList<Integer> res = n1.sumListsReverse(n2);
-        CustomList<Integer> res = n1.sumLists(n2,true);
+        //    CustomList<Integer> res = n1.sumListsReverse(n2);
+        CustomList<Integer> res = n1.sumLists(n2, true);
 
-        assertEquals(sum.getRoot().getVal(),res.getRoot().getVal());
-        assertEquals(sum.getRoot().getNext().getVal(),res.getRoot().getNext().getVal());
-        assertEquals(sum.getRoot().getNext().getNext().getVal(),res.getRoot().getNext().getNext().getVal());
+        assertEquals(sum.getRoot().getVal(), res.getRoot().getVal());
+        assertEquals(sum.getRoot().getNext().getVal(), res.getRoot().getNext().getVal());
+        assertEquals(sum.getRoot().getNext().getNext().getVal(), res.getRoot().getNext().getNext().getVal());
 
     }
 
@@ -210,11 +209,11 @@ public class CustomListTest {
         sum.addToEnd(2);
 
 
-        CustomList<Integer> res = n1.sumLists(n2,false);
+        CustomList<Integer> res = n1.sumLists(n2, false);
 
-        assertEquals(sum.getRoot().getVal(),res.getRoot().getVal());
-        assertEquals(sum.getRoot().getNext().getVal(),res.getRoot().getNext().getVal());
-        assertEquals(sum.getRoot().getNext().getNext().getVal(),res.getRoot().getNext().getNext().getVal());
+        assertEquals(sum.getRoot().getVal(), res.getRoot().getVal());
+        assertEquals(sum.getRoot().getNext().getVal(), res.getRoot().getNext().getVal());
+        assertEquals(sum.getRoot().getNext().getNext().getVal(), res.getRoot().getNext().getNext().getVal());
     }
 
 
@@ -233,7 +232,7 @@ public class CustomListTest {
 
     @Test
     public void isPalindromeStrTest() {
-        CustomList<String> list  = new CustomList<>("a");
+        CustomList<String> list = new CustomList<>("a");
         list.addToEnd("b");
         list.addToEnd("b");
         list.addToEnd("a");
@@ -332,7 +331,7 @@ public class CustomListTest {
         CustomList<Integer> mergeList = new CustomList<>(1);
         mergeList.addToEnd(3);
         mergeList.addToEnd(4);
-        
+
         CustomList<Integer> merge = customList.mergeLists(mergeList);
 
         assertEquals(1, merge.getRoot().getVal());
@@ -345,31 +344,22 @@ public class CustomListTest {
     }
 
 
-//    @Test
-//    public void reverseListTest() {
-//        ListNode<Integer> head = new ListNode<>(1);
-//        ListNode<Integer> next = new ListNode<>(2);
-//        ListNode<Integer> next1 = new ListNode<>(3);
-//        ListNode<Integer> next2 = new ListNode<>(4);
-//        ListNode<Integer> next3 = new ListNode<>(5);
-//
-//        head.setNext(next);
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//        next2.setNext(next3);
-//
-//        ListNode<Integer> res = ll.reverseList(head);
-//
-//        assertEquals((Integer) 5, res.getVal());
-//        assertEquals(4, res.getNext().getVal());
-//        assertEquals(3, res.getNext().getNext().getVal());
-//        assertEquals(2, res.getNext().getNext().getNext().getVal());
-//        assertEquals(1, res.getNext().getNext().getNext().getNext().getVal());
-//
-//        head = new ListNode<>(null);
-//        res = ll.reverseList(head);
-//        assertNull(res.getVal());
-//    }
-//
+    @Test
+    public void reverseListTest() {
+        CustomList<Integer> customList = new CustomList<>(1);
+        customList.addToEnd(2);
+        customList.addToEnd(3);
+        customList.addToEnd(4);
+        customList.addToEnd(5);
+
+        CustomList<Integer> res = customList.reverseList();
+
+        assertEquals(5, res.getRoot().getVal());
+        assertEquals(4, res.getRoot().getNext().getVal());
+        assertEquals(3, res.getRoot().getNext().getNext().getVal());
+        assertEquals(2, res.getRoot().getNext().getNext().getNext().getVal());
+        assertEquals(1, res.getRoot().getNext().getNext().getNext().getNext().getVal());
+    }
+
 
 }
