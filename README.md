@@ -84,7 +84,7 @@ We need to return a list which represents sum of two lists (existing and the one
 - isPalindrome - Check if list is a palindrome
 - hasIntersection - Check if two list have an intersection.Intersection is by ref, not by val which means one node in two lists 
 - detectLoop - Check if list has loops and return it. Loop is the same node(not val) added to the list twice.
-- mergeLists - merge two sorted linked lists 
+- mergeLists - merge two sorted linked lists of integers
 - reverseList - reverse linked list
 
 

@@ -323,33 +323,27 @@ public class CustomListTest {
 
     }
 
-//    @Test
-//    public void mergeListsTest() {
-//        ListNode<Integer> head1 = new ListNode<>(1);
-//        ListNode<Integer> next = new ListNode<>(2);
-//        ListNode<Integer> next1 = new ListNode<>(4);
-//
-//        head1.setNext(next);
-//        next.setNext(next1);
-//
-//        ListNode<Integer> head2 = new ListNode<>(1);
-//        ListNode<Integer> next4 = new ListNode<>(3);
-//        ListNode<Integer> next5 = new ListNode<>(4);
-//
-//        head2.setNext(next4);
-//        next4.setNext(next5);
-//
-//        ListNode<Integer> merge = ll.mergeLists(head1, head2);
-//
-//        assertEquals((Integer) 1, merge.getVal());
-//        assertEquals(1, merge.getNext().getVal());
-//        assertEquals(2, merge.getNext().getNext().getVal());
-//        assertEquals(3, merge.getNext().getNext().getNext().getVal());
-//        assertEquals(4, merge.getNext().getNext().getNext().getNext().getVal());
-//        assertEquals(4, merge.getNext().getNext().getNext().getNext().getNext().getVal());
-//
-//    }
-//
+    @Test
+    public void mergeListsTest() {
+        CustomList<Integer> customList = new CustomList<>(1);
+        customList.addToEnd(2);
+        customList.addToEnd(4);
+
+        CustomList<Integer> mergeList = new CustomList<>(1);
+        mergeList.addToEnd(3);
+        mergeList.addToEnd(4);
+        
+        CustomList<Integer> merge = customList.mergeLists(mergeList);
+
+        assertEquals(1, merge.getRoot().getVal());
+        assertEquals(1, merge.getRoot().getNext().getVal());
+        assertEquals(2, merge.getRoot().getNext().getNext().getVal());
+        assertEquals(3, merge.getRoot().getNext().getNext().getNext().getVal());
+        assertEquals(4, merge.getRoot().getNext().getNext().getNext().getNext().getVal());
+        assertEquals(4, merge.getRoot().getNext().getNext().getNext().getNext().getNext().getVal());
+
+    }
+
 
 //    @Test
 //    public void reverseListTest() {

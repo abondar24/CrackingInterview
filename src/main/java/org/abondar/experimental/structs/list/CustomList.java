@@ -9,33 +9,22 @@ public class CustomList<T> {
 
     private ListNode<T> root;
 
-    public CustomList (T rootVal){
-       initList(rootVal);
+    public CustomList(T rootVal) {
+        initList(rootVal);
     }
 
-    public CustomList(){}
-
-    public void initList(T rootVal){
-       root = new ListNode<>(rootVal);
+    public CustomList() {
     }
 
-    public void addToEnd(T addVal){
+    public void initList(T rootVal) {
+        root = new ListNode<>(rootVal);
+    }
+
+    public void addToEnd(T addVal) {
         ListNode<T> cur = root;
-        while (cur !=null){
-            if (cur.next==null){
-                cur.next= new ListNode<>(addVal);
-                break;
-            }
-            
-            cur = cur.next;
-        }
-    }
-
-    public void addToEnd(ListNode<T> addNode){
-        ListNode<T> cur = root;
-        while (cur !=null){
-            if (cur.next==null){
-                cur.next= addNode;
+        while (cur != null) {
+            if (cur.next == null) {
+                cur.next = new ListNode<>(addVal);
                 break;
             }
 
@@ -43,7 +32,19 @@ public class CustomList<T> {
         }
     }
 
-    public void addToMiddle(T midVal,T addVal) {
+    public void addToEnd(ListNode<T> addNode) {
+        ListNode<T> cur = root;
+        while (cur != null) {
+            if (cur.next == null) {
+                cur.next = addNode;
+                break;
+            }
+
+            cur = cur.next;
+        }
+    }
+
+    public void addToMiddle(T midVal, T addVal) {
         ListNode<T> cur = root;
         while (cur != null) {
             if (cur.val.equals(midVal)) {
@@ -56,22 +57,22 @@ public class CustomList<T> {
         }
     }
 
-    public void addToMiddle(T midVal,ListNode<T> addNode){
+    public void addToMiddle(T midVal, ListNode<T> addNode) {
         ListNode<T> cur = root;
-        while (cur !=null){
-            if (cur.val.equals(midVal)){
-                addNode.next= cur.next;
-                cur.next=addNode;
+        while (cur != null) {
+            if (cur.val.equals(midVal)) {
+                addNode.next = cur.next;
+                cur.next = addNode;
             }
 
             cur = cur.next;
         }
     }
 
-    public ListNode<T> findNode(T val){
+    public ListNode<T> findNode(T val) {
         ListNode<T> cur = root;
-        while (cur!= null) {
-            if (cur.val.equals(val)){
+        while (cur != null) {
+            if (cur.val.equals(val)) {
                 return cur;
             }
 
@@ -83,8 +84,8 @@ public class CustomList<T> {
 
     public void deleteNode(T delVal) {
         ListNode<T> cur = root;
-        while (cur.next !=null){
-            if (cur.next.val.equals(delVal)){
+        while (cur.next != null) {
+            if (cur.next.val.equals(delVal)) {
                 cur.next = cur.next.next;
             } else {
                 cur = cur.next;
@@ -102,7 +103,7 @@ public class CustomList<T> {
             ListNode<T> runner = cur;
             while (runner.next != null) {
                 if (runner.next.val == cur.val) {
-                    runner.next=runner.next.next;
+                    runner.next = runner.next.next;
                 } else {
                     runner = runner.next;
                 }
@@ -119,7 +120,7 @@ public class CustomList<T> {
 
         while (cur != null && cur.next != null) {
             if ((cur.val == cur.next.val)) {
-                cur.next= cur.next.next;
+                cur.next = cur.next.next;
             } else {
                 cur = cur.next;
             }
@@ -127,7 +128,7 @@ public class CustomList<T> {
     }
 
 
-    public ListNode<T> kToLast( int k) {
+    public ListNode<T> kToLast(int k) {
         ListNode<T> kToLast = null;
 
         ListNode<T> cur = root;
@@ -155,7 +156,7 @@ public class CustomList<T> {
         return kToLast;
     }
 
-    public CustomList<Integer> sumLists(CustomList<T> listToSum,boolean isReverse) {
+    public CustomList<Integer> sumLists(CustomList<T> listToSum, boolean isReverse) {
         StringBuilder num1Str = new StringBuilder();
         StringBuilder num2Str = new StringBuilder();
 
@@ -171,7 +172,7 @@ public class CustomList<T> {
             cur = cur.next;
         }
 
-        if (isReverse){
+        if (isReverse) {
             num1Str.reverse();
             num2Str.reverse();
         }
@@ -182,7 +183,7 @@ public class CustomList<T> {
         int sum = n1 + n2;
 
         String strSum = Integer.toString(sum);
-        if (isReverse){
+        if (isReverse) {
             strSum = new StringBuilder(strSum).reverse().toString();
         }
 
@@ -208,7 +209,7 @@ public class CustomList<T> {
         while (cur != null) {
 
             ListNode n = new ListNode<>(cur.val);
-            n.next=reverseRoot;
+            n.next = reverseRoot;
             reverseRoot = n;
             cur = cur.next;
         }
@@ -281,32 +282,40 @@ public class CustomList<T> {
         return loopNode;
     }
 
-    public ListNode<Integer> mergeLists(ListNode<Integer> l1, ListNode<Integer> l2) {
-        ListNode<Integer> merge = new ListNode<>(-1);
-        ListNode<Integer> head = merge;
+    public CustomList<Integer> mergeLists(CustomList<Integer> mergeList) {
+        CustomList<Integer> res = new CustomList<>();
 
-        while (l1 != null && l2 != null) {
+        if (!(root.getVal() instanceof Integer)){
+            throw new RuntimeException("Incomatible types");
+        }
 
-            if (l1.val <= l2.val) {
-                merge.next=l1;
-                l1 = l1.next;
+        while (root != null && mergeList.root != null) {
+            if ((Integer)root.val <= mergeList.root.val) {
+                if (res.root == null) {
+                    res.initList((Integer) root.val);
+                } else {
+                    res.addToEnd((Integer) root.val);
+                }
+                root = root.next;
             } else {
-                merge.next=l2;
-                l2 = l2.next;
+                if (res.root == null) {
+                    res.initList(mergeList.root.val);
+                } else {
+                    res.addToEnd(mergeList.root.val);
+                }
+                mergeList.root = mergeList.root.next;
             }
-            merge = merge.next;
+
         }
 
-        if (l1 != null) {
-            merge.next=l1;
+        if (root!=null){
+            res.addToEnd((Integer) root.val);
         } else {
-            merge.next=l2;
+            res.addToEnd(mergeList.root);
         }
 
-
-        return head.next;
+        return res;
     }
-
 
 
     //TODO: make generic
@@ -321,12 +330,12 @@ public class CustomList<T> {
 
 
         for (int i = listNodes.size() - 1; i > 0; i--) {
-            listNodes.get(i).next=listNodes.get(i - 1);
+            listNodes.get(i).next = listNodes.get(i - 1);
 
         }
 
         if (!listNodes.isEmpty()) {
-            listNodes.get(0).next=null;
+            listNodes.get(0).next = null;
             return listNodes.get(listNodes.size() - 1);
 
         } else {
@@ -341,7 +350,7 @@ public class CustomList<T> {
         return root;
     }
 
-    public static class ListNode<T> {
+    public static class ListNode<T>{
 
         private ListNode<T> next = null;
         private T val;
