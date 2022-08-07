@@ -176,35 +176,35 @@ public class CustomList<T> {
     }
 
 
-    public boolean checkPalindrome(ListNode head) {
+    public boolean isPalindrome() {
 
-        ListNode reverseHead = null;
+        ListNode<T> reverseRoot = null;
 
-        ListNode cur = head;
+        ListNode<T> cur = root;
         while (cur != null) {
 
             ListNode n = new ListNode<>(cur.val);
-            n.next=reverseHead;
-            reverseHead = n;
+            n.next=reverseRoot;
+            reverseRoot = n;
             cur = cur.next;
         }
-        return isEqual(head, reverseHead);
+        return isEqual(root, reverseRoot);
     }
 
-    private boolean isEqual(ListNode h1, ListNode h2) {
+    private boolean isEqual(ListNode<T> root1, ListNode<T> root2) {
 
-        while (h1 != null && h2 != null) {
+        while (root1 != null && root2 != null) {
 
-            if (!h1.val.equals(h2.val)) {
+            if (!root1.val.equals(root2.val)) {
                 return false;
             }
 
-            h1 = h1.next;
-            h2 = h2.next;
+            root1 = root1.next;
+            root2 = root2.next;
         }
 
 
-        return h1 == null && h2 == null;
+        return root1 == null && root2 == null;
     }
 
 

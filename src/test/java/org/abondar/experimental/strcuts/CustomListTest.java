@@ -4,7 +4,9 @@ import org.abondar.experimental.structs.list.CustomList;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CustomListTest {
 
@@ -192,55 +194,42 @@ public class CustomListTest {
     }
 
 
-//    @Test
-//    public void checkPalindromeTestInt() {
-//        ListNode<Integer> head = new ListNode<>(0);
-//        ListNode<Integer> next = new ListNode<>(1);
-//        ListNode<Integer> next1 = new ListNode<>(2);
-//        ListNode<Integer> next2 = new ListNode<>(1);
-//        ListNode<Integer> next3 = new ListNode<>(0);
-//
-//        head.setNext(next);
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//        next2.setNext(next3);
-//
-//        boolean isPalindrome = ll.checkPalindrome(head);
-//        assertTrue(isPalindrome);
-//    }
-//
-//    @Test
-//    public void checkPalindromeTestStr() {
-//        ListNode<String> head = new ListNode<>("a");
-//        ListNode<String> next = new ListNode<>("b");
-//        ListNode<String> next1 = new ListNode<>("b");
-//        ListNode<String> next2 = new ListNode<>("a");
-//
-//        head.setNext(next);
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//
-//        boolean isPalindrome = ll.checkPalindrome(head);
-//        assertTrue(isPalindrome);
-//    }
-//
-//    @Test
-//    public void checkPalindromeTestNotPalindrome() {
-//        ListNode<Integer> head = new ListNode<>(0);
-//        ListNode<Integer> next = new ListNode<>(1);
-//        ListNode<Integer> next1 = new ListNode<>(2);
-//        ListNode<Integer> next2 = new ListNode<>(1);
-//        ListNode<Integer> next3 = new ListNode<>(2);
-//
-//        head.setNext(next);
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//        next2.setNext(next3);
-//
-//        boolean isPalindrome = ll.checkPalindrome(head);
-//        assertFalse(isPalindrome);
-//    }
-//
+    @Test
+    public void isPalindromeIntTest() {
+        CustomList<Integer> list = new CustomList<>(0);
+        list.addToEnd(1);
+        list.addToEnd(2);
+        list.addToEnd(1);
+        list.addToEnd(0);
+
+
+        boolean isPalindrome = list.isPalindrome();
+        assertTrue(isPalindrome);
+    }
+
+    @Test
+    public void isPalindromeStrTest() {
+        CustomList<String> list  = new CustomList<>("a");
+        list.addToEnd("b");
+        list.addToEnd("b");
+        list.addToEnd("a");
+
+        boolean isPalindrome = list.isPalindrome();
+        assertTrue(isPalindrome);
+    }
+
+    @Test
+    public void isPalindromeFalseTest() {
+        CustomList<Integer> list = new CustomList<>(0);
+        list.addToEnd(1);
+        list.addToEnd(2);
+        list.addToEnd(1);
+        list.addToEnd(2);
+
+        boolean isPalindrome = list.isPalindrome();
+        assertFalse(isPalindrome);
+    }
+
 //
 //    @Test
 //    public void detectLoopTest() {

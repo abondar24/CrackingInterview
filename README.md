@@ -81,7 +81,7 @@ If element [i][j] of matrix is zero - entire row and column must be zero
 - kToLast   - Return  k elements from last element in list
 - sumLists - Each list is a number : list 7-1-6 is number 716. If flag isReverse is true list represents 617. 
 We need to return a list which represents sum of two lists (existing and the one we sum with)
-- checkPalindrome - Check if list is a palindrome
+- isPalindrome - Check if list is a palindrome
 - hasIntersection - Check if two list have an intersection.Intersection is by ref, not by val which means one node in two lists 
 - detectLoop - Check if list has loops and return it.
 - mergeLists - merge two sorted linked lists 
