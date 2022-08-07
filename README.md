@@ -83,7 +83,7 @@ If element [i][j] of matrix is zero - entire row and column must be zero
 We need to return a list which represents sum of two lists (existing and the one we sum with)
 - isPalindrome - Check if list is a palindrome
 - hasIntersection - Check if two list have an intersection.Intersection is by ref, not by val which means one node in two lists 
-- detectLoop - Check if list has loops and return it.
+- detectLoop - Check if list has loops and return it. Loop is the same node(not val) added to the list twice.
 - mergeLists - merge two sorted linked lists 
 - reverseList - reverse linked list
 

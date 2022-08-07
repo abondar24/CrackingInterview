@@ -292,44 +292,36 @@ public class CustomListTest {
         assertFalse(hasIntersection);
     }
 
+    @Test
+    public void detectLoopTest() {
+        CustomList<String> customList = new CustomList<>("a");
+        customList.addToEnd("b");
 
-//
-//    @Test
-//    public void detectLoopTest() {
-//        ListNode<String> head = new ListNode<>("a");
-//        ListNode<String> next = new ListNode<>("b");
-//        ListNode<String> next1 = new ListNode<>("c");
-//        ListNode<String> next2 = new ListNode<>("d");
-//        ListNode<String> next3 = new ListNode<>("e");
-//
-//        head.setNext(next);
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//        next1.setNext(next3);
-//        next3.setNext(next1);
-//
-//        ListNode loop = ll.detectLoop(head);
-//        assertEquals(next1, loop);
-//
-//    }
-//
-//    @Test
-//    public void detectLoopTestNoLoop() {
-//        ListNode<String> head = new ListNode<>("a");
-//        ListNode<String> next = new ListNode<>("b");
-//        ListNode<String> next1 = new ListNode<>("c");
-//        ListNode<String> next2 = new ListNode<>("d");
-//        ListNode<String> next3 = new ListNode<>("e");
-//
-//        head.setNext(next);
-//        next.setNext(next1);
-//        next1.setNext(next2);
-//        next1.setNext(next3);
-//
-//        ListNode loop = ll.detectLoop(head);
-//        assertEquals(null, loop);
-//
-//    }
+        CustomList.ListNode<String> loopNode = new CustomList.ListNode<>("c");
+        customList.addToEnd(loopNode);
+
+        customList.addToEnd("d");
+        customList.addToEnd("e");
+        customList.addToEnd(loopNode);
+
+        CustomList.ListNode<String> loop = customList.detectLoop();
+        assertEquals(loopNode, loop);
+
+    }
+
+    @Test
+    public void detectLoopTestNoLoop() {
+        CustomList<String> customList = new CustomList<>("a");
+        customList.addToEnd("b");
+        customList.addToEnd("c");
+        customList.addToEnd("d");
+        customList.addToEnd("e");
+        customList.addToEnd("c");
+
+        CustomList.ListNode<String> loop = customList.detectLoop();
+        assertEquals(null, loop);
+
+    }
 
 //    @Test
 //    public void mergeListsTest() {

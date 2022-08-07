@@ -254,30 +254,31 @@ public class CustomList<T> {
     }
 
 
-    public ListNode detectLoop(ListNode head) {
+    public ListNode<T> detectLoop() {
 
-        ListNode loop = null;
+        ListNode<T> loopNode = null;
 
-        HashMap<ListNode, Boolean> checkedNodes = new HashMap<>();
-        while (head != null) {
+        HashMap<ListNode<T>, Boolean> checkedNodes = new HashMap<>();
+        ListNode<T> cur = root;
+        while (cur != null) {
 
-            if (!checkedNodes.containsKey(head)) {
-                checkedNodes.put(head, false);
+            if (!checkedNodes.containsKey(cur)) {
+                checkedNodes.put(cur, false);
             } else {
-                checkedNodes.put(head, true);
+                checkedNodes.put(cur, true);
                 break;
             }
 
-            head = head.next;
+            cur = cur.next;
         }
 
-        for (Map.Entry<ListNode, Boolean> ent : checkedNodes.entrySet()) {
+        for (Map.Entry<ListNode<T>, Boolean> ent : checkedNodes.entrySet()) {
             if (ent.getValue()) {
-                loop = ent.getKey();
+                loopNode = ent.getKey();
             }
         }
 
-        return loop;
+        return loopNode;
     }
 
     public ListNode<Integer> mergeLists(ListNode<Integer> l1, ListNode<Integer> l2) {
