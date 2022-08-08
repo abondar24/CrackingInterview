@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 //TODO split with bin tree
 public class Graph {
@@ -85,62 +86,62 @@ public class Graph {
     }
 
 
-//    public List<String> buildOrder(Map<String, List<String>> dependencies) {
-//
-//        List<GraphNode> roots = new ArrayList<>();
-//
-//        List<String> depVals = new ArrayList<>();
-//        dependencies.forEach((k, v) -> depVals.addAll(v));
-//
-//        dependencies.forEach((k, v) -> {
-//            if (!depVals.contains(k)) {
-//                roots.add(new GraphNode(k));
-//            }
-//        });
-//
-//        if (!roots.isEmpty()) {
-//            buildTrees(roots, dependencies);
-//        }
-//
-//
-//        return createOrder(roots);
-//    }
+    public List<String> buildOrder(Map<String, List<String>> dependencies) {
 
-//    private void buildTrees(List<GraphNode> roots, Map<String, List<String>> dependencies) {
-//        roots.forEach(r -> {
-//            List<GraphNode> children = new ArrayList<>();
-//            dependencies.forEach((k, v) -> {
-//                if (k.equals(r.getName())) {
-//                    v.forEach(c -> {
-//                        GraphNode child = new GraphNode(c);
-//                        if (!roots.contains(child)) {
-//                            children.add(child);
-//                        }
-//                    });
-//                }
-//                r.setChildren(children);
-//            });
-//
-//            buildTrees(children, dependencies);
-//        });
-//
-//
-//    }
+        List<GraphNode> roots = new ArrayList<>();
+
+        List<String> depVals = new ArrayList<>();
+        dependencies.forEach((k, v) -> depVals.addAll(v));
+
+        dependencies.forEach((k, v) -> {
+            if (!depVals.contains(k)) {
+                roots.add(new GraphNode(k));
+            }
+        });
+
+        if (!roots.isEmpty()) {
+            buildTrees(roots, dependencies);
+        }
 
 
-//    private List<String> createOrder(List<GraphNode> roots) {
-//        List<String> res = new ArrayList<>();
-//
-//        roots.forEach(r -> {
-//            res.add(r.getName());
-//            algs.dfsStack(r).forEach(n -> res.add(n.getName()));
-//        });
-//
-//
-//        return res.stream()
-//                .distinct()
-//                .collect(Collectors.toList());
-//    }
+        return createOrder(roots);
+    }
+
+    private void buildTrees(List<GraphNode> roots, Map<String, List<String>> dependencies) {
+        roots.forEach(r -> {
+            List<GraphNode> children = new ArrayList<>();
+            dependencies.forEach((k, v) -> {
+                if (k.equals(r.name)) {
+                    v.forEach(c -> {
+                        GraphNode child = new GraphNode(c);
+                        if (!roots.contains(child)) {
+                            children.add(child);
+                        }
+                    });
+                }
+                r.children=children;
+            });
+
+            buildTrees(children, dependencies);
+        });
+
+
+    }
+
+
+    private List<String> createOrder(List<GraphNode> nodes) {
+        List<String> res = new ArrayList<>();
+
+        nodes.forEach(r -> {
+            res.add(r.name);
+            dfs(r).forEach(n -> res.add(n.name));
+        });
+
+
+        return res.stream()
+                .distinct()
+                .collect(Collectors.toList());
+    }
 
 
 //    public GraphNode findCommonAncestor(GraphNode node1, GraphNode node2) {

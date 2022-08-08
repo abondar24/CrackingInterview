@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -77,8 +79,6 @@ public class GraphTest {
         assertTrue(res.size() > 1);
     }
 
-
-
     @Test
     public void hasRouteDFSTest() {
         Graph.GraphNode root = new Graph.GraphNode("0");
@@ -99,6 +99,37 @@ public class GraphTest {
         assertFalse(graph.hasRouteDFS(two, five));
 
     }
+
+        @Test
+    public void buildOrderTest() {
+        Map<String, List<String>> deps = Map.of("a", List.of("d"),
+                "f", List.of("b","a"),
+                "b",List.of("d"),
+                "d",List.of("c"));
+
+        Graph graph = new Graph();
+        List<String> res = graph.buildOrder(deps);
+
+        assertEquals(5,res.size());
+        assertEquals("f",res.get(0));
+    }
+
+
+    @Test
+    public void buildOrderTwoRootsTest() {
+        Map<String, List<String>> deps = Map.of("a", List.of("e"),
+                "f", List.of("b","c","a"),
+                "c",List.of("a"),
+                "b",List.of("a"),
+                "d",List.of("g"));
+
+        Graph graph = new Graph();
+        List<String> res = graph.buildOrder(deps);
+
+        assertEquals(7,res.size());
+
+    }
+
 
 //    @Test
 //    public void findCommonAncestorTest(){
@@ -131,36 +162,6 @@ public class GraphTest {
 //
 //
 //    }
-//
-//    @Test
-//    public void buildOrderTest() {
-//        Map<String, List<String>> deps = Map.of("a", List.of("d"),
-//                "f", List.of("b","a"),
-//                "b",List.of("d"),
-//                "d",List.of("c"));
-//
-//        List<String> res = tg.buildOrder(deps);
-//
-//        assertEquals(5,res.size());
-//        assertEquals("f",res.get(0));
-//    }
-//
-//
-//    @Test
-//    public void buildOrderTwoRootsTest() {
-//        Map<String, List<String>> deps = Map.of("a", List.of("e"),
-//                "f", List.of("b","c","a"),
-//                "c",List.of("a"),
-//                "b",List.of("a"),
-//                "d",List.of("g"));
-//
-//        List<String> res = tg.buildOrder(deps);
-//
-//        assertEquals(7,res.size());
-//
-//    }
-//
-
 //
 //    @Test
 //    public void distanceToSourceTest(){
