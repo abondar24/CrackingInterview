@@ -5,19 +5,21 @@ import org.abondar.experimental.structs.queue.CustomQueue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 //TODO split with bin tree
 public class Graph {
 
     private GraphNode root;
 
-    public Graph(){}
+    public Graph() {
+    }
 
-    public Graph(GraphNode root){
+    public Graph(GraphNode root) {
         this.root = root;
     }
 
-    public void setNodeChildren(GraphNode node, List<GraphNode> children){
+    public void setNodeChildren(GraphNode node, List<GraphNode> children) {
         node.children = children;
     }
 
@@ -25,16 +27,16 @@ public class Graph {
         List<GraphNode> found = new ArrayList<>();
         CustomQueue<GraphNode> queue = new CustomQueue<>();
 
-        root.visited=true;
+        root.visited = true;
         queue.add(root);
 
         while (!queue.isEmpty()) {
             GraphNode n = queue.remove();
 
-            if (n.children!=null){
+            if (n.children != null) {
                 n.children.forEach(gn -> {
                     if (!gn.visited) {
-                        gn.visited=true;
+                        gn.visited = true;
                         found.add(gn);
                         queue.add(gn);
                     }
@@ -52,11 +54,35 @@ public class Graph {
     }
 
 
-//    public boolean hasRouteDFS(List<GraphNode> graph, GraphNode start, GraphNode end) {
-//
-//        return graph.contains(start) && graph.contains(end) && algs.dfsStack(start).contains(end);
-//
-//    }
+    public List<GraphNode> dfs(GraphNode root) {
+        List<GraphNode> found = new ArrayList<>();
+        Stack<GraphNode> stack = new Stack<>();
+
+        root.visited = true;
+        stack.add(root);
+
+        while (!stack.isEmpty()) {
+            GraphNode n = stack.pop();
+
+            if (n.children != null) {
+                n.children.forEach(gn -> {
+                    if (!gn.visited) {
+                        gn.visited = true;
+                        found.add(gn);
+                        stack.add(gn);
+                    }
+                });
+            }
+
+
+        }
+
+        return found;
+    }
+
+    public boolean hasRouteDFS(GraphNode start, GraphNode end) {
+        return dfs(start).contains(end);
+    }
 
 
 //    public List<String> buildOrder(Map<String, List<String>> dependencies) {
@@ -212,45 +238,6 @@ public class Graph {
 //
 //
 //
-//    public void dfs(GraphNode root) {
-//        if (root == null) return;
-//
-//        root.setVisited(true);
-//        for (GraphNode n : root.getChildren()) {
-//            if (!n.isVisited()) {
-//                dfs(n);
-//            }
-//        }
-//
-//
-//    }
-//
-//    public  List<GraphNode> dfsStack(GraphNode root) {
-//        List<GraphNode> found = new ArrayList<>();
-//        Stack<GraphNode> stack = new Stack<>();
-//
-//        root.setVisited(true);
-//        stack.add(root);
-//
-//        while (!stack.isEmpty()) {
-//            GraphNode n = stack.pop();
-//
-//            n.getChildren().forEach(gn -> {
-//                if (!gn.isVisited()) {
-//                    gn.setVisited(true);
-//                    found.add(gn);
-//                    stack.add(gn);
-//                }
-//            });
-//
-//        }
-//
-//        return found;
-//    }
-//
-//
-
-
 
     public static class GraphNode implements Comparable<GraphNode> {
         private String name;

@@ -97,8 +97,9 @@ We need to return a list which represents sum of two lists (existing and the one
 Check comments in classes
 
 ## Graphs
-
-- hasRouteBFS,hasRouteDFS - Check if a graph has route between two listNodes.
+- bfs - get list of nodes using Bread First Search
+- dfs - get list of nodes using Depth First Search
+- hasRouteBFS,hasRouteDFS - Check if a graph has route between two nodes.
 - buildOrder - By given list of dependencies build a list of build order
 - findCommonAncestor - Find first common ancestor of two given listNodes without storing additional listNodes in ds.
 - bstSequences - Find all possible arrays of listNodes in BST with distinct elems

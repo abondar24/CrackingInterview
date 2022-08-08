@@ -3,6 +3,7 @@ package org.abondar.experimental.strcuts;
 import org.abondar.experimental.structs.graph.Graph;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -55,42 +56,50 @@ public class GraphTest {
 
     }
 
-//
-//    @Test
-//    public void hasRouteDFSTest() {
-//
-//        GraphNode zero = new GraphNode("0");
-//        GraphNode one = new GraphNode("1");
-//        GraphNode two = new GraphNode("2");
-//        GraphNode three = new GraphNode("3");
-//        GraphNode four = new GraphNode("4");
-//        GraphNode five = new GraphNode("5");
-//
-//        List<GraphNode> graph = new ArrayList<>();
-//
-//        zero.setChildren(List.of(one, four, five));
-//        graph.add(zero);
-//
-//        one.setChildren(List.of(four, three));
-//        graph.add(one);
-//
-//        two.setChildren(List.of(one, three));
-//        graph.add(two);
-//
-//        three.setChildren(List.of(two, four));
-//        graph.add(three);
-//
-//        four.setChildren(List.of());
-//        graph.add(four);
-//
-//        five.setChildren(List.of());
-//        graph.add(five);
-//
-//        assertTrue(tg.hasRouteDFS(graph, zero, three));
-//        assertFalse(tg.hasRouteDFS(graph, two, five));
-//
-//    }
-//
+    @Test
+    public void dfsTest() {
+        Graph.GraphNode root = new Graph.GraphNode("0");
+        Graph graph = new Graph(root);
+
+        Graph.GraphNode one = new Graph.GraphNode("1");
+        Graph.GraphNode two = new Graph.GraphNode("2");
+        Graph.GraphNode three = new Graph.GraphNode("3");
+        Graph.GraphNode four = new Graph.GraphNode("4");
+        Graph.GraphNode five = new Graph.GraphNode("5");
+
+        graph.setNodeChildren(root, List.of(one, four, five));
+        graph.setNodeChildren(one, List.of(four, three));
+        graph.setNodeChildren(two, List.of(one, three));
+        graph.setNodeChildren(three, List.of(two, four));
+
+        List<Graph.GraphNode> res = graph.dfs(root);
+
+        assertTrue(res.size() > 1);
+    }
+
+
+
+    @Test
+    public void hasRouteDFSTest() {
+        Graph.GraphNode root = new Graph.GraphNode("0");
+        Graph graph = new Graph(root);
+
+        Graph.GraphNode one = new Graph.GraphNode("1");
+        Graph.GraphNode two = new Graph.GraphNode("2");
+        Graph.GraphNode three = new Graph.GraphNode("3");
+        Graph.GraphNode four = new Graph.GraphNode("4");
+        Graph.GraphNode five = new Graph.GraphNode("5");
+
+        graph.setNodeChildren(root, List.of(one, four, five));
+        graph.setNodeChildren(one, List.of(four, three));
+        graph.setNodeChildren(two, List.of(one, three));
+        graph.setNodeChildren(three, List.of(two, four));
+
+        assertTrue(graph.hasRouteDFS(root, three));
+        assertFalse(graph.hasRouteDFS(two, five));
+
+    }
+
 //    @Test
 //    public void findCommonAncestorTest(){
 //        GraphNode root = new GraphNode("20");
