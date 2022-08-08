@@ -318,7 +318,6 @@ public class CustomList<T> {
     }
 
 
-    //TODO: make generic
     public CustomList<T> reverseList() {
         List<ListNode<T>> listNodes = new ArrayList<>();
 
