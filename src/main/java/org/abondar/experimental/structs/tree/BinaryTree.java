@@ -1,29 +1,146 @@
 package org.abondar.experimental.structs.tree;
 
-import org.abondar.experimental.algorithms.GraphAlgs;
-import org.abondar.experimental.structs.tree.BinTreeNode;
-import org.abondar.experimental.structs.tree.GraphNode;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
-public class TreesGraphs {
+public class BinaryTree {
 
-    private GraphAlgs algs = new GraphAlgs();
+     //todo add tests to all methods after refactoring
+    /**
+     * Visit left,current,right
+     */
+    public static void inOderTraversal(BinTreeNode node) {
+        if (node != null) {
+            inOderTraversal(node.getLeft());
+            visit(node);
+            inOderTraversal(node.getRight());
+        }
+    }
 
-    public boolean hasRouteBFS(List<GraphNode> graph, GraphNode start, GraphNode end) {
-
-        return graph.contains(start) && graph.contains(end) && algs.bfs(start).contains(end);
+    private static void visit(BinTreeNode n) {
 
     }
 
-    public boolean hasRouteDFS(List<GraphNode> graph, GraphNode start, GraphNode end) {
+    /**
+     * Visit left,current,right
+     */
+    public void preOderTraversal(BinTreeNode node) {
+        if (node != null) {
+            visit(node);
+            preOderTraversal(node.getLeft());
+            preOderTraversal(node.getRight());
+        }
+    }
 
-        return graph.contains(start) && graph.contains(end) && algs.dfsStack(start).contains(end);
+    /**
+     * Visit left,right,current
+     */
+    public void postOrderTraversal(BinTreeNode node) {
+        if (node != null) {
+            postOrderTraversal(node.getLeft());
+            postOrderTraversal(node.getRight());
+            visit(node);
+        }
+    }
+
+    public BinTreeNode search(BinTreeNode root, int val){
+        if (root==null || root.getVal()==val){
+            return root;
+        }
+
+        if (val<root.getVal()){
+            return search(root.getLeft(),val);
+        } else {
+            return search(root.getRight(),val);
+        }
 
     }
+
+    public void insert(BinTreeNode root,int val){
+        BinTreeNode newNode = new BinTreeNode(String.valueOf(val));
+        newNode.setVal(val);
+
+        BinTreeNode tmp = null;
+        while (root!=null){
+            tmp = root;
+            if (newNode.getVal()<root.getVal()){
+                root = root.getLeft();
+            } else {
+                root = root.getRight();
+            }
+        }
+        newNode.setParent(tmp);
+        if (tmp==null){
+            root = newNode;
+        }
+        else if (newNode.getVal()<tmp.getVal()){
+            tmp.setLeft(newNode);
+        } else {
+            tmp.setRight(newNode);
+        }
+
+    }
+
+    public void delete(BinTreeNode root,BinTreeNode toDelete){
+        if (toDelete.getLeft()==null){
+            transplant(root,toDelete,toDelete.getRight());
+        } else if (toDelete.getRight()==null){
+            transplant(root,toDelete,toDelete.getLeft());
+        } else {
+             BinTreeNode minNode = min(toDelete.getRight());
+             if (!minNode.getParent().equals(toDelete)){
+                 transplant(root,minNode,minNode.getRight());
+             }
+
+            transplant(root,toDelete,minNode);
+             minNode.setLeft(toDelete.getLeft());
+             minNode.getLeft().setParent(minNode);
+        }
+    }
+
+    public void transplant(BinTreeNode root,BinTreeNode src,BinTreeNode dst){
+        if (src.getParent()==null){
+            root = dst;
+        } else if (src.equals(src.getParent().getLeft())){
+            src.getParent().setLeft(dst);
+        } else {
+            src.getParent().setRight(dst);
+        }
+        if (dst!=null){
+            dst.setParent(src.getParent());
+        }
+    }
+
+    public BinTreeNode successor(BinTreeNode node){
+        if (node.getRight()!=null){
+            return min(node.getRight());
+        }
+
+        BinTreeNode succ = node.getParent();
+        while (succ!=null && node.equals(succ.getRight())){
+            node = succ;
+            succ = succ.getParent();
+        }
+
+        return succ;
+    }
+
+    private BinTreeNode min(BinTreeNode node){
+        while (node.getLeft()!=null){
+            node = node.getLeft();
+        }
+
+        return node;
+    }
+
+    private BinTreeNode max(BinTreeNode node){
+        while (node.getRight()!=null){
+            node = node.getRight();
+        }
+
+        return node;
+    }
+
 
     public BinTreeNode minTree(int[] arr) {
 
@@ -134,105 +251,6 @@ public class TreesGraphs {
         return false;
     }
 
-
-    public List<String> buildOrder(Map<String, List<String>> dependencies) {
-
-        List<GraphNode> roots = new ArrayList<>();
-
-        List<String> depVals = new ArrayList<>();
-        dependencies.forEach((k, v) -> depVals.addAll(v));
-
-        dependencies.forEach((k, v) -> {
-            if (!depVals.contains(k)) {
-                roots.add(new GraphNode(k));
-            }
-        });
-
-        if (!roots.isEmpty()) {
-            buildTrees(roots, dependencies);
-        }
-
-
-        return createOrder(roots);
-    }
-
-    private void buildTrees(List<GraphNode> roots, Map<String, List<String>> dependencies) {
-        roots.forEach(r -> {
-            List<GraphNode> children = new ArrayList<>();
-            dependencies.forEach((k, v) -> {
-                if (k.equals(r.getName())) {
-                    v.forEach(c -> {
-                        GraphNode child = new GraphNode(c);
-                        if (!roots.contains(child)) {
-                            children.add(child);
-                        }
-                    });
-                }
-                r.setChildren(children);
-            });
-
-            buildTrees(children, dependencies);
-        });
-
-
-    }
-
-
-    private List<String> createOrder(List<GraphNode> roots) {
-        List<String> res = new ArrayList<>();
-
-        roots.forEach(r -> {
-            res.add(r.getName());
-            algs.dfsStack(r).forEach(n -> res.add(n.getName()));
-        });
-
-
-        return res.stream()
-                .distinct()
-                .collect(Collectors.toList());
-    }
-
-
-    public GraphNode findCommonAncestor(GraphNode node1, GraphNode node2) {
-
-        int delta = depth(node1) - depth(node2);
-
-        GraphNode shallowNode = delta > 0 ? node2 : node1;
-        GraphNode deepNode = delta > 0 ? node1 : node2;
-
-        deepNode = goUp(deepNode, Math.abs(delta));
-
-
-        while (shallowNode != deepNode && deepNode != null) {
-            shallowNode = shallowNode.getParent();
-            deepNode = deepNode.getParent();
-
-        }
-
-        return deepNode == null ? null : shallowNode;
-    }
-
-    private GraphNode goUp(GraphNode node, int delta) {
-        while (delta > 0 && node != null) {
-            node = node.getParent();
-            delta--;
-        }
-
-        return node;
-    }
-
-
-    private int depth(GraphNode n) {
-        int depth = 0;
-        while (n != null) {
-            n = n.getParent();
-            depth++;
-        }
-
-        return depth;
-    }
-
-
     public List<List<BinTreeNode>> bstSequences(BinTreeNode root) {
         List<List<BinTreeNode>> res = new ArrayList<>();
 
@@ -283,5 +301,5 @@ public class TreesGraphs {
 
     }
 
-}
 
+}

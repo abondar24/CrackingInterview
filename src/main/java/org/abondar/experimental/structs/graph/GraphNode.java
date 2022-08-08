@@ -1,10 +1,10 @@
-package org.abondar.experimental.structs.tree;
+package org.abondar.experimental.structs.graph;
 
 
 import java.util.List;
 import java.util.Map;
 
-public class GraphNode implements Comparable<GraphNode> {
+public class  GraphNode implements Comparable<GraphNode> {
     private String name;
     private List<GraphNode> children;
     private boolean visited;

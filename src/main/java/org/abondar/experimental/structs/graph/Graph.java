@@ -1,7 +1,6 @@
-package org.abondar.experimental.algorithms;
+package org.abondar.experimental.structs.graph;
 
 import org.abondar.experimental.structs.queue.CustomQueue;
-import org.abondar.experimental.structs.tree.GraphNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,120 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 
-public class GraphAlgs {
+//TODO split with bin tree
+public class Graph {
+
+
+//    public boolean hasRouteBFS(List<GraphNode> graph, GraphNode start, GraphNode end) {
+//
+//        return graph.contains(start) && graph.contains(end) && algs.bfs(start).contains(end);
+//
+//    }
+//
+//    public boolean hasRouteDFS(List<GraphNode> graph, GraphNode start, GraphNode end) {
+//
+//        return graph.contains(start) && graph.contains(end) && algs.dfsStack(start).contains(end);
+//
+//    }
+
+
+//    public List<String> buildOrder(Map<String, List<String>> dependencies) {
+//
+//        List<GraphNode> roots = new ArrayList<>();
+//
+//        List<String> depVals = new ArrayList<>();
+//        dependencies.forEach((k, v) -> depVals.addAll(v));
+//
+//        dependencies.forEach((k, v) -> {
+//            if (!depVals.contains(k)) {
+//                roots.add(new GraphNode(k));
+//            }
+//        });
+//
+//        if (!roots.isEmpty()) {
+//            buildTrees(roots, dependencies);
+//        }
+//
+//
+//        return createOrder(roots);
+//    }
+
+    private void buildTrees(List<GraphNode> roots, Map<String, List<String>> dependencies) {
+        roots.forEach(r -> {
+            List<GraphNode> children = new ArrayList<>();
+            dependencies.forEach((k, v) -> {
+                if (k.equals(r.getName())) {
+                    v.forEach(c -> {
+                        GraphNode child = new GraphNode(c);
+                        if (!roots.contains(child)) {
+                            children.add(child);
+                        }
+                    });
+                }
+                r.setChildren(children);
+            });
+
+            buildTrees(children, dependencies);
+        });
+
+
+    }
+
+
+//    private List<String> createOrder(List<GraphNode> roots) {
+//        List<String> res = new ArrayList<>();
+//
+//        roots.forEach(r -> {
+//            res.add(r.getName());
+//            algs.dfsStack(r).forEach(n -> res.add(n.getName()));
+//        });
+//
+//
+//        return res.stream()
+//                .distinct()
+//                .collect(Collectors.toList());
+//    }
+
+
+    public GraphNode findCommonAncestor(GraphNode node1, GraphNode node2) {
+
+        int delta = depth(node1) - depth(node2);
+
+        GraphNode shallowNode = delta > 0 ? node2 : node1;
+        GraphNode deepNode = delta > 0 ? node1 : node2;
+
+        deepNode = goUp(deepNode, Math.abs(delta));
+
+
+        while (shallowNode != deepNode && deepNode != null) {
+            shallowNode = shallowNode.getParent();
+            deepNode = deepNode.getParent();
+
+        }
+
+        return deepNode == null ? null : shallowNode;
+    }
+
+    private GraphNode goUp(GraphNode node, int delta) {
+        while (delta > 0 && node != null) {
+            node = node.getParent();
+            delta--;
+        }
+
+        return node;
+    }
+
+
+    private int depth(GraphNode n) {
+        int depth = 0;
+        while (n != null) {
+            n = n.getParent();
+            depth++;
+        }
+
+        return depth;
+    }
+
 
     public int dijktstraShortestPath(GraphNode root, GraphNode dest) {
 
@@ -127,4 +239,6 @@ public class GraphAlgs {
         return found;
     }
 
+
 }
+
