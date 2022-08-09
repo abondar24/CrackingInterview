@@ -152,26 +152,28 @@ public class GraphTest {
         assertEquals(root,ancestor);
     }
 
-//    @Test
-//    public void distanceToSourceTest(){
-//        GraphNode root = new GraphNode("s");
-//
-//        GraphNode two = new GraphNode("2");
-//        GraphNode one = new GraphNode("1",Map.of(two,1));
-//        two.setParent(one);
-//        one.setParent(root);
-//
-//        root.setChildrenWithWeight(Map.of(one,1));
-//
-//        int distToSource = gu.getDistanceToSource(root,two);
-//        assertEquals(2,distToSource);
-//
-//        distToSource = gu.getDistanceToSource(root,root);
-//        assertEquals(0,distToSource);
-//
-//    }
-//
-//
+    @Test
+    public void distanceToSourceTest(){
+        Graph.GraphNode root = new Graph.GraphNode("s");
+        Graph graph = new Graph(root);
+
+        Graph.GraphNode one = new Graph.GraphNode("1",1);
+        Graph.GraphNode two = new Graph.GraphNode("2",1);
+
+        graph.setNodeChildren(root,List.of(one));
+        graph.setNodeChildren(one,List.of(two));
+
+        int distToSource = graph.getDistanceToSource(two);
+        assertEquals(2,distToSource);
+
+        distToSource = graph.getDistanceToSource(root);
+        assertEquals(0,distToSource);
+
+    }
+
+
+
+
 //    @Test
 //    public void shortestPathTest(){
 //        GraphNode root = new GraphNode("s");
@@ -245,5 +247,7 @@ public class GraphTest {
 //        four.setVisited(false);
 //        five.setVisited(false);
 //    }
+
+
 
 }

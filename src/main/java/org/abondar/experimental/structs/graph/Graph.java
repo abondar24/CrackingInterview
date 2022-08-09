@@ -23,8 +23,8 @@ public class Graph {
     public void setNodeChildren(GraphNode parentNode, List<GraphNode> children) {
         parentNode.children = children;
 
-        children.forEach(ch->{
-            ch.parent=parentNode;
+        children.forEach(ch -> {
+            ch.parent = parentNode;
         });
     }
 
@@ -123,7 +123,7 @@ public class Graph {
                         }
                     });
                 }
-                r.children=children;
+                r.children = children;
             });
 
             buildTrees(children, dependencies);
@@ -187,6 +187,39 @@ public class Graph {
         return depth;
     }
 
+    public int getDistanceToSource(GraphNode dest) {
+
+        if (root.equals(dest)) {
+            return 0;
+        }
+
+
+        if (root.children.contains(dest)) {
+            return
+                    root.children.stream()
+                            .filter(ch -> ch.equals(dest))
+                            .findFirst().get().weight;
+
+        }
+
+        int distance = 0;
+        GraphNode parent = new GraphNode();
+        GraphNode child = dest;
+        while (parent != null) {
+            parent = child.parent;
+
+            for (GraphNode ch: parent.children){
+                distance+=ch.weight;
+            }
+
+
+            child = parent;
+            parent = parent.parent;
+        }
+
+        return distance;
+    }
+
 //
 //    public int dijktstraShortestPath(GraphNode root, GraphNode dest) {
 //
@@ -218,67 +251,29 @@ public class Graph {
 //    }
 //
 //
-//    public int getDistanceToSource(GraphNode root, GraphNode dest) {
-//
-//        if (root.equals(dest)) {
-//            return 0;
-//        }
-//
-//        if (root.getChildrenWithWeight().containsKey(dest)) {
-//            return root.getChildrenWithWeight().get(dest);
-//        }
-//
-//        int distance = 0;
-//        GraphNode parent = new GraphNode();
-//        GraphNode child = dest;
-//        while (parent != null) {
-//            parent = child.getParent();
-//            distance += parent.getChildrenWithWeight().getOrDefault(child, 0);
-//            child = parent;
-//            parent = parent.getParent();
-//        }
-//
-//        return distance;
-//    }
-//
-//
-//
 
-    public static class GraphNode implements Comparable<GraphNode> {
+
+    public static class GraphNode {
         private String name;
         private List<GraphNode> children;
         private boolean visited;
         private GraphNode parent;
-        private Map<GraphNode, Integer> childrenWithWeight;
+
+        private Integer weight;
 
         public GraphNode() {
 
         }
 
-        public GraphNode(String name, List<GraphNode> children) {
+        public GraphNode(String name, Integer weight) {
             this.name = name;
-            this.children = children;
-        }
-
-        public GraphNode(String name, Map<GraphNode, Integer> childrenWithPath) {
-            this.name = name;
-            this.childrenWithWeight = childrenWithPath;
+            this.weight = weight;
         }
 
         public GraphNode(String name) {
             this.name = name;
         }
 
-
-        @Override
-        public int compareTo(GraphNode node) {
-
-            if (this.childrenWithWeight.entrySet().contains(node)) {
-                return this.childrenWithWeight.get(node);
-            }
-
-            return 0;
-        }
     }
 }
 

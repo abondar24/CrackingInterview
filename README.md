@@ -96,13 +96,14 @@ We need to return a list which represents sum of two lists (existing and the one
 
 Check comments in classes
 
-## Graphs
+## Graph
 - bfs - get list of nodes using Bread First Search
 - dfs - get list of nodes using Depth First Search
 - hasRouteBFS,hasRouteDFS - Check if a graph has route between two nodes.
 - buildOrder - By given list of dependencies build a list of build order
 - findCommonAncestor - Find first common ancestor of two given listNodes without storing additional listNodes in ds.
-- bstSequences - Find all possible arrays of listNodes in BST with distinct elems
+- distanceToSource - find distance to source in weighted graph
+- Dijkstra algorithm for shortest path. Best,Avg,Worst: O((V+E)*log V)
 
 
 ## Tree
@@ -111,6 +112,7 @@ Check comments in classes
 - isBalanced - Check if bin tree is balanced(e.g heights of subtrees of any node don't differ more than by one)
 - isBST - Check if binary tree is BST
 - treeHeight - find a height of a tree
+- bstSequences - Find all possible arrays of listNodes in BST with distinct elems
 
 
 ## Bit opertations
@@ -200,8 +202,6 @@ find and index where element occurs
 - Binary search. Best: O(1), Avg,Worst: O(log n)
 - Hash search. Best,Avg: O(1), Worst: O(n)
 
-## Graph Algorithms
-- Dijkstra algorithm for shortest path. Best,Avg,Worst: O((V+E)*log V)
 
 ## Other 
 - countItems - Fetch json with data in format {"data":"key=IAfpK, age=58, key=WNVdi, age=64, key=jp9zt, age=47"}.Where item is key=IAfpK, age=58. 
