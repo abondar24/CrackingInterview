@@ -130,39 +130,28 @@ public class GraphTest {
 
     }
 
+    @Test
+    public void findCommonAncestorTest(){
+        Graph.GraphNode root = new Graph.GraphNode("20");
+        Graph graph = new Graph(root);
 
-//    @Test
-//    public void findCommonAncestorTest(){
-//        GraphNode root = new GraphNode("20");
-//
-//        GraphNode ch1 = new GraphNode("10");
-//        GraphNode ch2 = new GraphNode("30");
-//        root.setChildren(List.of(ch1,ch2));
-//        ch1.setParent(root);
-//        ch2.setParent(root);
-//
-//        GraphNode ch3 = new GraphNode("5");
-//        GraphNode ch4 = new GraphNode("15");
-//        ch1.setChildren(List.of(ch3,ch4));
-//        ch3.setParent(ch1);
-//        ch4.setParent(ch1);
-//
-//        GraphNode ch5 = new GraphNode("17");
-//        ch4.setChildren(List.of(ch5));
-//        ch5.setParent(ch4);
-//
-//        GraphNode ch6 = new GraphNode("3");
-//        GraphNode ch7 = new GraphNode("4");
-//        ch3.setChildren(List.of(ch6,ch7));
-//        ch6.setParent(ch3);
-//        ch7.setParent(ch3);
-//
-//        GraphNode ancestor = tg.findCommonAncestor(ch3,ch2);
-//        assertEquals(root.getName(),ancestor.getName());
-//
-//
-//    }
-//
+        Graph.GraphNode ch1 = new Graph.GraphNode("10");
+        Graph.GraphNode ch2 = new Graph.GraphNode("30");
+        Graph.GraphNode ch3 = new Graph.GraphNode("5");
+        Graph.GraphNode ch4 = new Graph.GraphNode("15");
+        Graph.GraphNode ch5 = new Graph.GraphNode("17");
+        Graph.GraphNode ch6 = new Graph.GraphNode("3");
+        Graph.GraphNode ch7 = new Graph.GraphNode("4");
+
+        graph.setNodeChildren(root,(List.of(ch1,ch2)));
+        graph.setNodeChildren(ch1,List.of(ch3,ch4));
+        graph.setNodeChildren(ch4,List.of(ch5));
+        graph.setNodeChildren(ch3,List.of(ch6,ch7));
+
+        Graph.GraphNode ancestor = graph.findCommonAncestor(ch3,ch2);
+        assertEquals(root,ancestor);
+    }
+
 //    @Test
 //    public void distanceToSourceTest(){
 //        GraphNode root = new GraphNode("s");

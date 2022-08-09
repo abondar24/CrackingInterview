@@ -20,8 +20,12 @@ public class Graph {
         this.root = root;
     }
 
-    public void setNodeChildren(GraphNode node, List<GraphNode> children) {
-        node.children = children;
+    public void setNodeChildren(GraphNode parentNode, List<GraphNode> children) {
+        parentNode.children = children;
+
+        children.forEach(ch->{
+            ch.parent=parentNode;
+        });
     }
 
     public List<GraphNode> bfs(GraphNode root) {
@@ -144,45 +148,45 @@ public class Graph {
     }
 
 
-//    public GraphNode findCommonAncestor(GraphNode node1, GraphNode node2) {
-//
-//        int delta = depth(node1) - depth(node2);
-//
-//        GraphNode shallowNode = delta > 0 ? node2 : node1;
-//        GraphNode deepNode = delta > 0 ? node1 : node2;
-//
-//        deepNode = goUp(deepNode, Math.abs(delta));
-//
-//
-//        while (shallowNode != deepNode && deepNode != null) {
-//            shallowNode = shallowNode.getParent();
-//            deepNode = deepNode.getParent();
-//
-//        }
-//
-//        return deepNode == null ? null : shallowNode;
-//    }
-//
-//    private GraphNode goUp(GraphNode node, int delta) {
-//        while (delta > 0 && node != null) {
-//            node = node.getParent();
-//            delta--;
-//        }
-//
-//        return node;
-//    }
-//
-//
-//    private int depth(GraphNode n) {
-//        int depth = 0;
-//        while (n != null) {
-//            n = n.getParent();
-//            depth++;
-//        }
-//
-//        return depth;
-//    }
-//
+    public GraphNode findCommonAncestor(GraphNode node1, GraphNode node2) {
+
+        int delta = depth(node1) - depth(node2);
+
+        GraphNode shallowNode = delta > 0 ? node2 : node1;
+        GraphNode deepNode = delta > 0 ? node1 : node2;
+
+        deepNode = goUp(deepNode, Math.abs(delta));
+
+
+        while (shallowNode != deepNode && deepNode != null) {
+            shallowNode = shallowNode.parent;
+            deepNode = deepNode.parent;
+
+        }
+
+        return deepNode == null ? null : shallowNode;
+    }
+
+    private GraphNode goUp(GraphNode node, int delta) {
+        while (delta > 0 && node != null) {
+            node = node.parent;
+            delta--;
+        }
+
+        return node;
+    }
+
+
+    private int depth(GraphNode n) {
+        int depth = 0;
+        while (n != null) {
+            n = n.parent;
+            depth++;
+        }
+
+        return depth;
+    }
+
 //
 //    public int dijktstraShortestPath(GraphNode root, GraphNode dest) {
 //
