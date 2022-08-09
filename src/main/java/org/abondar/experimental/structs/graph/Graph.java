@@ -5,6 +5,8 @@ import org.abondar.experimental.structs.queue.CustomQueue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
@@ -26,6 +28,19 @@ public class Graph {
         children.forEach(ch -> {
             ch.parent = parentNode;
         });
+    }
+
+    public void setNodeChildrenWithWeight(GraphNode parentNode, Map<GraphNode,Integer> children) {
+        List<GraphNode> nodeChildren = new ArrayList<>();
+
+
+        children.forEach((ch,weight) -> {
+            ch.parent = parentNode;
+            ch.weight = weight;
+            nodeChildren.add(ch);
+        });
+
+        parentNode.children = nodeChildren;
     }
 
     public List<GraphNode> bfs(GraphNode root) {
@@ -208,8 +223,8 @@ public class Graph {
         while (parent != null) {
             parent = child.parent;
 
-            for (GraphNode ch: parent.children){
-                distance+=ch.weight;
+            for (GraphNode ch : parent.children) {
+                distance += ch.weight;
             }
 
 
@@ -220,40 +235,39 @@ public class Graph {
         return distance;
     }
 
-//
-//    public int dijktstraShortestPath(GraphNode root, GraphNode dest) {
-//
-//        Queue<GraphNode> toVisit = new PriorityQueue<>();
-//        toVisit.add(root);
-//        int res = 0;
-//
-//        while (!toVisit.isEmpty()) {
-//            GraphNode min = toVisit.remove();
-//            if (min == dest) {
-//                return getDistanceToSource(root, min);
-//            }
-//            if (min.isVisited()) {
-//                continue;
-//            }
-//            min.setVisited(true);
-//            for (Map.Entry<GraphNode, Integer> entry : min.getChildrenWithWeight().entrySet()) {
-//                int adjDistance = getDistanceToSource(root, min) + entry.getValue();
-//
-//                if (getDistanceToSource(root, entry.getKey()) >= adjDistance && !entry.getKey().isVisited()) {
-//                    res = adjDistance;
-//                    toVisit.add(entry.getKey());
-//                }
-//            }
-//
-//        }
-//
-//        return res;
-//    }
-//
-//
+
+    public int dijktstraShortestPath(GraphNode dest) {
+
+        Queue<GraphNode> toVisit = new PriorityQueue<>();
+        toVisit.add(root);
+        int res = 0;
+
+        while (!toVisit.isEmpty()) {
+            GraphNode min = toVisit.remove();
+            if (min == dest) {
+                return getDistanceToSource(min);
+            }
+            if (min.visited) {
+                continue;
+            }
+            min.visited = true;
+
+            for (GraphNode child : min.children) {
+                int adjDistance = getDistanceToSource(min) + child.weight;
+
+                if (getDistanceToSource(child) >= adjDistance && !child.visited) {
+                    res = adjDistance;
+                    toVisit.add(child);
+                }
+            }
+
+        }
+
+        return res;
+    }
 
 
-    public static class GraphNode {
+    public static class GraphNode implements Comparable<GraphNode> {
         private String name;
         private List<GraphNode> children;
         private boolean visited;
@@ -265,15 +279,20 @@ public class Graph {
 
         }
 
-        public GraphNode(String name, Integer weight) {
-            this.name = name;
-            this.weight = weight;
-        }
-
         public GraphNode(String name) {
             this.name = name;
         }
 
+
+        @Override
+        public int compareTo(GraphNode node) {
+
+            if (this.children.contains(node)) {
+                return node.weight;
+            }
+
+            return 0;
+        }
     }
 }
 
