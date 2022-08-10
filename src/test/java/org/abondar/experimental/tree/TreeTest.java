@@ -1,4 +1,4 @@
-package org.abondar.experimental.strcuts;
+package org.abondar.experimental.tree;
 
 import org.abondar.experimental.structs.graph.Graph;
 

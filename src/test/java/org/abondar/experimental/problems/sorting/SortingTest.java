@@ -1,4 +1,4 @@
-package org.abondar.experimental.problems;
+package org.abondar.experimental.problems.sorting;
 
 import org.abondar.experimental.structs.list.Listy;
 import org.abondar.experimental.problems.sorting.MatrixElement;

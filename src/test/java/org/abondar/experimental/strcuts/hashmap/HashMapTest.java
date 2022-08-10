@@ -1,4 +1,4 @@
-package org.abondar.experimental.strcuts;
+package org.abondar.experimental.strcuts.hashmap;
 
 import org.abondar.experimental.structs.hashmap.CustomHashMap;
 import org.junit.jupiter.api.Test;

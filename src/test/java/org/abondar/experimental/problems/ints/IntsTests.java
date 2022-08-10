@@ -1,4 +1,4 @@
-package org.abondar.experimental.problems;
+package org.abondar.experimental.problems.ints;
 
 import org.abondar.experimental.problems.ints.Ints;
 import org.junit.jupiter.api.Test;

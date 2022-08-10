@@ -1,4 +1,4 @@
-package org.abondar.experimental.strcuts;
+package org.abondar.experimental.strcuts.graph;
 
 import org.abondar.experimental.structs.graph.Graph;
 import org.junit.jupiter.api.Test;

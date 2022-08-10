@@ -1,4 +1,4 @@
-package org.abondar.experimental.strcuts;
+package org.abondar.experimental.strcuts.queue;
 
 import org.abondar.experimental.structs.queue.CustomQueue;
 import org.abondar.experimental.structs.queue.TwoStackQueue;
@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class QueueTest {
@@ -30,6 +31,7 @@ public class QueueTest {
     }
 
 
+    //TODO: Move to a separate test class
     @Test
     public void twoStackQueueTest() {
         TwoStackQueue<Integer> tsq = new TwoStackQueue<>();
@@ -49,6 +51,7 @@ public class QueueTest {
     }
 
 
+    //TODO: Move to a separate test class
     @Test
     public void animalShelterTest() {
         Dog dog = new Dog("abdi");
@@ -80,9 +83,10 @@ public class QueueTest {
 
     }
 
+    //TODO: Move to a separate test class
     @Test
     public void animalShelterTestEmpty() {
         AnimalQueue aq = new AnimalQueue();
-        assertEquals(null,aq.dequeueAny());
+        assertNull(aq.dequeueAny());
     }
 }

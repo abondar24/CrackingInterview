@@ -1,4 +1,4 @@
-package org.abondar.experimental.problems;
+package org.abondar.experimental.problems.multithread;
 
 import org.abondar.experimental.problems.multithread.InstantiationCounter;
 import org.junit.jupiter.api.Test;

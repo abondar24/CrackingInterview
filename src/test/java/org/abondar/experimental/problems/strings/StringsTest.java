@@ -1,4 +1,4 @@
-package org.abondar.experimental.problems;
+package org.abondar.experimental.problems.strings;
 
 import org.abondar.experimental.problems.strings.Strings;
 import org.junit.jupiter.api.Test;

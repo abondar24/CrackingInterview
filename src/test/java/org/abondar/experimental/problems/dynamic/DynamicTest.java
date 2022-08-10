@@ -1,4 +1,4 @@
-package org.abondar.experimental.problems;
+package org.abondar.experimental.problems.dynamic;
 
 import org.abondar.experimental.problems.dynamic.Box;
 import org.abondar.experimental.problems.dynamic.Color;

@@ -1,16 +1,10 @@
-package org.abondar.experimental.strcuts;
+package org.abondar.experimental.stack;
 
-import org.abondar.experimental.structs.queue.CustomQueue;
-import org.abondar.experimental.structs.queue.TwoStackQueue;
 import org.abondar.experimental.structs.stack.CustomStack;
 import org.abondar.experimental.structs.stack.MinStack;
 import org.abondar.experimental.structs.stack.MultiStack;
 import org.abondar.experimental.structs.set.SetOfStacks;
-import org.abondar.experimental.structs.stack.StackUtil;
 
-import org.abondar.experimental.structs.queue.shelter.AnimalQueue;
-import org.abondar.experimental.structs.queue.shelter.Cat;
-import org.abondar.experimental.structs.queue.shelter.Dog;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -19,7 +13,9 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class StacksQueuesTest {
+
+//TODO: package test classes accordingly to packages in main
+public class CustomStackTest {
 
 
     @Test
@@ -38,21 +34,8 @@ public class StacksQueuesTest {
     }
 
 
-    @Test
-    public void customQueueTest() {
-        CustomQueue<Integer> cq = new CustomQueue<>();
-        assertTrue(cq.isEmpty());
 
-        cq.add(1);
-        cq.add(2);
-        cq.add(3);
-        assertEquals((Object) 1, cq.peek());
-        assertEquals((Object) 1, cq.remove());
-        assertEquals((Object) 2, cq.peek());
-
-
-    }
-
+    //TODO: Move to a separate test class
     @Test
     public void multiStackTest() {
         int[] arr = new int[]{2, 10, 12, 3, 5, 6, 90, 24, 33, 1, 0, 15};
@@ -66,6 +49,7 @@ public class StacksQueuesTest {
     }
 
 
+    //TODO: Move to a separate test class
     @Test
     public void multiStackTestStackSizesDiffer() {
         int[] arr = new int[]{2, 10, 12, 3, 5};
@@ -77,6 +61,7 @@ public class StacksQueuesTest {
         assertEquals(5, stackList.get(1).peek());
     }
 
+    //TODO: Move to a separate test class
     @Test
     public void stackMinTest() {
         MinStack stack = new MinStack();
@@ -90,6 +75,8 @@ public class StacksQueuesTest {
 
     }
 
+
+    //TODO: move to a separate test
     @Test
     public void setOfStacksTest() {
         SetOfStacks ss = new SetOfStacks(3);
@@ -111,6 +98,7 @@ public class StacksQueuesTest {
 
     }
 
+    //TODO: move to a separate test
     @Test
     public void setOfStacksTestThreeStacks() {
         SetOfStacks ss = new SetOfStacks(3);
@@ -130,24 +118,6 @@ public class StacksQueuesTest {
     }
 
 
-    @Test
-    public void twoStackQueueTest() {
-        TwoStackQueue<Integer> tsq = new TwoStackQueue<>();
-        tsq.add(1);
-
-        assertEquals((Object) 1, tsq.peek());
-
-
-        tsq.add(2);
-        tsq.add(3);
-
-        assertEquals((Object) 1, tsq.remove());
-
-        tsq.add(4);
-        tsq.add(5);
-        assertEquals((Object) 2, tsq.peek());
-    }
-
 
     @Test
     public void sortStackTest() {
@@ -158,7 +128,7 @@ public class StacksQueuesTest {
         stack.push(8);
         stack.push(3);
 
-        CustomStack<Integer> sorted = StackUtil.sortStack(stack);
+        CustomStack<Integer> sorted = stack.sort();
 
         assertEquals((Object) 12, sorted.peek());
     }
@@ -174,46 +144,11 @@ public class StacksQueuesTest {
         stack.push(14);
 
 
-        CustomStack<Integer> sorted = StackUtil.sortStack(stack);
+        CustomStack<Integer> sorted = stack.sort();
 
         assertEquals((Object) 14, sorted.peek());
     }
 
-    @Test
-    public void animalShelterTest() {
-        Dog dog = new Dog("abdi");
-        Cat cat = new Cat("saloman");
 
-        AnimalQueue aq = new AnimalQueue();
-        aq.enqueue(dog);
-        aq.enqueue(cat);
-
-        List<Dog> dogs = aq.getDogList();
-        List<Cat> cats = aq.getCatList();
-
-        assertEquals(1, dogs.size());
-        assertEquals(1, cats.size());
-
-        Dog dog1 = new Dog("salo");
-        Cat cat1 = new Cat("chuckha");
-
-
-        aq.enqueue(dog1);
-        aq.enqueue(cat1);
-
-        assertEquals(dog, aq.dequeueDog());
-        assertEquals(cat, aq.dequeueCat());
-
-        aq.enqueue(dog);
-        aq.enqueue(cat);
-        assertEquals(dog1, aq.dequeueAny());
-
-    }
-
-    @Test
-    public void animalShelterTestEmpty() {
-        AnimalQueue aq = new AnimalQueue();
-        assertEquals(null,aq.dequeueAny());
-    }
 
 }

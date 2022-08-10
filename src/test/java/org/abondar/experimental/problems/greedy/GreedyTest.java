@@ -1,4 +1,4 @@
-package org.abondar.experimental.problems;
+package org.abondar.experimental.problems.greedy;
 
 
 import org.abondar.experimental.problems.greedy.Greedy;

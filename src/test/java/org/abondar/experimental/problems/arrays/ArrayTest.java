@@ -1,4 +1,4 @@
-package org.abondar.experimental.problems;
+package org.abondar.experimental.problems.arrays;
 
 import org.abondar.experimental.problems.arrays.Arrays;
 import org.abondar.experimental.problems.arrays.TimeSlot;

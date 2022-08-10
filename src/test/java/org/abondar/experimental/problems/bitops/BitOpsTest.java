@@ -1,4 +1,4 @@
-package org.abondar.experimental.problems;
+package org.abondar.experimental.problems.bitops;
 
 import org.abondar.experimental.problems.bitops.BitOps;
 import org.junit.jupiter.api.Test;
