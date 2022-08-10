@@ -1,4 +1,4 @@
-package org.abondar.experimental.strcuts;
+package org.abondar.experimental.strcuts.list;
 
 import org.abondar.experimental.structs.list.CustomList;
 import org.junit.jupiter.api.Test;
