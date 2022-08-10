@@ -1,7 +1,5 @@
-package org.abondar.experimental.structs.set;
+package org.abondar.experimental.structs.stack;
 
-
-import org.abondar.experimental.structs.stack.CustomStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,14 +9,14 @@ import java.util.Objects;
  * Creates a set of stacks.
  * Each stack has a max capacity and when we run over it we add a new stack.
  * Methods push,pop and peek work as in simple stack
- * */
-public class SetOfStacks {
+ */
+public class StackSet {
 
     private Integer maxCapacityPerStack;
     private Map<CustomStack, Integer> stackSet = new HashMap<>();
     private CustomStack<Integer> lastStack = new CustomStack<>();
 
-    public SetOfStacks(Integer maxCapacityPerStack) {
+    public StackSet(Integer maxCapacityPerStack) {
         this.maxCapacityPerStack = maxCapacityPerStack;
     }
 
@@ -41,8 +39,8 @@ public class SetOfStacks {
     public Integer pop() {
         Integer val = lastStack.pop();
         Integer capacity = stackSet.get(lastStack);
-        capacity = capacity -1;
-        if (capacity>0) {
+        capacity = capacity - 1;
+        if (capacity > 0) {
             stackSet.put(lastStack, capacity - 1);
         } else {
             stackSet.put(lastStack, 0);
