@@ -10,7 +10,7 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
-//TODO split with bin tree
+
 public class Graph {
 
     private GraphNode root;

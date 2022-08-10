@@ -1,16 +1,32 @@
 package org.abondar.experimental.tree;
 
-import org.abondar.experimental.structs.graph.Graph;
+import org.abondar.experimental.structs.tree.BinaryTree;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class TreeTest {
+public class BinaryTreeTest {
 
-    private Graph tg = new Graph();
+    @Test
+    public void setNodeChildrenTest(){
+        BinaryTree tree = new BinaryTree(1);
 
+        BinaryTree.BinaryTreeNode root = tree.getRoot();
+        tree.setNodeChildren(root,2,3);
+
+        assertEquals(2,root.getLeft().getVal());
+        assertEquals(3,root.getRight().getVal());
+
+        BinaryTree.BinaryTreeNode left = root.getLeft();
+        tree.setNodeChildren(left,7,4);
+
+        assertEquals(4,left.getLeft().getVal());
+        assertEquals(7,left.getRight().getVal());
+
+    }
 
 //
 //
