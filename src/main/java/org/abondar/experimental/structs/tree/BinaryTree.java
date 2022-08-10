@@ -76,23 +76,31 @@ public class BinaryTree {
     }
 
 
-    private void visit(BinaryTreeNode n) {
-        traversedNodes.add(n.val);
-    }
-
-
-    public BinaryTreeNode search(BinaryTreeNode startNode, int val){
-        if (startNode==null || startNode.getVal()==val){
+    public BinaryTreeNode search(BinaryTreeNode startNode, int val) {
+        if (startNode == null || startNode.getVal() == val) {
             return startNode;
         }
 
-        if (val<startNode.getVal()){
-            return search(startNode.getLeft(),val);
+        if (val < startNode.getVal()) {
+            return search(startNode.getLeft(), val);
         } else {
-            return search(startNode.getRight(),val);
+            return search(startNode.getRight(), val);
         }
 
     }
+
+    public int getMostLeftValue(BinaryTreeNode node) {
+          return getMostLeftNode(node).val;
+    }
+
+    public int getMostRightValue(BinaryTreeNode node) {
+        return getMostRightNode(node).val;
+    }
+
+
+    //TODO: replace min with getMostLeftNode
+    //TODO: replace max with getMostRightNode
+
 //
 //    public void insert(BinaryTreeNode root,int val){
 //        BinaryTreeNode newNode = new BinaryTreeNode(String.valueOf(val));
@@ -179,22 +187,6 @@ public class BinaryTree {
 //        }
 //
 //        return succ;
-//    }
-//
-//    private BinaryTreeNode min(BinaryTreeNode node){
-//        while (node.getLeft()!=null){
-//            node = node.getLeft();
-//        }
-//
-//        return node;
-//    }
-//
-//    private BinaryTreeNode max(BinaryTreeNode node){
-//        while (node.getRight()!=null){
-//            node = node.getRight();
-//        }
-//
-//        return node;
 //    }
 //
 //
@@ -368,6 +360,29 @@ public class BinaryTree {
     public void clearTraversedNodes() {
         traversedNodes.clear();
     }
+
+    //helper methods
+    private void visit(BinaryTreeNode n) {
+        traversedNodes.add(n.val);
+    }
+
+    private BinaryTreeNode getMostLeftNode(BinaryTreeNode node) {
+        while (node.left!= null) {
+            node = node.left;
+        }
+
+        return node;
+    }
+
+    private BinaryTreeNode getMostRightNode(BinaryTreeNode node){
+        while (node.getRight()!=null){
+            node = node.getRight();
+        }
+
+        return node;
+    }
+//
+
 
     public static class BinaryTreeNode {
 
