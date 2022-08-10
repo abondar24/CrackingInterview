@@ -7,7 +7,7 @@ import java.util.Objects;
  */
 public class MinStack extends CustomStack<Integer> {
 
-    private final CustomStack<Integer> stack;
+    private CustomStack<Integer> stack;
 
     public MinStack() {
         stack = new CustomStack<>();
@@ -39,5 +39,26 @@ public class MinStack extends CustomStack<Integer> {
         } else {
             return stack.peek();
         }
+    }
+
+    public void sort() {
+
+        CustomStack<Integer> sorted = new CustomStack<>();
+        while (!isEmpty()) {
+            Integer max = (Integer) pop();
+
+            while (!sorted.isEmpty() && sorted.peek() > max) {
+                push(sorted.pop());
+            }
+
+            sorted.push(max);
+
+        }
+
+        stack = sorted;
+    }
+
+    public CustomStack<Integer> getStack() {
+        return stack;
     }
 }

@@ -93,9 +93,11 @@ We need to return a list which represents sum of two lists (existing and the one
 - instantiation counter - count a number of class instances(including the ones in another threads) 
 
 ## Stack
+- CustomStack - custom stack implementation
+- MinStack - wrapper for CustomStack<Integer> counting minVal and doingSort
+
 
 ## Queue
-
 - CustomQueue - custom queue implementation
 - TwoStackQueue - queue using two stacks
 - AnimalQueue - priority queue for two types of animals which can be adopted.
