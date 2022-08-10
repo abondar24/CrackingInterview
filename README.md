@@ -94,10 +94,10 @@ We need to return a list which represents sum of two lists (existing and the one
 
 ## Stack
 - CustomStack - custom stack implementation
-- MinStack - wrapper for CustomStack<Integer> counting minVal and doingSort
-- StackSet - wrapper for a set of stacks. Each stack has a max capacity and when we run over it we add a new stack.
+- MinStack - wrapper class for CustomStack<Integer> counting minVal and doingSort
+- StackSet - wrapper class for a set of stacks. Each stack has a max capacity and when we run over it we add a new stack.
 Methods push,pop and peek work as in simple stack
- 
+- MultiStack - Splits an int array to defined number of stacks. 
 
 ## Queue
 - CustomQueue - custom queue implementation
