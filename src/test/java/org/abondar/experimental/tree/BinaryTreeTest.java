@@ -3,6 +3,8 @@ package org.abondar.experimental.tree;
 import org.abondar.experimental.structs.tree.BinaryTree;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -28,6 +30,56 @@ public class BinaryTreeTest {
 
     }
 
+    @Test
+    public void inOrderTraversalTest(){
+        BinaryTree tree = new BinaryTree(1);
+
+        BinaryTree.BinaryTreeNode root = tree.getRoot();
+        tree.setNodeChildren(root,2,3);
+
+        tree.inOderTraversal(root);
+        List<Integer> traversed = tree.getTraversedNodes();
+
+        assertEquals(2,traversed.get(0));
+        assertEquals(1,traversed.get(1));
+        assertEquals(3,traversed.get(2));
+
+        tree.clearTraversedNodes();
+    }
+
+    @Test
+    public void preOrderTraversalTest(){
+        BinaryTree tree = new BinaryTree(1);
+
+        BinaryTree.BinaryTreeNode root = tree.getRoot();
+        tree.setNodeChildren(root,2,3);
+
+        tree.preOderTraversal(root);
+        List<Integer> traversed = tree.getTraversedNodes();
+
+        assertEquals(1,traversed.get(0));
+        assertEquals(2,traversed.get(1));
+        assertEquals(3,traversed.get(2));
+
+        tree.clearTraversedNodes();
+    }
+
+    @Test
+    public void postOrderTraversalTest(){
+        BinaryTree tree = new BinaryTree(1);
+
+        BinaryTree.BinaryTreeNode root = tree.getRoot();
+        tree.setNodeChildren(root,2,3);
+
+        tree.postOrderTraversal(root);
+        List<Integer> traversed = tree.getTraversedNodes();
+
+        assertEquals(2,traversed.get(0));
+        assertEquals(3,traversed.get(1));
+        assertEquals(1,traversed.get(2));
+
+        tree.clearTraversedNodes();
+    }
 //
 //
 //    @Test
@@ -124,60 +176,6 @@ public class BinaryTreeTest {
 //
 //        assertTrue(tg.isBST(root));
 //    }
-//
-//
-//    @Test
-//    public void isBSTTest1() {
-//
-//        BinTreeNode root = new BinTreeNode("8");
-//        BinTreeNode l1L = new BinTreeNode("4");
-//        BinTreeNode l1R = new BinTreeNode("10");
-//        root.setLeft(l1L);
-//        root.setRight(l1R);
-//        l1L.setParent(root);
-//        l1R.setParent(root);
-//
-//        BinTreeNode l2l1 = new BinTreeNode("2");
-//        BinTreeNode l2r1 = new BinTreeNode("6");
-//        l1L.setLeft(l2l1);
-//        l1L.setRight(l2r1);
-//        l2l1.setParent(l1L);
-//        l2r1.setParent(l1L);
-//
-//        BinTreeNode l2r2 = new BinTreeNode("20");
-//        l1R.setRight(l2r2);
-//        l2r2.setParent(l1R);
-//        assertTrue(tg.isBST(root));
-//
-//
-//    }
-//
-//    @Test
-//    public void isBSTTest2() {
-//
-//        BinTreeNode root = new BinTreeNode("8");
-//        BinTreeNode l1L = new BinTreeNode("4");
-//        BinTreeNode l1R = new BinTreeNode("10");
-//        root.setLeft(l1L);
-//        root.setRight(l1R);
-//        l1L.setParent(root);
-//        l1R.setParent(root);
-//
-//        BinTreeNode l2l1 = new BinTreeNode("2");
-//        BinTreeNode l2r1 = new BinTreeNode("12");
-//        l1L.setLeft(l2l1);
-//        l1L.setRight(l2r1);
-//        l2l1.setParent(l1L);
-//        l2r1.setParent(l1L);
-//
-//        BinTreeNode l2r2 = new BinTreeNode("20");
-//        l1R.setRight(l2r2);
-//        l2r2.setParent(l1R);
-//
-//        assertFalse(tg.isBST(root));
-//
-//    }
-//
 //
 //
 //

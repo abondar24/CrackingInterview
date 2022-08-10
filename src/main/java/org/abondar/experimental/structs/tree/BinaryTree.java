@@ -6,13 +6,15 @@ import java.util.List;
 
 public class BinaryTree {
 
+    private List<Integer> traversedNodes = new ArrayList<>();
+
     private BinaryTreeNode root;
 
 
-    public BinaryTree(){
+    public BinaryTree() {
     }
 
-    public BinaryTree(int rootVal){
+    public BinaryTree(int rootVal) {
         root = new BinaryTreeNode(rootVal);
     }
 
@@ -24,7 +26,7 @@ public class BinaryTree {
                                 int val1, int val2) {
         BinaryTreeNode left;
         BinaryTreeNode right;
-        if (val1<val2){
+        if (val1 < val2) {
             left = new BinaryTreeNode(val1);
             right = new BinaryTreeNode(val2);
         } else {
@@ -43,40 +45,42 @@ public class BinaryTree {
     /**
      * Visit left,current,right
      */
-//    public static void inOderTraversal(BinTreeNode node) {
-//        if (node != null) {
-//            inOderTraversal(node.getLeft());
-//            visit(node);
-//            inOderTraversal(node.getRight());
-//        }
-//    }
-//
-//    private static void visit(BinTreeNode n) {
-//
-//    }
-//
-//    /**
-//     * Visit left,current,right
-//     */
-//    public void preOderTraversal(BinTreeNode node) {
-//        if (node != null) {
-//            visit(node);
-//            preOderTraversal(node.getLeft());
-//            preOderTraversal(node.getRight());
-//        }
-//    }
-//
-//    /**
-//     * Visit left,right,current
-//     */
-//    public void postOrderTraversal(BinTreeNode node) {
-//        if (node != null) {
-//            postOrderTraversal(node.getLeft());
-//            postOrderTraversal(node.getRight());
-//            visit(node);
-//        }
-//    }
-//
+    public void inOderTraversal(BinaryTreeNode node) {
+        if (node != null) {
+            inOderTraversal(node.left);
+            visit(node);
+            inOderTraversal(node.right);
+        }
+    }
+
+    /**
+     * Visit current,left,right
+     */
+    public void preOderTraversal(BinaryTreeNode node) {
+        if (node != null) {
+            visit(node);
+            preOderTraversal(node.left);
+            preOderTraversal(node.right);
+        }
+    }
+
+    /**
+     * Visit left,right,current
+     */
+    public void postOrderTraversal(BinaryTreeNode node) {
+        if (node != null) {
+            postOrderTraversal(node.left);
+            postOrderTraversal(node.right);
+            visit(node);
+        }
+    }
+
+
+    private void visit(BinaryTreeNode n) {
+        traversedNodes.add(n.val);
+    }
+
+
 //    public BinTreeNode search(BinTreeNode root, int val){
 //        if (root==null || root.getVal()==val){
 //            return root;
@@ -353,9 +357,17 @@ public class BinaryTree {
 //
 //    }
 
-   public BinaryTreeNode getRoot(){
-       return root;
-   }
+    public BinaryTreeNode getRoot() {
+        return root;
+    }
+
+    public List<Integer> getTraversedNodes() {
+        return traversedNodes;
+    }
+
+    public void clearTraversedNodes() {
+        traversedNodes.clear();
+    }
 
     public static class BinaryTreeNode {
 
