@@ -92,7 +92,13 @@ We need to return a list which represents sum of two lists (existing and the one
 - pipeline - A container which serves as a pipeline for a single element. The pipeline makes sure that no elements get lost/
 - instantiation counter - count a number of class instances(including the ones in another threads) 
 
-## StacksQueues
+## Stack
+
+## Queue
+
+- CustomQueue - custom queue implementation
+- TwoStackQueue - queue using two stacks
+- AnimalQueue - priority queue for two types of animals which can be adopted.
 
 Check comments in classes
 
