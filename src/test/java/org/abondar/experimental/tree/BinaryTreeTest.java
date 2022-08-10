@@ -80,6 +80,19 @@ public class BinaryTreeTest {
 
         tree.clearTraversedNodes();
     }
+
+    @Test
+    public void searchTest(){
+        BinaryTree tree = new BinaryTree(1);
+
+        BinaryTree.BinaryTreeNode root = tree.getRoot();
+        tree.setNodeChildren(root,2,3);
+
+        BinaryTree.BinaryTreeNode res = tree.search(root,3);
+
+        assertEquals(tree.getRoot().getRight(),res);
+        assertEquals(3,res.getVal());
+    }
 //
 //
 //    @Test

@@ -81,24 +81,24 @@ public class BinaryTree {
     }
 
 
-//    public BinTreeNode search(BinTreeNode root, int val){
-//        if (root==null || root.getVal()==val){
-//            return root;
-//        }
+    public BinaryTreeNode search(BinaryTreeNode startNode, int val){
+        if (startNode==null || startNode.getVal()==val){
+            return startNode;
+        }
+
+        if (val<startNode.getVal()){
+            return search(startNode.getLeft(),val);
+        } else {
+            return search(startNode.getRight(),val);
+        }
+
+    }
 //
-//        if (val<root.getVal()){
-//            return search(root.getLeft(),val);
-//        } else {
-//            return search(root.getRight(),val);
-//        }
-//
-//    }
-//
-//    public void insert(BinTreeNode root,int val){
-//        BinTreeNode newNode = new BinTreeNode(String.valueOf(val));
+//    public void insert(BinaryTreeNode root,int val){
+//        BinaryTreeNode newNode = new BinaryTreeNode(String.valueOf(val));
 //        newNode.setVal(val);
 //
-//        BinTreeNode tmp = null;
+//        BinaryTreeNode tmp = null;
 //        while (root!=null){
 //            tmp = root;
 //            if (newNode.getVal()<root.getVal()){
@@ -119,13 +119,13 @@ public class BinaryTree {
 //
 //    }
 //
-//    public void delete(BinTreeNode root,BinTreeNode toDelete){
+//    public void delete(BinaryTreeNode root,BinaryTreeNode toDelete){
 //        if (toDelete.getLeft()==null){
 //            transplant(root,toDelete,toDelete.getRight());
 //        } else if (toDelete.getRight()==null){
 //            transplant(root,toDelete,toDelete.getLeft());
 //        } else {
-//             BinTreeNode minNode = min(toDelete.getRight());
+//             BinaryTreeNode minNode = min(toDelete.getRight());
 //             if (!minNode.getParent().equals(toDelete)){
 //                 transplant(root,minNode,minNode.getRight());
 //             }
@@ -154,7 +154,7 @@ public class BinaryTree {
 //    }
 
 
-//    public void transplant(BinTreeNode root,BinTreeNode src,BinTreeNode dst){
+//    public void transplant(BinaryTreeNode root,BinaryTreeNode src,BinaryTreeNode dst){
 //        if (src.getParent()==null){
 //            root = dst;
 //        } else if (src.equals(src.getParent().getLeft())){
@@ -167,12 +167,12 @@ public class BinaryTree {
 //        }
 //    }
 //
-//    public BinTreeNode successor(BinTreeNode node){
+//    public BinaryTreeNode successor(BinaryTreeNode node){
 //        if (node.getRight()!=null){
 //            return min(node.getRight());
 //        }
 //
-//        BinTreeNode succ = node.getParent();
+//        BinaryTreeNode succ = node.getParent();
 //        while (succ!=null && node.equals(succ.getRight())){
 //            node = succ;
 //            succ = succ.getParent();
@@ -181,7 +181,7 @@ public class BinaryTree {
 //        return succ;
 //    }
 //
-//    private BinTreeNode min(BinTreeNode node){
+//    private BinaryTreeNode min(BinaryTreeNode node){
 //        while (node.getLeft()!=null){
 //            node = node.getLeft();
 //        }
@@ -189,7 +189,7 @@ public class BinaryTree {
 //        return node;
 //    }
 //
-//    private BinTreeNode max(BinTreeNode node){
+//    private BinaryTreeNode max(BinaryTreeNode node){
 //        while (node.getRight()!=null){
 //            node = node.getRight();
 //        }
@@ -198,19 +198,19 @@ public class BinaryTree {
 //    }
 //
 //
-//    public BinTreeNode minTree(int[] arr) {
+//    public BinaryTreeNode minTree(int[] arr) {
 //
 //        return minTree(arr, 0, arr.length - 1);
 //    }
 //
-//    private BinTreeNode minTree(int[] arr, int start, int end) {
+//    private BinaryTreeNode minTree(int[] arr, int start, int end) {
 //        if (end < start) {
 //            return null;
 //        }
 //
 //        int mid = (start + end) / 2;
 //
-//        BinTreeNode root = new BinTreeNode(String.valueOf(arr[mid]));
+//        BinaryTreeNode root = new BinaryTreeNode(String.valueOf(arr[mid]));
 //
 //        root.setLeft(minTree(arr, start, mid - 1));
 //        root.setRight(minTree(arr, mid + 1, end));
@@ -219,10 +219,10 @@ public class BinaryTree {
 //    }
 //
 //
-//    public List<List<BinTreeNode>> listOfDepth(BinTreeNode root) {
-//        List<List<BinTreeNode>> res = new ArrayList<>();
+//    public List<List<BinaryTreeNode>> listOfDepth(BinaryTreeNode root) {
+//        List<List<BinaryTreeNode>> res = new ArrayList<>();
 //
-//        List<BinTreeNode> currentLevel = new ArrayList<>();
+//        List<BinaryTreeNode> currentLevel = new ArrayList<>();
 //
 //        if (root != null) {
 //            currentLevel.add(root);
@@ -230,9 +230,9 @@ public class BinaryTree {
 //
 //        while (currentLevel.size() > 0) {
 //            res.add(currentLevel);
-//            List<BinTreeNode> parentLevel = currentLevel;
+//            List<BinaryTreeNode> parentLevel = currentLevel;
 //            currentLevel = new ArrayList<>();
-//            for (BinTreeNode p : parentLevel) {
+//            for (BinaryTreeNode p : parentLevel) {
 //                if (p.getLeft() != null) {
 //                    currentLevel.add(p.getLeft());
 //                }
@@ -248,12 +248,12 @@ public class BinaryTree {
 //    }
 //
 //
-//    public boolean isBalanced(BinTreeNode root) {
+//    public boolean isBalanced(BinaryTreeNode root) {
 //        return checkHeight(root) != Integer.MIN_VALUE;
 //    }
 //
 //
-//    private int checkHeight(BinTreeNode root) {
+//    private int checkHeight(BinaryTreeNode root) {
 //        if (root == null) return -1;
 //
 //        //height of left subtree
@@ -275,11 +275,11 @@ public class BinaryTree {
 //    }
 //
 //
-//    public boolean isBST(BinTreeNode root) {
+//    public boolean isBST(BinaryTreeNode root) {
 //        return checkNode(root);
 //    }
 //
-//    private boolean checkNode(BinTreeNode root) {
+//    private boolean checkNode(BinaryTreeNode root) {
 //
 //        if (root == null) return true;
 //
@@ -307,23 +307,23 @@ public class BinaryTree {
 //        return false;
 //    }
 //
-//    public List<List<BinTreeNode>> bstSequences(BinTreeNode root) {
-//        List<List<BinTreeNode>> res = new ArrayList<>();
+//    public List<List<BinaryTreeNode>> bstSequences(BinaryTreeNode root) {
+//        List<List<BinaryTreeNode>> res = new ArrayList<>();
 //
 //        if (root == null) {
 //            res.add(new ArrayList<>());
 //            return res;
 //        }
 //
-//        List<List<BinTreeNode>> leftSeq = bstSequences(root.getLeft());
-//        List<List<BinTreeNode>> rightSeq = bstSequences(root.getRight());
+//        List<List<BinaryTreeNode>> leftSeq = bstSequences(root.getLeft());
+//        List<List<BinaryTreeNode>> rightSeq = bstSequences(root.getRight());
 //
-//        List<BinTreeNode> prefix = new ArrayList<>();
+//        List<BinaryTreeNode> prefix = new ArrayList<>();
 //        prefix.add(root);
 //
 //        //weave lists from left and right
 //        leftSeq.forEach(ls -> rightSeq.forEach(rs -> {
-//            List<List<BinTreeNode>> weaved = new ArrayList<>();
+//            List<List<BinaryTreeNode>> weaved = new ArrayList<>();
 //            weaveLists(ls, rs, weaved, prefix);
 //            res.addAll(weaved);
 //        }));
@@ -332,9 +332,9 @@ public class BinaryTree {
 //    }
 //
 //    //get all possible lists combos. remove head from ls,recurse, than do the same with rs
-//    private void weaveLists(List<BinTreeNode> ls, List<BinTreeNode> rs, List<List<BinTreeNode>> weaved, List<BinTreeNode> prefix) {
+//    private void weaveLists(List<BinaryTreeNode> ls, List<BinaryTreeNode> rs, List<List<BinaryTreeNode>> weaved, List<BinaryTreeNode> prefix) {
 //        if (ls.size() == 0 || rs.size() == 0) {
-//            List<BinTreeNode> res = new ArrayList<>();
+//            List<BinaryTreeNode> res = new ArrayList<>();
 //            res.addAll(prefix);
 //            res.addAll(ls);
 //            res.addAll(rs);
@@ -342,13 +342,13 @@ public class BinaryTree {
 //            return;
 //        }
 //
-//        BinTreeNode headLS = ls.remove(0);
+//        BinaryTreeNode headLS = ls.remove(0);
 //        prefix.add(headLS);
 //        weaveLists(ls, rs, weaved, prefix);
 //        prefix.remove(prefix.size() - 1);
 //        ls.add(0, headLS);
 //
-//        BinTreeNode headRS = ls.remove(0);
+//        BinaryTreeNode headRS = ls.remove(0);
 //        prefix.add(headRS);
 //        weaveLists(ls, rs, weaved, prefix);
 //        prefix.remove(prefix.size() - 1);

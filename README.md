@@ -120,6 +120,7 @@ Check comments in classes
 - inOrderTraversal - Visit node in order: left,current,right
 - preOrderTraversal - Visit node in order: current,left,right
 - postOrderTraversal - Visit node in order: left,right,current
+- search - Search for a node by value starting from selected node
 - minTree - Build a tree with min height from sorted array
 - listOfDepth - Get list of lists of listNodes on every depth of the tree
 - isBalanced - Check if bin tree is balanced(e.g heights of subtrees of any node don't differ more than by one)
