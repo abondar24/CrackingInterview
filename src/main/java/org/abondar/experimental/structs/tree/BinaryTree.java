@@ -177,39 +177,38 @@ public class BinaryTree {
         }
     }
 
+    public boolean isBST() {
+        return checkNode(root);
+    }
 
-//    public boolean isBST(BinaryTreeNode root) {
-//        return checkNode(root);
-//    }
-//
-//    private boolean checkNode(BinaryTreeNode root) {
-//
-//        if (root == null) return true;
-//
-//        Integer curVal = Integer.valueOf(root.getName());
-//
-//        if (root.getLeft() != null && root.getRight() != null) {
-//            Integer leftVal = Integer.valueOf(root.getLeft().getName());
-//            Integer rightVal = Integer.valueOf(root.getRight().getName());
-//
-//            if (leftVal <= curVal && curVal < rightVal) {
-//
-//                if (root.getParent() != null && root.equals(root.getParent().getLeft())) {
-//                    Integer parentVal = Integer.valueOf(root.getParent().getName());
-//                    if (rightVal > parentVal) {
-//                        return false;
-//                    }
-//                }
-//
-//                return checkNode(root.getRight()) && checkNode(root.getLeft());
-//            }
-//        } else {
-//            return true;
-//        }
-//
-//        return false;
-//    }
-//
+    private boolean checkNode(BinaryTree.BinaryTreeNode node) {
+
+        if (node == null) return true;
+
+        int curVal = node.val;
+
+        if (node.left != null && node.right != null) {
+            int leftVal = node.left.val;
+            int rightVal = node.right.val;
+
+            if (leftVal <= curVal && curVal < rightVal) {
+
+                if (node.parent != null && node.equals(node.parent.left)) {
+                   int parentVal = node.parent.val;
+                    if (rightVal > parentVal) {
+                        return false;
+                    }
+                }
+
+                return checkNode(node.right) && checkNode(node.left);
+            }
+        } else {
+            return true;
+        }
+
+        return false;
+    }
+
 //    public List<List<BinaryTreeNode>> bstSequences(BinaryTreeNode root) {
 //        List<List<BinaryTreeNode>> res = new ArrayList<>();
 //
