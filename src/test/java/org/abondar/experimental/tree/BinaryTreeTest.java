@@ -177,39 +177,15 @@ public class BinaryTreeTest {
         assertTrue(tree.isBST());
     }
 
-//
-//
-//
-//    @Test
-//    public void bstSeqTest(){
-//        BinTreeNode root = new BinTreeNode("2");
-//        root.setLeft(new BinTreeNode("1"));
-//        root.setRight(new BinTreeNode("3"));
-//
-//        List<List<BinTreeNode>> res = tg.bstSequences(root);
-//        assertEquals(2,res.size());
-//        assertEquals(root,res.get(0).get(0));
-//    }
-//
-//    @Test
-//    public void treeHeightTest(){
-//        BinTreeNode leaf1 = new BinTreeNode("l1");
-//        leaf1.setRight(null);
-//        leaf1.setLeft(null);
-//
-//        BinTreeNode leaf2 = new BinTreeNode("l2");
-//        leaf2.setRight(null);
-//        leaf2.setLeft(null);
-//
-//
-//        BinTreeNode node = new BinTreeNode("n1");
-//        node.setRight(null);
-//        node.setLeft(leaf1);
-//
-//        BinTreeNode root = new BinTreeNode("root");
-//        root.setLeft(node);
-//        root.setRight(leaf2);
-//
-//        assertEquals(2,root.height());
-//    }
+
+    @Test
+    public void bstSequenceTest(){
+        BinaryTree tree = new BinaryTree(2);
+        tree.setNodeChildren(tree.getRoot(),1,3);
+
+        List<List<BinaryTree.BinaryTreeNode>> res = tree.bstSequences(tree.getRoot());
+        assertEquals(2,res.size());
+        assertEquals(tree.getRoot(),res.get(0).get(0));
+    }
+
 }

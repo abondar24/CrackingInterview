@@ -209,55 +209,55 @@ public class BinaryTree {
         return false;
     }
 
-//    public List<List<BinaryTreeNode>> bstSequences(BinaryTreeNode root) {
-//        List<List<BinaryTreeNode>> res = new ArrayList<>();
-//
-//        if (root == null) {
-//            res.add(new ArrayList<>());
-//            return res;
-//        }
-//
-//        List<List<BinaryTreeNode>> leftSeq = bstSequences(root.getLeft());
-//        List<List<BinaryTreeNode>> rightSeq = bstSequences(root.getRight());
-//
-//        List<BinaryTreeNode> prefix = new ArrayList<>();
-//        prefix.add(root);
-//
-//        //weave lists from left and right
-//        leftSeq.forEach(ls -> rightSeq.forEach(rs -> {
-//            List<List<BinaryTreeNode>> weaved = new ArrayList<>();
-//            weaveLists(ls, rs, weaved, prefix);
-//            res.addAll(weaved);
-//        }));
-//
-//        return res;
-//    }
-//
-//    //get all possible lists combos. remove head from ls,recurse, than do the same with rs
-//    private void weaveLists(List<BinaryTreeNode> ls, List<BinaryTreeNode> rs, List<List<BinaryTreeNode>> weaved, List<BinaryTreeNode> prefix) {
-//        if (ls.size() == 0 || rs.size() == 0) {
-//            List<BinaryTreeNode> res = new ArrayList<>();
-//            res.addAll(prefix);
-//            res.addAll(ls);
-//            res.addAll(rs);
-//            weaved.add(res);
-//            return;
-//        }
-//
-//        BinaryTreeNode headLS = ls.remove(0);
-//        prefix.add(headLS);
-//        weaveLists(ls, rs, weaved, prefix);
-//        prefix.remove(prefix.size() - 1);
-//        ls.add(0, headLS);
-//
-//        BinaryTreeNode headRS = ls.remove(0);
-//        prefix.add(headRS);
-//        weaveLists(ls, rs, weaved, prefix);
-//        prefix.remove(prefix.size() - 1);
-//        rs.add(0, headRS);
-//
-//
-//    }
+    public List<List<BinaryTreeNode>> bstSequences(BinaryTreeNode node) {
+        List<List<BinaryTreeNode>> res = new ArrayList<>();
+
+        if (node == null) {
+            res.add(new ArrayList<>());
+            return res;
+        }
+
+        List<List<BinaryTreeNode>> leftSeq = bstSequences(node.getLeft());
+        List<List<BinaryTreeNode>> rightSeq = bstSequences(node.getRight());
+
+        List<BinaryTreeNode> prefix = new ArrayList<>();
+        prefix.add(node);
+
+        //weave lists from left and right
+        leftSeq.forEach(ls -> rightSeq.forEach(rs -> {
+            List<List<BinaryTreeNode>> weaved = new ArrayList<>();
+            weaveLists(ls, rs, weaved, prefix);
+            res.addAll(weaved);
+        }));
+
+        return res;
+    }
+
+    //get all possible lists combos. remove head from ls,recurse, than do the same with rs
+    private void weaveLists(List<BinaryTreeNode> ls, List<BinaryTreeNode> rs, List<List<BinaryTreeNode>> weaved, List<BinaryTreeNode> prefix) {
+        if (ls.size() == 0 || rs.size() == 0) {
+            List<BinaryTreeNode> res = new ArrayList<>();
+            res.addAll(prefix);
+            res.addAll(ls);
+            res.addAll(rs);
+            weaved.add(res);
+            return;
+        }
+
+        BinaryTreeNode headLS = ls.remove(0);
+        prefix.add(headLS);
+        weaveLists(ls, rs, weaved, prefix);
+        prefix.remove(prefix.size() - 1);
+        ls.add(0, headLS);
+
+        BinaryTreeNode headRS = ls.remove(0);
+        prefix.add(headRS);
+        weaveLists(ls, rs, weaved, prefix);
+        prefix.remove(prefix.size() - 1);
+        rs.add(0, headRS);
+
+
+    }
 
     public BinaryTreeNode getRoot() {
         return root;
