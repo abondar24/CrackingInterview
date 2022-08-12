@@ -124,22 +124,22 @@ public class BinaryTreeTest {
     }
 
 
-//    @Test
-//    public void minTreeTest() {
-//        int[] arr = {1, 3, 9, 11, 15, 19, 29};
-//
-//        BinaryTree tree = new BinaryTree();
-//        tree.minTree(arr);
-//
-//        BinaryTree.BinaryTreeNode root = tree.getRoot();
-//        assertEquals(11, root.getVal());
-//        assertEquals(3,root.getLeft().getVal());
-//        assertEquals(19,root.getRight().getVal());
-//        assertEquals(1,root.getLeft().getLeft().getVal());
-//        assertEquals(9,root.getLeft().getRight().getVal());
-//        assertEquals(15, root.getRight().getLeft().getVal());
-//        assertEquals(29,root.getRight().getRight().getVal());
-//    }
+    @Test
+    public void minTreeTest() {
+        int[] arr = {1, 3, 9, 11, 15, 19, 29};
+
+        BinaryTree tree = new BinaryTree();
+        tree.minTree(arr);
+        BinaryTree.BinaryTreeNode root = tree.getRoot();
+
+        assertEquals(11, root.getVal());
+        assertEquals(3,root.getLeft().getVal());
+        assertEquals(19,root.getRight().getVal());
+        assertEquals(1,root.getLeft().getLeft().getVal());
+        assertEquals(9,root.getLeft().getRight().getVal());
+        assertEquals(15, root.getRight().getLeft().getVal());
+        assertEquals(29,root.getRight().getRight().getVal());
+    }
 
 
     @Test

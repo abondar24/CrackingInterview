@@ -97,30 +97,25 @@ public class BinaryTree {
         return getMostRightNode(node).val;
     }
 
+    public void minTree(int[] arr) {
+       root = minTree(arr, 0, arr.length - 1);
+    }
 
-    //TODO: replace min with getMostLeftNode
-    //TODO: replace max with getMostRightNode
+    private BinaryTreeNode minTree(int[] arr, int start, int end) {
+        if (end < start) {
+            return null;
+        }
 
-//    public BinaryTreeNode minTree(int[] arr) {
-//
-//        return minTree(arr, 0, arr.length - 1);
-//    }
-//
-//    private BinaryTreeNode minTree(int[] arr, int start, int end) {
-//        if (end < start) {
-//            return null;
-//        }
-//
-//        int mid = (start + end) / 2;
-//
-//        root = new BinaryTreeNode(mid);
-//
-//        root.left=minTree(arr, start, mid - 1);
-//        root.right=minTree(arr, mid + 1, end);
-//        return root;
-//
-//    }
+        int mid = (start + end) / 2;
 
+        BinaryTreeNode node = new BinaryTreeNode(arr[mid]);
+
+        node.left=minTree(arr, start, mid - 1);
+        node.right=minTree(arr, mid + 1, end);
+
+        return node;
+
+    }
 
     public List<List<BinaryTreeNode>> listOfDepth() {
         List<List<BinaryTreeNode>> res = new ArrayList<>();
