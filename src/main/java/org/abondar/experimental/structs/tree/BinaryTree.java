@@ -101,95 +101,6 @@ public class BinaryTree {
     //TODO: replace min with getMostLeftNode
     //TODO: replace max with getMostRightNode
 
-//
-//    public void insert(BinaryTreeNode root,int val){
-//        BinaryTreeNode newNode = new BinaryTreeNode(String.valueOf(val));
-//        newNode.setVal(val);
-//
-//        BinaryTreeNode tmp = null;
-//        while (root!=null){
-//            tmp = root;
-//            if (newNode.getVal()<root.getVal()){
-//                root = root.getLeft();
-//            } else {
-//                root = root.getRight();
-//            }
-//        }
-//        newNode.setParent(tmp);
-//        if (tmp==null){
-//            root = newNode;
-//        }
-//        else if (newNode.getVal()<tmp.getVal()){
-//            tmp.setLeft(newNode);
-//        } else {
-//            tmp.setRight(newNode);
-//        }
-//
-//    }
-//
-//    public void delete(BinaryTreeNode root,BinaryTreeNode toDelete){
-//        if (toDelete.getLeft()==null){
-//            transplant(root,toDelete,toDelete.getRight());
-//        } else if (toDelete.getRight()==null){
-//            transplant(root,toDelete,toDelete.getLeft());
-//        } else {
-//             BinaryTreeNode minNode = min(toDelete.getRight());
-//             if (!minNode.getParent().equals(toDelete)){
-//                 transplant(root,minNode,minNode.getRight());
-//             }
-//
-//            transplant(root,toDelete,minNode);
-//             minNode.setLeft(toDelete.getLeft());
-//             minNode.getLeft().setParent(minNode);
-//        }
-//    }
-//
-
-//    private int nodeHeight(BinaryTreeNode node) {
-//        if (node == null)
-//            return -1;
-//        else {
-//            /* compute the depth of each subtree */
-//            int lHeight = height(node.left);
-//            int rHeight = height(node.right);
-//
-//            /* use the larger one */
-//            if (lHeight > rHeight)
-//                return (lHeight + 1);
-//            else
-//                return (rHeight + 1);
-//        }
-//    }
-
-
-//    public void transplant(BinaryTreeNode root,BinaryTreeNode src,BinaryTreeNode dst){
-//        if (src.getParent()==null){
-//            root = dst;
-//        } else if (src.equals(src.getParent().getLeft())){
-//            src.getParent().setLeft(dst);
-//        } else {
-//            src.getParent().setRight(dst);
-//        }
-//        if (dst!=null){
-//            dst.setParent(src.getParent());
-//        }
-//    }
-//
-//    public BinaryTreeNode successor(BinaryTreeNode node){
-//        if (node.getRight()!=null){
-//            return min(node.getRight());
-//        }
-//
-//        BinaryTreeNode succ = node.getParent();
-//        while (succ!=null && node.equals(succ.getRight())){
-//            node = succ;
-//            succ = succ.getParent();
-//        }
-//
-//        return succ;
-//    }
-//
-//
 //    public BinaryTreeNode minTree(int[] arr) {
 //
 //        return minTree(arr, 0, arr.length - 1);
@@ -202,43 +113,43 @@ public class BinaryTree {
 //
 //        int mid = (start + end) / 2;
 //
-//        BinaryTreeNode root = new BinaryTreeNode(String.valueOf(arr[mid]));
+//        root = new BinaryTreeNode(mid);
 //
-//        root.setLeft(minTree(arr, start, mid - 1));
-//        root.setRight(minTree(arr, mid + 1, end));
+//        root.left=minTree(arr, start, mid - 1);
+//        root.right=minTree(arr, mid + 1, end);
 //        return root;
 //
 //    }
-//
-//
-//    public List<List<BinaryTreeNode>> listOfDepth(BinaryTreeNode root) {
-//        List<List<BinaryTreeNode>> res = new ArrayList<>();
-//
-//        List<BinaryTreeNode> currentLevel = new ArrayList<>();
-//
-//        if (root != null) {
-//            currentLevel.add(root);
-//        }
-//
-//        while (currentLevel.size() > 0) {
-//            res.add(currentLevel);
-//            List<BinaryTreeNode> parentLevel = currentLevel;
-//            currentLevel = new ArrayList<>();
-//            for (BinaryTreeNode p : parentLevel) {
-//                if (p.getLeft() != null) {
-//                    currentLevel.add(p.getLeft());
-//                }
-//
-//                if (p.getRight() != null) {
-//                    currentLevel.add(p.getRight());
-//                }
-//            }
-//
-//        }
-//
-//        return res;
-//    }
-//
+
+
+    public List<List<BinaryTreeNode>> listOfDepth() {
+        List<List<BinaryTreeNode>> res = new ArrayList<>();
+
+        List<BinaryTreeNode> currentLevel = new ArrayList<>();
+
+        if (root != null) {
+            currentLevel.add(root);
+        }
+
+        while (currentLevel.size() > 0) {
+            res.add(currentLevel);
+            List<BinaryTreeNode> parentLevel = currentLevel;
+            currentLevel = new ArrayList<>();
+            for (BinaryTreeNode p : parentLevel) {
+                if (p.getLeft() != null) {
+                    currentLevel.add(p.getLeft());
+                }
+
+                if (p.getRight() != null) {
+                    currentLevel.add(p.getRight());
+                }
+            }
+
+        }
+
+        return res;
+    }
+
 //
 //    public boolean isBalanced(BinaryTreeNode root) {
 //        return checkHeight(root) != Integer.MIN_VALUE;
