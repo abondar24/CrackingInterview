@@ -1,6 +1,5 @@
-package org.abondar.experimental.strcuts.hashmap;
+package org.abondar.experimental.structs.hashmap;
 
-import org.abondar.experimental.structs.hashmap.CustomHashMap;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

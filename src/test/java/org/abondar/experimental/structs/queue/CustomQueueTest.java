@@ -1,6 +1,5 @@
-package org.abondar.experimental.strcuts.queue;
+package org.abondar.experimental.structs.queue;
 
-import org.abondar.experimental.structs.queue.CustomQueue;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

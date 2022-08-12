@@ -1,6 +1,5 @@
-package org.abondar.experimental.tree;
+package org.abondar.experimental.structs.tree;
 
-import org.abondar.experimental.structs.tree.BinaryTree;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

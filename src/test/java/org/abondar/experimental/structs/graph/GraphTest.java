@@ -1,6 +1,5 @@
-package org.abondar.experimental.strcuts.graph;
+package org.abondar.experimental.structs.graph;
 
-import org.abondar.experimental.structs.graph.Graph;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

@@ -1,6 +1,5 @@
-package org.abondar.experimental.strcuts.list;
+package org.abondar.experimental.structs.list;
 
-import org.abondar.experimental.structs.list.CustomList;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

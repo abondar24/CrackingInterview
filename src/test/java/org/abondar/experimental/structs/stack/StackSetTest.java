@@ -1,4 +1,4 @@
-package org.abondar.experimental.stack;
+package org.abondar.experimental.structs.stack;
 
 import org.abondar.experimental.structs.stack.CustomStack;
 import org.abondar.experimental.structs.stack.StackSet;

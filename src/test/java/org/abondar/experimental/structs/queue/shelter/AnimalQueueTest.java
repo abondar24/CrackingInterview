@@ -1,8 +1,5 @@
-package org.abondar.experimental.strcuts.queue.shelter;
+package org.abondar.experimental.structs.queue.shelter;
 
-import org.abondar.experimental.structs.queue.shelter.AnimalQueue;
-import org.abondar.experimental.structs.queue.shelter.Cat;
-import org.abondar.experimental.structs.queue.shelter.Dog;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
