@@ -81,6 +81,24 @@ public class BinaryTreeTest {
     }
 
     @Test
+    public void insertTest() {
+        BinaryTree tree = new BinaryTree();
+
+        tree.insert(1);
+        assertEquals(1,tree.getRoot().getVal());
+
+        tree.insert(0);
+        assertEquals(0,tree.getRoot().getLeft().getVal());
+
+        tree.insert(3);
+        assertEquals(3,tree.getRoot().getRight().getVal());
+
+        tree.insert(4);
+        assertEquals(4,tree.getRoot().getRight().getRight().getVal());
+
+    }
+
+    @Test
     public void searchTest() {
         BinaryTree tree = new BinaryTree(1);
 

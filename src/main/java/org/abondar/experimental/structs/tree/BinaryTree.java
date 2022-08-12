@@ -75,6 +75,25 @@ public class BinaryTree {
         }
     }
 
+    public void insert(int val){
+        root = insert(root,val);
+    }
+
+    private BinaryTreeNode insert(BinaryTreeNode root,int val){
+        if (root==null){
+            root = new BinaryTreeNode(val);
+            return root;
+        }
+
+        if (val < root.val){
+            root.left = insert(root.left,val);
+        } else  {
+            root.right = insert(root.right,val);
+        }
+
+        return root;
+    }
+
 
     public BinaryTreeNode search(BinaryTreeNode startNode, int val) {
         if (startNode == null || startNode.getVal() == val) {
