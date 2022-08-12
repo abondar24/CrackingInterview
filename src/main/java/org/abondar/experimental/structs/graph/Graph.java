@@ -23,11 +23,10 @@ public class Graph {
     }
 
     public void setNodeChildren(GraphNode parentNode, List<GraphNode> children) {
-        parentNode.children = children;
+        parentNode.children.addAll(children);
 
-        children.forEach(ch -> {
-            ch.parent = parentNode;
-        });
+
+        parentNode.children.forEach(ch -> ch.parent = parentNode);
     }
 
     public void setNodeChildrenWithWeight(GraphNode parentNode, Map<GraphNode,Integer> children) {
@@ -40,7 +39,7 @@ public class Graph {
             nodeChildren.add(ch);
         });
 
-        parentNode.children = nodeChildren;
+        parentNode.children.addAll(nodeChildren);
     }
 
     public List<GraphNode> bfs(GraphNode root) {
@@ -269,11 +268,11 @@ public class Graph {
 
     public static class GraphNode implements Comparable<GraphNode> {
         private String name;
-        private List<GraphNode> children;
+        private List<GraphNode> children = new ArrayList<>();
         private boolean visited;
         private GraphNode parent;
 
-        private Integer weight;
+        private int weight;
 
         public GraphNode() {
 
@@ -290,7 +289,6 @@ public class Graph {
             if (this.children.contains(node)) {
                 return node.weight;
             }
-
             return 0;
         }
     }
