@@ -150,34 +150,34 @@ public class BinaryTree {
         return res;
     }
 
-//
-//    public boolean isBalanced(BinaryTreeNode root) {
-//        return checkHeight(root) != Integer.MIN_VALUE;
-//    }
-//
-//
-//    private int checkHeight(BinaryTreeNode root) {
-//        if (root == null) return -1;
-//
-//        //height of left subtree
-//        int leftHeight = checkHeight(root.getLeft());
-//
-//        // return error
-//        if (leftHeight == Integer.MIN_VALUE) return Integer.MIN_VALUE;
-//
-//        int rightHeight = checkHeight(root.getRight());
-//        if (rightHeight == Integer.MIN_VALUE) return Integer.MIN_VALUE;
-//
-//        int heightDiff = leftHeight - rightHeight;
-//
-//        if (Math.abs(heightDiff) > 1) {
-//            return Integer.MIN_VALUE;
-//        } else {
-//            return Math.max(rightHeight, leftHeight) + 1;
-//        }
-//    }
-//
-//
+
+    public boolean isBalanced() {
+        return checkHeight(root) != Integer.MIN_VALUE;
+    }
+
+
+    private int checkHeight(BinaryTreeNode node) {
+        if (node == null) return -1;
+
+        //height of left subtree
+        int leftHeight = checkHeight(node.getLeft());
+
+        // return error
+        if (leftHeight == Integer.MIN_VALUE) return Integer.MIN_VALUE;
+
+        int rightHeight = checkHeight(node.getRight());
+        if (rightHeight == Integer.MIN_VALUE) return Integer.MIN_VALUE;
+
+        int heightDiff = leftHeight - rightHeight;
+
+        if (Math.abs(heightDiff) > 1) {
+            return Integer.MIN_VALUE;
+        } else {
+            return Math.max(rightHeight, leftHeight) + 1;
+        }
+    }
+
+
 //    public boolean isBST(BinaryTreeNode root) {
 //        return checkNode(root);
 //    }

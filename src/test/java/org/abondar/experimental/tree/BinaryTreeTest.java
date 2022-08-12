@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class BinaryTreeTest {
@@ -154,29 +155,16 @@ public class BinaryTreeTest {
 
     }
 
-//    @Test
-//    public void isBalancedTest() {
-//
-//        BinTreeNode root = new BinTreeNode("11");
-//
-//        BinTreeNode l1L = new BinTreeNode("3");
-//        BinTreeNode l1R = new BinTreeNode("19");
-//        root.setLeft(l1L);
-//        root.setRight(l1R);
-//
-//        BinTreeNode l2l1 = new BinTreeNode("1");
-//        BinTreeNode l2r1 = new BinTreeNode("9");
-//        l1L.setLeft(l2l1);
-//        l1L.setRight(l2r1);
-//
-//        BinTreeNode l2l2 = new BinTreeNode("15");
-//        BinTreeNode l2r2 = new BinTreeNode("29");
-//        l1R.setLeft(l2l2);
-//        l1R.setRight(l2r2);
-//
-//        assertTrue(tg.isBalanced(root));
-//
-//    }
+    @Test
+    public void isBalancedTest() {
+        BinaryTree tree = new BinaryTree(11);
+        tree.setNodeChildren(tree.getRoot(),3,19);
+        tree.setNodeChildren(tree.getRoot().getLeft(),1,9);
+        tree.setNodeChildren(tree.getRoot().getRight(),15,29);
+
+        assertTrue(tree.isBalanced());
+
+    }
 
 //
 //    @Test
