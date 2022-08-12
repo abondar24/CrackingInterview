@@ -121,6 +121,7 @@ Check comments in classes
 - preOrderTraversal - Visit node in order: current,left,right
 - postOrderTraversal - Visit node in order: left,right,current
 - insert - Insert a value into the tree
+- delete - Delete a node with provided value
 - search - Search for a node by value starting from selected node
 - getMostLeftVal - find value of the most left tree leaf.
 - getMostRightVal - find value of the most right tree leaf.

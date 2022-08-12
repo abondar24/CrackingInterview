@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -95,6 +96,22 @@ public class BinaryTreeTest {
 
         tree.insert(4);
         assertEquals(4,tree.getRoot().getRight().getRight().getVal());
+
+    }
+
+    @Test
+    public void deleteTest() {
+        BinaryTree tree = new BinaryTree();
+        tree.insert(1);
+        tree.insert(0);
+        tree.insert(3);
+        tree.insert(4);
+
+        tree.delete(4);
+        assertNull(tree.getRoot().getRight().getRight());
+
+        tree.delete(0);
+        assertNull(tree.getRoot().getLeft());
 
     }
 
