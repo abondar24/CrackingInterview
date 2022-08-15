@@ -48,6 +48,7 @@ convert to upperCase,sort by len(ASC) and return distinct)
 - diskSegment - check /screens/disk_space_segments.png for description
 - maxOrders - check /sreens/max_orders.png for description
 - multPersistence - count multiplexing persistence of a number
+- sumOfDivisors - sum of divisors of input num
 
 ## Arrays
 - sum - sum elements of array via recursion

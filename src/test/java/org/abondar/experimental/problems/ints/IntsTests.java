@@ -109,4 +109,19 @@ public class IntsTests {
         res = ints.multPersistence(num);
         assertEquals(2, res);
     }
+
+    @Test
+    public void sumOfDivisorsTest(){
+        int res = ints.sumOfDivisors(1);
+        assertEquals(1,res);
+
+        res = ints.sumOfDivisors(6);
+        assertEquals(12,res);
+
+        res = ints.sumOfDivisors(12);
+        assertEquals(28,res);
+
+        res = ints.sumOfDivisors(20);
+        assertEquals(42,res);
+    }
 }
