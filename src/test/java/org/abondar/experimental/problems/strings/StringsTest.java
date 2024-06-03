@@ -1,10 +1,14 @@
 package org.abondar.experimental.problems.strings;
 
-import org.abondar.experimental.problems.strings.Strings;
+
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -12,221 +16,211 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringsTest {
 
-    private final Strings strs = new Strings();
+    private final Strings strings = new Strings();
 
-    @Test
-    public void inUniqueTest() {
 
-        boolean res = strs.isUnique("hello world");
-        assertFalse(res);
+    private void verifyBooleanResult(boolean expected, boolean result){
+        if (expected){
+            assertTrue(result);
+        } else {
+            assertFalse(result);
+        }
+    }
 
-        res = strs.isUnique("formula");
-        assertTrue(res);
+    @ParameterizedTest
+    @MethodSource("uniqueParams")
+    public void isUniqueTest(String input, boolean expected) {
+        boolean res = strings.isUnique(input);
+        verifyBooleanResult(expected, res);
+    }
 
+    private static Stream<Arguments> uniqueParams() {
+         return Stream.of(
+                 Arguments.of("hello world",false),
+                 Arguments.of("formula",true)
+         );
     }
 
 
-    @Test
-    public void checkPermutation() {
-        boolean res = strs.checkPermutation("debug", "buged");
-        assertTrue(res);
-
-        res = strs.checkPermutation("debug", "cat");
-        assertFalse(res);
-
-        res = strs.checkPermutation("debug", "bug");
-        assertFalse(res);
+    @ParameterizedTest
+    @MethodSource("permutationParams")
+    public void checkPermutation(String input1, String input2, boolean expected) {
+        boolean res = strings.checkPermutation(input1, input2);
+        verifyBooleanResult(expected, res);
     }
+
+
+    private static Stream<Arguments> permutationParams() {
+        return Stream.of(
+                Arguments.of("debug", "buged",true),
+                Arguments.of("debug", "car",false),
+                Arguments.of("debug", "bug",false)
+        );
+    }
+
 
     @Test
     public void urllifyTest() {
-        String url = strs.urlify("Mr John Smith    ", 13);
+        String url = strings.urlify("Mr John Smith    ", 13);
         String expectedRes = "Mr%20John%20Smith";
         assertEquals(expectedRes, url);
     }
 
 
-    @Test
-    public void palindromePermutationTest() {
-        boolean res = strs.palindromePermutation("Tact Coa");
-        assertTrue(res);
+    @ParameterizedTest
+    @MethodSource("palindromePermParams")
+    public void palindromePermutationTest(String input, boolean expected) {
+        boolean res = strings.palindromePermutation(input);
+        verifyBooleanResult(expected, res);
+    }
 
-        res = strs.palindromePermutation("Tact Coat");
-        assertFalse(res);
-
-        res = strs.palindromePermutation("aabcb");
-        assertTrue(res);
-
-        res = strs.palindromePermutation("civil");
-        assertFalse(res);
+    private static Stream<Arguments> palindromePermParams() {
+        return Stream.of(
+                Arguments.of("Tact Coa",true),
+                Arguments.of("Tact Coat",false),
+                Arguments.of("aabcb",true),
+                Arguments.of("civil",false)
+        );
     }
 
 
-    @Test
-    public void oneAwayTest() {
-        boolean res = strs.oneAway("pale", "ple");
-        assertTrue(res);
+    @ParameterizedTest
+    @MethodSource("oneAwayParams")
+    public void oneAwayTest(String input1, String input2, boolean expected) {
+        boolean res = strings.oneAway(input1, input2);
+        verifyBooleanResult(expected, res);
+    }
 
-        res = strs.oneAway("pales", "pale");
-        assertTrue(res);
-
-        res = strs.oneAway("pale", "bale");
-        assertTrue(res);
-
-        res = strs.oneAway("pale", "bake");
-        assertFalse(res);
-
-        res = strs.oneAway("pale", "pale");
-        assertTrue(res);
-
-        res = strs.oneAway("paalee", "pale");
-        assertFalse(res);
-
-        res = strs.oneAway("pale", "pkb");
-        assertFalse(res);
+    private static Stream<Arguments> oneAwayParams() {
+        return Stream.of(
+                Arguments.of("pale", "ple",true),
+                Arguments.of("pales", "pale",true),
+                Arguments.of("pale", "bale",true),
+                Arguments.of("pale", "bake",false),
+                Arguments.of("pale", "pale",true),
+                Arguments.of("paalee", "pale",false),
+                Arguments.of("pale", "pkb",false)
+                );
     }
 
 
-    @Test
-    public void stringCompressionTest() {
-        String actual = strs.stringCompressor("aabcccccaaa");
-        String expected = "a2b1c5a3";
+    @ParameterizedTest
+    @MethodSource("comparisonParams")
+    public void stringCompressionTest(String input, String expected) {
+        String actual = strings.stringCompressor(input);
         assertEquals(expected, actual);
+    }
 
-        actual = strs.stringCompressor("abfcccgh");
-        expected = "a1b1f1c3g1h1";
-        assertEquals(expected, actual);
-
+    private static Stream<Arguments> comparisonParams() {
+        return Stream.of(
+                Arguments.of("aabcccccaaa","a2b1c5a3"),
+                Arguments.of("abfcccgh", "a1b1f1c3g1h1")
+        );
     }
 
     @Test
     public void reverseStringTest() {
         String str = "abcde";
         String expected = "edcba";
-        String actual = strs.reverseString(str);
+        String actual = strings.reverseString(str);
 
         assertEquals(expected, actual);
     }
 
 
-    @Test
-    public void isStringPalindromeTest() {
-        String str = "aabbaa";
-        boolean res = strs.isStringPalindrome(str);
-        assertTrue(res);
+    @ParameterizedTest
+    @MethodSource("palindromeParams")
+    public void isStringPalindromeTest(String input, boolean expected) {
+        boolean res = strings.isStringPalindrome(input);
+        verifyBooleanResult(expected, res);
+    }
 
-        str = "aacbaa";
-        res = strs.isStringPalindrome(str);
-        assertFalse(res);
-
-        str = "A man, a plan, a canal: Panama";
-        res = strs.isStringPalindrome(str);
-        assertTrue(res);
-
-        str = "race a car";
-        res = strs.isStringPalindrome(str);
-        assertFalse(res);
+    private static Stream<Arguments> palindromeParams() {
+        return Stream.of(
+                Arguments.of("aabbaa",true),
+                Arguments.of("aacbaa",false),
+                Arguments.of("A man, a plan, a canal: Panama",true),
+                Arguments.of("race a car",false)
+        );
     }
 
 
-    @Test
-    public void longestCommonPrefixTest() {
-        String[] arr = new String[]{"flower", "flow", "flight"};
-
-        String res = strs.longestCommonPrefix(arr);
-        assertEquals("fl", res);
-
-        arr = new String[]{"dog", "racecar", "car"};
-        res = strs.longestCommonPrefix(arr);
-
-        assertEquals("", res);
+    @ParameterizedTest
+    @MethodSource("prefParams")
+    public void longestCommonPrefixTest(String[] input, String expected) {
+        String res = strings.longestCommonPrefix(input);
+        assertEquals(expected, res);
     }
 
-    @Test
-    public void validParentheses() {
-        String str = "()";
-        boolean res = strs.validParentheses(str);
-        assertTrue(res);
-
-        str = "{[]}";
-        res = strs.validParentheses(str);
-        assertTrue(res);
-
-        str = "(((((())))))";
-        res = strs.validParentheses(str);
-        assertTrue(res);
-
-        str = "()()()()";
-        res = strs.validParentheses(str);
-        assertTrue(res);
-
-        str = "()[]{}";
-        res = strs.validParentheses(str);
-        assertTrue(res);
-
-        str = "((()(())))";
-        res = strs.validParentheses(str);
-        assertTrue(res);
-
-        str = "{[]}";
-        res = strs.validParentheses(str);
-        assertTrue(res);
-
-        str = "(((((((()";
-        res = strs.validParentheses(str);
-        assertFalse(res);
-
-        str = "(]";
-        res = strs.validParentheses(str);
-        assertFalse(res);
-
-        str = "([)]";
-        res = strs.validParentheses(str);
-        assertFalse(res);
+    private static Stream<Arguments> prefParams() {
+        return Stream.of(
+                Arguments.of(new String[]{"flower", "flow", "flight"},"fl"),
+                Arguments.of(new String[]{"dog", "racecar", "car"},"")
+        );
     }
 
-    @Test
-    public void strStrTest() {
-        assertEquals(2, strs.strStr("hello", "ll"));
-        assertEquals(-1, strs.strStr("aaaaa", "bba"));
+    @ParameterizedTest
+    @MethodSource("parenthParams")
+    public void validParentheses(String input, boolean expected) {
+        boolean res = strings.validParentheses(input);
+        verifyBooleanResult(expected, res);
     }
 
-    @Test
-    public void strLenTest() {
-        int res = strs.stringLen("10[]");
-        assertEquals(0, res);
-
-        res = strs.stringLen("a5[ab]bc");
-        assertEquals(13, res);
-
-        res = strs.stringLen("2[a]b3[c]");
-        assertEquals(6, res);
-
-        res = strs.stringLen("3[2[a]b3[c]]");
-        assertEquals(18, res);
+    private static Stream<Arguments> parenthParams() {
+        return Stream.of(
+                Arguments.of("()", true),
+                Arguments.of("{[]}", true),
+                Arguments.of("(((((())))))", true),
+                Arguments.of("()()()()", true),
+                Arguments.of("()[]{}", true),
+                Arguments.of("((()(())))", true),
+                Arguments.of("(((((((()", false),
+                Arguments.of("(]", false),
+                Arguments.of( "([)]", false)
+        );
     }
 
-    @Test
-    public void strLen1Test() {
-        int res = strs.stringLen1("10[]");
-        assertEquals(0, res);
+    @ParameterizedTest
+    @MethodSource("strStrParams")
+    public void strStrTest(String input1, String input2, int expected) {
+        var actual = strings.strStr(input1,input2);
+        assertEquals(expected,actual);
+    }
 
-        res = strs.stringLen1("a5[ab]bc");
-        assertEquals(13, res);
+    private static Stream<Arguments> strStrParams() {
+        return Stream.of(
+                Arguments.of("hello", "ll", 2),
+                Arguments.of("aaaaa", "bba", -1)
+        );
+    }
 
-        res = strs.stringLen1("2[a]b3[c]");
-        assertEquals(6, res);
+    @ParameterizedTest
+    @MethodSource("strLenParams")
+    public void strLenTest(String input, int expected) {
+        int actual = strings.stringLen(input);
+        assertEquals(expected, actual);
+    }
 
-        res = strs.stringLen1("3[2[a]b3[c]]");
-        assertEquals(18, res);
+    @ParameterizedTest
+    @MethodSource("strLenParams")
+    public void strLen1Test(String input, int expected) {
+        int actual = strings.stringLen1(input);
+        assertEquals(expected, actual);
+    }
 
+    private static Stream<Arguments> strLenParams() {
+        return Stream.of(
+                Arguments.of("10[]",0),
+                Arguments.of("a5[ab]bc",13),
+                Arguments.of("2[a]b3[c]",6),
+                Arguments.of("3[2[a]b3[c]]",18)
+        );
     }
 
     @Test
     public void filterStringsTest() {
         List<String> incoming = List.of("abc", "", "a", " fdf ", "aaaa", "bb", "aaaa", "a");
-        var res = strs.filterStrings(incoming);
-
+        var res = strings.filterStrings(incoming);
 
         assertEquals(5, res.size());
         assertEquals("A", res.get(0));
@@ -234,146 +228,111 @@ public class StringsTest {
     }
 
 
-    @Test
-    public void cardWarTest() {
-        String a = "A586QK";
-        String b = "JJ653K";
+    @ParameterizedTest
+    @MethodSource("cardWarParams")
+    public void cardWarTest(String input1, String input2, int expected) {
+        int actual = strings.cardWar(input1, input2);
+        assertEquals(expected,actual);
+    }
 
-        int res = strs.cardWar(a, b);
-        assertEquals(4, res);
-
-        a = "23A84Q";
-        b = "K2Q25J";
-
-        res = strs.cardWar(a, b);
-        assertEquals(4, res);
+    private static Stream<Arguments> cardWarParams() {
+        return Stream.of(
+                Arguments.of("A586QK", "JJ653K",4),
+                Arguments.of("23A84Q", "K2Q25J", 4)
+        );
     }
 
     @Test
     public void stringChainTest() {
         List<String> strList = Arrays.asList("a", "b", "ba", "bca", "bda", "bdca");
 
-        int res = strs.stringChains(strList);
+        int res = strings.stringChains(strList);
         assertEquals(4, res);
 
     }
 
-    @Test
-    public void lengthOfLastWordTest() {
-        String str = "Hello World";
-
-        int res = strs.lengthOfLastWord(str);
-        assertEquals(5, res);
-
-        str = "Today was a nice day";
-        res = strs.lengthOfLastWord(str);
-        assertEquals(3, res);
+    @ParameterizedTest
+    @MethodSource("lenParams")
+    public void lengthOfLastWordTest(String input, int expected) {
+        int actual = strings.lengthOfLastWord(input);
+        assertEquals(expected, actual);
     }
 
-    @Test
-    public void validPasswordTest() {
-        String pwd = "passWord123!!!";
-        boolean res = strs.validPassword(pwd);
-        assertFalse(res);
-
-        pwd = "admin123!!!";
-        res = strs.validPassword(pwd);
-        assertFalse(res);
-
-        pwd = "Admin123";
-        res = strs.validPassword(pwd);
-        assertFalse(res);
-
-        pwd = "Admin!!!";
-        res = strs.validPassword(pwd);
-        assertFalse(res);
-
-        pwd = "Ad";
-        res = strs.validPassword(pwd);
-        assertFalse(res);
-
-        pwd = "Admin123!!!dfsjfkdsflkdsflkdsfdsfdsfdsfdsfdsfdsf";
-        res = strs.validPassword(pwd);
-        assertFalse(res);
-
-        pwd = "passworD3E+";
-        res = strs.validPassword(pwd);
-        assertFalse(res);
-
-        pwd = "Admin123!!!";
-        res = strs.validPassword(pwd);
-        assertTrue(res);
-
-        pwd = "Admin123!!!+";
-        res = strs.validPassword(pwd);
-        assertTrue(res);
+    private static Stream<Arguments> lenParams() {
+        return Stream.of(
+                Arguments.of("Hello World",5),
+                Arguments.of("Today was a nice day", 3)
+        );
     }
 
-    @Test
-    public void validUsernameTest(){
-        String username = "Julia";
-        boolean res = strs.validUsername(username);
-        assertFalse(res);
-
-        username = "Samantha";
-        res = strs.validUsername(username);
-        assertTrue(res);
-
-        username = "Samantha_21";
-        res = strs.validUsername(username);
-        assertTrue(res);
-
-        username = "1Samantha";
-        res = strs.validUsername(username);
-        assertFalse(res);
-
-        username = "Samantha?10_2A";
-        res = strs.validUsername(username);
-        assertFalse(res);
-
-        username = "JuliaZ007";
-        res = strs.validUsername(username);
-        assertTrue(res);
-
-        username = "Julia@007";
-        res = strs.validUsername(username);
-        assertFalse(res);
-
-        username = "_Julia007";
-        res = strs.validUsername(username);
-        assertFalse(res);
+    @ParameterizedTest
+    @MethodSource("pwdParams")
+    public void validPasswordTest(String input, boolean expected) {
+        boolean res = strings.validPassword(input);
+        verifyBooleanResult(expected, res);
     }
 
-    @Test
-    public void isAnagramTest(){
-        String a = "anagram";
-        String b = "margana";
-        boolean res = strs.isAnagram(a,b);
-        assertTrue(res);
+    private static Stream<Arguments> pwdParams() {
+        return Stream.of(
+                Arguments.of("passWord123!!!",false),
+                Arguments.of("admin123!!!",false),
+                Arguments.of("Admin123",false),
+                Arguments.of("Admin!!!",false),
+                Arguments.of("Ad",false),
+                Arguments.of("Admin123!!!dfsjfkdsflkdsflkdsfdsfdsfdsfdsfdsfdsf",false),
+                Arguments.of("passworD3E+",false),
+                Arguments.of("Admin123!!!",true),
+                Arguments.of("Admin123!!!+",true)
+                );
+    }
 
-        a = "Hello";
-        b = "hello";
-        res = strs.isAnagram(a,b);
-        assertTrue(res);
+    @ParameterizedTest
+    @MethodSource("usrParams")
+    public void validUsernameTest(String username, boolean expected){
+        boolean res = strings.validUsername(username);
+        verifyBooleanResult(expected, res);
+    }
 
-        a = "anagram";
-        b = "marganaa";
-        res = strs.isAnagram(a,b);
-        assertFalse(res);
+    private static Stream<Arguments> usrParams() {
+        return Stream.of(
+                Arguments.of("Julia",false),
+                Arguments.of("Samantha",true),
+                Arguments.of("Samantha_21",true),
+                Arguments.of("1Samantha",false),
+                Arguments.of("Samantha?10_2A",false),
+                Arguments.of("JuliaZ007",true),
+                Arguments.of("Julia@007",false),
+                Arguments.of("_Julia007",false)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("anagramParams")
+    public void isAnagramTest(String input1, String input2, boolean expected){
+        boolean res = strings.isAnagram(input1, input2);
+        verifyBooleanResult(expected, res);
+    }
+
+    private static Stream<Arguments> anagramParams() {
+        return Stream.of(
+                Arguments.of("anagram","margana",true),
+                Arguments.of("Hello","hello",true),
+                Arguments.of("anagram","marganaa",false)
+        );
     }
 
     @Test
     public void printTokensTest(){
         String str = "He is a very very good boy, isn't he?";
 
-        List<String> res= strs.printTokens(str);
+        List<String> res= strings.printTokens(str);
         assertEquals(10,res.size());
 
     }
 
     @Test
     public void staircaseTest(){
-        var res = strs.staircase(4);
+        var res = strings.staircase(4);
         System.out.println(res);
 
         assertEquals(' ',res.charAt(0));
@@ -408,10 +367,10 @@ public class StringsTest {
         var time = "07:05:45PM";
         var res = "19:05:45";
 
-        assertEquals(res, strs.timeConversion(time));
+        assertEquals(res, strings.timeConversion(time));
 
         time = "05:05:45PM";
         res = "17:05:45";
-        assertEquals(res, strs.timeConversion(time));
+        assertEquals(res, strings.timeConversion(time));
     }
 }
