@@ -10,28 +10,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static org.abondar.experimental.TestUtil.verifyBooleanResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringsTest {
 
     private final Strings strings = new Strings();
 
 
-    private void verifyBooleanResult(boolean expected, boolean result){
-        if (expected){
-            assertTrue(result);
-        } else {
-            assertFalse(result);
-        }
-    }
+
 
     @ParameterizedTest
     @MethodSource("uniqueParams")
     public void isUniqueTest(String input, boolean expected) {
-        boolean res = strings.isUnique(input);
-        verifyBooleanResult(expected, res);
+        boolean actual = strings.isUnique(input);
+        verifyBooleanResult(expected, actual);
     }
 
     private static Stream<Arguments> uniqueParams() {
@@ -45,8 +38,8 @@ public class StringsTest {
     @ParameterizedTest
     @MethodSource("permutationParams")
     public void checkPermutation(String input1, String input2, boolean expected) {
-        boolean res = strings.checkPermutation(input1, input2);
-        verifyBooleanResult(expected, res);
+        boolean actual = strings.checkPermutation(input1, input2);
+        verifyBooleanResult(expected, actual);
     }
 
 
@@ -62,16 +55,16 @@ public class StringsTest {
     @Test
     public void urllifyTest() {
         String url = strings.urlify("Mr John Smith    ", 13);
-        String expectedRes = "Mr%20John%20Smith";
-        assertEquals(expectedRes, url);
+        String expectedactual = "Mr%20John%20Smith";
+        assertEquals(expectedactual, url);
     }
 
 
     @ParameterizedTest
     @MethodSource("palindromePermParams")
     public void palindromePermutationTest(String input, boolean expected) {
-        boolean res = strings.palindromePermutation(input);
-        verifyBooleanResult(expected, res);
+        boolean actual = strings.palindromePermutation(input);
+        verifyBooleanResult(expected, actual);
     }
 
     private static Stream<Arguments> palindromePermParams() {
@@ -87,8 +80,8 @@ public class StringsTest {
     @ParameterizedTest
     @MethodSource("oneAwayParams")
     public void oneAwayTest(String input1, String input2, boolean expected) {
-        boolean res = strings.oneAway(input1, input2);
-        verifyBooleanResult(expected, res);
+        boolean actual = strings.oneAway(input1, input2);
+        verifyBooleanResult(expected, actual);
     }
 
     private static Stream<Arguments> oneAwayParams() {
@@ -106,7 +99,7 @@ public class StringsTest {
 
     @ParameterizedTest
     @MethodSource("comparisonParams")
-    public void stringCompressionTest(String input, String expected) {
+    public void stringCompactualsionTest(String input, String expected) {
         String actual = strings.stringCompressor(input);
         assertEquals(expected, actual);
     }
@@ -131,8 +124,8 @@ public class StringsTest {
     @ParameterizedTest
     @MethodSource("palindromeParams")
     public void isStringPalindromeTest(String input, boolean expected) {
-        boolean res = strings.isStringPalindrome(input);
-        verifyBooleanResult(expected, res);
+        boolean actual = strings.isStringPalindrome(input);
+        verifyBooleanResult(expected, actual);
     }
 
     private static Stream<Arguments> palindromeParams() {
@@ -148,8 +141,8 @@ public class StringsTest {
     @ParameterizedTest
     @MethodSource("prefParams")
     public void longestCommonPrefixTest(String[] input, String expected) {
-        String res = strings.longestCommonPrefix(input);
-        assertEquals(expected, res);
+        String actual = strings.longestCommonPrefix(input);
+        assertEquals(expected, actual);
     }
 
     private static Stream<Arguments> prefParams() {
@@ -162,8 +155,8 @@ public class StringsTest {
     @ParameterizedTest
     @MethodSource("parenthParams")
     public void validParentheses(String input, boolean expected) {
-        boolean res = strings.validParentheses(input);
-        verifyBooleanResult(expected, res);
+        boolean actual = strings.validParentheses(input);
+        verifyBooleanResult(expected, actual);
     }
 
     private static Stream<Arguments> parenthParams() {
@@ -220,11 +213,11 @@ public class StringsTest {
     @Test
     public void filterStringsTest() {
         List<String> incoming = List.of("abc", "", "a", " fdf ", "aaaa", "bb", "aaaa", "a");
-        var res = strings.filterStrings(incoming);
+        var actual = strings.filterStrings(incoming);
 
-        assertEquals(5, res.size());
-        assertEquals("A", res.get(0));
-        assertEquals("FDF", res.get(3));
+        assertEquals(5, actual.size());
+        assertEquals("A", actual.get(0));
+        assertEquals("FDF", actual.get(3));
     }
 
 
@@ -246,8 +239,8 @@ public class StringsTest {
     public void stringChainTest() {
         List<String> strList = Arrays.asList("a", "b", "ba", "bca", "bda", "bdca");
 
-        int res = strings.stringChains(strList);
-        assertEquals(4, res);
+        int actual = strings.stringChains(strList);
+        assertEquals(4, actual);
 
     }
 
@@ -268,8 +261,8 @@ public class StringsTest {
     @ParameterizedTest
     @MethodSource("pwdParams")
     public void validPasswordTest(String input, boolean expected) {
-        boolean res = strings.validPassword(input);
-        verifyBooleanResult(expected, res);
+        boolean actual = strings.validPassword(input);
+        verifyBooleanResult(expected, actual);
     }
 
     private static Stream<Arguments> pwdParams() {
@@ -288,9 +281,9 @@ public class StringsTest {
 
     @ParameterizedTest
     @MethodSource("usrParams")
-    public void validUsernameTest(String username, boolean expected){
-        boolean res = strings.validUsername(username);
-        verifyBooleanResult(expected, res);
+    public void validUsernameTest(String input, boolean expected){
+        boolean actual = strings.validUsername(input);
+        verifyBooleanResult(expected, actual);
     }
 
     private static Stream<Arguments> usrParams() {
@@ -309,8 +302,8 @@ public class StringsTest {
     @ParameterizedTest
     @MethodSource("anagramParams")
     public void isAnagramTest(String input1, String input2, boolean expected){
-        boolean res = strings.isAnagram(input1, input2);
-        verifyBooleanResult(expected, res);
+        boolean actual = strings.isAnagram(input1, input2);
+        verifyBooleanResult(expected, actual);
     }
 
     private static Stream<Arguments> anagramParams() {
@@ -325,39 +318,39 @@ public class StringsTest {
     public void printTokensTest(){
         String str = "He is a very very good boy, isn't he?";
 
-        List<String> res= strings.printTokens(str);
-        assertEquals(10,res.size());
+        List<String> actual= strings.printTokens(str);
+        assertEquals(10,actual.size());
 
     }
 
     @Test
     public void staircaseTest(){
-        var res = strings.staircase(4);
-        System.out.println(res);
+        var actual = strings.staircase(4);
+        System.out.println(actual);
 
-        assertEquals(' ',res.charAt(0));
-        assertEquals(' ',res.charAt(1));
-        assertEquals(' ',res.charAt(2));
-        assertEquals('#',res.charAt(3));
-        assertEquals('\n',res.charAt(4));
+        assertEquals(' ',actual.charAt(0));
+        assertEquals(' ',actual.charAt(1));
+        assertEquals(' ',actual.charAt(2));
+        assertEquals('#',actual.charAt(3));
+        assertEquals('\n',actual.charAt(4));
 
-        assertEquals(' ',res.charAt(5));
-        assertEquals(' ',res.charAt(6));
-        assertEquals('#',res.charAt(7));
-        assertEquals('#',res.charAt(8));
-        assertEquals('\n',res.charAt(9));
+        assertEquals(' ',actual.charAt(5));
+        assertEquals(' ',actual.charAt(6));
+        assertEquals('#',actual.charAt(7));
+        assertEquals('#',actual.charAt(8));
+        assertEquals('\n',actual.charAt(9));
 
-        assertEquals(' ',res.charAt(10));
-        assertEquals('#',res.charAt(11));
-        assertEquals('#',res.charAt(12));
-        assertEquals('#',res.charAt(13));
-        assertEquals('\n',res.charAt(14));
+        assertEquals(' ',actual.charAt(10));
+        assertEquals('#',actual.charAt(11));
+        assertEquals('#',actual.charAt(12));
+        assertEquals('#',actual.charAt(13));
+        assertEquals('\n',actual.charAt(14));
 
-        assertEquals('#',res.charAt(15));
-        assertEquals('#',res.charAt(16));
-        assertEquals('#',res.charAt(17));
-        assertEquals('#',res.charAt(18));
-        assertEquals('\n',res.charAt(19));
+        assertEquals('#',actual.charAt(15));
+        assertEquals('#',actual.charAt(16));
+        assertEquals('#',actual.charAt(17));
+        assertEquals('#',actual.charAt(18));
+        assertEquals('\n',actual.charAt(19));
 
     }
 
@@ -365,12 +358,12 @@ public class StringsTest {
     @Test
     public void timeConversionTest(){
         var time = "07:05:45PM";
-        var res = "19:05:45";
+        var actual = "19:05:45";
 
-        assertEquals(res, strings.timeConversion(time));
+        assertEquals(actual, strings.timeConversion(time));
 
         time = "05:05:45PM";
-        res = "17:05:45";
-        assertEquals(res, strings.timeConversion(time));
+        actual = "17:05:45";
+        assertEquals(actual, strings.timeConversion(time));
     }
 }

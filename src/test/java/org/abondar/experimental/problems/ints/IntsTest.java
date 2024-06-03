@@ -1,10 +1,15 @@
 package org.abondar.experimental.problems.ints;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
+import static org.abondar.experimental.TestUtil.verifyBooleanResult;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,105 +27,84 @@ public class IntsTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void isIntegerPalindromeTest() {
-        int num = 121;
-        boolean res = ints.isIntegerPalindrome(num);
-        assertTrue(res);
-
-        num = -121;
-        res = ints.isIntegerPalindrome(num);
-        assertFalse(res);
-
-        num = 10;
-        res = ints.isIntegerPalindrome(num);
-        assertFalse(res);
-
+    @ParameterizedTest
+    @MethodSource("palindromeParams")
+    public void isIntegerPalindromeTest(int input, boolean expected) {
+        boolean actual = ints.isIntegerPalindrome(input);
+        verifyBooleanResult(expected, actual);
     }
 
-    @Test
-    public void romanToIntTest() {
-        String roman = "III";
-        int res = ints.romanToInt(roman);
-        assertEquals(3, res);
-
-        roman = "IV";
-        res = ints.romanToInt(roman);
-        assertEquals(4, res);
-
-        roman = "IX";
-        res = ints.romanToInt(roman);
-        assertEquals(9, res);
-
-        roman = "LVIII";
-        res = ints.romanToInt(roman);
-        assertEquals(58, res);
-
-        roman = "MCMXCIV";
-        res = ints.romanToInt(roman);
-        assertEquals(1994, res);
-
-        roman = "MCMGCIV";
-        res = ints.romanToInt(roman);
-        assertEquals(0, res);
+    private static Stream<Arguments> palindromeParams() {
+        return Stream.of(
+                Arguments.of(121,true),
+                Arguments.of(-121,false),
+                Arguments.of(10,false)
+        );
     }
 
-    @Test
-    public void diskSegmentTest() {
-        int seg = 2;
-        List<Integer> space = Arrays.asList(3, 1, 1, 1);
-        int res = ints.diskSegment(seg, space);
-        assertEquals(3, res);
-
-        seg = 2;
-        space = Arrays.asList(8, 2, 4);
-        res = ints.diskSegment(seg, space);
-        assertEquals(8, res);
-
-        seg = 1;
-        space = Arrays.asList(5, 1, 2, 3, 1, 2);
-        res = ints.diskSegment(seg, space);
-        assertEquals(5, res);
-
-        seg = 1;
-        space = Arrays.asList(1, 1000000000);
-        res = ints.diskSegment(seg, space);
-        assertEquals(1000000000, res);
-
-        seg = 3;
-        space = Arrays.asList(5, 2, 5, 4, 6, 8);
-        res = ints.diskSegment(seg, space);
-        assertEquals(4, res);
-
+    @ParameterizedTest
+    @MethodSource("romanToIntParams")
+    public void romanToIntTest(String input, int expected) {
+        int actual = ints.romanToInt(input);
+        assertEquals(expected, actual);
     }
 
-    @Test
-    public void multPersistenceTest() {
-        int num = 7;
-        int res = ints.multPersistence(num);
-        assertEquals(1, res);
-
-        num = 2761;
-        res = ints.multPersistence(num);
-        assertEquals(3, res);
-
-        num = 99999999;
-        res = ints.multPersistence(num);
-        assertEquals(2, res);
+    private static Stream<Arguments> romanToIntParams() {
+        return Stream.of(
+                Arguments.of("III",3),
+                Arguments.of("IV",4),
+                Arguments.of("IX",9),
+                Arguments.of("LVIII",58),
+                Arguments.of("MCMXCIV",1994),
+                Arguments.of("MCMGCIV",0)
+        );
     }
 
-    @Test
-    public void sumOfDivisorsTest(){
-        int res = ints.sumOfDivisors(1);
-        assertEquals(1,res);
+    @ParameterizedTest
+    @MethodSource("segmentParams")
+    public void diskSegmentTest(int input,List<Integer> input1, int expected) {
+        int res = ints.diskSegment(input,input1);
+        assertEquals(expected, res);
+    }
 
-        res = ints.sumOfDivisors(6);
-        assertEquals(12,res);
+    private static Stream<Arguments> segmentParams() {
+        return Stream.of(
+                Arguments.of(2,List.of(3, 1, 1, 1),3),
+                Arguments.of(2,List.of(8, 2, 4),8),
+                Arguments.of(1,List.of(5, 1, 2, 3, 1, 2),5),
+                Arguments.of(1,List.of(1, 1000000000),1000000000),
+                Arguments.of(3,List.of(5, 2, 5, 4, 6, 8),4)
+        );
+    }
 
-        res = ints.sumOfDivisors(12);
-        assertEquals(28,res);
+    @ParameterizedTest
+    @MethodSource("multParams")
+    public void multPersistenceTest(int input,int expected) {
+        int actual = ints.multPersistence(input);
+        assertEquals(expected, actual);
+    }
 
-        res = ints.sumOfDivisors(20);
-        assertEquals(42,res);
+    private static Stream<Arguments> multParams() {
+        return Stream.of(
+                Arguments.of(7,1),
+                Arguments.of(2761,3),
+                Arguments.of(99999999,2)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("sumParams")
+    public void sumOfDivisorsTest(int input,int expected){
+        int actual = ints.sumOfDivisors(input);
+        assertEquals(expected,actual);
+    }
+
+    private static Stream<Arguments> sumParams() {
+        return Stream.of(
+                Arguments.of(1,1),
+                Arguments.of(6,12),
+                Arguments.of(12,28),
+                Arguments.of(20,42)
+        );
     }
 }
