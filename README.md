@@ -39,6 +39,8 @@ convert to upperCase,sort by len(ASC) and return distinct)
 - printTokens - print tokens from string (token is a sequence of chars not containing spaces and following chars: !,._'@)
 - validUsername - given a string verify if it is a valid username. Valid username must have length between 7 and 30,
   should contain alpanumeric characters and underscores(_). First character must be alphabetical character
+- staircase - print staircase of # symbols, if no # then print space.
+- timeFormatter - convert time of format 07:05:45pm to 19:05:45
 
 ## Ints
 
@@ -52,6 +54,8 @@ convert to upperCase,sort by len(ASC) and return distinct)
 
 ## Arrays
 - sum - sum elements of array via recursion
+- sumList - sum elements iteratively
+- veryBigSum - sum of list of longs,where first elem is integer to be ignored
 - twoSum - Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 - len - count number of elements of array via recursion
 - rotateMatrix - Rotate matrix by 90 degrees clockwise
@@ -71,7 +75,15 @@ If element [i][j] of matrix is zero - entire row and column must be zero
                 [(1,4),(2,6)] - > 5
                 [(4,6)(1,2)(1,2)] -> 3
                 [(1,4)(6,8)(2,4)(7,9)(10,15)] -> 11
-                
+- compareTriplets - given two lists of scores return a list of comparision. Scoring: if a[i]>b[i] then a get +1, if equal no point awarded
+- diagonalDifference - calculate difference of sums of diagonals in matrix 
+- plusMinus - print ration of positive,negative and zero integers in the list
+- getFibonacci - get list of fibonacci numbers up to a limit       
+- minimaxSum - find min and max sums of elements of list excluding one of the elements
+- birthdayCandles - You are in charge of the cake for a child's birthday. 
+You have decided the cake will have one candle for each year of their total age. They will only be able to blow out the tallest of the candles. Count how many candles are tallest.
+
+
 ##  List
 - addToEnd - append a new node to the end of list
 - addToMiddle - append a new node to the middle of list

@@ -370,4 +370,48 @@ public class StringsTest {
         assertEquals(10,res.size());
 
     }
+
+    @Test
+    public void staircaseTest(){
+        var res = strs.staircase(4);
+        System.out.println(res);
+
+        assertEquals(' ',res.charAt(0));
+        assertEquals(' ',res.charAt(1));
+        assertEquals(' ',res.charAt(2));
+        assertEquals('#',res.charAt(3));
+        assertEquals('\n',res.charAt(4));
+
+        assertEquals(' ',res.charAt(5));
+        assertEquals(' ',res.charAt(6));
+        assertEquals('#',res.charAt(7));
+        assertEquals('#',res.charAt(8));
+        assertEquals('\n',res.charAt(9));
+
+        assertEquals(' ',res.charAt(10));
+        assertEquals('#',res.charAt(11));
+        assertEquals('#',res.charAt(12));
+        assertEquals('#',res.charAt(13));
+        assertEquals('\n',res.charAt(14));
+
+        assertEquals('#',res.charAt(15));
+        assertEquals('#',res.charAt(16));
+        assertEquals('#',res.charAt(17));
+        assertEquals('#',res.charAt(18));
+        assertEquals('\n',res.charAt(19));
+
+    }
+
+
+    @Test
+    public void timeConversionTest(){
+        var time = "07:05:45PM";
+        var res = "19:05:45";
+
+        assertEquals(res, strs.timeConversion(time));
+
+        time = "05:05:45PM";
+        res = "17:05:45";
+        assertEquals(res, strs.timeConversion(time));
+    }
 }

@@ -1,6 +1,10 @@
 package org.abondar.experimental.problems.strings;
 
 
+
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
@@ -536,5 +540,55 @@ public class Strings {
     static class MultCLass {
         private int mult;
         private int count;
+    }
+
+
+    public String staircase(int n){
+        var res = new StringBuilder();
+
+        Stack<String> staircase = new Stack<>();
+        var lineLen = n;
+
+        while (n>0){
+            staircase.push(getLine(lineLen,n));
+            n--;
+        }
+
+        while (!staircase.isEmpty()){
+            res.append(staircase.pop());
+        }
+
+        return res.toString();
+    }
+
+    private String getLine(int lineLen, int numSymbols){
+        Character symbol = '#';
+        Character space = ' ';
+
+        var line = new StringBuilder(lineLen);
+
+        line.append(String.valueOf(space).repeat(Math.max(0, lineLen - numSymbols)));
+
+        line.append(String.valueOf(symbol).repeat(Math.max(0, numSymbols)));
+
+        line.append("\n");
+        return line
+                .toString();
+    }
+
+    public String timeConversion(String time){
+        var twelveHoursPattern = "hh:mm:ssa";
+        var twentyFourHoursPattern = "HH:mm:ss";
+
+
+        var formatter = new  DateTimeFormatterBuilder().parseCaseInsensitive()
+                .appendPattern(twelveHoursPattern)
+                .toFormatter(Locale.ENGLISH);
+
+        LocalTime localTime = LocalTime.parse(time,formatter);
+
+        formatter = DateTimeFormatter.ofPattern(twentyFourHoursPattern);
+
+        return localTime.format(formatter);
     }
 }

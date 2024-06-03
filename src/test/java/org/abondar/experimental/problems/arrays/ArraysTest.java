@@ -1,7 +1,5 @@
 package org.abondar.experimental.problems.arrays;
 
-import org.abondar.experimental.problems.arrays.Arrays;
-import org.abondar.experimental.problems.arrays.TimeSlot;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,7 +8,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ArrayTest {
+//TODO refactor all tests to be parametrized
+
+public class ArraysTest {
 
     private final Arrays arrayTasks = new Arrays();
 
@@ -22,6 +22,14 @@ public class ArrayTest {
         int expected = 30;
 
        assertEquals(expected, res);
+    }
+
+    @Test
+    public void sumListTest(){
+        var arr = List.of(1,2,3,4,10,11);
+        var res = arrayTasks.sumList(arr);
+        assertEquals(31,res);
+
     }
 
     @Test
@@ -400,5 +408,107 @@ public class ArrayTest {
         data.add(new TimeSlot(10,15));
         res = arrayTasks.tvTime(data);
         assertEquals(12,res);
+    }
+
+    @Test
+    public void compareTripletsTest(){
+        var a = List.of(1,2,3);
+        var b = List.of(3,2,1);
+        var res = List.of(1,1);
+
+        var out = arrayTasks.compareTriplets(a,b);
+        assertEquals(res,out);
+
+
+        a = List.of(5,6,7);
+        b = List.of(3,6,10);
+
+        out = arrayTasks.compareTriplets(a,b);
+        assertEquals(res,out);
+
+        a = List.of(17,28,30);
+        b = List.of(99,16,8);
+        res = List.of(2,1);
+
+        out = arrayTasks.compareTriplets(a,b);
+        assertEquals(res,out);
+
+    }
+
+    @Test
+    public void veryBigSumTest(){
+        var data = List.of(5L,
+                1000000001L, 1000000002L, 1000000003L, 1000000004L, 1000000005L);
+
+        var res = 5000000015L;
+        System.out.println(res);
+        System.out.println(arrayTasks.veryBigSum(data));
+
+        assertEquals(res,arrayTasks.veryBigSum(data));
+    }
+
+    @Test
+    public void diagonalDifferenceTest(){
+        var row1 = List.of(1,2,3);
+        var row2 = List.of(4,5,6);
+        var row3 = List.of(9,8,9);
+        var res = arrayTasks.diagonalDifference(List.of(row1,row2,row3));
+        assertEquals(2,res);
+
+
+        row1 = List.of(11,2,4);
+        row2 = List.of(4,5,6);
+        row3 = List.of(10,8,-12);
+        res = arrayTasks.diagonalDifference(List.of(row1,row2,row3));
+        assertEquals(15,res);
+    }
+
+
+    @Test
+    public void plusMinusTest(){
+        var data = List.of(-4,3,-9,0,4,1);
+
+        var res = arrayTasks.plusMinus(data);
+        assertEquals(0.5f,res.get(0));
+        assertEquals(0.33333334f,res.get(1));
+        assertEquals(0.16666667f,res.get(2));
+    }
+
+    @Test
+    public void getFibonacciTest(){
+        var res = arrayTasks.getFibonacci(4);
+        assertEquals(3,res.get(0));
+        assertEquals(2,res.get(1));
+        assertEquals(1,res.get(2));
+        assertEquals(1,res.get(3));
+        assertEquals(0,res.get(4));
+    }
+
+    @Test
+    public void minimaxSumTest(){
+        var data = List.of(1,2,3,4,5);
+        var res = arrayTasks.minimaxSum(data);
+
+        assertEquals(10,res.get(0));
+        assertEquals(14,res.get(1));
+
+        data = List.of(256741038,623958417,467905213,714532089,938071625);
+        res = arrayTasks.minimaxSum(data);
+
+        assertEquals(2063136757L,res.get(0));
+        assertEquals(2744467344L,res.get(1));
+    }
+
+    @Test
+    public void birthdayCandlesTest(){
+        var data = List.of(4,4,1,3);
+        var res = arrayTasks.birthdayCandles(data);
+
+        assertEquals(2,res);
+
+        data = List.of(3,2,1,3);
+        res = arrayTasks.birthdayCandles(data);
+
+        assertEquals(2,res);
     }
 }

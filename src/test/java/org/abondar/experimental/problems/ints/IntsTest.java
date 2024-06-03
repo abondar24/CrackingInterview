@@ -1,6 +1,5 @@
 package org.abondar.experimental.problems.ints;
 
-import org.abondar.experimental.problems.ints.Ints;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -10,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class IntsTests {
+public class IntsTest {
 
     private final Ints ints = new Ints();
 
