@@ -325,7 +325,7 @@ public class Arrays {
 
 
     public int tvTime(List<TimeSlot> slots) {
-        if (slots.size() == 0) {
+        if (slots.isEmpty()) {
             return 0;
         }
         Collections.sort(slots);
