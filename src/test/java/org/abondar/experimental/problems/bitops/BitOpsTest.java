@@ -1,17 +1,59 @@
 package org.abondar.experimental.problems.bitops;
 
-import org.abondar.experimental.problems.bitops.BitOps;
+import org.abondar.experimental.TestUtil;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BitOpsTest {
 
     private final BitOps bitOps = new BitOps();
+
+
+    static Stream<Arguments> binToStrParams() {
+        return Stream.of(
+                Arguments.of(0.72d, "10"),
+                Arguments.of(0.54d, "10")
+
+        );
+    }
+
+    static Stream<Arguments> powerParams() {
+        return Stream.of(
+                Arguments.of(1, true),
+                Arguments.of(16, true),
+                Arguments.of(218, false),
+                Arguments.of(4096, true)
+        );
+    }
+
+    static Stream<Arguments> hamingParams() {
+        return Stream.of(
+                Arguments.of(11, 3),
+                Arguments.of(128, 1),
+                Arguments.of(-3, 31)
+        );
+    }
+
+    static Stream<Arguments> addParams() {
+        return Stream.of(
+                Arguments.of("11", "1", "100"),
+                Arguments.of("1010", "1011", "10101")
+        );
+    }
+
+    static Stream<Arguments> sumParams() {
+        return Stream.of(
+                Arguments.of(1, 2, 3),
+                Arguments.of(-2, 3, 1)
+        );
+    }
 
     @Test
     public void insertTest() {
@@ -26,22 +68,11 @@ public class BitOpsTest {
 
     }
 
-    @Test
-    public void binToStrTest() {
-
-        double n = 0.72d;
-
-        String nBin = "10";
-
+    @ParameterizedTest
+    @MethodSource("binToStrParams")
+    public void binToStrTest(double n, String nBin) {
         String res = bitOps.binToStr(n);
-        assertEquals(nBin, res);
 
-
-        n = 0.54d;
-
-        nBin = "10";
-
-        res = bitOps.binToStr(n);
         assertEquals(nBin, res);
     }
 
@@ -105,53 +136,36 @@ public class BitOpsTest {
         System.out.println();
     }
 
-    @Test
-    public void isPowerOfTwoTest() {
-        boolean res = bitOps.isPowerOfTwo(1);
-        assertTrue(res);
+    @ParameterizedTest
+    @MethodSource("powerParams")
+    public void isPowerOfTwoTest(int n, boolean expected) {
+        boolean res = bitOps.isPowerOfTwo(n);
 
-        res = bitOps.isPowerOfTwo(16);
-        assertTrue(res);
-
-        res = bitOps.isPowerOfTwo(218);
-        assertFalse(res);
-
-        res = bitOps.isPowerOfTwo(4096);
-        assertTrue(res);
+        TestUtil.verifyBooleanResult(expected, res);
     }
 
-    @Test
-    public void hammingWeightTest() {
-        int res = bitOps.hammingWeight(11);
-        assertEquals(3, res);
+    @ParameterizedTest
+    @MethodSource("hamingParams")
+    public void hammingWeightTest(int n, int expected) {
+        int res = bitOps.hammingWeight(n);
 
-        res = bitOps.hammingWeight(128);
-        assertEquals(1, res);
-
-        res = bitOps.hammingWeight(-3);
-        assertEquals(31, res);
+        assertEquals(expected, res);
     }
 
 
-    @Test
-    public void addBinaryTest() {
-        String a = "11";
-        String b = "1";
+    @ParameterizedTest
+    @MethodSource("addParams")
+    public void addBinaryTest(String a, String b, String expected) {
         String res = bitOps.addBinary(a, b);
-        assertEquals("100", res);
 
-        a = "1010";
-        b = "1011";
-        res = bitOps.addBinary(a, b);
-        assertEquals("10101", res);
+        assertEquals(expected, res);
     }
 
-    @Test
-    public void getSumTest() {
-        int res = bitOps.getSum(1, 2);
-        assertEquals(3, res);
+    @ParameterizedTest
+    @MethodSource("sumParams")
+    public void getSumTest(int a, int b, int expected) {
+        int res = bitOps.getSum(a, b);
 
-        res = bitOps.getSum(-2, 3);
-        assertEquals(1, res);
+        assertEquals(expected, res);
     }
 }
