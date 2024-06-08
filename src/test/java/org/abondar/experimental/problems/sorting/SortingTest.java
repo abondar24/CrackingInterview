@@ -4,14 +4,28 @@ import org.abondar.experimental.structs.list.Listy;
 import org.abondar.experimental.problems.sorting.MatrixElement;
 import org.abondar.experimental.problems.sorting.SortingTasks;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SortingTest {
     private final SortingTasks st = new SortingTasks();
+
+
+    static Stream<Arguments> rankParams() {
+        return Stream.of(
+                Arguments.of(1, 0),
+                Arguments.of(3, 1),
+                Arguments.of(4, 3)
+                );
+    }
 
     @Test
     public void sortedMergeTest() {
@@ -102,36 +116,27 @@ public class SortingTest {
 
     }
 
-    @Test
-    public void getRankOfNumTest() {
+    @ParameterizedTest
+    @MethodSource("rankParams")
+    public void getRankOfNumTest(int num, int rank) {
         int[] arr = {5, 1, 4, 4, 5, 9, 7, 13, 3};
 
         for (int i : arr) {
             st.trackNum(i);
         }
 
-        int res = st.getRankOfNum(1);
-        assertEquals(0, res);
+        int res = st.getRankOfNum(num);
 
-        res = st.getRankOfNum(3);
-        assertEquals(1, res);
-
-        res = st.getRankOfNum(4);
-        assertEquals(3, res);
-
+        assertEquals(rank, res);
     }
 
     @Test
     public void peaksValleysSort() {
         int[] arr = {5, 3, 1, 2, 3};
+        int[] expected = {5, 1, 3, 2, 3};
 
         st.valleyPeakSort(arr);
 
-        assertEquals(5, arr[0]);
-        assertEquals(1, arr[1]);
-        assertEquals(3, arr[2]);
-        assertEquals(2, arr[3]);
-        assertEquals(3, arr[4]);
-
+        assertArrayEquals(expected, arr);
     }
 }
