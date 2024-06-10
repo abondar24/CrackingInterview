@@ -27,14 +27,12 @@ public class SortingAlgTest {
     @Test
     public void insertSortTest() {
         int[] actualRes = su.insertionSort(data);
-
         assertArrayEquals(expected, actualRes);
     }
 
     @Test
     public void heapSortTest() {
         int[] actualRes = su.heapSort(data);
-
         assertArrayEquals(expected, actualRes);
     }
 
@@ -42,28 +40,24 @@ public class SortingAlgTest {
     @Test
     public void quickSortTest() {
         int[] actualRes = su.quickSort(data);
-
         assertArrayEquals(expected, actualRes);
     }
 
     @Test
     public void mergeSortTest() {
         int[] actualRes = su.mergeSort(data);
-
         assertArrayEquals(expected, actualRes);
     }
 
     @Test
     public void selectionSortTest() {
         int[] actualRes = su.selectionSort(data);
-
         assertArrayEquals(expected, actualRes);
     }
 
     @Test
     public void countingSortTest() {
         int[] actualRes = su.countingSort(data);
-
         assertArrayEquals(expected, actualRes);
     }
 
@@ -72,7 +66,6 @@ public class SortingAlgTest {
     @MethodSource("sortParams")
     public void radixSortTest(int[] data, int[] expected) {
         int[] actualRes = su.radixSort(data);
-
         assertArrayEquals(expected, actualRes);
     }
 
@@ -80,7 +73,6 @@ public class SortingAlgTest {
     @MethodSource("sortParams")
     public void bucketSortTest(int[] data, int[] expected) {
         int[] actualRes = su.bucketSort(data);
-
         assertArrayEquals(expected, actualRes);
     }
 
@@ -89,14 +81,12 @@ public class SortingAlgTest {
         double[] data = {0.42, 0.32, 0.33, 0.52, 0.37, 0.47, 0.51};
         double[] expected = {0.32, 0.33, 0.37, 0.42, 0.47, 0.51, 0.52};
         double[] actualRes = su.bucketSort(data);
-
         assertArrayEquals(expected, actualRes);
     }
 
     @Test
     public void bubbleSortTest() {
         int[] actualRes = su.bubbleSort(data);
-
         assertArrayEquals(expected, actualRes);
     }
 }

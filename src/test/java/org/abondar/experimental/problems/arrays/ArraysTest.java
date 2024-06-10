@@ -267,7 +267,6 @@ public class ArraysTest {
         int[] arr = {2, 7, 10, 11};
         int res = arrayTasks.sum(arr);
         int expected = 30;
-
         assertEquals(expected, res);
     }
 
@@ -276,7 +275,6 @@ public class ArraysTest {
         var arr = List.of(1, 2, 3, 4, 10, 11);
         var res = arrayTasks.sumList(arr);
         assertEquals(31, res);
-
     }
 
     @Test
@@ -284,7 +282,6 @@ public class ArraysTest {
         int[] arr = {2, 7, 11, 15};
         int target = 9;
         int[] expected = {0, 1};
-
         int[] actual = arrayTasks.twoSum(arr, target);
         assertArrayEquals(expected, actual);
     }
@@ -293,7 +290,6 @@ public class ArraysTest {
     public void lenTest() {
         int[] arr = {2, 7, 10, 11};
         int res = arrayTasks.len(arr);
-
         assertEquals(arr.length, res);
     }
 

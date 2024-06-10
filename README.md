@@ -41,6 +41,7 @@ convert to upperCase,sort by len(ASC) and return distinct)
   should contain alpanumeric characters and underscores(_). First character must be alphabetical character
 - staircase - print staircase of # symbols, if no # then print space.
 - timeFormatter - convert time of format 07:05:45pm to 19:05:45
+- countCamelCase - count number words in the line written in camel case
 
 ## Ints
 

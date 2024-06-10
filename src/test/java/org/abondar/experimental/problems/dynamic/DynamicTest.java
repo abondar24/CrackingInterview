@@ -1,56 +1,81 @@
 package org.abondar.experimental.problems.dynamic;
 
-import org.abondar.experimental.problems.dynamic.Box;
-import org.abondar.experimental.problems.dynamic.Color;
-import org.abondar.experimental.problems.dynamic.Dynamic;
-import org.abondar.experimental.problems.dynamic.Tower;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DynamicTest {
 
     private final Dynamic dyn = new Dynamic();
 
-    @Test
-    public void countWaysTest() {
-
-        int res = dyn.countWays(-1);
-        assertEquals(0, res);
-
-        res = dyn.countWays(0);
-        assertEquals(1, res);
-
-        res = dyn.countWays(6);
-        assertEquals(24, res);
-
+    private static Stream<Arguments> countParams() {
+        return Stream.of(
+                Arguments.of(-1, 0),
+                Arguments.of(0, 1),
+                Arguments.of(6, 24)
+        );
     }
 
-    @Test
-    public void countWaysMemoTest() {
+    private static Stream<Arguments> parParams() {
+        return Stream.of(
+                Arguments.of(2, List.of("(())", "()()")),
+                Arguments.of(3, List.of("(()())", "((()))", "()(())", "(())()", "()()()"))
+        );
+    }
 
-        int res = dyn.countWaysMemo(-1);
-        assertEquals(0, res);
+    private static Stream<Arguments> evalParams() {
+        return Stream.of(
+                Arguments.of("1^0|0|1", false, 2),
+                Arguments.of("0&0&0&1^1|0", true, 10)
+        );
+    }
 
-        res = dyn.countWaysMemo(0);
-        assertEquals(1, res);
 
-        res = dyn.countWaysMemo(6);
-        assertEquals(24, res);
+    private static Stream<Arguments> sayParams() {
+        return Stream.of(
+                Arguments.of(-1, ""),
+                Arguments.of(31, ""),
+                Arguments.of(1, "1"),
+                Arguments.of(2, "11"),
+                Arguments.of(3, "21"),
+                Arguments.of(4, "1211"),
+                Arguments.of(5, "111221")
+                );
+    }
 
+    private static Stream<Arguments> matrixChainParams() {
+        return Stream.of(
+                Arguments.of(new int[] {40, 20, 30, 10, 30}, 26000),
+                Arguments.of(new int[]{10, 20, 30, 40, 30}, 30000),
+                Arguments.of(new int[]{10, 20, 30}, 6000)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("countParams")
+    public void countWaysTest(int count, int expected) {
+        int res = dyn.countWays(count);
+        assertEquals(expected, res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("countParams")
+    public void countWaysMemoTest(int count, int expected) {
+        int res = dyn.countWaysMemo(count);
+        assertEquals(expected, res);
     }
 
     @Test
     public void magicIndexTest() {
         int[] a = {-10, -5, 2, 2, 2, 3, 4, 7, 9, 12, 13};
-
         int res = dyn.magicIndex(a);
 
         assertEquals(2, res);
@@ -66,7 +91,6 @@ public class DynamicTest {
         assertTrue(res.get(0).isEmpty());
         assertEquals(Arrays.asList(1, 3), res.get(5));
         assertEquals(set, res.get(7));
-
     }
 
     @Test
@@ -80,8 +104,6 @@ public class DynamicTest {
         Tower[] res = dyn.hanoiTowers(7);
         assertEquals(0L, res[0].getDisks().size());
         assertEquals(0L, res[1].getDisks().size());
-
-
     }
 
     @Test
@@ -96,11 +118,8 @@ public class DynamicTest {
         boolean res = dyn.paintFill(screen, 1, 2, Color.Black);
 
         assertTrue(res);
-        // assertEquals(Color.Black,screen[0][2]);
         assertEquals(Color.Black, screen[1][3]);
         assertEquals(Color.Black, screen[1][1]);
-        // assertEquals(Color.Black,screen[2][2]);
-
     }
 
 
@@ -120,7 +139,7 @@ public class DynamicTest {
 
     @Test
     public void maxPermmutaionsNoDupsTestNonUnique() throws RuntimeException {
-        assertThrows(RuntimeException.class,()-> dyn.maxPermutationsNoDups("aabc"));
+        assertThrows(RuntimeException.class, () -> dyn.maxPermutationsNoDups("aabc"));
     }
 
     @Test
@@ -143,31 +162,19 @@ public class DynamicTest {
         assertEquals(12L, res.size());
     }
 
-    @Test
-    public void parenthnessTest() {
-        List<String> res = dyn.parentheses(2);
+    @ParameterizedTest
+    @MethodSource("parParams")
+    public void parenthnessTest(int pairs, List<String> expectedRes) {
+        List<String> res = dyn.parentheses(pairs);
 
-        assertEquals(2L, res.size());
-        assertTrue(res.contains("(())"));
-        assertTrue(res.contains("()()"));
-
-        res = dyn.parentheses(3);
-
-        assertEquals(5L, res.size());
-        assertTrue(res.contains("(()())"));
-        assertTrue(res.contains("((()))"));
-        assertTrue(res.contains("()(())"));
-        assertTrue(res.contains("(())()"));
-        assertTrue(res.contains("()()()"));
+        assertEquals(expectedRes.size(), res.size());
+        expectedRes.forEach(er -> assertTrue(res.contains(er)));
     }
 
     @Test
     public void coinsTest() {
         int ways = dyn.coins(25);
         assertEquals(144L, ways);
-
-        ways = dyn.coins(100);
-
     }
 
 
@@ -199,71 +206,44 @@ public class DynamicTest {
         assertEquals(17L, res);
     }
 
-    @Test
-    public void exprEval() {
-        int res = dyn.countEval("1^0|0|1", false);
-        assertEquals(2L, res);
+    @ParameterizedTest
+    @MethodSource("evalParams")
+    public void exprEval(String expr, boolean res, int expected) {
+        int actual = dyn.countEval(expr, res);
+        assertEquals(expected, actual);
+    }
 
-        res = dyn.countEval("0&0&0&1^1|0", true);
-        assertEquals(10L, res);
+    @ParameterizedTest
+    @MethodSource("sayParams")
+    public void countAndSayTest(int count, String expected) {
+        String res = dyn.countAndSay(count);
+        assertEquals(expected, res);
     }
 
     @Test
-    public void countAndSayTest() {
-        String res = dyn.countAndSay(-1);
-        assertEquals("", res);
+    public void cutRodTest() {
+        int[] data = {1, 5, 8, 9, 10, 17, 17, 20};
 
-        res = dyn.countAndSay(31);
-        assertEquals("", res);
+        int res = dyn.cutRodMem(data, data.length);
+        assertEquals(22L, res);
 
-        res = dyn.countAndSay(1);
-        assertEquals("1", res);
-
-        res = dyn.countAndSay(2);
-        assertEquals("11", res);
-
-        res = dyn.countAndSay(3);
-        assertEquals("21", res);
-
-        res = dyn.countAndSay(4);
-        assertEquals("1211", res);
-
-        res = dyn.countAndSay(5);
-        assertEquals("111221", res);
+        res = dyn.cutRodBottomUp(data, data.length);
+        assertEquals(22L, res);
     }
 
-    @Test
-    public void cutRodTest(){
-        int[] data = {1,5,8,9,10,17,17,20};
-
-        int res = dyn.cutRodMem(data,data.length);
-        assertEquals(22L,res);
-
-        res = dyn.cutRodBottomUp(data,data.length);
-        assertEquals(22L,res);
-    }
-
-    @Test
-    public void matrixChainMultOrderTest(){
-        int [] chain = {40, 20, 30, 10, 30};
+    @ParameterizedTest
+    @MethodSource("matrixChainParams")
+    public void matrixChainMultOrderTest(int[] chain, int expected) {
         int res = dyn.matrixChainMultOrder(chain);
-        assertEquals(26000,res);
-
-        chain = new int[]{10, 20, 30, 40, 30};
-        res = dyn.matrixChainMultOrder(chain);
-        assertEquals(30000,res);
-
-        chain = new int[]{10, 20, 30};
-        res = dyn.matrixChainMultOrder(chain);
-        assertEquals(6000,res);
+        assertEquals(expected, res);
     }
 
     @Test
-    public void longestCommonSubsequenceLenTest(){
+    public void longestCommonSubsequenceLenTest() {
         String s1 = "AGGTAB";
         String s2 = "GXTXAYB";
-        int res = dyn.longestCommonSubsequenceLen(s1,s2);
+        int res = dyn.longestCommonSubsequenceLen(s1, s2);
 
-        assertEquals(4,res);
+        assertEquals(4, res);
     }
 }

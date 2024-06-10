@@ -25,7 +25,6 @@ public class SearchTest {
     @Test
     public void seqSearchTest() {
         int[] data = new int[]{5, 7, 12, 34, 5, 2, 1};
-
         assertTrue(su.sequentialSearch(data, 5));
         assertFalse(su.sequentialSearch(data, 41));
     }
@@ -47,7 +46,6 @@ public class SearchTest {
     @Test
     public void hashSearchTest() {
         int[] data = new int[]{5, 7, 12, 34, 5, 2, 1};
-
         assertTrue(su.hashSearch(data, 5));
         assertFalse(su.hashSearch(data, 41));
     }

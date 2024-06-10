@@ -1,6 +1,7 @@
 package org.abondar.experimental.problems.strings;
 
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -155,6 +156,23 @@ public class StringsTest {
         );
     }
 
+    private static Stream<Arguments> timeParams() {
+        return Stream.of(
+                Arguments.of("07:05:45PM", "19:05:45"),
+                Arguments.of("05:05:45PM", "17:05:45")
+        );
+    }
+
+    private static Stream<Arguments> camelParams() {
+        return Stream.of(
+                Arguments.of("oneTwoThree", 3),
+                Arguments.of("oneTwoThreeFour", 4),
+                Arguments.of("OneTwo",0),
+                Arguments.of("1 Two+three,",0),
+                Arguments.of("saveChangesInTheEditor", 5)
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("uniqueParams")
     public void isUniqueTest(String input, boolean expected) {
@@ -202,7 +220,6 @@ public class StringsTest {
         String str = "abcde";
         String expected = "edcba";
         String actual = strings.reverseString(str);
-
         assertEquals(expected, actual);
     }
 
@@ -271,7 +288,6 @@ public class StringsTest {
 
         int actual = strings.stringChains(strList);
         assertEquals(4, actual);
-
     }
 
     @ParameterizedTest
@@ -308,7 +324,6 @@ public class StringsTest {
 
         List<String> actual = strings.printTokens(str);
         assertEquals(10, actual.size());
-
     }
 
     @Test
@@ -339,19 +354,21 @@ public class StringsTest {
         assertEquals('#', actual.charAt(17));
         assertEquals('#', actual.charAt(18));
         assertEquals('\n', actual.charAt(19));
-
     }
 
 
-    @Test
-    public void timeConversionTest() {
-        var time = "07:05:45PM";
-        var actual = "19:05:45";
-
-        assertEquals(actual, strings.timeConversion(time));
-
-        time = "05:05:45PM";
-        actual = "17:05:45";
-        assertEquals(actual, strings.timeConversion(time));
+    @ParameterizedTest
+    @MethodSource("timeParams")
+    public void timeConversionTest(String time, String expected) {
+        assertEquals(expected, strings.timeConversion(time));
     }
+
+    @ParameterizedTest
+    @MethodSource("camelParams")
+    public void camelCaseTest(String line, int count){
+       var res = strings.countWordsCamelCase(line);
+       assertEquals(count, res);
+    }
+
+
 }

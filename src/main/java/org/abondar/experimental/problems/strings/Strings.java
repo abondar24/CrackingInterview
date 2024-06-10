@@ -591,4 +591,25 @@ public class Strings {
 
         return localTime.format(formatter);
     }
+
+    public int countWordsCamelCase(String line){
+        var chars = List.of('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O',
+                'P','Q','R','S','T','U','V','W','X','Y','Z');
+
+        var startPattern = Pattern.compile("[a-z]");
+
+        if (line.matches("[aA-zZ]") || !startPattern.matcher(String.valueOf(line.charAt(0))).matches()){
+            return 0;
+        }
+
+        var res = 1;
+
+        for (char c: line.toCharArray()){
+            if (chars.contains(c)){
+                res ++;
+            }
+        }
+
+        return res;
+    }
 }

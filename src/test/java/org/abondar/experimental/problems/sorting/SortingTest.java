@@ -53,7 +53,6 @@ public class SortingTest {
 
         assertEquals(1, Math.abs(rs.indexOf("race") - rs.indexOf("care")));
         assertEquals(1, Math.abs(rs.indexOf("baba") - rs.indexOf("abba")));
-
     }
 
     @Test

@@ -148,7 +148,6 @@ public class BitOpsTest {
     @MethodSource("hamingParams")
     public void hammingWeightTest(int n, int expected) {
         int res = bitOps.hammingWeight(n);
-
         assertEquals(expected, res);
     }
 
@@ -157,7 +156,6 @@ public class BitOpsTest {
     @MethodSource("addParams")
     public void addBinaryTest(String a, String b, String expected) {
         String res = bitOps.addBinary(a, b);
-
         assertEquals(expected, res);
     }
 
@@ -165,7 +163,6 @@ public class BitOpsTest {
     @MethodSource("sumParams")
     public void getSumTest(int a, int b, int expected) {
         int res = bitOps.getSum(a, b);
-
         assertEquals(expected, res);
     }
 }
