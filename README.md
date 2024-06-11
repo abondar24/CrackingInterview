@@ -42,6 +42,11 @@ convert to upperCase,sort by len(ASC) and return distinct)
 - staircase - print staircase of # symbols, if no # then print space.
 - timeFormatter - convert time of format 07:05:45pm to 19:05:45
 - countCamelCase - count number words in the line written in camel case
+- minNumber - count number of chars to be added to make a password strong. Strong password has len of 6, one small,one capital letter and one special char.
+- caesarCypher - Caesar's cipher shifts each letter by a number of letters. If the shift takes you past the end of the alphabet, just rotate back to the front of the alphabet. In the case of a rotation by 3, w, x, y and z would map to z, a, b and c.
+- marsExploration - Letters in some of the SOS messages are altered by cosmic radiation during transmission. Given the signal received by Earth as a string determine how many letters of the SOS message have been changed by radiation.
+- isHackerrank - check if incoming string contains string 'hackerrank' in exactly the same char sequence
+- isPangram - check if the incoming string has all letters of english alphabet
 
 ## Ints
 

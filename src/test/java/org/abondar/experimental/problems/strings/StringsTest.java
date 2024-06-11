@@ -1,7 +1,7 @@
 package org.abondar.experimental.problems.strings;
 
 
-import org.junit.jupiter.api.Disabled;
+import org.abondar.experimental.TestUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -167,9 +167,65 @@ public class StringsTest {
         return Stream.of(
                 Arguments.of("oneTwoThree", 3),
                 Arguments.of("oneTwoThreeFour", 4),
-                Arguments.of("OneTwo",0),
-                Arguments.of("1 Two+three,",0),
+                Arguments.of("OneTwo", 0),
+                Arguments.of("1 Two+three,", 0),
                 Arguments.of("saveChangesInTheEditor", 5)
+        );
+    }
+
+    private static Stream<Arguments> pwdLenParams() {
+        return Stream.of(
+                Arguments.of("2bbbb", 2),
+                Arguments.of("2bb#A", 1),
+                Arguments.of("Ab1", 3),
+                Arguments.of("#HackerRank", 1)
+        );
+    }
+
+    private static Stream<Arguments> cypherParams() {
+        return Stream.of(
+                Arguments.of("There's-a-starman-waiting-in-the-sky", 3, "Wkhuh'v-d-vwdupdq-zdlwlqj-lq-wkh-vnb"),
+                Arguments.of("middle-Outz", 2, "okffng-Qwvb"),
+                Arguments.of("www.abc.xy", 87, "fff.jkl.gh"),
+                Arguments.of("159357lcfd", 98, "159357fwzx"),
+                Arguments.of("!m-rB`-oN!.W`cLAcVbN/CqSoolII!SImji.!w/`Xu`uZa1TWPRq`uRBtok`xPT`lL-zPTc.BSRIhu..-!.!tcl!-U", 62,
+                        "!w-bL`-yX!.G`mVKmFlX/MaCyyvSS!CSwts.!g/`He`eJk1DGZBa`eBLdyu`hZD`vV-jZDm.LCBSre..-!.!dmv!-E"),
+                Arguments.of("Hello_World!", 4, "Lipps_Asvph!"),
+                Arguments.of("DNFjxo?b5h*5<LWbgs6?V5{3M].1hG)pv1VWq4(!][DZ3G)riSJ.CmUj9]7Gzl?VyeJ2dIPEW4GYW*scT8(vhu9wCr]q!7eyaoy.", 45,
+                       "WGYcqh?u5a*5<EPuzl6?O5{3F].1aZ)io1OPj4(!][WS3Z)kbLC.VfNc9]7Zse?OrxC2wBIXP4ZRP*lvM8(oan9pVk]j!7xrthr."),
+                Arguments.of("6DWV95HzxTCHP85dvv3NY2crzt1aO8j6g2zSDvFUiJj6XWDlZvNNr", 87, "6MFE95QigCLQY85mee3WH2laic1jX8s6p2iBMeODrSs6GFMuIeWWa")
+
+        );
+    }
+
+    private static Stream<Arguments> marsParams() {
+        return Stream.of(
+                Arguments.of("SOSSPSSQSSOR", 3),
+                Arguments.of("SOSSOT", 1),
+                Arguments.of("SOSSOSSOS", 0),
+                Arguments.of("SOSTOT", 2),
+                Arguments.of("SOSTO", 0)
+                );
+    }
+
+    private static Stream<Arguments> hackParams() {
+        return Stream.of(
+                Arguments.of("haacckkerrannkk", true),
+                Arguments.of("haacckkerannkk", false),
+                Arguments.of("hccaakkerrannkk", false),
+                Arguments.of("hereiamstackerrank",true),
+                Arguments.of("hackerworld", false),
+                Arguments.of("hhaacckkekraraannk", true),
+                Arguments.of("rhbaasdndfsdskgbfefdbrsdfhuyatrjtcrtyytktjjt",false)
+        );
+    }
+
+    private static Stream<Arguments> pangParams() {
+        return Stream.of(
+                Arguments.of("test",false),
+                Arguments.of("The quick brown fox jumps over the lazy dog", true),
+                Arguments.of("We promptly judged antique ivory buckles for the next prize", true),
+                Arguments.of("We promptly judged antique ivory buckles for the prize", false)
         );
     }
 
@@ -365,10 +421,45 @@ public class StringsTest {
 
     @ParameterizedTest
     @MethodSource("camelParams")
-    public void camelCaseTest(String line, int count){
-       var res = strings.countWordsCamelCase(line);
-       assertEquals(count, res);
+    public void camelCaseTest(String line, int count) {
+        var res = strings.countWordsCamelCase(line);
+        assertEquals(count, res);
     }
 
+    @ParameterizedTest
+    @MethodSource("pwdLenParams")
+    public void minNumber(String pwd, int count) {
+        var res = strings.minNumber(pwd);
+        assertEquals(count, res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("cypherParams")
+    public void caesarsCypherTest(String str, int rotation, String cypher) {
+        var res = strings.caesarCypher(str, rotation);
+        assertEquals(cypher, res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("marsParams")
+    public void marsExplorationTest(String msg, int diff) {
+        var res = strings.marsExploration(msg);
+        assertEquals(diff, res);
+    }
+
+
+    @ParameterizedTest
+    @MethodSource("hackParams")
+    public void isHackerRankTest(String str, boolean isHack) {
+        var res = strings.isHackerRank(str);
+        TestUtil.verifyBooleanResult(isHack,res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("pangParams")
+    public void isPangramTest(String str, boolean isPangram) {
+        var res = strings.isPangram(str);
+        TestUtil.verifyBooleanResult(isPangram,res);
+    }
 
 }

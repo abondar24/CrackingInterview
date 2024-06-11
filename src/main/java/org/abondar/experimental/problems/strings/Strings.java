@@ -5,16 +5,7 @@ package org.abondar.experimental.problems.strings;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -505,8 +496,8 @@ public class Strings {
         return overallMatch && !pwd.contains(stopWord);
     }
 
-    public boolean validUsername(String username){
-        Pattern pt= Pattern.compile( "^[A-Za-z]\\w{7,29}$");
+    public boolean validUsername(String username) {
+        Pattern pt = Pattern.compile("^[A-Za-z]\\w{7,29}$");
         Matcher matcher = pt.matcher(username);
 
         return matcher.matches();
@@ -514,26 +505,26 @@ public class Strings {
     }
 
 
-    public boolean isAnagram(String a,String b){
+    public boolean isAnagram(String a, String b) {
         String aSorted = sortString(a);
         String bSorted = sortString(b);
 
         return aSorted.equals(bSorted);
     }
 
-    private String sortString(String str){
+    private String sortString(String str) {
         char[] arr = str.toLowerCase(Locale.ROOT).toCharArray();
         Arrays.sort(arr);
         return new String(arr);
     }
 
-    public List<String> printTokens(String str){
+    public List<String> printTokens(String str) {
         String delimiters = "[ .!,@?_']";
         String[] tokens = str.split(delimiters);
 
         return Arrays
                 .stream(tokens)
-                .filter(t->!t.isBlank())
+                .filter(t -> !t.isBlank())
                 .collect(Collectors.toList());
     }
 
@@ -543,25 +534,25 @@ public class Strings {
     }
 
 
-    public String staircase(int n){
+    public String staircase(int n) {
         var res = new StringBuilder();
 
         Stack<String> staircase = new Stack<>();
         var lineLen = n;
 
-        while (n>0){
-            staircase.push(getLine(lineLen,n));
+        while (n > 0) {
+            staircase.push(getLine(lineLen, n));
             n--;
         }
 
-        while (!staircase.isEmpty()){
+        while (!staircase.isEmpty()) {
             res.append(staircase.pop());
         }
 
         return res.toString();
     }
 
-    private String getLine(int lineLen, int numSymbols){
+    private String getLine(int lineLen, int numSymbols) {
         Character symbol = '#';
         Character space = ' ';
 
@@ -576,40 +567,172 @@ public class Strings {
                 .toString();
     }
 
-    public String timeConversion(String time){
+    public String timeConversion(String time) {
         var twelveHoursPattern = "hh:mm:ssa";
         var twentyFourHoursPattern = "HH:mm:ss";
 
 
-        var formatter = new  DateTimeFormatterBuilder().parseCaseInsensitive()
+        var formatter = new DateTimeFormatterBuilder().parseCaseInsensitive()
                 .appendPattern(twelveHoursPattern)
                 .toFormatter(Locale.ENGLISH);
 
-        LocalTime localTime = LocalTime.parse(time,formatter);
+        LocalTime localTime = LocalTime.parse(time, formatter);
 
         formatter = DateTimeFormatter.ofPattern(twentyFourHoursPattern);
 
         return localTime.format(formatter);
     }
 
-    public int countWordsCamelCase(String line){
-        var chars = List.of('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O',
-                'P','Q','R','S','T','U','V','W','X','Y','Z');
+    public int countWordsCamelCase(String line) {
+        var chars = List.of('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+                'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
 
         var startPattern = Pattern.compile("[a-z]");
 
-        if (line.matches("[aA-zZ]") || !startPattern.matcher(String.valueOf(line.charAt(0))).matches()){
+        if (line.matches("[aA-zZ]") || !startPattern.matcher(String.valueOf(line.charAt(0))).matches()) {
             return 0;
         }
 
         var res = 1;
 
-        for (char c: line.toCharArray()){
-            if (chars.contains(c)){
-                res ++;
+        for (char c : line.toCharArray()) {
+            if (chars.contains(c)) {
+                res++;
             }
         }
 
         return res;
+    }
+
+
+    public int minNumber(String pwd) {
+        var diff = 0;
+        var pwdLen = 6;
+
+        if (!pwd.matches(".*[0-9].*")) {
+            diff++;
+        }
+
+        if (!pwd.matches(".*[a-z].*")) {
+            diff++;
+        }
+
+        if (!pwd.matches(".*[A-Z].*")) {
+            diff++;
+        }
+
+        if (!pwd.matches(".*[!@#$%^&*()+\\-].*")) {
+            diff++;
+        }
+
+        var charToLen = pwdLen - pwd.length();
+
+        return Math.max(charToLen, diff);
+    }
+
+    public String caesarCypher(String str, int rotation) {
+        var alphLen = 26;
+
+        var res = new char[str.length()];
+        rotation = rotation % alphLen;
+
+        for (int i = 0; i < str.length(); i++) {
+            var currChar = str.charAt(i);
+            if (isAlphabet(currChar)) {
+                char cyfChar = rotateChar(currChar, rotation, alphLen);
+                res[i] = cyfChar;
+            } else {
+                res[i] = str.charAt(i);
+            }
+        }
+
+
+        return new String(res);
+    }
+
+    private boolean isAlphabet(char ch) {
+        return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
+    }
+
+    private char rotateChar(char ch, int rotation, int alphLen) {
+        if (Character.isUpperCase(ch)) {
+            return (char) ('A' + (ch - 'A' + rotation) % alphLen);
+        } else {
+            return (char) ('a' + (ch - 'a' + rotation) % alphLen);
+        }
+    }
+
+
+    public int marsExploration(String msg) {
+        msg = msg.toUpperCase();
+        var sosPattern = "SOS";
+
+        if (msg.length() % sosPattern.length() != 0) {
+            return 0;
+        }
+
+        var cleanMsgBuilder = new StringBuilder();
+        int i = 0;
+        while (i <= msg.length()) {
+            cleanMsgBuilder.append(sosPattern);
+            i += sosPattern.length();
+        }
+
+        var clanMsg = cleanMsgBuilder.toString().toCharArray();
+        var msgArr = msg.toCharArray();
+        int diff = 0;
+
+        for (i=0;i<msgArr.length;i++){
+            if (msgArr[i] != clanMsg[i]) {
+                diff++;
+            }
+        }
+
+        return diff;
+    }
+
+
+    public boolean isHackerRank(String str){
+        var hack = "hackerrank";
+        var hackIndex=0;
+
+        var strc = str.toCharArray();
+        for (char c: strc){
+            if (c == hack.charAt(hackIndex)){
+                hackIndex++;
+            }
+            if (hackIndex== hack.length()){
+                return true;
+            }
+        }
+
+       return false;
+
+    }
+
+    public boolean isPangram(String str){
+        str = str.toLowerCase().replaceAll("[\\d\\s!@#$%^&*()+\\\\-]+","");
+
+        var strc = str.toCharArray();
+        Arrays.sort(strc);
+
+        Map<Character, Boolean> alphabet = new HashMap<>();
+        for (char ch = 'a'; ch <= 'z'; ch++) {
+            alphabet.put(ch, false);
+        }
+
+        if (strc.length<alphabet.size()){
+           return false;
+        }
+
+        for (char c: strc){
+           if (!alphabet.get(c)){
+               alphabet.put(c,true);
+           }
+        }
+
+        return alphabet.values().stream().allMatch(Boolean::booleanValue);
+
+
     }
 }
