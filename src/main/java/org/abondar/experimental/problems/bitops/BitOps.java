@@ -91,7 +91,7 @@ public class BitOps {
         return (((x & 0xaaaaaaaa) >>> 1) | ((x & 0x55555555) << 1));
     }
 
-    public int flipBit(int num) {
+    public int bitToWin(int num) {
         if (~num == 0) return Integer.BYTES * 8;
 
         int curLen = 0;
@@ -314,5 +314,33 @@ public class BitOps {
 
         }
         return a;
+    }
+
+    public int getUniqueInteger(List<Integer> list) {
+        var res = 0;
+
+        for (int num : list) {
+            res ^= num;
+        }
+
+        return res;
+    }
+
+
+    public int maximizingXor(int low, int high) {
+        int xor = low ^ high;
+        int max = 1;
+
+        // Find the most significant bit where low and high differ
+        while (xor > 0) {
+            max <<=1;
+            xor >>= 1;
+        }
+
+        return max - 1;
+    }
+
+    public long flipBits(long num){
+        return num ^ 0xFFFFFFFFL;
     }
 }

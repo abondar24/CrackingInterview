@@ -152,7 +152,7 @@ Check comments in classes
 - bstSequences - Find all possible arrays of listNodes in BST with distinct elems
 
 
-## Bit opertations
+## Bit operations
 
 - insert - Insert 32-bit number m into number n from position j to position i. M fully fits between positions 
 - bin to str - Given real number between 0 and 1 convert it to bin and save as str.Max 32 chars.
@@ -165,6 +165,9 @@ Check comments in classes
 - hamming weight - return the number of '1' bits in unsigned int.
 - add binary - sum two binary nums
 - getSum - sum two ints without using +- operators
+- unique integer - get a unique integer in the given list
+- max xor - get a maximum xor value in given range
+- flip bits - get a number with converted bits
 
 ## Greedy Tasks
 

@@ -55,6 +55,38 @@ public class BitOpsTest {
         );
     }
 
+    static Stream<Arguments> uniqueParams() {
+        return Stream.of(
+                Arguments.of(List.of(3, 1, 2, 1, 2), 3),
+                Arguments.of(List.of(1, 2, 3, 4, 3, 2, 1), 4),
+                Arguments.of(List.of(1, 1, 2), 2),
+                Arguments.of(List.of(0, 0, 1, 2, 1), 2));
+    }
+
+    static Stream<Arguments> maxXorParams() {
+        return Stream.of(
+                Arguments.of(11, 12, 7),
+                Arguments.of(10, 15, 7),
+                Arguments.of(11, 100, 127)
+        );
+    }
+
+    static Stream<Arguments> flipParams() {
+        return Stream.of(
+                Arguments.of(9,4294967286L),
+                Arguments.of( 2147483647L,2147483648L),
+                Arguments.of(4,4294967291L),
+                Arguments.of(1,4294967294L),
+                Arguments.of(0,4294967295L),
+                Arguments.of(123456,4294843839L),
+                Arguments.of(802743475,3492223820L),
+                Arguments.of(35601423,4259365872L)
+
+                );
+    }
+
+
+
     @Test
     public void insertTest() {
         int n = Integer.parseInt("10000000000", 2);
@@ -105,7 +137,7 @@ public class BitOpsTest {
     @Test
     public void flibBitTest() {
         int n = 1775;
-        int res = bitOps.flipBit(n);
+        int res = bitOps.bitToWin(n);
         assertEquals(8, res);
     }
 
@@ -165,4 +197,26 @@ public class BitOpsTest {
         int res = bitOps.getSum(a, b);
         assertEquals(expected, res);
     }
+
+    @ParameterizedTest
+    @MethodSource("uniqueParams")
+    public void getUniqueIntegerTest(List<Integer> list, int expected) {
+        int res = bitOps.getUniqueInteger(list);
+        assertEquals(expected, res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("maxXorParams")
+    public void maxXorTest(int low, int high, int expected) {
+        int res = bitOps.maximizingXor(low, high);
+        assertEquals(expected, res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("flipParams")
+    public void flipBitTest(long num, long expected) {
+        long res = bitOps.flipBits(num);
+        assertEquals(expected, res);
+    }
+
 }
