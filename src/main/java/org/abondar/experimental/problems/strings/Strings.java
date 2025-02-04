@@ -1,7 +1,6 @@
 package org.abondar.experimental.problems.strings;
 
 
-
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -528,12 +527,6 @@ public class Strings {
                 .collect(Collectors.toList());
     }
 
-    static class MultCLass {
-        private int mult;
-        private int count;
-    }
-
-
     public String staircase(int n) {
         var res = new StringBuilder();
 
@@ -556,15 +549,10 @@ public class Strings {
         Character symbol = '#';
         Character space = ' ';
 
-        var line = new StringBuilder(lineLen);
-
-        line.append(String.valueOf(space).repeat(Math.max(0, lineLen - numSymbols)));
-
-        line.append(String.valueOf(symbol).repeat(Math.max(0, numSymbols)));
-
-        line.append("\n");
-        return line
-                .toString();
+        String line = String.valueOf(space).repeat(Math.max(0, lineLen - numSymbols)) +
+                String.valueOf(symbol).repeat(Math.max(0, numSymbols)) +
+                "\n";
+        return line;
     }
 
     public String timeConversion(String time) {
@@ -603,7 +591,6 @@ public class Strings {
 
         return res;
     }
-
 
     public int minNumber(String pwd) {
         var diff = 0;
@@ -662,7 +649,6 @@ public class Strings {
         }
     }
 
-
     public int marsExploration(String msg) {
         msg = msg.toUpperCase();
         var sosPattern = "SOS";
@@ -682,7 +668,7 @@ public class Strings {
         var msgArr = msg.toCharArray();
         int diff = 0;
 
-        for (i=0;i<msgArr.length;i++){
+        for (i = 0; i < msgArr.length; i++) {
             if (msgArr[i] != clanMsg[i]) {
                 diff++;
             }
@@ -691,27 +677,26 @@ public class Strings {
         return diff;
     }
 
-
-    public boolean isHackerRank(String str){
+    public boolean isHackerRank(String str) {
         var hack = "hackerrank";
-        var hackIndex=0;
+        var hackIndex = 0;
 
         var strc = str.toCharArray();
-        for (char c: strc){
-            if (c == hack.charAt(hackIndex)){
+        for (char c : strc) {
+            if (c == hack.charAt(hackIndex)) {
                 hackIndex++;
             }
-            if (hackIndex== hack.length()){
+            if (hackIndex == hack.length()) {
                 return true;
             }
         }
 
-       return false;
+        return false;
 
     }
 
-    public boolean isPangram(String str){
-        str = str.toLowerCase().replaceAll("[\\d\\s!@#$%^&*()+\\\\-]+","");
+    public boolean isPangram(String str) {
+        str = str.toLowerCase().replaceAll("[\\d\\s!@#$%^&*()+\\\\-]+", "");
 
         var strc = str.toCharArray();
         Arrays.sort(strc);
@@ -721,18 +706,58 @@ public class Strings {
             alphabet.put(ch, false);
         }
 
-        if (strc.length<alphabet.size()){
-           return false;
+        if (strc.length < alphabet.size()) {
+            return false;
         }
 
-        for (char c: strc){
-           if (!alphabet.get(c)){
-               alphabet.put(c,true);
-           }
+        for (char c : strc) {
+            if (!alphabet.get(c)) {
+                alphabet.put(c, true);
+            }
         }
 
         return alphabet.values().stream().allMatch(Boolean::booleanValue);
 
 
+    }
+
+    public String superReducedString(String str) {
+        StringBuilder reducedStr = new StringBuilder(str);
+
+        int i = 0;
+
+        while (i < reducedStr.length()-1) {
+            if (reducedStr.charAt(i) == reducedStr.charAt(i + 1)) {
+                reducedStr.delete(i, i + 2);
+                i = i > 0 ? i - 1 : 0;
+            } else {
+                i++;
+            }
+        }
+
+        return reducedStr.toString();
+    }
+
+    public int alternatingChars(String str) {
+        StringBuilder reducedStr = new StringBuilder(str);
+
+        int i = 0;
+        int deleteionsCount = 0;
+        while (i < reducedStr.length()-1) {
+            if (reducedStr.charAt(i) == reducedStr.charAt(i + 1)) {
+                reducedStr.delete(i, i + 1);
+                deleteionsCount++;
+                i = i > 0 ? i - 1 : 0;
+            } else {
+                i++;
+            }
+        }
+
+        return deleteionsCount;
+    }
+
+    static class MultCLass {
+        private int mult;
+        private int count;
     }
 }

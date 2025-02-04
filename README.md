@@ -47,7 +47,9 @@ convert to upperCase,sort by len(ASC) and return distinct)
 - marsExploration - Letters in some of the SOS messages are altered by cosmic radiation during transmission. Given the signal received by Earth as a string determine how many letters of the SOS message have been changed by radiation.
 - isHackerrank - check if incoming string contains string 'hackerrank' in exactly the same char sequence
 - isPangram - check if the incoming string has all letters of english alphabet
-
+- superReducedString - remove from string all pairs of letters
+- alternatingChars - given a string containing characters A and B only,change it into a string such that there are no matching adjacent characters and find the minimum number of required deletions.
+- 
 ## Ints
 
 - reverse integer - Given a 32-bit signed integer, reverse digits of an integer.
@@ -247,8 +249,7 @@ find and index where element occurs
 - countItems - Fetch json with data in format {"data":"key=IAfpK, age=58, key=WNVdi, age=64, key=jp9zt, age=47"}.Where item is key=IAfpK, age=58. 
 Calculate number of items with age >=50
   
-
-
+  
 # Data Structures
 
 - Node - linked list node

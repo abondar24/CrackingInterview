@@ -229,6 +229,32 @@ public class StringsTest {
         );
     }
 
+    private static Stream<Arguments> reducedParams() {
+        return Stream.of(
+                Arguments.of("aab","b"),
+                Arguments.of("abba", ""),
+                Arguments.of("aaabccddd", "abd"),
+                Arguments.of("aa", ""),
+                Arguments.of("aaaa",""),
+                Arguments.of("baab", ""),
+                Arguments.of("aabcccccaaa","bca")
+        );
+    }
+
+    private static Stream<Arguments> alternatingParams() {
+        return Stream.of(
+                Arguments.of("AAAA",3),
+                Arguments.of("BBBBB", 4),
+                Arguments.of("ABABABAB", 0),
+                Arguments.of("BABABA", 0),
+                Arguments.of("AAABBB", 4),
+                Arguments.of("AAABBBAABB",6),
+                Arguments.of("AABBAABB",4),
+                Arguments.of("ABABABAA",1),
+                Arguments.of("ABBABBAA",3)
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("uniqueParams")
     public void isUniqueTest(String input, boolean expected) {
@@ -460,6 +486,20 @@ public class StringsTest {
     public void isPangramTest(String str, boolean isPangram) {
         var res = strings.isPangram(str);
         TestUtil.verifyBooleanResult(isPangram,res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("reducedParams")
+    public void superReducedStringTest(String input, String expected) {
+      var res = strings.superReducedString(input);
+      assertEquals(expected, res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("alternatingParams")
+    public void alternatingCharsTest(String input, int expected) {
+        var res = strings.alternatingChars(input);
+        assertEquals(expected, res);
     }
 
 }
