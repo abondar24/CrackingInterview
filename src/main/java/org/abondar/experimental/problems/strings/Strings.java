@@ -756,6 +756,50 @@ public class Strings {
         return deleteionsCount;
     }
 
+    public boolean twoStrings(String str1, String str2) {
+        var set = new HashSet<Character>();
+
+        for (int i = 0; i < str1.length(); i++) {
+           set.add(str1.charAt(i));
+        }
+
+        for (Character c : str2.toCharArray()) {
+            if (set.contains(c)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public int beautifulBinaryString(String str) {
+        var pattern = "010";
+
+        if (!str.contains(pattern)) {
+            return 0;
+        }
+
+        var strc = str.toCharArray();
+        var steps = 0;
+
+        int i=0;
+        while (i<strc.length - 2) {
+            var sb = new StringBuilder();
+            sb.append(strc[i]);
+            sb.append(strc[i + 1]);
+            sb.append(strc[i + 2]);
+
+            if (sb.toString().equals(pattern)) {
+                steps++;
+                i+=3;
+            } else {
+                i+=1;
+            }
+        }
+
+        return steps;
+    }
+
     static class MultCLass {
         private int mult;
         private int count;

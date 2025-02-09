@@ -255,6 +255,33 @@ public class StringsTest {
         );
     }
 
+    private static Stream<Arguments> twoStringsParams() {
+        return Stream.of(
+                Arguments.of("and","art",true),
+                Arguments.of("be", "cat",false),
+                Arguments.of("hello","world", true),
+                Arguments.of("hi", "world",false),
+                Arguments.of("wouldyoulikefries","abcabcabcabcabcabc", false),
+                Arguments.of("hackerrankcommunity","cdecdecdecde",true),
+                Arguments.of("jackandjill", "wentupthehill",true),
+                Arguments.of("writetoyourparents","fghmqzldbc",false),
+                Arguments.of("aardvark","apple",true),
+                Arguments.of("beetroot","sandals",false)
+        );
+    }
+
+    private static Stream<Arguments> binaryParams() {
+        return Stream.of(
+                Arguments.of("0",0),
+                Arguments.of("111",0),
+                Arguments.of("010",1),
+                Arguments.of("0101010", 2),
+                Arguments.of("01100", 0),
+                Arguments.of("0100101010", 3)
+
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("uniqueParams")
     public void isUniqueTest(String input, boolean expected) {
@@ -363,6 +390,7 @@ public class StringsTest {
         int actual = strings.cardWar(input1, input2);
         assertEquals(expected, actual);
     }
+
 
     @Test
     public void stringChainTest() {
@@ -499,6 +527,20 @@ public class StringsTest {
     @MethodSource("alternatingParams")
     public void alternatingCharsTest(String input, int expected) {
         var res = strings.alternatingChars(input);
+        assertEquals(expected, res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("twoStringsParams")
+    public void twoStringsTest(String str1, String str2, boolean expected) {
+        var res = strings.twoStrings(str1, str2);
+        assertEquals(expected, res);
+    }
+
+    @ParameterizedTest
+    @MethodSource("binaryParams")
+    public void beautifulBinaryString(String input, int expected) {
+        var res = strings.beautifulBinaryString(input);
         assertEquals(expected, res);
     }
 

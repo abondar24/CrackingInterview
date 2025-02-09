@@ -49,7 +49,9 @@ convert to upperCase,sort by len(ASC) and return distinct)
 - isPangram - check if the incoming string has all letters of english alphabet
 - superReducedString - remove from string all pairs of letters
 - alternatingChars - given a string containing characters A and B only,change it into a string such that there are no matching adjacent characters and find the minimum number of required deletions.
-- 
+- twoStrings - given two strings check if they have a common substring
+- beautifulBinaryString - given a binary string make it beautiful by removing "010" and return minimum number of steps required for it.
+
 ## Ints
 
 - reverse integer - Given a 32-bit signed integer, reverse digits of an integer.
@@ -90,7 +92,6 @@ If element [i][j] of matrix is zero - entire row and column must be zero
 - minimaxSum - find min and max sums of elements of list excluding one of the elements
 - birthdayCandles - You are in charge of the cake for a child's birthday. 
 You have decided the cake will have one candle for each year of their total age. They will only be able to blow out the tallest of the candles. Count how many candles are tallest.
-
 
 ##  List
 - addToEnd - append a new node to the end of list
